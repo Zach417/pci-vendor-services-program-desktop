@@ -1,4 +1,5 @@
-﻿using PensionConsultants.Data.Utilities;
+﻿using PensionConsultants.Data.Access;
+using PensionConsultants.Data.Utilities;
 using VSP.Business.Components;
 
 using System;
@@ -88,6 +89,11 @@ namespace VSP.Business.Entities
         public List<ColumnTuple> RegisteredColumns;
 
         /// <summary>
+        /// Access component to DB.
+        /// </summary>
+        public DataAccessComponent DbAccess;
+
+        /// <summary>
         /// Interacts with the database on the entity's behalf.
         /// </summary>
         private SqlCrudOperator SqlCrud;
@@ -96,14 +102,23 @@ namespace VSP.Business.Entities
         /// Creates an instance of a DatabaseEntity object that does not exist in the database.
         /// </summary>
         /// <param name="tableName">Used to identify with which table the instance is interacting.</param>
-        public DatabaseEntity(string tableName)
+        public DatabaseEntity(string tableName, DataAccessComponent dbAccess = null)
         {
             ExistingRecord = false;
             Id = Guid.NewGuid();
             TableName = tableName;
             EntityMembersAsOf = null;
 
-            SqlCrud = new SqlCrudOperator(Access.IspDbAccess, TableName);
+            if (dbAccess == null)
+            {
+                DbAccess = Access.VspDbAccess;
+            }
+            else
+            {
+                DbAccess = dbAccess;
+            }
+
+            SqlCrud = new SqlCrudOperator(DbAccess, TableName);
             RegisteredColumns = new List<ColumnTuple>();
 
             RegisterMembers();
@@ -114,13 +129,22 @@ namespace VSP.Business.Entities
         /// </summary>
         /// <param name="tableName">Used to identify with which table the instance is interacting.</param>
         /// <param name="id">Used to identify with which record the instance is interacting.</param>
-        public DatabaseEntity(string tableName, Guid id)
+        public DatabaseEntity(string tableName, Guid id, DataAccessComponent dbAccess = null)
         {
             ExistingRecord = true;
             Id = id;
             TableName = tableName;
 
-            SqlCrud = new SqlCrudOperator(Access.IspDbAccess, TableName);
+            if (dbAccess == null)
+            {
+                DbAccess = Access.VspDbAccess;
+            }
+            else
+            {
+                DbAccess = dbAccess;
+            }
+
+            SqlCrud = new SqlCrudOperator(DbAccess, TableName);
             RegisteredColumns = new List<ColumnTuple>();
             
             RegisterMembers();

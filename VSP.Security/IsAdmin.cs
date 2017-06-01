@@ -14,7 +14,7 @@ namespace VSP.Security
         {
             foreach (SecurityRole securityRole in SecurityRoles)
             {
-                if (securityRole.Id == new Guid("3C6899B9-485D-4AA7-9AB9-164D8C353C58"))
+                if (securityRole.Id == new Guid("3127AB91-3635-4B22-A1FE-7FF083A05F54"))
                     return true;
             }
 

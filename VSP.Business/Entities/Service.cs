@@ -1,29 +1,29 @@
 ﻿using VSP.Business.Components;
-using VSP.Business.Entities;
 using PensionConsultants.Data.Utilities;
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
+using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class AdvisorsManagement : DatabaseEntity
+    public class Service : DatabaseEntity
     {
-        public Guid AdvisorId;
-        public string FullName;
+        public string Name;
+        public string Category;
 
-        private static string _tableName = "AdvisorsManagement";
+        private static string _tableName = "Service";
 
-        public AdvisorsManagement()
+        public Service()
             : base(_tableName)
         {
 
         }
 
-        public AdvisorsManagement(Guid primaryKey)
+        public Service(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -35,8 +35,8 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("AdvisorId", this.AdvisorId);
-            base.AddColumn("FullName", this.FullName);
+            base.AddColumn("Name", this.Name);
+            base.AddColumn("Category", this.Category);
         }
 
         /// <summary>
@@ -44,15 +44,20 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.AdvisorId = (Guid)base.GetColumn("AdvisorId");
-            this.FullName = (string)base.GetColumn("FullName");
+            this.Name = (string)base.GetColumn("Name");
+            this.Category = (string)base.GetColumn("Category");
         }
 
-        public static DataTable GetAssociatedFromAdvisor(Guid advisorId)
+        public static DataTable GetActive()
         {
-            Hashtable parameterList = new Hashtable();
-            parameterList.Add("@AdvisorId", advisorId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_AdvisorsManagementGetAssociatedFromAdvisor]", parameterList);
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
+        }
+
+        public static DataTable GetInactive()
+        {
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }
 }

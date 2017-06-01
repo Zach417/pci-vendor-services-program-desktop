@@ -61,7 +61,7 @@ namespace VSP.Business.Entities
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@AccountId", accountId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ObservationsGetAssociatedFromAccount]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ObservationsGetAssociatedFromAccount]", parameterList);
         }
     }
 }

@@ -64,7 +64,7 @@ namespace VSP.Business.Entities
 
         private static DataTable GetActive()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_QuarterlyMarketsReviewGetActive]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_QuarterlyMarketsReviewGetActive]");
         }
     }
 }

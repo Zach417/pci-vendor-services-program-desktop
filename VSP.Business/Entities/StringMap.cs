@@ -21,13 +21,13 @@ namespace VSP.Business.Entities
         private static string _tableName = "StringMap";
 
         public StringMap()
-            : base(_tableName)
+            : base(_tableName, Access.IspDbAccess)
         {
 
         }
 
         public StringMap(Guid primaryKey)
-            : base(_tableName, primaryKey)
+            : base(_tableName, primaryKey, Access.IspDbAccess)
         {
             RefreshMembers();
         }
@@ -59,14 +59,14 @@ namespace VSP.Business.Entities
 
         public static DataTable GetDistinctTable()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_StringMapGetDistinctTable]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_StringMapGetDistinctTable]");
         }
 
         public static DataTable GetDistinctColumnFromTable(string regardingTable)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@RegardingTable", regardingTable);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_StringMapGetDistinctColumnFromTable]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_StringMapGetDistinctColumnFromTable]", parameterList);
         }
 
         public class ColumnValues
@@ -90,7 +90,7 @@ namespace VSP.Business.Entities
                 Hashtable parameterList = new Hashtable();
                 parameterList.Add("@RegardingTable", regardingTable);
                 parameterList.Add("@RegardingColumn", regardingColumn);
-                return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_StringMapGetColumnValues]", parameterList);
+                return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_StringMapGetColumnValues]", parameterList);
             }
         }
 
@@ -113,7 +113,7 @@ namespace VSP.Business.Entities
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@RegardingTable", regardingTable);
             parameterList.Add("@RegardingColumn", regardingColumn);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_StringMapGetColumnValues]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_StringMapGetColumnValues]", parameterList);
         }
 
         public static DataTable GetAssociatedFromTableColumn(string regardingTable, string regardingColumn)
@@ -121,7 +121,7 @@ namespace VSP.Business.Entities
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@RegardingTable", regardingTable);
             parameterList.Add("@RegardingColumn", regardingColumn);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_StringMapGetAssociatedFromTableColumn]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_StringMapGetAssociatedFromTableColumn]", parameterList);
         }
 
         public void SetInactive()

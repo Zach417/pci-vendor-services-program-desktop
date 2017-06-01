@@ -17,7 +17,7 @@ namespace VSP.Business.Entities
         private static string _tableName = "SecurityRole";
 
         public SecurityRole()
-            :base(_tableName)
+            : base(_tableName)
         {
 
         }
@@ -51,7 +51,7 @@ namespace VSP.Business.Entities
         {
             List<SecurityRole> list = new List<SecurityRole>();
 
-            foreach (DataRow dataRow in GetActiveSecurityRoles().Rows)
+            foreach (DataRow dataRow in GetActive().Rows)
             {
                 Guid securityRoleId = new Guid(dataRow["SecurityRoleId"].ToString());
                 SecurityRole securityRole = new SecurityRole(securityRoleId);
@@ -61,10 +61,16 @@ namespace VSP.Business.Entities
             return list;
         }
 
-        private static DataTable GetActiveSecurityRoles()
+        public static DataTable GetActive()
         {
-            string sql = @"SELECT SecurityRoleId FROM SecurityRole WHERE StateCode = 0";
-            return Access.IspDbAccess.ExecuteSqlQuery(sql);
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
+        }
+
+        public static DataTable GetInactive()
+        {
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }
 }

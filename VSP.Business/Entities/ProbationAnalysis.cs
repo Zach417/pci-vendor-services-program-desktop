@@ -128,14 +128,14 @@ namespace VSP.Business.Entities
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@FundId", fundId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ProbationAnalysisGetAssociatedFromFund]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ProbationAnalysisGetAssociatedFromFund]", parameterList);
         }
 
         private static DataTable GetAssociatedFromPlan(Guid planId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@PlanId", planId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ProbationAnalysisGetAssociatedFromPlan]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ProbationAnalysisGetAssociatedFromPlan]", parameterList);
         }
 
         private static DataTable GetAssociatedFromFundAndPlan(Guid fundId, Guid planId)
@@ -143,7 +143,7 @@ namespace VSP.Business.Entities
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@FundId", fundId);
             parameterList.Add("@PlanId", planId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ProbationAnalysisGetAssociatedFromFundAndPlan]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ProbationAnalysisGetAssociatedFromFundAndPlan]", parameterList);
         }
     }
 }

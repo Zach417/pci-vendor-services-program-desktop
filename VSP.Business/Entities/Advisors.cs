@@ -36,13 +36,13 @@ namespace VSP.Business.Entities
         private static string _tableName = "Advisors";
 
         public Advisors()
-            : base(_tableName)
+            : base(_tableName, Access.IspDbAccess)
         {
 
         }
 
         public Advisors(Guid primaryKey)
-            : base(_tableName, primaryKey)
+            : base(_tableName, primaryKey, Access.IspDbAccess)
         {
             RefreshMembers();
         }

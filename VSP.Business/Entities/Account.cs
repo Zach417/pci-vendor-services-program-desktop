@@ -55,7 +55,7 @@ namespace VSP.Business.Entities
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@AccountId", accountId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsGetAccountDetails]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsGetAccountDetails]", parameterList);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace VSP.Business.Entities
         /// <returns>DataTable</returns>
         public static DataTable GetActiveCustomers()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsGetActiveCustomers]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsGetActiveCustomers]");
         }
 
         /// <summary>
@@ -76,27 +76,27 @@ namespace VSP.Business.Entities
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@Search", searchText);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsSearchActiveCustomers]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsSearchActiveCustomers]", parameterList);
         }
 
         public static DataTable GetActiveCustomersWithFunds()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsGetActiveCustomersWithFunds]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsGetActiveCustomersWithFunds]");
         }
 
         public static DataTable GetActive321Customers()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsGetActive321Customers]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsGetActive321Customers]");
         }
 
         public static DataTable GetActive338Customers()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsGetActive338Customers]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsGetActive338Customers]");
         }
 
         public static DataTable GetActiveRetirementCompleteCustomers()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsGetActiveRetirementCompleteCustomers]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_AccountsGetActiveRetirementCompleteCustomers]");
         }
     }
 }

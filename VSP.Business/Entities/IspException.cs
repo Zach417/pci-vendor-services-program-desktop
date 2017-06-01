@@ -39,7 +39,7 @@ namespace VSP.Business.Entities
             parameterList.Add("@ExceptionMessage", this.Exception.Message);
             parameterList.Add("@ExceptionMethod", this.Exception.StackTrace);
             parameterList.Add("@ExceptionUserNotes", this.UserNotes);
-            return Access.IspDbAccess.ExecuteStoredProcedureNonQuery("[dbo].[usp_ISP_ExceptionsInsert]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureNonQuery("[dbo].[usp_ISP_ExceptionsInsert]", parameterList);
         }
     }
 }

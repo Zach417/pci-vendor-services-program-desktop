@@ -18,13 +18,13 @@ namespace VSP.Business.Entities
         private static string _tableName = "UserLogin";
 
         public UserLogin()
-            :base(_tableName)
+            : base(_tableName, Access.IspDbAccess)
         {
 
         }
 
         public UserLogin(Guid primaryKey)
-            : base(_tableName, primaryKey)
+            : base(_tableName, primaryKey, Access.IspDbAccess)
         {
             RefreshMembers();
         }

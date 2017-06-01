@@ -82,6 +82,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>\\PC03\Common Ground\IT\Libraries\DataIntegrationHub.Business.dll</HintPath>
     </Reference>
+    <Reference Include="FastMember, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.1.1.0\lib\net40\FastMember.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -109,23 +113,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\frmService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmService.Designer.cs">
+      <DependentUpon>frmService.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmSelectRecord.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmSelectRecord.Designer.cs">
       <DependentUpon>frmSelectRecord.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Controls\Clients.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Controls\Clients.Designer.cs">
-      <DependentUpon>Clients.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Controls\Settings.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Controls\Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -178,14 +176,11 @@
     <Compile Include="Forms\frmSplashScreen.Designer.cs">
       <DependentUpon>frmSplashScreen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\frmService.resx">
+      <DependentUpon>frmService.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSelectRecord.resx">
       <DependentUpon>frmSelectRecord.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\Clients.resx">
-      <DependentUpon>Clients.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAdvisor.resx">
       <DependentUpon>frmAdvisor.cs</DependentUpon>
@@ -210,6 +205,7 @@
     <EmbeddedResource Include="Forms\frmSplashScreen.resx">
       <DependentUpon>frmSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

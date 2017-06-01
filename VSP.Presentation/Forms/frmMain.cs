@@ -28,6 +28,8 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 
+using FastMember;
+
 namespace VSP.Presentation.Forms
 {
     public partial class frmMain : Form, IMessageFilter
@@ -154,10 +156,6 @@ namespace VSP.Presentation.Forms
                 {
                     lblSettings.Enabled = false;
                     lblSettings.Visible = false;
-                }
-
-                if (Security.IsAdmin() == false && Security.IsDataAdmin() == false)
-                {
                 }
 
                 if (Security.IsUser() == false && Security.IsAdmin() == false)
@@ -405,16 +403,6 @@ namespace VSP.Presentation.Forms
                                       .Where(c => c.GetType() == type);
         }
 
-        private void label77_Click(object sender, EventArgs e)
-        {
-            tabControlSettings.SelectedIndex = 0;
-        }
-
-        private void label89_Click(object sender, EventArgs e)
-        {
-            tabControlSettings.SelectedIndex = 0;
-        }
-
         private void label33_Click(object sender, EventArgs e)
         {
             tabMain.SelectedIndex = 3;
@@ -529,6 +517,154 @@ namespace VSP.Presentation.Forms
         private void lblSettings_Click(object sender, EventArgs e)
         {
             tabMain.SelectedTab = tabMain.TabPages["tabSettings"];
+            cboUsersViews.SelectedIndex = 0;
+            LoadDgvUsers();
+        }
+
+        private void label89_Click(object sender, EventArgs e)
+        {
+            tabControlSettings.SelectedTab = tabControlSettings.TabPages["tabUsers"];
+            cboUsersViews.SelectedIndex = 0;
+            LoadDgvUsers();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            tabControlSettings.SelectedTab = tabControlSettings.TabPages["tabServices"];
+            cboServiceViews.SelectedIndex = 0;
+            LoadDgvServices();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            frmService frmService = new frmService(this);
+            frmService.FormClosed += frmService_FormClosed;
+        }
+
+        private void frmService_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvServices();
+        }
+
+        private void LoadDgvServices()
+        {
+            DataTable dataTable = new DataTable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboServiceViews"/>.
+            switch (cboServiceViews.SelectedIndex)
+            {
+                case 0:
+                    dataTable = Service.GetActive();
+                    break;
+                case 1:
+                    dataTable = Service.GetInactive();
+                    break;
+                default:
+                    return;
+            }
+
+            dgvServices.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvServices.Columns["ServiceId"].Visible = false;
+            dgvServices.Columns["CreatedBy"].Visible = false;
+            dgvServices.Columns["ModifiedBy"].Visible = false;
+            dgvServices.Columns["StateCode"].Visible = false;
+
+            dgvServices.Columns["Name"].DisplayIndex = 0;
+            dgvServices.Columns["Category"].DisplayIndex = 1;
+            dgvServices.Columns["CreatedOn"].DisplayIndex = 2;
+            dgvServices.Columns["ModifiedOn"].DisplayIndex = 3;
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            if (dgvServices.CurrentRow == null)
+            {
+                return;
+            }
+
+            int index = dgvServices.CurrentRow.Index;
+            Guid serviceId = new Guid(dgvServices.Rows[index].Cells[0].Value.ToString());
+            Service service = new Service(serviceId);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete " + service.Name + "?", "Attention", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                service.DeleteRecordFromDatabase();
+                LoadDgvServices();
+            }
+        }
+
+        private void cboServiceViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvServices();
+        }
+
+        private void LoadDgvUsers()
+        {
+            List<User> list = new List<User>();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboUsersViews"/>.
+            switch (cboUsersViews.SelectedIndex)
+            {
+                case 0:
+                    list = User.ActiveUsers();
+                    break;
+                case 1:
+                    list = User.AllUsers().Where(x => x.StateCode == 1).ToList();
+                    break;
+                default:
+                    return;
+            }
+
+            // convert list to datatable
+            DataTable dataTable = new DataTable();
+            using (var reader = ObjectReader.Create(list)) {
+                dataTable.Load(reader);
+            }
+
+            dgvUsers.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvUsers.Columns["UserId"].Visible = false;
+            dgvUsers.Columns["FirstName"].Visible = false;
+            dgvUsers.Columns["LastName"].Visible = false;
+            dgvUsers.Columns["EmailAddress"].Visible = false;
+            dgvUsers.Columns["MainPhone"].Visible = false;
+            dgvUsers.Columns["CreatedBy"].Visible = false;
+            dgvUsers.Columns["CreatedOn"].Visible = false;
+            dgvUsers.Columns["ModifiedBy"].Visible = false;
+            dgvUsers.Columns["ModifiedOn"].Visible = false;
+            dgvUsers.Columns["StateCode"].Visible = false;
+
+            dgvUsers.Columns["DomainName"].DisplayIndex = 0;
+            dgvUsers.Columns["FullName"].DisplayIndex = 1;
+            dgvUsers.Columns["Title"].DisplayIndex = 2;
+        }
+
+        private void cboUsersViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvUsers();
+        }
+
+        private void dgvUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvUsers.CurrentRow.Index;
+            Guid userId = new Guid(dgvUsers.Rows[index].Cells["UserId"].Value.ToString());
+            User user = new User(userId);
+            //frmUser frmUser = new frmUser(this, user);
+            //frmUser.FormClosed += frmUser_FormClosed;
+        }
+
+        private void dgvServices_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvServices.CurrentRow.Index;
+            Guid serviceId = new Guid(dgvServices.Rows[index].Cells["ServiceId"].Value.ToString());
+            Service service = new Service(serviceId);
+            frmService frmService = new frmService(this, service);
+            frmService.FormClosed += frmService_FormClosed;
         }
     }
 }

@@ -57,12 +57,12 @@ namespace VSP.Business.Entities
 
         public static DataTable GetActive()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_Relational_AssetGroup_CategoryGetActive]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_Relational_AssetGroup_CategoryGetActive]");
         }
 
         public static DataTable GetMissingValues()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_Relational_AssetGroup_CategoryGetMissingValues]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_Relational_AssetGroup_CategoryGetMissingValues]");
         }
     }
 }

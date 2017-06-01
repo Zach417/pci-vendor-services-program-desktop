@@ -97,11 +97,6 @@ namespace VSP.Presentation.Forms
 
             cboBenchMarkSecondary.Items.Add(new ListItem("No Instructions On File", null));
 
-            foreach (DataRow dr in Benchmarks.Get().Rows)
-            {
-                cboBenchMarkSecondary.Items.Add(new ListItem(dr["FundName"].ToString(), dr["FundID"].ToString()));
-            }
-
             LoadAssetClassCbo();
 
             ss.Close();
@@ -180,11 +175,6 @@ namespace VSP.Presentation.Forms
             Guid fundId = new Guid(dgvFunds.Rows[index].Cells[1].Value.ToString());
 
             string benchMark = null;
-
-            foreach (DataRow dr in VSP.Business.Entities.Benchmarks.GetAssociatedFromRelational_Funds_Plans(_relationalFundsPlansId).Rows)
-            {
-                benchMark = dr["BenchMark"].ToString();
-            }
 
             frmFund fundForm = new frmFund(frmMain_Parent, fundId, benchMark);
 		}
@@ -856,11 +846,6 @@ namespace VSP.Presentation.Forms
 
             string benchMark = null;
 
-            foreach (DataRow dr in VSP.Business.Entities.Benchmarks.GetAssociatedFromRelational_Funds_Plans(_relationalFundsPlansId).Rows)
-            {
-                benchMark = dr["BenchMark"].ToString();
-            }
-
             frmFund fundForm = new frmFund(frmMain_Parent, fundId, benchMark);
         }
 
@@ -1393,11 +1378,6 @@ namespace VSP.Presentation.Forms
             Guid fundId = new Guid(dgvFunds.Rows[index].Cells[1].Value.ToString());
 
             string benchMark = null;
-
-            foreach (DataRow dr in VSP.Business.Entities.Benchmarks.GetAssociatedFromRelational_Funds_Plans(_relationalFundsPlansId).Rows)
-            {
-                benchMark = dr["BenchMark"].ToString();
-            }
 
             frmFund fundForm = new frmFund(frmMain_Parent, fundId, benchMark);
         }

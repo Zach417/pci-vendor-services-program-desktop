@@ -17,7 +17,6 @@
 		
 		private void InitializeComponent()
 		{
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -30,6 +29,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabClients = new System.Windows.Forms.TabPage();
@@ -93,14 +96,38 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.tabSearch = new System.Windows.Forms.TabPage();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label32 = new System.Windows.Forms.Label();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label89 = new System.Windows.Forms.Label();
             this.tabControlSettings = new System.Windows.Forms.TabControl();
-            this.tabPageUsers = new System.Windows.Forms.TabPage();
+            this.tabUsers = new System.Windows.Forms.TabPage();
             this.panel25 = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.label33 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.label39 = new System.Windows.Forms.Label();
+            this.cboUsersViews = new System.Windows.Forms.ComboBox();
+            this.tabPageStringMap = new System.Windows.Forms.TabPage();
+            this.panel32 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tabServices = new System.Windows.Forms.TabPage();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.dgvServices = new System.Windows.Forms.DataGridView();
+            this.label31 = new System.Windows.Forms.Label();
+            this.cboServiceViews = new System.Windows.Forms.ComboBox();
             this.lblCloseForm = new System.Windows.Forms.Label();
             this.richTextBox5 = new System.Windows.Forms.RichTextBox();
             this.richTextBox6 = new System.Windows.Forms.RichTextBox();
@@ -117,19 +144,14 @@
             this.pnlMainHeader = new System.Windows.Forms.Panel();
             this.lblMinForm = new System.Windows.Forms.Label();
             this.lblFormHeader = new System.Windows.Forms.Label();
-            this.toolTipMainForm = new System.Windows.Forms.ToolTip(this.components);
-            this.cboUserViews = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.dgvUserSecurity = new System.Windows.Forms.DataGridView();
             this.label15 = new System.Windows.Forms.Label();
             this.cboSecurityRole = new System.Windows.Forms.ComboBox();
-            this.btnSaveUserSecurity = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.lblUserSecuritySaved = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lblSelectedUser = new System.Windows.Forms.Label();
-            this.btnRemoveUser = new System.Windows.Forms.Button();
-            this.btnAddUser = new System.Windows.Forms.Button();
             this.cboSettingsUsers = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cboViewsCategory = new System.Windows.Forms.ComboBox();
@@ -137,14 +159,16 @@
             this.dgvCategories = new System.Windows.Forms.DataGridView();
             this.lblAssetGroup = new System.Windows.Forms.Label();
             this.cboAssetGroup = new System.Windows.Forms.ComboBox();
-            this.btnSaveAssetGroup = new System.Windows.Forms.Button();
             this.lblSelectedCategory = new System.Windows.Forms.Label();
             this.lblRecordSaved = new System.Windows.Forms.Label();
             this.lblCategory = new System.Windows.Forms.Label();
             this.txtCategory = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label90 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
+            this.btnSaveUserSecurity = new System.Windows.Forms.Button();
+            this.btnRemoveUser = new System.Windows.Forms.Button();
+            this.btnAddUser = new System.Windows.Forms.Button();
+            this.btnSaveAssetGroup = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             this.tabClients.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -166,8 +190,21 @@
             this.panel4.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.panel24.SuspendLayout();
             this.tabControlSettings.SuspendLayout();
-            this.tabPageUsers.SuspendLayout();
+            this.tabUsers.SuspendLayout();
+            this.panel25.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.panel22.SuspendLayout();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+            this.tabPageStringMap.SuspendLayout();
+            this.panel32.SuspendLayout();
+            this.tabServices.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvServices)).BeginInit();
             this.pnlAppStatus.SuspendLayout();
             this.pnlMainMnu.SuspendLayout();
             this.pnlMainHeader.SuspendLayout();
@@ -1170,6 +1207,15 @@
             this.tabSearch.Text = "Search";
             this.tabSearch.UseVisualStyleBackColor = true;
             // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Location = new System.Drawing.Point(1, 54);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1058, 482);
+            this.panel9.TabIndex = 34;
+            // 
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1199,6 +1245,7 @@
             // 
             this.tabSettings.BackColor = System.Drawing.Color.Gainsboro;
             this.tabSettings.Controls.Add(this.panel10);
+            this.tabSettings.Controls.Add(this.panel24);
             this.tabSettings.Controls.Add(this.tabControlSettings);
             this.tabSettings.Location = new System.Drawing.Point(4, 25);
             this.tabSettings.Margin = new System.Windows.Forms.Padding(2);
@@ -1234,37 +1281,404 @@
             this.label32.TabIndex = 19;
             this.label32.Text = "Settings";
             // 
+            // panel24
+            // 
+            this.panel24.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel24.BackColor = System.Drawing.Color.DarkGray;
+            this.panel24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel24.Controls.Add(this.label1);
+            this.panel24.Controls.Add(this.label89);
+            this.panel24.Location = new System.Drawing.Point(1, 492);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(1058, 41);
+            this.panel24.TabIndex = 29;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label1.Font = new System.Drawing.Font("Gadugi", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(73, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 22);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Services";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.MouseEnter += new System.EventHandler(this.ReportTypeMenuItem_MouseEnter);
+            this.label1.MouseLeave += new System.EventHandler(this.ReportTypeMenuItem_MouseLeave);
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label89.Font = new System.Drawing.Font("Gadugi", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label89.Location = new System.Drawing.Point(11, 9);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(56, 22);
+            this.label89.TabIndex = 0;
+            this.label89.Text = "Users";
+            this.label89.Click += new System.EventHandler(this.label89_Click);
+            this.label89.MouseEnter += new System.EventHandler(this.ReportTypeMenuItem_MouseEnter);
+            this.label89.MouseLeave += new System.EventHandler(this.ReportTypeMenuItem_MouseLeave);
+            // 
             // tabControlSettings
             // 
             this.tabControlSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlSettings.Controls.Add(this.tabPageUsers);
+            this.tabControlSettings.Controls.Add(this.tabUsers);
+            this.tabControlSettings.Controls.Add(this.tabServices);
             this.tabControlSettings.Location = new System.Drawing.Point(-4, 32);
             this.tabControlSettings.Name = "tabControlSettings";
             this.tabControlSettings.SelectedIndex = 0;
-            this.tabControlSettings.Size = new System.Drawing.Size(1069, 504);
+            this.tabControlSettings.Size = new System.Drawing.Size(1069, 481);
             this.tabControlSettings.TabIndex = 28;
             // 
-            // tabPageUsers
+            // tabUsers
             // 
-            this.tabPageUsers.Controls.Add(this.panel25);
-            this.tabPageUsers.Location = new System.Drawing.Point(4, 22);
-            this.tabPageUsers.Name = "tabPageUsers";
-            this.tabPageUsers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageUsers.Size = new System.Drawing.Size(1061, 478);
-            this.tabPageUsers.TabIndex = 3;
-            this.tabPageUsers.Text = "Users";
-            this.tabPageUsers.UseVisualStyleBackColor = true;
+            this.tabUsers.Controls.Add(this.panel25);
+            this.tabUsers.Location = new System.Drawing.Point(4, 22);
+            this.tabUsers.Name = "tabUsers";
+            this.tabUsers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUsers.Size = new System.Drawing.Size(1061, 455);
+            this.tabUsers.TabIndex = 3;
+            this.tabUsers.Text = "Users";
+            this.tabUsers.UseVisualStyleBackColor = true;
             // 
             // panel25
             // 
             this.panel25.BackColor = System.Drawing.Color.Gainsboro;
             this.panel25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel25.Controls.Add(this.tabControl1);
             this.panel25.Location = new System.Drawing.Point(1, 0);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(1058, 482);
             this.panel25.TabIndex = 33;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPageStringMap);
+            this.tabControl1.Location = new System.Drawing.Point(-6, -23);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1069, 467);
+            this.tabControl1.TabIndex = 29;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.panel22);
+            this.tabPage1.Controls.Add(this.panel11);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1061, 441);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Users";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // panel22
+            // 
+            this.panel22.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel22.BackColor = System.Drawing.Color.LightGray;
+            this.panel22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel22.Controls.Add(this.label33);
+            this.panel22.Location = new System.Drawing.Point(1, 0);
+            this.panel22.Margin = new System.Windows.Forms.Padding(2);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(1058, 35);
+            this.panel22.TabIndex = 32;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label33.Font = new System.Drawing.Font("Gadugi", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.Black;
+            this.label33.Location = new System.Drawing.Point(3, 5);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(56, 22);
+            this.label33.TabIndex = 3;
+            this.label33.Text = "Users";
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel11.Controls.Add(this.dgvUsers);
+            this.panel11.Controls.Add(this.label39);
+            this.panel11.Controls.Add(this.cboUsersViews);
+            this.panel11.Location = new System.Drawing.Point(1, 33);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(1058, 406);
+            this.panel11.TabIndex = 33;
+            // 
+            // dgvUsers
+            // 
+            this.dgvUsers.AllowUserToAddRows = false;
+            this.dgvUsers.AllowUserToDeleteRows = false;
+            this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUsers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvUsers.EnableHeadersVisualStyles = false;
+            this.dgvUsers.Location = new System.Drawing.Point(10, 37);
+            this.dgvUsers.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvUsers.MultiSelect = false;
+            this.dgvUsers.Name = "dgvUsers";
+            this.dgvUsers.ReadOnly = true;
+            this.dgvUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvUsers.RowHeadersVisible = false;
+            this.dgvUsers.RowTemplate.Height = 24;
+            this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvUsers.ShowEditingIcon = false;
+            this.dgvUsers.Size = new System.Drawing.Size(1036, 362);
+            this.dgvUsers.TabIndex = 69;
+            this.dgvUsers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellDoubleClick);
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.BackColor = System.Drawing.Color.Transparent;
+            this.label39.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label39.Location = new System.Drawing.Point(7, 12);
+            this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(41, 16);
+            this.label39.TabIndex = 71;
+            this.label39.Text = "Views";
+            // 
+            // cboUsersViews
+            // 
+            this.cboUsersViews.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboUsersViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUsersViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboUsersViews.Items.AddRange(new object[] {
+            "Active Users",
+            "Inactive Users"});
+            this.cboUsersViews.Location = new System.Drawing.Point(52, 10);
+            this.cboUsersViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboUsersViews.Name = "cboUsersViews";
+            this.cboUsersViews.Size = new System.Drawing.Size(277, 21);
+            this.cboUsersViews.TabIndex = 70;
+            this.cboUsersViews.SelectedIndexChanged += new System.EventHandler(this.cboUsersViews_SelectedIndexChanged);
+            // 
+            // tabPageStringMap
+            // 
+            this.tabPageStringMap.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPageStringMap.Controls.Add(this.panel32);
+            this.tabPageStringMap.Location = new System.Drawing.Point(4, 22);
+            this.tabPageStringMap.Name = "tabPageStringMap";
+            this.tabPageStringMap.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageStringMap.Size = new System.Drawing.Size(1061, 441);
+            this.tabPageStringMap.TabIndex = 1;
+            this.tabPageStringMap.Text = "String Map";
+            // 
+            // panel32
+            // 
+            this.panel32.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel32.BackColor = System.Drawing.Color.LightGray;
+            this.panel32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel32.Controls.Add(this.label2);
+            this.panel32.Location = new System.Drawing.Point(1, 0);
+            this.panel32.Margin = new System.Windows.Forms.Padding(2);
+            this.panel32.Name = "panel32";
+            this.panel32.Size = new System.Drawing.Size(1058, 35);
+            this.panel32.TabIndex = 29;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label2.Font = new System.Drawing.Font("Gadugi", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(3, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(175, 22);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "String Map Settings";
+            // 
+            // tabServices
+            // 
+            this.tabServices.Controls.Add(this.panel12);
+            this.tabServices.Controls.Add(this.panel14);
+            this.tabServices.Location = new System.Drawing.Point(4, 22);
+            this.tabServices.Name = "tabServices";
+            this.tabServices.Size = new System.Drawing.Size(1061, 455);
+            this.tabServices.TabIndex = 4;
+            this.tabServices.Text = "Services";
+            this.tabServices.UseVisualStyleBackColor = true;
+            // 
+            // panel12
+            // 
+            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel12.BackColor = System.Drawing.Color.LightGray;
+            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel12.Controls.Add(this.label3);
+            this.panel12.Location = new System.Drawing.Point(1, 0);
+            this.panel12.Margin = new System.Windows.Forms.Padding(2);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(1058, 35);
+            this.panel12.TabIndex = 34;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label3.Font = new System.Drawing.Font("Gadugi", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(3, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 22);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Services";
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel14.Controls.Add(this.button19);
+            this.panel14.Controls.Add(this.button20);
+            this.panel14.Controls.Add(this.dgvServices);
+            this.panel14.Controls.Add(this.label31);
+            this.panel14.Controls.Add(this.cboServiceViews);
+            this.panel14.Location = new System.Drawing.Point(1, 33);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(1058, 407);
+            this.panel14.TabIndex = 35;
+            // 
+            // button19
+            // 
+            this.button19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button19.BackColor = System.Drawing.Color.Transparent;
+            this.button19.BackgroundImage = global::VSP.Properties.Resources.plus;
+            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button19.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button19.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.button19.Location = new System.Drawing.Point(1001, 12);
+            this.button19.Margin = new System.Windows.Forms.Padding(0);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(20, 20);
+            this.button19.TabIndex = 96;
+            this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button20
+            // 
+            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button20.BackColor = System.Drawing.Color.Transparent;
+            this.button20.BackgroundImage = global::VSP.Properties.Resources.x;
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button20.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button20.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.button20.Location = new System.Drawing.Point(1026, 12);
+            this.button20.Margin = new System.Windows.Forms.Padding(0);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(20, 20);
+            this.button20.TabIndex = 97;
+            this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
+            // dgvServices
+            // 
+            this.dgvServices.AllowUserToAddRows = false;
+            this.dgvServices.AllowUserToDeleteRows = false;
+            this.dgvServices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvServices.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvServices.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvServices.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvServices.EnableHeadersVisualStyles = false;
+            this.dgvServices.Location = new System.Drawing.Point(10, 37);
+            this.dgvServices.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvServices.MultiSelect = false;
+            this.dgvServices.Name = "dgvServices";
+            this.dgvServices.ReadOnly = true;
+            this.dgvServices.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvServices.RowHeadersVisible = false;
+            this.dgvServices.RowTemplate.Height = 24;
+            this.dgvServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvServices.ShowEditingIcon = false;
+            this.dgvServices.Size = new System.Drawing.Size(1036, 362);
+            this.dgvServices.TabIndex = 69;
+            this.dgvServices.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServices_CellDoubleClick);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label31.Location = new System.Drawing.Point(7, 12);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(41, 16);
+            this.label31.TabIndex = 71;
+            this.label31.Text = "Views";
+            // 
+            // cboServiceViews
+            // 
+            this.cboServiceViews.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboServiceViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboServiceViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboServiceViews.Items.AddRange(new object[] {
+            "Active Services",
+            "Inactive Services"});
+            this.cboServiceViews.Location = new System.Drawing.Point(52, 10);
+            this.cboServiceViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboServiceViews.Name = "cboServiceViews";
+            this.cboServiceViews.Size = new System.Drawing.Size(277, 21);
+            this.cboServiceViews.TabIndex = 70;
+            this.cboServiceViews.SelectedIndexChanged += new System.EventHandler(this.cboServiceViews_SelectedIndexChanged);
             // 
             // lblCloseForm
             // 
@@ -1502,19 +1916,6 @@
             this.lblFormHeader.Text = "Vendor Services Program";
             this.lblFormHeader.DoubleClick += new System.EventHandler(this.MaximizeForm);
             // 
-            // cboUserViews
-            // 
-            this.cboUserViews.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboUserViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboUserViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboUserViews.Items.AddRange(new object[] {
-            "Active Users"});
-            this.cboUserViews.Location = new System.Drawing.Point(52, 10);
-            this.cboUserViews.Margin = new System.Windows.Forms.Padding(2);
-            this.cboUserViews.Name = "cboUserViews";
-            this.cboUserViews.Size = new System.Drawing.Size(277, 21);
-            this.cboUserViews.TabIndex = 70;
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -1537,23 +1938,23 @@
             this.dgvUserSecurity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUserSecurity.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvUserSecurity.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUserSecurity.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUserSecurity.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvUserSecurity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUserSecurity.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUserSecurity.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvUserSecurity.EnableHeadersVisualStyles = false;
             this.dgvUserSecurity.Location = new System.Drawing.Point(10, 37);
             this.dgvUserSecurity.Margin = new System.Windows.Forms.Padding(2);
@@ -1592,23 +1993,6 @@
             this.cboSecurityRole.Name = "cboSecurityRole";
             this.cboSecurityRole.Size = new System.Drawing.Size(244, 21);
             this.cboSecurityRole.TabIndex = 75;
-            // 
-            // btnSaveUserSecurity
-            // 
-            this.btnSaveUserSecurity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveUserSecurity.BackColor = System.Drawing.Color.Transparent;
-            this.btnSaveUserSecurity.BackgroundImage = global::VSP.Properties.Resources.save;
-            this.btnSaveUserSecurity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSaveUserSecurity.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveUserSecurity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveUserSecurity.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveUserSecurity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.btnSaveUserSecurity.Location = new System.Drawing.Point(1020, 7);
-            this.btnSaveUserSecurity.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSaveUserSecurity.Name = "btnSaveUserSecurity";
-            this.btnSaveUserSecurity.Size = new System.Drawing.Size(26, 26);
-            this.btnSaveUserSecurity.TabIndex = 86;
-            this.btnSaveUserSecurity.UseVisualStyleBackColor = false;
             // 
             // label14
             // 
@@ -1655,40 +2039,6 @@
             this.lblSelectedUser.Size = new System.Drawing.Size(244, 18);
             this.lblSelectedUser.TabIndex = 88;
             this.lblSelectedUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnRemoveUser
-            // 
-            this.btnRemoveUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemoveUser.BackColor = System.Drawing.Color.Transparent;
-            this.btnRemoveUser.BackgroundImage = global::VSP.Properties.Resources.x;
-            this.btnRemoveUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnRemoveUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRemoveUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveUser.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.btnRemoveUser.Location = new System.Drawing.Point(587, 13);
-            this.btnRemoveUser.Margin = new System.Windows.Forms.Padding(0);
-            this.btnRemoveUser.Name = "btnRemoveUser";
-            this.btnRemoveUser.Size = new System.Drawing.Size(20, 20);
-            this.btnRemoveUser.TabIndex = 95;
-            this.btnRemoveUser.UseVisualStyleBackColor = false;
-            // 
-            // btnAddUser
-            // 
-            this.btnAddUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddUser.BackColor = System.Drawing.Color.Transparent;
-            this.btnAddUser.BackgroundImage = global::VSP.Properties.Resources.plus;
-            this.btnAddUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddUser.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.btnAddUser.Location = new System.Drawing.Point(562, 13);
-            this.btnAddUser.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(20, 20);
-            this.btnAddUser.TabIndex = 94;
-            this.btnAddUser.UseVisualStyleBackColor = false;
             // 
             // cboSettingsUsers
             // 
@@ -1753,23 +2103,23 @@
             this.dgvCategories.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCategories.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCategories.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCategories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCategories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCategories.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCategories.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgvCategories.EnableHeadersVisualStyles = false;
             this.dgvCategories.Location = new System.Drawing.Point(10, 37);
             this.dgvCategories.Margin = new System.Windows.Forms.Padding(2);
@@ -1808,23 +2158,6 @@
             this.cboAssetGroup.Name = "cboAssetGroup";
             this.cboAssetGroup.Size = new System.Drawing.Size(244, 21);
             this.cboAssetGroup.TabIndex = 75;
-            // 
-            // btnSaveAssetGroup
-            // 
-            this.btnSaveAssetGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveAssetGroup.BackColor = System.Drawing.Color.Transparent;
-            this.btnSaveAssetGroup.BackgroundImage = global::VSP.Properties.Resources.save;
-            this.btnSaveAssetGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSaveAssetGroup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveAssetGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveAssetGroup.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveAssetGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.btnSaveAssetGroup.Location = new System.Drawing.Point(1020, 7);
-            this.btnSaveAssetGroup.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSaveAssetGroup.Name = "btnSaveAssetGroup";
-            this.btnSaveAssetGroup.Size = new System.Drawing.Size(26, 26);
-            this.btnSaveAssetGroup.TabIndex = 86;
-            this.btnSaveAssetGroup.UseVisualStyleBackColor = false;
             // 
             // lblSelectedCategory
             // 
@@ -1894,14 +2227,73 @@
             this.label90.Size = new System.Drawing.Size(175, 22);
             this.label90.TabIndex = 3;
             // 
-            // panel9
+            // btnSaveUserSecurity
             // 
-            this.panel9.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Location = new System.Drawing.Point(1, 54);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1058, 482);
-            this.panel9.TabIndex = 34;
+            this.btnSaveUserSecurity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveUserSecurity.BackColor = System.Drawing.Color.Transparent;
+            this.btnSaveUserSecurity.BackgroundImage = global::VSP.Properties.Resources.save;
+            this.btnSaveUserSecurity.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSaveUserSecurity.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveUserSecurity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveUserSecurity.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveUserSecurity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.btnSaveUserSecurity.Location = new System.Drawing.Point(1020, 7);
+            this.btnSaveUserSecurity.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveUserSecurity.Name = "btnSaveUserSecurity";
+            this.btnSaveUserSecurity.Size = new System.Drawing.Size(26, 26);
+            this.btnSaveUserSecurity.TabIndex = 86;
+            this.btnSaveUserSecurity.UseVisualStyleBackColor = false;
+            // 
+            // btnRemoveUser
+            // 
+            this.btnRemoveUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveUser.BackColor = System.Drawing.Color.Transparent;
+            this.btnRemoveUser.BackgroundImage = global::VSP.Properties.Resources.x;
+            this.btnRemoveUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRemoveUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoveUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveUser.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.btnRemoveUser.Location = new System.Drawing.Point(587, 13);
+            this.btnRemoveUser.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRemoveUser.Name = "btnRemoveUser";
+            this.btnRemoveUser.Size = new System.Drawing.Size(20, 20);
+            this.btnRemoveUser.TabIndex = 95;
+            this.btnRemoveUser.UseVisualStyleBackColor = false;
+            // 
+            // btnAddUser
+            // 
+            this.btnAddUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddUser.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddUser.BackgroundImage = global::VSP.Properties.Resources.plus;
+            this.btnAddUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddUser.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.btnAddUser.Location = new System.Drawing.Point(562, 13);
+            this.btnAddUser.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(20, 20);
+            this.btnAddUser.TabIndex = 94;
+            this.btnAddUser.UseVisualStyleBackColor = false;
+            // 
+            // btnSaveAssetGroup
+            // 
+            this.btnSaveAssetGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveAssetGroup.BackColor = System.Drawing.Color.Transparent;
+            this.btnSaveAssetGroup.BackgroundImage = global::VSP.Properties.Resources.save;
+            this.btnSaveAssetGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSaveAssetGroup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveAssetGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveAssetGroup.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveAssetGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.btnSaveAssetGroup.Location = new System.Drawing.Point(1020, 7);
+            this.btnSaveAssetGroup.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveAssetGroup.Name = "btnSaveAssetGroup";
+            this.btnSaveAssetGroup.Size = new System.Drawing.Size(26, 26);
+            this.btnSaveAssetGroup.TabIndex = 86;
+            this.btnSaveAssetGroup.UseVisualStyleBackColor = false;
             // 
             // frmMain
             // 
@@ -1952,8 +2344,27 @@
             this.tabSettings.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            this.panel24.ResumeLayout(false);
+            this.panel24.PerformLayout();
             this.tabControlSettings.ResumeLayout(false);
-            this.tabPageUsers.ResumeLayout(false);
+            this.tabUsers.ResumeLayout(false);
+            this.panel25.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.panel22.ResumeLayout(false);
+            this.panel22.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
+            this.tabPageStringMap.ResumeLayout(false);
+            this.panel32.ResumeLayout(false);
+            this.panel32.PerformLayout();
+            this.tabServices.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvServices)).EndInit();
             this.pnlAppStatus.ResumeLayout(false);
             this.pnlMainMnu.ResumeLayout(false);
             this.pnlMainMnu.PerformLayout();
@@ -1987,7 +2398,6 @@
         private System.Windows.Forms.Label lblCloseForm;
         private System.Windows.Forms.Panel pnlMainHeader;
         private System.Windows.Forms.Label lblFormHeader;
-        private System.Windows.Forms.TabControl tabControlSettings;
         public System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.Label lblClients;
         private System.Windows.Forms.Button dgvAdvForward;
@@ -1996,9 +2406,6 @@
         public System.Windows.Forms.DataGridView dgvAdvisors;
         public System.Windows.Forms.TextBox txtAdvisorSearch;
         private System.Windows.Forms.Label lblMinForm;
-        private System.Windows.Forms.ToolTip toolTipMainForm;
-        private System.Windows.Forms.TabPage tabPageUsers;
-        private System.Windows.Forms.Panel panel25;
         public System.Windows.Forms.ComboBox cboUserViews;
         private System.Windows.Forms.Label label16;
         public System.Windows.Forms.DataGridView dgvUserSecurity;
@@ -2078,5 +2485,31 @@
         private System.Windows.Forms.Label lblAuditors;
         private System.Windows.Forms.Label lblRks;
         private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label89;
+        private System.Windows.Forms.TabControl tabControlSettings;
+        private System.Windows.Forms.TabPage tabUsers;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Panel panel11;
+        public System.Windows.Forms.DataGridView dgvUsers;
+        private System.Windows.Forms.Label label39;
+        public System.Windows.Forms.ComboBox cboUsersViews;
+        private System.Windows.Forms.TabPage tabPageStringMap;
+        private System.Windows.Forms.Panel panel32;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabPage tabServices;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel14;
+        public System.Windows.Forms.DataGridView dgvServices;
+        private System.Windows.Forms.Label label31;
+        public System.Windows.Forms.ComboBox cboServiceViews;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button button20;
 	}
 }

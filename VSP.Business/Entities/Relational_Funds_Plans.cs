@@ -103,7 +103,7 @@ namespace VSP.Business.Entities
             parameterList.Add("@Relational_Funds_PlansId", RelationalFundsPlansId);
             parameterList.Add("@UserId", UserId);
             NullHandler.Parameter(parameterList, "@Ordinal", Ordinal);
-            return Access.IspDbAccess.ExecuteStoredProcedureNonQuery("[dbo].[usp_ISP_Relational_Funds_PlansUpdateOrdinal]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureNonQuery("[dbo].[usp_ISP_Relational_Funds_PlansUpdateOrdinal]", parameterList);
         }
     }
 }

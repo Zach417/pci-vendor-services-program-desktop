@@ -142,47 +142,47 @@ namespace VSP.Business.Entities
 
         public static DataTable GetByFundName()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetByFundName]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetByFundName]");
         }
 
         public static DataTable GetAllTickers()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetAllTickers]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetAllTickers]");
         }
 
         public static DataTable GetAllAssetValues(Guid accountId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@AccountId", accountId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_FundsGetAllAssetValues]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_FundsGetAllAssetValues]", parameterList);
         }
 
         public static DataTable GetActiveAssociatedFromPlan(Guid planId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@PlanId", planId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetActiveAssociatedFromPlan]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetActiveAssociatedFromPlan]", parameterList);
         }
 
         public static DataTable GetInactiveAssociatedFromPlan(Guid planId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@PlanId", planId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetInactiveAssociatedFromPlan]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetInactiveAssociatedFromPlan]", parameterList);
         }
 
         public static DataTable GetAssociatedFromAdvisor(Guid advisorId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@AdvisorId", advisorId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetAssociatedFromAdvisor]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetAssociatedFromAdvisor]", parameterList);
         }
 
         public static DataTable GetAssociatedFromManager(Guid managerId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@ManagerId", managerId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetAssociatedFromManager]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetAssociatedFromManager]", parameterList);
         }
 
         public class DataMaintenance
@@ -209,7 +209,7 @@ namespace VSP.Business.Entities
             parameterList.Add("@timeTableId", timeTableId);
             parameterList.Add("@fundId", fundId);
             parameterList.Add("@benchId", benchId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_12MoRollingReturn]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_12MoRollingReturn]", parameterList);
         }
 
         public static DataTable Get36MoRollingReturn(Guid timeTableId, Guid fundId, Guid benchId)
@@ -218,7 +218,7 @@ namespace VSP.Business.Entities
             parameterList.Add("@timeTableId", timeTableId);
             parameterList.Add("@fundId", fundId);
             parameterList.Add("@benchId", benchId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_36MoRollingReturn]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_36MoRollingReturn]", parameterList);
         }
 
         public static DataTable Get36MoRollingStandardDeviation(Guid timeTableId, Guid fundId, Guid benchId)
@@ -227,7 +227,7 @@ namespace VSP.Business.Entities
             parameterList.Add("@timeTableId", timeTableId);
             parameterList.Add("@fundId", fundId);
             parameterList.Add("@benchId", benchId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_36MoRollingStandardDeviation]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_36MoRollingStandardDeviation]", parameterList);
         }
 
         public static DataTable GetAnnualizedReturns(Guid timeTableId, Guid fundId)
@@ -236,7 +236,7 @@ namespace VSP.Business.Entities
             parameterList.Add("@timeTableId", timeTableId);
             parameterList.Add("@fundId", fundId);
             parameterList.Add("@benchId", DBNull.Value);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_AnnualizedReturns]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_AnnualizedReturns]", parameterList);
         }
 
         public static DataTable GetAnnualizedReturns(Guid timeTableId, Guid fundId, Guid benchId)
@@ -245,7 +245,7 @@ namespace VSP.Business.Entities
             parameterList.Add("@timeTableId", timeTableId);
             parameterList.Add("@fundId", fundId);
             parameterList.Add("@benchId", benchId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_AnnualizedReturns]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_AnnualizedReturns]", parameterList);
         }
 
         public static DataTable GetAnnualReturns(Guid timeTableId, Guid fundId, Guid benchId)
@@ -254,7 +254,7 @@ namespace VSP.Business.Entities
             parameterList.Add("@timeTableId", timeTableId);
             parameterList.Add("@fundId", fundId);
             parameterList.Add("@benchId", benchId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_AnnualReturns]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_AnnualReturns]", parameterList);
         }
 
         public static DataTable GetStandardDevation(Guid timeTableId, Guid fundId, Guid benchId)
@@ -263,53 +263,53 @@ namespace VSP.Business.Entities
             parameterList.Add("@timeTableId", timeTableId);
             parameterList.Add("@fundId", fundId);
             parameterList.Add("@benchId", benchId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_StandardDeviation]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_FundVsBench_StandardDeviation]", parameterList);
         }
 
         public static DataTable SearchByFundNameAndTicker(string searchText)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@SearchText", searchText);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsSearchByFundNameAndTicker]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsSearchByFundNameAndTicker]", parameterList);
         }
 
         private static DataTable GetDataMaintenanceDetails(Guid fundId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@FundId", fundId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetDataMaintenanceDetails]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetDataMaintenanceDetails]", parameterList);
         }
 
         public static DataTable GetFundDetails(Guid fundId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@FundId", fundId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundDetailGetDetails]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundDetailGetDetails]", parameterList);
         }
 
         public static DataTable GetAllMissingValues()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetMissingValuesAll]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetMissingValuesAll]");
         }
 
         public static DataTable GetClientMissingValues()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetMissingValuesClients]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetMissingValuesClients]");
         }
 
         public static DataTable GetDuplicateRecordsByMorningstarFundId()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetDuplicateRecordsByMorningstarFundId]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetDuplicateRecordsByMorningstarFundId]");
         }
 
         public static DataTable GetDuplicateRecordsByTicker()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetDuplicateRecordsByTicker]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetDuplicateRecordsByTicker]");
         }
 
         public static DataTable GetDuplicateRecordsByFundName()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetDuplicateRecordsByFundName]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundsGetDuplicateRecordsByFundName]");
         }
 
         public static Int32 MergeRecordsWithCopy(Guid masterFundId, Guid minorFundId, Guid userId)
@@ -318,7 +318,7 @@ namespace VSP.Business.Entities
             parameterList.Add("@MasterFundId", masterFundId);
             parameterList.Add("@MinorFundId", minorFundId);
             parameterList.Add("@UserId", userId);
-            return Access.IspDbAccess.ExecuteStoredProcedureNonQuery("[dbo].[usp_ISP_FundsMergeRecords_Copy]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureNonQuery("[dbo].[usp_ISP_FundsMergeRecords_Copy]", parameterList);
         }
 
         public static Int32 MergeRecordsWithOverwrite(Guid masterFundId, Guid minorFundId, Guid userId)
@@ -327,7 +327,7 @@ namespace VSP.Business.Entities
             parameterList.Add("@MasterFundId", masterFundId);
             parameterList.Add("@MinorFundId", minorFundId);
             parameterList.Add("@UserId", userId);
-            return Access.IspDbAccess.ExecuteStoredProcedureNonQuery("[dbo].[usp_ISP_FundsMergeRecords_Overwrite]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureNonQuery("[dbo].[usp_ISP_FundsMergeRecords_Overwrite]", parameterList);
         }
 
         public static Int32 Disable(Guid fundId, Guid userId)
@@ -335,14 +335,14 @@ namespace VSP.Business.Entities
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@FundId", fundId);
             parameterList.Add("@UserId", userId);
-            return Access.IspDbAccess.ExecuteStoredProcedureNonQuery("[dbo].[usp_ISP_FundsDisableFund]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureNonQuery("[dbo].[usp_ISP_FundsDisableFund]", parameterList);
         }
 
         public static Int32 Deactivate(Guid fundId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@FundId", fundId);
-            return Access.IspDbAccess.ExecuteStoredProcedureNonQuery("[dbo].[usp_ISP_FundsSetInactive]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureNonQuery("[dbo].[usp_ISP_FundsSetInactive]", parameterList);
         }
     }
 }

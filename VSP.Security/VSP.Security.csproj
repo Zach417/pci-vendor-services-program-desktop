@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="IsUser.cs" />
     <Compile Include="IsAdmin.cs" />
-    <Compile Include="IsDataAdmin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityComponent.cs" />
   </ItemGroup>

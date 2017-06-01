@@ -17,13 +17,13 @@ namespace VSP.Business.Entities
         private static string _tableName = "UserSearches";
 
         public UserSearches()
-            :base(_tableName)
+            : base(_tableName, Access.IspDbAccess)
         {
 
         }
 
         public UserSearches(Guid primaryKey)
-            : base(_tableName, primaryKey)
+            : base(_tableName, primaryKey, Access.IspDbAccess)
         {
             RefreshMembers();
         }

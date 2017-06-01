@@ -17,7 +17,7 @@ namespace VSP.Business.Entities
         private static string _tableName = "UserSecurityRole";
 
         public UserSecurityRole()
-            :base(_tableName)
+            : base(_tableName)
         {
 
         }
@@ -61,23 +61,24 @@ namespace VSP.Business.Entities
             return list;
         }
 
-        public static DataTable GetActiveSecurityRoles()
+        public static DataTable GetActive()
         {
-            string sql = @"SELECT UserSecurityRoleId, UserIdName, SecurityRoleIdName FROM UserSecurity WHERE StateCode = 0";
-            return Access.IspDbAccess.ExecuteSqlQuery(sql);
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
-        public static DataTable GetInactiveSecurityRoles()
+        public static DataTable GetInactive()
         {
-            string sql = @"SELECT UserSecurityRoleId, UserIdName, SecurityRoleIdName FROM UserSecurity WHERE StateCode = 1";
-            return Access.IspDbAccess.ExecuteSqlQuery(sql);
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
         private static DataTable GetAssociatedUser(Guid userId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@UserId", userId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_UserSecurityRoleGetAssociatedFromUser]", parameterList);
+            string sql = @"SELECT * FROM UserSecurityRole WHERE UserId = @UserId";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql, parameterList);
         }
     }
 }

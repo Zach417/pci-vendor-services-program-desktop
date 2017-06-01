@@ -73,7 +73,7 @@ namespace VSP.Business.Entities
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@ManagerId", managerId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ManagersEducationGetAssociatedFromManager]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ManagersEducationGetAssociatedFromManager]", parameterList);
         }
     }
 }

@@ -97,7 +97,7 @@ namespace VSP.Business.Entities
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@PlanId", this.Id);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_Relational_Funds_PlansGetActiveAssociatedFromPlan]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_Relational_Funds_PlansGetActiveAssociatedFromPlan]", parameterList);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace VSP.Business.Entities
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@PlanId", planId);
-            DataTable dataTable = Access.IspDbAccess.ExecuteSqlQuery("SELECT * FROM " + _tableName + " WHERE PlanId = @PlanId", parameterList);
+            DataTable dataTable = Access.VspDbAccess.ExecuteSqlQuery("SELECT * FROM " + _tableName + " WHERE PlanId = @PlanId", parameterList);
             return (dataTable.Rows.Count > 0);
         }
 
@@ -123,26 +123,26 @@ namespace VSP.Business.Entities
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@PlanId", planId);
             parameterList.Add("@CreatedBy", createdBy);
-            Access.IspDbAccess.ExecuteSqlQuery("INSERT INTO " + _tableName + " (PlanId, ModifiedBy, ModifiedOn, CreatedBy, CreatedOn, StateCode) VALUES (@PlanId, @CreatedBy, GETDATE(), @CreatedBy, GETDATE(), 0)", parameterList);
+            Access.VspDbAccess.ExecuteSqlQuery("INSERT INTO " + _tableName + " (PlanId, ModifiedBy, ModifiedOn, CreatedBy, CreatedOn, StateCode) VALUES (@PlanId, @CreatedBy, GETDATE(), @CreatedBy, GETDATE(), 0)", parameterList);
         }
 
         public static DataTable Get()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_PlansGet]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_PlansGet]");
         }
 
         public static DataTable GetAssociatedFromFund(Guid fundId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@FundId", fundId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_PlansGetAssociatedFromFund]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_PlansGetAssociatedFromFund]", parameterList);
         }
 
         public static DataTable GetAssociatedFromAccount(Guid accountId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@AccountId", accountId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_PlansGetAssociatedFromAccount]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_CRM_PlansGetAssociatedFromAccount]", parameterList);
         }
     }
 }

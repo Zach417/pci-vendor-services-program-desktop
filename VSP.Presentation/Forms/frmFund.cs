@@ -31,7 +31,6 @@ namespace VSP.Presentation.Forms
         private FundDetail CurrentFundDetail;
         private FundDetail CurrentBenchmarkDetail;
         private TimeTable CurrentTimeTable;
-        private CorrelationAndOutperformance CurrentCorrelationAndOutperformance;
 
         private Timer _updatePanelTimer = null;
         private bool unsavedChanges = false;
@@ -239,10 +238,6 @@ namespace VSP.Presentation.Forms
 
         private void fundFormOpen()
         {
-            foreach (DataRow dr in VSP.Business.Entities.Benchmarks.Get().Rows)
-            {
-                cboBench.Items.Add(new ListItem(dr["FundName"].ToString(), dr["FundId"].ToString()));
-            }
 
             foreach (DataRow dr in VSP.Business.Entities.TimeTable.GetAssociatedFromFund(CurrentFund.Id).Rows)
             {
@@ -258,31 +253,6 @@ namespace VSP.Presentation.Forms
 		
 		void cboTaskViews_SelectedIndexChanged(object sender, EventArgs e)
 		{
-            if (cboTaskViews.Text == "My Open Associated Tasks")
-            {
-                dgvTasks.DataSource = VSP.Business.Entities.Task.GetActiveAssociatedFromUserAndFund(frmMain_Parent.CurrentUser.UserId, CurrentFund.Id);
-            }
-            else if (cboTaskViews.Text == "My Closed Associated Tasks")
-            {
-                dgvTasks.DataSource = VSP.Business.Entities.Task.GetInactiveAssociatedFromUserAndFund(frmMain_Parent.CurrentUser.UserId, CurrentFund.Id);
-            }
-            else if (cboTaskViews.Text == "All Open Associated Tasks")
-            {
-                dgvTasks.DataSource = VSP.Business.Entities.Task.GetActiveAssociatedFromFund(CurrentFund.Id);
-            }
-            else if (cboTaskViews.Text == "All Closed Associated Tasks")
-            {
-                dgvTasks.DataSource = VSP.Business.Entities.Task.GetInactiveAssociatedFromFund(CurrentFund.Id);
-            }
-            else
-            {
-                dgvTasks.DataSource = null;
-            }
-
-            dgvTasks.Columns[0].Visible = false;
-            dgvTasks.Columns[1].Visible = false;
-            dgvTasks.Columns[2].Visible = false;
-            dgvTasks.Columns[3].Visible = false;
 		}
 		
 		void ButtonNewTaskClick(object sender, EventArgs e)
@@ -502,13 +472,6 @@ namespace VSP.Presentation.Forms
 
             Guid benchId = new Guid(((ListItem)cboBench.SelectedItem).HiddenValue);
             CurrentBenchmark = new Fund(benchId);
-
-            CurrentCorrelationAndOutperformance = new CorrelationAndOutperformance(CurrentFund, CurrentBenchmark, CurrentTimeTable);
-
-            lblCorrel3Yr.Text = CurrentCorrelationAndOutperformance.CorrelationToBench3Yr.ToString();
-            lblCorrel5Yr.Text = CurrentCorrelationAndOutperformance.CorrelationToBench5Yr.ToString();
-            lblOutperform3Yr.Text = CurrentCorrelationAndOutperformance.OutperformAvg3Yr.ToString() + "%";
-            lblOutperform5Yr.Text = CurrentCorrelationAndOutperformance.OutperformAvg5Yr.ToString() + "%";
         }
 
         private void LoadCharts()

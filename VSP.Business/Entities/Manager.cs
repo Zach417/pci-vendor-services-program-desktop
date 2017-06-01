@@ -89,28 +89,28 @@ namespace VSP.Business.Entities
 
         public static DataTable GetActive()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ManagersGetActive]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ManagersGetActive]");
         }
 
         public static DataTable Search(string search)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@Search", search);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ManagersSearch]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ManagersSearch]", parameterList);
         }
 
         public static DataTable GetAssociatedFromAdvisor(Guid advisorId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@AdvisorId", advisorId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ManagersGetAssociatedFromAdvisor]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ManagersGetAssociatedFromAdvisor]", parameterList);
         }
 
         public static DataTable GetAssociatedFromFund(Guid _fundId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@FundId", _fundId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ManagersGetAssociatedFromFund]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ManagersGetAssociatedFromFund]", parameterList);
         }
     }
 }

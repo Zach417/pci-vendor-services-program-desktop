@@ -15,6 +15,7 @@ namespace VSP.Business.Components
         /// Represents a database connection to the production VSP database.
         /// </summary>
         public static DataAccessComponent IspDbAccess = new DataAccessComponent(DataAccessComponent.Connections.PCIISP_PCI_ISP_DB_Ver2);
+        public static DataAccessComponent VspDbAccess = new DataAccessComponent(DataAccessComponent.Connections.PCIDB_VendorServicesProgram);
 
         ///// <summary>
         ///// Represents a database connection to the development VSP database.
@@ -23,7 +24,7 @@ namespace VSP.Business.Components
 
         public static bool ConnectionSucceeded()
         {
-            return IspDbAccess.ConnectionSucceeded();
+            return VspDbAccess.ConnectionSucceeded();
         }
     }
 }

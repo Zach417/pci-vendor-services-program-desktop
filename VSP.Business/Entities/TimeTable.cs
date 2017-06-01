@@ -20,13 +20,13 @@ namespace VSP.Business.Entities
         private static string _tableName = "TimeTable";
 
         public TimeTable()
-            :base(_tableName)
+            : base(_tableName, Access.IspDbAccess)
         {
 
         }
 
         public TimeTable(Guid primaryKey)
-            :base(_tableName, primaryKey)
+            : base(_tableName, primaryKey, Access.IspDbAccess)
         {
             RefreshMembers();
         }
@@ -75,7 +75,7 @@ namespace VSP.Business.Entities
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@FundId", fundId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_TimeTableGetMostRecentTimeTableFromFund]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_TimeTableGetMostRecentTimeTableFromFund]", parameterList);
         }
 
         public static List<TimeTable> PastFourtyQuarters()
@@ -93,19 +93,19 @@ namespace VSP.Business.Entities
 
         private static DataTable GetPastFourtyQuarters()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_TimeTableGetPastFourtyQuarters]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_TimeTableGetPastFourtyQuarters]");
         }
 
         public static DataTable GetPast10Years()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_TimeTableGetPast10Years]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_TimeTableGetPast10Years]");
         }
 
         public static DataTable GetAssociatedFromFund(Guid fundId)
         {
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@FundId", fundId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_TimeTableGetAssociatedFromFund]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_TimeTableGetAssociatedFromFund]", parameterList);
         }
     }
 }

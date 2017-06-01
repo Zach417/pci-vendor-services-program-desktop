@@ -110,20 +110,6 @@ namespace VSP.Presentation.Forms
                 txtOriginalRecordName.Text = ((Advisors)originalRecord).Name;
                 lblOriginalRecordType.Text = "Advisor";
             }
-            else if (originalRecord is Task)
-            {
-                if (((Task)originalRecord).ExistingRecord)
-                {
-                    Guid taskTypeId = ((Task)originalRecord).TaskTypeId;
-                    StringMap stringMap = new StringMap(taskTypeId);
-                    txtOriginalRecordName.Text = stringMap.Value;
-                }
-                else
-                {
-                    txtOriginalRecordName.Text = "New Task";
-                }
-                lblOriginalRecordType.Text = "Task";
-            }
             else if (originalRecord is string)
             {
                 txtOriginalRecordName.Text = originalRecord.ToString();

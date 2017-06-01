@@ -63,7 +63,7 @@ namespace VSP.Business.Entities
 
         private static DataTable GetMostRecent()
         {
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ImportHistoryGetMostRecent]");
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_ImportHistoryGetMostRecent]");
         }
     }
 }

@@ -1495,7 +1495,7 @@ namespace VSP.Business.Entities
             Hashtable parameterList = new Hashtable();
             parameterList.Add("@FundId", fundId);
             parameterList.Add("@TimeTableId", timeTableId);
-            return Access.IspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundDetailGetAssociatedFromFundAndTimeTable]", parameterList);
+            return Access.VspDbAccess.ExecuteStoredProcedureQuery("[dbo].[usp_ISP_FundDetailGetAssociatedFromFundAndTimeTable]", parameterList);
         }
     }
 }

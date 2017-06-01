@@ -521,19 +521,11 @@ namespace VSP.Presentation.Forms
         public void LoadManagement()
         {
             lstMgmt.Items.Clear();
-            foreach (DataRow dr in VSP.Business.Entities.AdvisorsManagement.GetAssociatedFromAdvisor(CurrentAdvisor.Id).Rows)
-            {
-                lstMgmt.Items.Add(new Utilities.ListItem(dr["FullName"].ToString(), dr["AdvisorsManagementId"].ToString()));
-            }
         }
 
         public void LoadManagementRoles(Guid advisorManagementId)
         {
             lstMgmtRoles.Items.Clear();
-            foreach (DataRow dr in VSP.Business.Entities.AdvisorsManagementRoles.GetAssociatedFromAdvisorsManagement(advisorManagementId).Rows)
-            {
-                lstMgmtRoles.Items.Add(new Utilities.ListItem(dr["Name"].ToString(), dr["AdvisorsManagementRoleId"].ToString()));
-            }
         }
 
         private void btnMgmtUpdate_Click(object sender, EventArgs e)
@@ -553,9 +545,6 @@ namespace VSP.Presentation.Forms
             }
 
             Guid advisorManagementId = new Guid(((Utilities.ListItem)lstMgmt.SelectedItem).HiddenValue);
-            AdvisorsManagement advisorManagement = new AdvisorsManagement(advisorManagementId);
-            advisorManagement.FullName = fullName;
-            advisorManagement.SaveRecordToDatabase(mf_parent.CurrentUser.UserId);
 
             LoadManagement();
             txtMgmt.Text = null;
@@ -571,11 +560,6 @@ namespace VSP.Presentation.Forms
                 return;
             }
 
-            AdvisorsManagement advisorManagement = new AdvisorsManagement();
-            advisorManagement.AdvisorId = CurrentAdvisor.Id;
-            advisorManagement.FullName = fullName;
-            advisorManagement.SaveRecordToDatabase(mf_parent.CurrentUser.UserId);
-
             LoadManagement();
             txtMgmt.Text = null;
         }
@@ -590,8 +574,6 @@ namespace VSP.Presentation.Forms
 
             Guid advisorManagementId = new Guid(((Utilities.ListItem)lstMgmt.SelectedItem).HiddenValue);
 
-            AdvisorsManagement advisorManagement = new AdvisorsManagement(advisorManagementId);
-            advisorManagement.DeleteRecordFromDatabase();
 
             LoadManagement();
         }
@@ -645,10 +627,6 @@ namespace VSP.Presentation.Forms
             Guid advisorsManagementRoleId = new Guid(((Utilities.ListItem)lstMgmtRoles.SelectedItem).HiddenValue);
             Guid stringMapId = new Guid(((Utilities.ListItem)cboMgmtRoles.SelectedItem).HiddenValue);
 
-            AdvisorsManagementRoles advisorManagementRole = new AdvisorsManagementRoles(advisorsManagementRoleId);
-            advisorManagementRole.StringMapId = stringMapId;
-            advisorManagementRole.SaveRecordToDatabase(mf_parent.CurrentUser.UserId);
-
             LoadManagementRoles(advisorsManagementId);
 
             cboMgmtRoles.SelectedIndex = -1;
@@ -672,11 +650,6 @@ namespace VSP.Presentation.Forms
             Guid advisorsManagementId = new Guid(((Utilities.ListItem)lstMgmt.SelectedItem).HiddenValue);
             Guid stringMapId = new Guid(((Utilities.ListItem)cboMgmtRoles.SelectedItem).HiddenValue);
 
-            AdvisorsManagementRoles advisorManagementRole = new AdvisorsManagementRoles();
-            advisorManagementRole.AdvisorsManagementId = advisorsManagementId;
-            advisorManagementRole.StringMapId = stringMapId;
-            advisorManagementRole.SaveRecordToDatabase(mf_parent.CurrentUser.UserId);
-
             LoadManagementRoles(advisorsManagementId);
 
             cboMgmtRoles.SelectedIndex = -1;
@@ -693,9 +666,6 @@ namespace VSP.Presentation.Forms
 
             Guid advisorsManagementId = new Guid(((Utilities.ListItem)lstMgmt.SelectedItem).HiddenValue);
             Guid advisorsManagementRoleId = new Guid(((Utilities.ListItem)lstMgmtRoles.SelectedItem).HiddenValue);
-
-            AdvisorsManagementRoles advisorManagementRole = new AdvisorsManagementRoles(advisorsManagementRoleId);
-            advisorManagementRole.DeleteRecordFromDatabase();
 
             LoadManagementRoles(advisorsManagementId);
 
