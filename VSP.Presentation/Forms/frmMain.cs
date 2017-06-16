@@ -119,6 +119,7 @@ namespace VSP.Presentation.Forms
         /// </summary>
         private void SetDefaultComboBoxValues()
         {
+            cboRecordKeeperViews.SelectedIndex = 0;
             cboAdvisorViews.SelectedIndex = 0;
             cboViewsCategory.SelectedIndex = 0;
         }
@@ -649,13 +650,18 @@ namespace VSP.Presentation.Forms
             LoadDgvUsers();
         }
 
+        private void frmUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvUsers();
+        }
+
         private void dgvUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dgvUsers.CurrentRow.Index;
             Guid userId = new Guid(dgvUsers.Rows[index].Cells["UserId"].Value.ToString());
             User user = new User(userId);
-            //frmUser frmUser = new frmUser(this, user);
-            //frmUser.FormClosed += frmUser_FormClosed;
+            frmUser frmUser = new frmUser(this, user);
+            frmUser.FormClosed += frmUser_FormClosed;
         }
 
         private void dgvServices_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -665,6 +671,55 @@ namespace VSP.Presentation.Forms
             Service service = new Service(serviceId);
             frmService frmService = new frmService(this, service);
             frmService.FormClosed += frmService_FormClosed;
+        }
+
+        private void frmRecordKeeper_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvRecordKeeper();
+        }
+
+        private void LoadDgvRecordKeeper()
+        {
+            DataTable dataTable = DataIntegrationHub.Business.Entities.RecordKeeper.GetAll();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRecordKeeperViews"/>.
+            switch (cboRecordKeeperViews.SelectedIndex)
+            {
+                case 0:
+                    dataTable = dataTable.AsEnumerable().Where(x => x.Field<byte>("StateCode") == 0).CopyToDataTable();
+                    break;
+                case 1:
+                    dataTable = dataTable.AsEnumerable().Where(x => x.Field<byte>("StateCode") == 1).CopyToDataTable();
+                    break;
+                default:
+                    return;
+            }
+
+            dgvRecordKeepers.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvRecordKeepers.Columns["RecordKeeperId"].Visible = false;
+            dgvRecordKeepers.Columns["CreatedBy"].Visible = false;
+            dgvRecordKeepers.Columns["ModifiedBy"].Visible = false;
+            dgvRecordKeepers.Columns["StateCode"].Visible = false;
+
+            dgvRecordKeepers.Columns["Name"].DisplayIndex = 0;
+            dgvRecordKeepers.Columns["CreatedOn"].DisplayIndex = 1;
+            dgvRecordKeepers.Columns["ModifiedOn"].DisplayIndex = 2;
+        }
+
+        private void cboRecordKeeperViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvRecordKeeper();
+        }
+
+        private void dgvRecordKeepers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvRecordKeepers.CurrentRow.Index;
+            Guid recordKeeperId = new Guid(dgvRecordKeepers.Rows[index].Cells["RecordKeeperId"].Value.ToString());
+            VSP.Business.Entities.RecordKeeper recordKeeper = new VSP.Business.Entities.RecordKeeper(recordKeeperId);
+            frmRecordKeeper frmRecordKeeper = new frmRecordKeeper(this, recordKeeper);
+            frmRecordKeeper.FormClosed += frmRecordKeeper_FormClosed;
         }
     }
 }

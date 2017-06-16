@@ -148,7 +148,7 @@ namespace VSP.Business.Entities
             RegisteredColumns = new List<ColumnTuple>();
             
             RegisterMembers();
-            RefreshMembers();
+            RefreshMembers(true);
             SetRegisteredMembers();
         }
 
@@ -185,7 +185,7 @@ namespace VSP.Business.Entities
         /// <summary>
         /// Resets the values of all public members to their values in the database.
         /// </summary>
-        public void RefreshMembers()
+        public void RefreshMembers(bool ignoreNonexisting = false)
         {
             if (this.ExistingRecord == false)
             {
@@ -193,32 +193,40 @@ namespace VSP.Business.Entities
             }
 
             DataTable dataTable = this.GetDetails();
-            DataRow dataRow = dataTable.Rows[0];
 
-            DateTime? createdOn;
-            DateTime? modifiedOn;
-            Guid? createdBy;
-            Guid? modifiedBy;
-            int stateCode;
-
-            foreach (ColumnTuple columnTuple in RegisteredColumns)
+            if (dataTable.Rows.Count == 0 && ignoreNonexisting == true)
             {
-                StringParser.Parse(dataRow[columnTuple.Name].ToString(), columnTuple.ValueType, out columnTuple.Value);
+                this.ExistingRecord = false;
             }
+            else
+            {
+                DataRow dataRow = dataTable.Rows[0];
 
-            StringParser.Parse(dataRow["CreatedOn"].ToString(), out createdOn);
-            StringParser.Parse(dataRow["ModifiedOn"].ToString(), out modifiedOn);
-            StringParser.Parse(dataRow["CreatedBy"].ToString(), out createdBy);
-            StringParser.Parse(dataRow["ModifiedBy"].ToString(), out modifiedBy);
-            StringParser.Parse(dataRow["StateCode"].ToString(), out stateCode);
+                DateTime? createdOn;
+                DateTime? modifiedOn;
+                Guid? createdBy;
+                Guid? modifiedBy;
+                int stateCode;
 
-            this.CreatedOn = createdOn;
-            this.ModifiedOn = modifiedOn;
-            this.CreatedBy = createdBy;
-            this.ModifiedBy = modifiedBy;
-            this.StateCode = stateCode;
+                foreach (ColumnTuple columnTuple in RegisteredColumns)
+                {
+                    StringParser.Parse(dataRow[columnTuple.Name].ToString(), columnTuple.ValueType, out columnTuple.Value);
+                }
 
-            this.EntityMembersAsOf = DateTime.Now;
+                StringParser.Parse(dataRow["CreatedOn"].ToString(), out createdOn);
+                StringParser.Parse(dataRow["ModifiedOn"].ToString(), out modifiedOn);
+                StringParser.Parse(dataRow["CreatedBy"].ToString(), out createdBy);
+                StringParser.Parse(dataRow["ModifiedBy"].ToString(), out modifiedBy);
+                StringParser.Parse(dataRow["StateCode"].ToString(), out stateCode);
+
+                this.CreatedOn = createdOn;
+                this.ModifiedOn = modifiedOn;
+                this.CreatedBy = createdBy;
+                this.ModifiedBy = modifiedBy;
+                this.StateCode = stateCode;
+
+                this.EntityMembersAsOf = DateTime.Now;
+            }
         }
 
         /// <summary>

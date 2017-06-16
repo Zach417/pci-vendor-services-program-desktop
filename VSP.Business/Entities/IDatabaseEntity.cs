@@ -22,6 +22,6 @@ namespace VSP.Business.Entities
         /// <summary>
         /// Resets the values of all public members to their values in the database.
         /// </summary>
-        void RefreshMembers();
+        void RefreshMembers(bool ignoreNonexisting = false);
     }
 }

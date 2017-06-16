@@ -50,7 +50,8 @@ namespace VSP.Presentation.Forms
             Fund,
             Advisor,
             Manager,
-            Account
+            Account,
+            SecurityRole
         }
 
         public RecordType CurrentRecordType;
@@ -109,6 +110,11 @@ namespace VSP.Presentation.Forms
             {
                 txtOriginalRecordName.Text = ((Advisors)originalRecord).Name;
                 lblOriginalRecordType.Text = "Advisor";
+            }
+            else if (originalRecord is User)
+            {
+                txtOriginalRecordName.Text = ((User)originalRecord).FullName;
+                lblOriginalRecordType.Text = "User";
             }
             else if (originalRecord is string)
             {
@@ -210,6 +216,10 @@ namespace VSP.Presentation.Forms
                 else if (CurrentRecordType == RecordType.Account)
                 {
                     dataRows = SelectFromDataTable.Select(String.Format("Account LIKE  '%{0}%'", txtSearch.Text.Replace(@"'", "''")));
+                }
+                else if (CurrentRecordType == RecordType.SecurityRole)
+                {
+                    dataRows = SelectFromDataTable.Select(String.Format("Name LIKE  '%{0}%'", txtSearch.Text.Replace(@"'", "''")));
                 }
 
                 if (dataRows.Count() == 0)

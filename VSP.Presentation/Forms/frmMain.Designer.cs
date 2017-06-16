@@ -54,14 +54,12 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvRecordKeepers = new System.Windows.Forms.DataGridView();
             this.label18 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cboRecordKeeperViews = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -176,7 +174,7 @@
             this.panel1.SuspendLayout();
             this.tabRKs.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRecordKeepers)).BeginInit();
             this.panel2.SuspendLayout();
             this.tabAuditors.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -491,14 +489,12 @@
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.button7);
             this.panel7.Controls.Add(this.button8);
-            this.panel7.Controls.Add(this.dataGridView2);
+            this.panel7.Controls.Add(this.dgvRecordKeepers);
             this.panel7.Controls.Add(this.label18);
-            this.panel7.Controls.Add(this.comboBox2);
+            this.panel7.Controls.Add(this.cboRecordKeeperViews);
             this.panel7.Controls.Add(this.label19);
             this.panel7.Controls.Add(this.textBox2);
             this.panel7.Controls.Add(this.label20);
-            this.panel7.Controls.Add(this.button9);
-            this.panel7.Controls.Add(this.button12);
             this.panel7.Controls.Add(this.button13);
             this.panel7.Location = new System.Drawing.Point(1, 54);
             this.panel7.Name = "panel7";
@@ -531,16 +527,16 @@
             this.button8.Text = "<";
             this.button8.UseVisualStyleBackColor = false;
             // 
-            // dataGridView2
+            // dgvRecordKeepers
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvRecordKeepers.AllowUserToAddRows = false;
+            this.dgvRecordKeepers.AllowUserToDeleteRows = false;
+            this.dgvRecordKeepers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvRecordKeepers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRecordKeepers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvRecordKeepers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Gadugi", 8.25F);
@@ -548,8 +544,8 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvRecordKeepers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvRecordKeepers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Gadugi", 7.8F);
@@ -557,20 +553,21 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView2.EnableHeadersVisualStyles = false;
-            this.dataGridView2.Location = new System.Drawing.Point(7, 33);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView2.ShowEditingIcon = false;
-            this.dataGridView2.Size = new System.Drawing.Size(1039, 402);
-            this.dataGridView2.TabIndex = 22;
+            this.dgvRecordKeepers.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvRecordKeepers.EnableHeadersVisualStyles = false;
+            this.dgvRecordKeepers.Location = new System.Drawing.Point(7, 33);
+            this.dgvRecordKeepers.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvRecordKeepers.MultiSelect = false;
+            this.dgvRecordKeepers.Name = "dgvRecordKeepers";
+            this.dgvRecordKeepers.ReadOnly = true;
+            this.dgvRecordKeepers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvRecordKeepers.RowHeadersVisible = false;
+            this.dgvRecordKeepers.RowTemplate.Height = 24;
+            this.dgvRecordKeepers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvRecordKeepers.ShowEditingIcon = false;
+            this.dgvRecordKeepers.Size = new System.Drawing.Size(1039, 402);
+            this.dgvRecordKeepers.TabIndex = 22;
+            this.dgvRecordKeepers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecordKeepers_CellDoubleClick);
             // 
             // label18
             // 
@@ -585,17 +582,19 @@
             this.label18.TabIndex = 68;
             this.label18.Text = "Views";
             // 
-            // comboBox2
+            // cboRecordKeeperViews
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Active Advisors"});
-            this.comboBox2.Location = new System.Drawing.Point(49, 6);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(157, 21);
-            this.comboBox2.TabIndex = 23;
+            this.cboRecordKeeperViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRecordKeeperViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboRecordKeeperViews.Items.AddRange(new object[] {
+            "Active Record Keepers",
+            "Inactive Record Keepers"});
+            this.cboRecordKeeperViews.Location = new System.Drawing.Point(49, 6);
+            this.cboRecordKeeperViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboRecordKeeperViews.Name = "cboRecordKeeperViews";
+            this.cboRecordKeeperViews.Size = new System.Drawing.Size(157, 21);
+            this.cboRecordKeeperViews.TabIndex = 23;
+            this.cboRecordKeeperViews.SelectedIndexChanged += new System.EventHandler(this.cboRecordKeeperViews_SelectedIndexChanged);
             // 
             // label19
             // 
@@ -620,7 +619,7 @@
             this.textBox2.Location = new System.Drawing.Point(261, 7);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(619, 20);
+            this.textBox2.Size = new System.Drawing.Size(785, 20);
             this.textBox2.TabIndex = 65;
             this.textBox2.WordWrap = false;
             // 
@@ -638,36 +637,6 @@
             this.label20.TabIndex = 29;
             this.label20.Text = "Select an advisor";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // button9
-            // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.Black;
-            this.button9.Location = new System.Drawing.Point(884, 4);
-            this.button9.Margin = new System.Windows.Forms.Padding(2);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(78, 26);
-            this.button9.TabIndex = 11;
-            this.button9.Text = "New";
-            this.button9.UseVisualStyleBackColor = false;
-            // 
-            // button12
-            // 
-            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button12.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.ForeColor = System.Drawing.Color.Black;
-            this.button12.Location = new System.Drawing.Point(968, 4);
-            this.button12.Margin = new System.Windows.Forms.Padding(2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(78, 26);
-            this.button12.TabIndex = 11;
-            this.button12.Text = "Delete";
-            this.button12.UseVisualStyleBackColor = false;
             // 
             // button13
             // 
@@ -2323,7 +2292,7 @@
             this.tabRKs.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRecordKeepers)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tabAuditors.ResumeLayout(false);
@@ -2451,14 +2420,12 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
-        public System.Windows.Forms.DataGridView dataGridView2;
+        public System.Windows.Forms.DataGridView dgvRecordKeepers;
         private System.Windows.Forms.Label label18;
-        public System.Windows.Forms.ComboBox comboBox2;
+        public System.Windows.Forms.ComboBox cboRecordKeeperViews;
         private System.Windows.Forms.Label label19;
         public System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label7;
