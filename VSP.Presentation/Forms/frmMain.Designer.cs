@@ -58,7 +58,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.cboRecordKeeperViews = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtRkSearch = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -493,7 +493,7 @@
             this.panel7.Controls.Add(this.label18);
             this.panel7.Controls.Add(this.cboRecordKeeperViews);
             this.panel7.Controls.Add(this.label19);
-            this.panel7.Controls.Add(this.textBox2);
+            this.panel7.Controls.Add(this.txtRkSearch);
             this.panel7.Controls.Add(this.label20);
             this.panel7.Controls.Add(this.button13);
             this.panel7.Location = new System.Drawing.Point(1, 54);
@@ -609,19 +609,20 @@
             this.label19.TabIndex = 67;
             this.label19.Text = "Search";
             // 
-            // textBox2
+            // txtRkSearch
             // 
-            this.textBox2.AcceptsReturn = true;
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtRkSearch.AcceptsReturn = true;
+            this.txtRkSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox2.Location = new System.Drawing.Point(261, 7);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(785, 20);
-            this.textBox2.TabIndex = 65;
-            this.textBox2.WordWrap = false;
+            this.txtRkSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtRkSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtRkSearch.Location = new System.Drawing.Point(261, 7);
+            this.txtRkSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRkSearch.Name = "txtRkSearch";
+            this.txtRkSearch.Size = new System.Drawing.Size(785, 20);
+            this.txtRkSearch.TabIndex = 65;
+            this.txtRkSearch.WordWrap = false;
+            this.txtRkSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
             // 
             // label20
             // 
@@ -2424,7 +2425,7 @@
         private System.Windows.Forms.Label label18;
         public System.Windows.Forms.ComboBox cboRecordKeeperViews;
         private System.Windows.Forms.Label label19;
-        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox txtRkSearch;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panel2;

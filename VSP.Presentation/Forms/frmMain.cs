@@ -681,24 +681,42 @@ namespace VSP.Presentation.Forms
         private void LoadDgvRecordKeeper()
         {
             DataTable dataTable = DataIntegrationHub.Business.Entities.RecordKeeper.GetAll();
+            var dataTableEnum = dataTable.AsEnumerable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboRecordKeeperViews"/>.
             switch (cboRecordKeeperViews.SelectedIndex)
             {
                 case 0:
-                    dataTable = dataTable.AsEnumerable().Where(x => x.Field<byte>("StateCode") == 0).CopyToDataTable();
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<byte>("StateCode") == 0);
                     break;
                 case 1:
-                    dataTable = dataTable.AsEnumerable().Where(x => x.Field<byte>("StateCode") == 1).CopyToDataTable();
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<byte>("StateCode") == 1);
                     break;
                 default:
                     return;
+            }
+
+            if (String.IsNullOrWhiteSpace(txtRkSearch.Text) == false)
+            {
+                dataTableEnum = dataTableEnum.Where(x => x.Field<string>("Name").ToUpper().Contains(txtRkSearch.Text.ToUpper()));
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
             }
 
             dgvRecordKeepers.DataSource = dataTable;
 
             // Display/order the columns.
             dgvRecordKeepers.Columns["RecordKeeperId"].Visible = false;
+            dgvRecordKeepers.Columns["PrimaryRfpContactName"].Visible = false;
+            dgvRecordKeepers.Columns["PrimaryRfpContactEmail"].Visible = false;
+            dgvRecordKeepers.Columns["Name"].DisplayIndex = 0;
             dgvRecordKeepers.Columns["CreatedBy"].Visible = false;
             dgvRecordKeepers.Columns["ModifiedBy"].Visible = false;
             dgvRecordKeepers.Columns["StateCode"].Visible = false;
@@ -720,6 +738,15 @@ namespace VSP.Presentation.Forms
             VSP.Business.Entities.RecordKeeper recordKeeper = new VSP.Business.Entities.RecordKeeper(recordKeeperId);
             frmRecordKeeper frmRecordKeeper = new frmRecordKeeper(this, recordKeeper);
             frmRecordKeeper.FormClosed += frmRecordKeeper_FormClosed;
+        }
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                LoadDgvRecordKeeper();
+            }
         }
     }
 }

@@ -36,6 +36,10 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtRfpEmail = new System.Windows.Forms.RichTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtRfpName = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtFeeArrangementsRelationships = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -259,6 +263,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.txtRfpEmail);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.txtRfpName);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.txtFeeArrangementsRelationships);
             this.panel2.Controls.Add(this.label7);
@@ -281,10 +289,66 @@
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
             // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Arial", 9F);
+            this.label14.Location = new System.Drawing.Point(454, 60);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(127, 18);
+            this.label14.TabIndex = 68;
+            this.label14.Text = "RFP Contact Email:";
+            // 
+            // txtRfpEmail
+            // 
+            this.txtRfpEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRfpEmail.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtRfpEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtRfpEmail.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtRfpEmail.ForeColor = System.Drawing.Color.Black;
+            this.txtRfpEmail.Location = new System.Drawing.Point(585, 59);
+            this.txtRfpEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRfpEmail.Multiline = false;
+            this.txtRfpEmail.Name = "txtRfpEmail";
+            this.txtRfpEmail.ReadOnly = true;
+            this.txtRfpEmail.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtRfpEmail.Size = new System.Drawing.Size(365, 19);
+            this.txtRfpEmail.TabIndex = 67;
+            this.txtRfpEmail.Text = "";
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Arial", 9F);
+            this.label13.Location = new System.Drawing.Point(19, 60);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(113, 18);
+            this.label13.TabIndex = 66;
+            this.label13.Text = "RFP Contact:";
+            // 
+            // txtRfpName
+            // 
+            this.txtRfpName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRfpName.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtRfpName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtRfpName.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtRfpName.ForeColor = System.Drawing.Color.Black;
+            this.txtRfpName.Location = new System.Drawing.Point(136, 59);
+            this.txtRfpName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRfpName.Multiline = false;
+            this.txtRfpName.Name = "txtRfpName";
+            this.txtRfpName.ReadOnly = true;
+            this.txtRfpName.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtRfpName.Size = new System.Drawing.Size(314, 19);
+            this.txtRfpName.TabIndex = 65;
+            this.txtRfpName.Text = "";
+            // 
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Arial", 9F);
-            this.label8.Location = new System.Drawing.Point(19, 396);
+            this.label8.Location = new System.Drawing.Point(19, 417);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(111, 53);
@@ -299,9 +363,8 @@
             this.txtFeeArrangementsRelationships.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFeeArrangementsRelationships.Font = new System.Drawing.Font("Arial", 8F);
             this.txtFeeArrangementsRelationships.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtFeeArrangementsRelationships.Location = new System.Drawing.Point(136, 395);
+            this.txtFeeArrangementsRelationships.Location = new System.Drawing.Point(136, 416);
             this.txtFeeArrangementsRelationships.Margin = new System.Windows.Forms.Padding(2);
-            this.txtFeeArrangementsRelationships.Multiline = false;
             this.txtFeeArrangementsRelationships.Name = "txtFeeArrangementsRelationships";
             this.txtFeeArrangementsRelationships.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.txtFeeArrangementsRelationships.Size = new System.Drawing.Size(814, 54);
@@ -311,7 +374,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Arial", 9F);
-            this.label7.Location = new System.Drawing.Point(19, 340);
+            this.label7.Location = new System.Drawing.Point(19, 361);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(111, 53);
@@ -326,9 +389,8 @@
             this.txtMergersAcquisitions.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMergersAcquisitions.Font = new System.Drawing.Font("Arial", 8F);
             this.txtMergersAcquisitions.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtMergersAcquisitions.Location = new System.Drawing.Point(136, 339);
+            this.txtMergersAcquisitions.Location = new System.Drawing.Point(136, 360);
             this.txtMergersAcquisitions.Margin = new System.Windows.Forms.Padding(2);
-            this.txtMergersAcquisitions.Multiline = false;
             this.txtMergersAcquisitions.Name = "txtMergersAcquisitions";
             this.txtMergersAcquisitions.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.txtMergersAcquisitions.Size = new System.Drawing.Size(814, 54);
@@ -338,7 +400,7 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Arial", 9F);
-            this.label6.Location = new System.Drawing.Point(19, 284);
+            this.label6.Location = new System.Drawing.Point(19, 305);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(111, 53);
@@ -353,9 +415,8 @@
             this.txtActionsPenalties.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtActionsPenalties.Font = new System.Drawing.Font("Arial", 8F);
             this.txtActionsPenalties.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtActionsPenalties.Location = new System.Drawing.Point(136, 283);
+            this.txtActionsPenalties.Location = new System.Drawing.Point(136, 304);
             this.txtActionsPenalties.Margin = new System.Windows.Forms.Padding(2);
-            this.txtActionsPenalties.Multiline = false;
             this.txtActionsPenalties.Name = "txtActionsPenalties";
             this.txtActionsPenalties.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.txtActionsPenalties.Size = new System.Drawing.Size(814, 54);
@@ -365,7 +426,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Arial", 9F);
-            this.label5.Location = new System.Drawing.Point(19, 228);
+            this.label5.Location = new System.Drawing.Point(19, 249);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(111, 53);
@@ -380,9 +441,8 @@
             this.txtCredentialsExperience.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCredentialsExperience.Font = new System.Drawing.Font("Arial", 8F);
             this.txtCredentialsExperience.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCredentialsExperience.Location = new System.Drawing.Point(136, 227);
+            this.txtCredentialsExperience.Location = new System.Drawing.Point(136, 248);
             this.txtCredentialsExperience.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCredentialsExperience.Multiline = false;
             this.txtCredentialsExperience.Name = "txtCredentialsExperience";
             this.txtCredentialsExperience.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.txtCredentialsExperience.Size = new System.Drawing.Size(814, 54);
@@ -392,7 +452,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Arial", 9F);
-            this.label4.Location = new System.Drawing.Point(19, 172);
+            this.label4.Location = new System.Drawing.Point(19, 193);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(111, 53);
@@ -407,9 +467,8 @@
             this.txtSecurityTechnology.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSecurityTechnology.Font = new System.Drawing.Font("Arial", 8F);
             this.txtSecurityTechnology.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtSecurityTechnology.Location = new System.Drawing.Point(136, 171);
+            this.txtSecurityTechnology.Location = new System.Drawing.Point(136, 192);
             this.txtSecurityTechnology.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSecurityTechnology.Multiline = false;
             this.txtSecurityTechnology.Name = "txtSecurityTechnology";
             this.txtSecurityTechnology.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.txtSecurityTechnology.Size = new System.Drawing.Size(814, 54);
@@ -419,7 +478,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Arial", 9F);
-            this.label2.Location = new System.Drawing.Point(19, 116);
+            this.label2.Location = new System.Drawing.Point(19, 137);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 53);
@@ -434,9 +493,8 @@
             this.txtPoliciesProcedures.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPoliciesProcedures.Font = new System.Drawing.Font("Arial", 8F);
             this.txtPoliciesProcedures.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtPoliciesProcedures.Location = new System.Drawing.Point(136, 115);
+            this.txtPoliciesProcedures.Location = new System.Drawing.Point(136, 136);
             this.txtPoliciesProcedures.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPoliciesProcedures.Multiline = false;
             this.txtPoliciesProcedures.Name = "txtPoliciesProcedures";
             this.txtPoliciesProcedures.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.txtPoliciesProcedures.Size = new System.Drawing.Size(814, 54);
@@ -458,7 +516,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Arial", 9F);
-            this.label3.Location = new System.Drawing.Point(19, 60);
+            this.label3.Location = new System.Drawing.Point(19, 81);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 53);
@@ -483,9 +541,8 @@
             this.txtPhilosophyStrategy.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPhilosophyStrategy.Font = new System.Drawing.Font("Arial", 8F);
             this.txtPhilosophyStrategy.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtPhilosophyStrategy.Location = new System.Drawing.Point(136, 59);
+            this.txtPhilosophyStrategy.Location = new System.Drawing.Point(136, 80);
             this.txtPhilosophyStrategy.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPhilosophyStrategy.Multiline = false;
             this.txtPhilosophyStrategy.Name = "txtPhilosophyStrategy";
             this.txtPhilosophyStrategy.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.txtPhilosophyStrategy.Size = new System.Drawing.Size(814, 54);
@@ -1055,5 +1112,9 @@
         private System.Windows.Forms.Panel panel7;
         public System.Windows.Forms.Label label10;
         public System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.RichTextBox txtRfpEmail;
+        private System.Windows.Forms.Label label13;
+        public System.Windows.Forms.RichTextBox txtRfpName;
 	}
 }

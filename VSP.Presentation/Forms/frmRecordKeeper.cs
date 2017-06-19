@@ -57,7 +57,10 @@ namespace VSP.Presentation.Forms
 
             CurrentRK = recordKeeper;
             txtName.Text = dihRk.Name;
+            txtRfpName.Text = dihRk.RfpContactName;
+            txtRfpEmail.Text = dihRk.RfpContactEmail;
             txtPhilosophyStrategy.Text = CurrentRK.PhilosophyStrategy;
+            txtPoliciesProcedures.Text = CurrentRK.PoliciesProcedures;
             txtSecurityTechnology.Text = CurrentRK.SecurityTechnology;
             txtCredentialsExperience.Text = CurrentRK.CredentialsExperiences;
             txtActionsPenalties.Text = CurrentRK.ActionsPenalties;
