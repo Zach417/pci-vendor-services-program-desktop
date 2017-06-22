@@ -96,12 +96,17 @@ namespace VSP.Presentation.Forms
             }
 
             bool isAccessUser = LoginCurrentUser();
-
             if (isAccessUser == false)
             {
                 this.Enabled = false;
                 this.Hide();
                 return;
+            }
+
+            SecurityComponent securityComponent = new SecurityComponent(CurrentUser);
+            if (securityComponent.IsAdmin() == false)
+            {
+                lblSettings.Visible = false;
             }
 
             HandleAppVersion();
@@ -811,6 +816,14 @@ namespace VSP.Presentation.Forms
                     dataTableEnum = dataTableEnum.Where(x => x.Field<byte>("StateCode") == 0);
                     break;
                 case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
                     dataTableEnum = dataTableEnum.Where(x => x.Field<byte>("StateCode") == 1);
                     break;
                 default:

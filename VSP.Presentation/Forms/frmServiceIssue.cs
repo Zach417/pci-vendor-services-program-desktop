@@ -59,6 +59,21 @@ namespace VSP.Presentation.Forms
             CurrentServiceIssue.RecordKeeperId = recordKeeper.Id;
             CurrentServiceIssue.AsOfDate = DateTime.Now;
 
+            if (CurrentServiceIssue.RecordKeeperId != null)
+            {
+                cboRecordKeeper.Text = new DataIntegrationHub.Business.Entities.RecordKeeper((Guid)CurrentServiceIssue.RecordKeeperId).Name;
+            }
+
+            if (CurrentServiceIssue.AuditorId != null)
+            {
+                cboAuditor.Text = new DataIntegrationHub.Business.Entities.Auditor((Guid)CurrentServiceIssue.AuditorId).Name;
+            }
+
+            if (CurrentServiceIssue.PlanId != null)
+            {
+                cboPlan.Text = new Plan((Guid)CurrentServiceIssue.PlanId).Name;
+            }
+
             txtAsOfDate.Text = CurrentServiceIssue.AsOfDate.ToString("MM/dd/yyyy");
 
             ss.Close();
@@ -90,6 +105,21 @@ namespace VSP.Presentation.Forms
             CurrentServiceIssue = new ServiceIssue();
             CurrentServiceIssue.AuditorId = auditor.Id;
             CurrentServiceIssue.AsOfDate = DateTime.Now;
+
+            if (CurrentServiceIssue.RecordKeeperId != null)
+            {
+                cboRecordKeeper.Text = new DataIntegrationHub.Business.Entities.RecordKeeper((Guid)CurrentServiceIssue.RecordKeeperId).Name;
+            }
+
+            if (CurrentServiceIssue.AuditorId != null)
+            {
+                cboAuditor.Text = new DataIntegrationHub.Business.Entities.Auditor((Guid)CurrentServiceIssue.AuditorId).Name;
+            }
+
+            if (CurrentServiceIssue.PlanId != null)
+            {
+                cboPlan.Text = new Plan((Guid)CurrentServiceIssue.PlanId).Name;
+            }
 
             txtAsOfDate.Text = CurrentServiceIssue.AsOfDate.ToString("MM/dd/yyyy");
 

@@ -344,6 +344,10 @@
             this.cboClientViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboClientViews.Items.AddRange(new object[] {
             "Active Clients",
+            "Active 3(21) Clients",
+            "Active 3(38) Clients",
+            "Active EC Clients",
+            "Active VM Clients",
             "Inactive Clients"});
             this.cboClientViews.Location = new System.Drawing.Point(49, 6);
             this.cboClientViews.Margin = new System.Windows.Forms.Padding(2);
