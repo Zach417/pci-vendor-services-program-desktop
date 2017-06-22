@@ -121,6 +121,7 @@ namespace VSP.Presentation.Forms
             cboPlanAdvisorViews.SelectedIndex = 0;
             cboViewsCategory.SelectedIndex = 0;
             cboAuditorViews.SelectedIndex = 0;
+            cboClientViews.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -166,9 +167,6 @@ namespace VSP.Presentation.Forms
             }
             catch (Exception ex)
             {
-                lblLoginStatus.Text = "An error occurred while logging you in.";
-                frmError frmError = new frmError(this, ex);
-                frmError.FormClosed += frmError_FormClosedEventHandler;
                 return false;
             }
 
@@ -799,6 +797,89 @@ namespace VSP.Presentation.Forms
             VSP.Business.Entities.PlanAdvisor planAdvisor = new VSP.Business.Entities.PlanAdvisor(planAdvisorId);
             frmPlanAdvisor frmPlanAdvisor = new frmPlanAdvisor(this, planAdvisor);
             frmPlanAdvisor.FormClosed += frmPlanAdvisor_FormClosed;
+        }
+
+        private void LoadDgvClients()
+        {
+            DataTable dataTable = DataIntegrationHub.Business.Entities.Customer.GetAll();
+            var dataTableEnum = dataTable.AsEnumerable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboClientViews"/>.
+            switch (cboClientViews.SelectedIndex)
+            {
+                case 0:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<byte>("StateCode") == 0);
+                    break;
+                case 1:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<byte>("StateCode") == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            if (String.IsNullOrWhiteSpace(txtClientSearch.Text) == false)
+            {
+                dataTableEnum = dataTableEnum.Where(x => x.Field<string>("Name").ToUpper().Contains(txtClientSearch.Text.ToUpper()));
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
+            }
+
+            dgvClients.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvClients.Columns["CustomerId"].Visible = false;
+            dgvClients.Columns["PrimaryContactId"].Visible = false;
+            dgvClients.Columns["AssetValue"].Visible = false;
+            dgvClients.Columns["MainPhone"].Visible = false;
+            dgvClients.Columns["Fax"].Visible = false;
+            dgvClients.Columns["AddressLine1"].Visible = false;
+            dgvClients.Columns["AddressLine2"].Visible = false;
+            dgvClients.Columns["AddressCity"].Visible = false;
+            dgvClients.Columns["AddressState"].Visible = false;
+            dgvClients.Columns["AddressZip"].Visible = false;
+            dgvClients.Columns["ModifiedBy"].Visible = false;
+            dgvClients.Columns["Createdon"].Visible = false;
+            dgvClients.Columns["CreatedBy"].Visible = false;
+            dgvClients.Columns["StateCode"].Visible = false;
+
+            dgvClients.Columns["Name"].DisplayIndex = 0;
+            dgvClients.Columns["BusinessUnit"].DisplayIndex = 1;
+            dgvClients.Columns["ModifiedOn"].DisplayIndex = 2;
+        }
+
+        private void cboClients_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvClients();
+        }
+
+        private void txtClientSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                LoadDgvClients();
+            }
+        }
+
+        private void dgvClients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvClients.CurrentRow.Index;
+            Guid customerId = new Guid(dgvClients.Rows[index].Cells["CustomerId"].Value.ToString());
+            Customer customer = new Customer(customerId);
+            frmAccount frmAccount = new frmAccount(this, customer);
+            frmAccount.FormClosed += frmAccount_FormClosed;
+        }
+
+        void frmAccount_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvClients();
         }
     }
 }

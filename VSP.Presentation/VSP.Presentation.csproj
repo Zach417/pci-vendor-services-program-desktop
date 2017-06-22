@@ -168,23 +168,11 @@
     </Compile>
     <Compile Include="Utilities\Fields\NullHandler.cs" />
     <Compile Include="Utilities\ListItem.cs" />
-    <Compile Include="Forms\frmAdvisor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmAdvisor.Designer.cs">
-      <DependentUpon>frmAdvisor.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmAccount.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmAccount.Designer.cs">
       <DependentUpon>frmAccount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmFund.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmFund.Designer.cs">
-      <DependentUpon>frmFund.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
@@ -199,12 +187,6 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmError.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmError.Designer.cs">
-      <DependentUpon>frmError.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmSplashScreen.cs">
       <SubType>Form</SubType>
@@ -236,14 +218,8 @@
     <EmbeddedResource Include="Forms\frmSelectRecord.resx">
       <DependentUpon>frmSelectRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAdvisor.resx">
-      <DependentUpon>frmAdvisor.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAccount.resx">
       <DependentUpon>frmAccount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmFund.resx">
-      <DependentUpon>frmFund.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -252,9 +228,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmError.resx">
-      <DependentUpon>frmError.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSplashScreen.resx">
       <DependentUpon>frmSplashScreen.cs</DependentUpon>

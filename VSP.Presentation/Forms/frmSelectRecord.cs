@@ -95,18 +95,7 @@ namespace VSP.Presentation.Forms
 
             CurrentRecordType = selectRecordType;
 
-            if (originalRecord is PlanDetail)
-            {
-                Plan plan = new Plan(((PlanDetail)originalRecord).Id);
-                txtOriginalRecordName.Text = plan.Name;
-                lblOriginalRecordType.Text = "Plan";
-            }
-            else if (originalRecord is Fund)
-            {
-                txtOriginalRecordName.Text = ((Fund)originalRecord).FundName;
-                lblOriginalRecordType.Text = "Fund";
-            }
-            else if (originalRecord is Advisors)
+            if (originalRecord is Advisors)
             {
                 txtOriginalRecordName.Text = ((Advisors)originalRecord).Name;
                 lblOriginalRecordType.Text = "Advisor";
