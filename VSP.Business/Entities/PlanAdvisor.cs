@@ -10,24 +10,22 @@ using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class Service : DatabaseEntity
+    public class PlanAdvisor : DatabaseEntity
     {
-        public string Name;
-        public string Category;
-        public string Type;
+        //public string GeneralInformation;
 
-        private static string _tableName = "Service";
+        private static string _tableName = "PlanAdvisor";
 
-        public Service()
+        public PlanAdvisor()
             : base(_tableName)
         {
 
         }
 
-        public Service(Guid primaryKey)
+        public PlanAdvisor(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
-            RefreshMembers();
+            RefreshMembers(true);
         }
 
         /// <summary>
@@ -36,9 +34,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("Name", this.Name);
-            base.AddColumn("Category", this.Category);
-            base.AddColumn("Type", this.Type);
+            //base.AddColumn("GeneralInformation", this.GeneralInformation);
         }
 
         /// <summary>
@@ -46,20 +42,18 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.Name = (string)base.GetColumn("Name");
-            this.Category = (string)base.GetColumn("Category");
-            this.Type = (string)base.GetColumn("Type");
+            //this.GeneralInformation = (string)base.GetColumn("GeneralInformation");
         }
 
         public static DataTable GetActive()
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0 ORDER BY [Type], [Category], [Name]";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
         public static DataTable GetInactive()
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1 ORDER BY [Type], [Category], [Name]";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

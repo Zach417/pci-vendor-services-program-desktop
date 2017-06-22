@@ -61,6 +61,7 @@ namespace VSP.Presentation.Forms
             CurrentService = new Service(); ;
             txtName.Text = CurrentService.Name;
             txtCategory.Text = CurrentService.Category;
+            txtType.Text = CurrentService.Type;
 
             ss.Close();
             this.Show();
@@ -95,6 +96,7 @@ namespace VSP.Presentation.Forms
             CurrentService = service;
             txtName.Text = CurrentService.Name;
             txtCategory.Text = CurrentService.Category;
+            txtType.Text = CurrentService.Type;
 
             ss.Close();
             this.Show();
@@ -198,6 +200,7 @@ namespace VSP.Presentation.Forms
         {
             CurrentService.Name = txtName.Text;
             CurrentService.Category = txtCategory.Text;
+            CurrentService.Type = txtType.Text;
             CurrentService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
             this.Close();
         }

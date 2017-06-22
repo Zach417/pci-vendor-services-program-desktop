@@ -33,6 +33,8 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.tabClientSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtType = new System.Windows.Forms.RichTextBox();
             this.lblAccountInformationHeader = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -206,6 +208,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.txtType);
             this.panel2.Controls.Add(this.lblAccountInformationHeader);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label24);
@@ -215,6 +219,33 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Arial", 9F);
+            this.label2.Location = new System.Drawing.Point(19, 81);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 18);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Type:";
+            // 
+            // txtType
+            // 
+            this.txtType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtType.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtType.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtType.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtType.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtType.Location = new System.Drawing.Point(136, 80);
+            this.txtType.Margin = new System.Windows.Forms.Padding(2);
+            this.txtType.Multiline = false;
+            this.txtType.Name = "txtType";
+            this.txtType.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtType.Size = new System.Drawing.Size(814, 19);
+            this.txtType.TabIndex = 53;
+            this.txtType.Text = "";
             // 
             // lblAccountInformationHeader
             // 
@@ -375,7 +406,7 @@
             this.MinimumSize = new System.Drawing.Size(755, 595);
             this.Name = "frmService";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Account";
+            this.Text = "Service";
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -415,5 +446,7 @@
         public System.Windows.Forms.Label label56;
         public System.Windows.Forms.TabControl tabControlClientDetail;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.RichTextBox txtType;
 	}
 }

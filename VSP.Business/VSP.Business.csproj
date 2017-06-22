@@ -51,6 +51,7 @@
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Advisors.cs" />
+    <Compile Include="Entities\PlanAdvisor.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\DatabaseEntity.cs" />
     <Compile Include="Entities\FundDetail.cs" />
@@ -62,6 +63,8 @@
     <Compile Include="Entities\Manager.cs" />
     <Compile Include="Entities\ManagersCredentials.cs" />
     <Compile Include="Entities\ManagersEducation.cs" />
+    <Compile Include="Entities\Auditor.cs" />
+    <Compile Include="Entities\PlanAdvisorService.cs" />
     <Compile Include="Entities\RecordKeeper.cs" />
     <Compile Include="Entities\Relational_AssetGroup_Category.cs" />
     <Compile Include="Entities\Relational_Advisors_Funds.cs" />

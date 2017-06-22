@@ -6,25 +6,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class Service : DatabaseEntity
+    public class PlanAdvisorService : DatabaseEntity
     {
-        public string Name;
-        public string Category;
-        public string Type;
+        public Guid PlanAdvisorId;
+        public Guid ServiceId;
+        public SqlBoolean ServiceOffered;
 
-        private static string _tableName = "Service";
+        private static string _tableName = "PlanAdvisorService";
 
-        public Service()
+        public PlanAdvisorService()
             : base(_tableName)
         {
 
         }
 
-        public Service(Guid primaryKey)
+        public PlanAdvisorService(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -36,9 +37,9 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("Name", this.Name);
-            base.AddColumn("Category", this.Category);
-            base.AddColumn("Type", this.Type);
+            base.AddColumn("PlanAdvisorId", this.PlanAdvisorId);
+            base.AddColumn("ServiceId", this.ServiceId);
+            base.AddColumn("ServiceOffered", this.ServiceOffered);
         }
 
         /// <summary>
@@ -46,20 +47,26 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.Name = (string)base.GetColumn("Name");
-            this.Category = (string)base.GetColumn("Category");
-            this.Type = (string)base.GetColumn("Type");
+            this.PlanAdvisorId = (Guid)base.GetColumn("PlanAdvisorId");
+            this.ServiceId = (Guid)base.GetColumn("ServiceId");
+            this.ServiceOffered = (SqlBoolean)base.GetColumn("ServiceOffered");
         }
 
         public static DataTable GetActive()
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0 ORDER BY [Type], [Category], [Name]";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
         public static DataTable GetInactive()
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1 ORDER BY [Type], [Category], [Name]";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
+        }
+
+        public static DataTable GetAssociated(PlanAdvisor planAdvisor)
+        {
+            string sql = @"SELECT * FROM " + _tableName + " WHERE PlanAdvisorId = '" + planAdvisor.Id + "'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

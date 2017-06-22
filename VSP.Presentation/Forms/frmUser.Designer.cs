@@ -18,8 +18,8 @@
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUser));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -50,11 +50,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.cboRolesViews = new System.Windows.Forms.ComboBox();
             this.btnAddRole = new System.Windows.Forms.Button();
             this.btnRemoveRole = new System.Windows.Forms.Button();
             this.dgvRoles = new System.Windows.Forms.DataGridView();
-            this.label31 = new System.Windows.Forms.Label();
-            this.cboRolesViews = new System.Windows.Forms.ComboBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -444,6 +444,33 @@
             this.panel5.Size = new System.Drawing.Size(968, 545);
             this.panel5.TabIndex = 60;
             // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label31.Location = new System.Drawing.Point(8, 14);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(41, 16);
+            this.label31.TabIndex = 102;
+            this.label31.Text = "Views";
+            // 
+            // cboRolesViews
+            // 
+            this.cboRolesViews.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboRolesViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRolesViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboRolesViews.Items.AddRange(new object[] {
+            "Associated Roles"});
+            this.cboRolesViews.Location = new System.Drawing.Point(53, 12);
+            this.cboRolesViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboRolesViews.Name = "cboRolesViews";
+            this.cboRolesViews.Size = new System.Drawing.Size(277, 21);
+            this.cboRolesViews.TabIndex = 101;
+            this.cboRolesViews.SelectedIndexChanged += new System.EventHandler(this.cboRolesViews_SelectedIndexChanged);
+            // 
             // btnAddRole
             // 
             this.btnAddRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -490,23 +517,23 @@
             this.dgvRoles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRoles.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvRoles.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRoles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRoles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRoles.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRoles.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRoles.EnableHeadersVisualStyles = false;
             this.dgvRoles.Location = new System.Drawing.Point(10, 40);
             this.dgvRoles.Margin = new System.Windows.Forms.Padding(2);
@@ -520,33 +547,6 @@
             this.dgvRoles.ShowEditingIcon = false;
             this.dgvRoles.Size = new System.Drawing.Size(946, 498);
             this.dgvRoles.TabIndex = 98;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.Transparent;
-            this.label31.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label31.Location = new System.Drawing.Point(8, 14);
-            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(41, 16);
-            this.label31.TabIndex = 102;
-            this.label31.Text = "Views";
-            // 
-            // cboRolesViews
-            // 
-            this.cboRolesViews.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboRolesViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRolesViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboRolesViews.Items.AddRange(new object[] {
-            "Associated Roles"});
-            this.cboRolesViews.Location = new System.Drawing.Point(53, 12);
-            this.cboRolesViews.Margin = new System.Windows.Forms.Padding(2);
-            this.cboRolesViews.Name = "cboRolesViews";
-            this.cboRolesViews.Size = new System.Drawing.Size(277, 21);
-            this.cboRolesViews.TabIndex = 101;
-            this.cboRolesViews.SelectedIndexChanged += new System.EventHandler(this.cboRolesViews_SelectedIndexChanged);
             // 
             // frmUser
             // 
@@ -564,7 +564,7 @@
             this.MinimumSize = new System.Drawing.Size(755, 595);
             this.Name = "frmUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Account";
+            this.Text = "User";
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

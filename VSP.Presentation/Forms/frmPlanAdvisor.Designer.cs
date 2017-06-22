@@ -1,6 +1,6 @@
 ﻿namespace VSP.Presentation.Forms
 {
-    partial class frmProduct
+    partial class frmPlanAdvisor
 	{
 		private System.ComponentModel.IContainer components = null;
 		

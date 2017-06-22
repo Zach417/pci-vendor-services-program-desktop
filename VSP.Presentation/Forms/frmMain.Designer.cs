@@ -45,8 +45,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,32 +65,28 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dgvAuditors = new System.Windows.Forms.DataGridView();
             this.label23 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cboAuditorViews = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtAuditorSearch = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.tabAdvisors = new System.Windows.Forms.TabPage();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label24 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.dgvAdvForward = new System.Windows.Forms.Button();
             this.dgvAdvBack = new System.Windows.Forms.Button();
-            this.dgvAdvisors = new System.Windows.Forms.DataGridView();
+            this.dgvPlanAdvisors = new System.Windows.Forms.DataGridView();
             this.label22 = new System.Windows.Forms.Label();
-            this.cboAdvisorViews = new System.Windows.Forms.ComboBox();
+            this.cboPlanAdvisorViews = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.txtAdvisorSearch = new System.Windows.Forms.TextBox();
+            this.txtPlanAdvisorSearch = new System.Windows.Forms.TextBox();
             this.lblSelectedAdvisor = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
             this.tabSearch = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -121,8 +115,6 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
             this.dgvServices = new System.Windows.Forms.DataGridView();
             this.label31 = new System.Windows.Forms.Label();
             this.cboServiceViews = new System.Windows.Forms.ComboBox();
@@ -163,6 +155,8 @@
             this.txtCategory = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label90 = new System.Windows.Forms.Label();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
             this.btnSaveUserSecurity = new System.Windows.Forms.Button();
             this.btnRemoveUser = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
@@ -178,12 +172,12 @@
             this.panel2.SuspendLayout();
             this.tabAuditors.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAuditors)).BeginInit();
             this.panel3.SuspendLayout();
             this.tabAdvisors.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAdvisors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlanAdvisors)).BeginInit();
+            this.panel6.SuspendLayout();
             this.tabSearch.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabSettings.SuspendLayout();
@@ -257,8 +251,6 @@
             this.panel5.Controls.Add(this.label13);
             this.panel5.Controls.Add(this.textBox1);
             this.panel5.Controls.Add(this.label17);
-            this.panel5.Controls.Add(this.button3);
-            this.panel5.Controls.Add(this.button5);
             this.panel5.Controls.Add(this.button6);
             this.panel5.Location = new System.Drawing.Point(1, 54);
             this.panel5.Name = "panel5";
@@ -380,7 +372,7 @@
             this.textBox1.Location = new System.Drawing.Point(261, 7);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(619, 20);
+            this.textBox1.Size = new System.Drawing.Size(785, 20);
             this.textBox1.TabIndex = 65;
             this.textBox1.WordWrap = false;
             // 
@@ -396,38 +388,8 @@
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(446, 32);
             this.label17.TabIndex = 29;
-            this.label17.Text = "Select an advisor";
+            this.label17.Text = "Select a client";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(884, 4);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(78, 26);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "New";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.Black;
-            this.button5.Location = new System.Drawing.Point(968, 4);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(78, 26);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "Delete";
-            this.button5.UseVisualStyleBackColor = false;
             // 
             // button6
             // 
@@ -622,7 +584,7 @@
             this.txtRkSearch.Size = new System.Drawing.Size(785, 20);
             this.txtRkSearch.TabIndex = 65;
             this.txtRkSearch.WordWrap = false;
-            this.txtRkSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
+            this.txtRkSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRkSearch_KeyDown);
             // 
             // label20
             // 
@@ -636,7 +598,7 @@
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(446, 32);
             this.label20.TabIndex = 29;
-            this.label20.Text = "Select an advisor";
+            this.label20.Text = "Select a record keeper";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button13
@@ -699,14 +661,12 @@
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.button14);
             this.panel8.Controls.Add(this.button15);
-            this.panel8.Controls.Add(this.dataGridView3);
+            this.panel8.Controls.Add(this.dgvAuditors);
             this.panel8.Controls.Add(this.label23);
-            this.panel8.Controls.Add(this.comboBox3);
+            this.panel8.Controls.Add(this.cboAuditorViews);
             this.panel8.Controls.Add(this.label25);
-            this.panel8.Controls.Add(this.textBox3);
+            this.panel8.Controls.Add(this.txtAuditorSearch);
             this.panel8.Controls.Add(this.label26);
-            this.panel8.Controls.Add(this.button16);
-            this.panel8.Controls.Add(this.button17);
             this.panel8.Controls.Add(this.button18);
             this.panel8.Location = new System.Drawing.Point(1, 54);
             this.panel8.Name = "panel8";
@@ -739,16 +699,16 @@
             this.button15.Text = "<";
             this.button15.UseVisualStyleBackColor = false;
             // 
-            // dataGridView3
+            // dgvAuditors
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvAuditors.AllowUserToAddRows = false;
+            this.dgvAuditors.AllowUserToDeleteRows = false;
+            this.dgvAuditors.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView3.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvAuditors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAuditors.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvAuditors.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 8.25F);
@@ -756,8 +716,8 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvAuditors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvAuditors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Gadugi", 7.8F);
@@ -765,20 +725,21 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView3.EnableHeadersVisualStyles = false;
-            this.dataGridView3.Location = new System.Drawing.Point(7, 33);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView3.MultiSelect = false;
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView3.RowHeadersVisible = false;
-            this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView3.ShowEditingIcon = false;
-            this.dataGridView3.Size = new System.Drawing.Size(1039, 402);
-            this.dataGridView3.TabIndex = 22;
+            this.dgvAuditors.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvAuditors.EnableHeadersVisualStyles = false;
+            this.dgvAuditors.Location = new System.Drawing.Point(7, 33);
+            this.dgvAuditors.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvAuditors.MultiSelect = false;
+            this.dgvAuditors.Name = "dgvAuditors";
+            this.dgvAuditors.ReadOnly = true;
+            this.dgvAuditors.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvAuditors.RowHeadersVisible = false;
+            this.dgvAuditors.RowTemplate.Height = 24;
+            this.dgvAuditors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvAuditors.ShowEditingIcon = false;
+            this.dgvAuditors.Size = new System.Drawing.Size(1039, 402);
+            this.dgvAuditors.TabIndex = 22;
+            this.dgvAuditors.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAuditors_CellDoubleClick);
             // 
             // label23
             // 
@@ -793,17 +754,19 @@
             this.label23.TabIndex = 68;
             this.label23.Text = "Views";
             // 
-            // comboBox3
+            // cboAuditorViews
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox3.Items.AddRange(new object[] {
-            "Active Advisors"});
-            this.comboBox3.Location = new System.Drawing.Point(49, 6);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(157, 21);
-            this.comboBox3.TabIndex = 23;
+            this.cboAuditorViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAuditorViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboAuditorViews.Items.AddRange(new object[] {
+            "Active Auditors",
+            "Inactive Auditors"});
+            this.cboAuditorViews.Location = new System.Drawing.Point(49, 6);
+            this.cboAuditorViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboAuditorViews.Name = "cboAuditorViews";
+            this.cboAuditorViews.Size = new System.Drawing.Size(157, 21);
+            this.cboAuditorViews.TabIndex = 23;
+            this.cboAuditorViews.SelectedIndexChanged += new System.EventHandler(this.cboAuditorViews_SelectedIndexChanged);
             // 
             // label25
             // 
@@ -818,19 +781,20 @@
             this.label25.TabIndex = 67;
             this.label25.Text = "Search";
             // 
-            // textBox3
+            // txtAuditorSearch
             // 
-            this.textBox3.AcceptsReturn = true;
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtAuditorSearch.AcceptsReturn = true;
+            this.txtAuditorSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox3.Location = new System.Drawing.Point(261, 7);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(619, 20);
-            this.textBox3.TabIndex = 65;
-            this.textBox3.WordWrap = false;
+            this.txtAuditorSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtAuditorSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtAuditorSearch.Location = new System.Drawing.Point(261, 7);
+            this.txtAuditorSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAuditorSearch.Name = "txtAuditorSearch";
+            this.txtAuditorSearch.Size = new System.Drawing.Size(785, 20);
+            this.txtAuditorSearch.TabIndex = 65;
+            this.txtAuditorSearch.WordWrap = false;
+            this.txtAuditorSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAuditorSearch_KeyDown);
             // 
             // label26
             // 
@@ -844,38 +808,8 @@
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(446, 32);
             this.label26.TabIndex = 29;
-            this.label26.Text = "Select an advisor";
+            this.label26.Text = "Select an auditor";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // button16
-            // 
-            this.button16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button16.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.ForeColor = System.Drawing.Color.Black;
-            this.button16.Location = new System.Drawing.Point(884, 4);
-            this.button16.Margin = new System.Windows.Forms.Padding(2);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(78, 26);
-            this.button16.TabIndex = 11;
-            this.button16.Text = "New";
-            this.button16.UseVisualStyleBackColor = false;
-            // 
-            // button17
-            // 
-            this.button17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button17.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.ForeColor = System.Drawing.Color.Black;
-            this.button17.Location = new System.Drawing.Point(968, 4);
-            this.button17.Margin = new System.Windows.Forms.Padding(2);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(78, 26);
-            this.button17.TabIndex = 11;
-            this.button17.Text = "Delete";
-            this.button17.UseVisualStyleBackColor = false;
             // 
             // button18
             // 
@@ -920,14 +854,188 @@
             // tabAdvisors
             // 
             this.tabAdvisors.BackColor = System.Drawing.Color.LightGray;
-            this.tabAdvisors.Controls.Add(this.panel6);
             this.tabAdvisors.Controls.Add(this.panel13);
+            this.tabAdvisors.Controls.Add(this.panel6);
             this.tabAdvisors.Location = new System.Drawing.Point(4, 25);
             this.tabAdvisors.Margin = new System.Windows.Forms.Padding(2);
             this.tabAdvisors.Name = "tabAdvisors";
             this.tabAdvisors.Size = new System.Drawing.Size(1061, 532);
             this.tabAdvisors.TabIndex = 4;
             this.tabAdvisors.Text = "Advisors";
+            // 
+            // panel13
+            // 
+            this.panel13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel13.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel13.Controls.Add(this.dgvAdvForward);
+            this.panel13.Controls.Add(this.dgvAdvBack);
+            this.panel13.Controls.Add(this.dgvPlanAdvisors);
+            this.panel13.Controls.Add(this.label22);
+            this.panel13.Controls.Add(this.cboPlanAdvisorViews);
+            this.panel13.Controls.Add(this.label21);
+            this.panel13.Controls.Add(this.txtPlanAdvisorSearch);
+            this.panel13.Controls.Add(this.lblSelectedAdvisor);
+            this.panel13.Controls.Add(this.button10);
+            this.panel13.Location = new System.Drawing.Point(1, 54);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(1058, 520);
+            this.panel13.TabIndex = 72;
+            // 
+            // dgvAdvForward
+            // 
+            this.dgvAdvForward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvAdvForward.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvAdvForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dgvAdvForward.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvAdvForward.Location = new System.Drawing.Point(494, 440);
+            this.dgvAdvForward.Name = "dgvAdvForward";
+            this.dgvAdvForward.Size = new System.Drawing.Size(29, 32);
+            this.dgvAdvForward.TabIndex = 70;
+            this.dgvAdvForward.Text = ">";
+            this.dgvAdvForward.UseVisualStyleBackColor = false;
+            // 
+            // dgvAdvBack
+            // 
+            this.dgvAdvBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvAdvBack.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvAdvBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dgvAdvBack.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvAdvBack.Location = new System.Drawing.Point(459, 440);
+            this.dgvAdvBack.Name = "dgvAdvBack";
+            this.dgvAdvBack.Size = new System.Drawing.Size(29, 32);
+            this.dgvAdvBack.TabIndex = 71;
+            this.dgvAdvBack.Text = "<";
+            this.dgvAdvBack.UseVisualStyleBackColor = false;
+            // 
+            // dgvPlanAdvisors
+            // 
+            this.dgvPlanAdvisors.AllowUserToAddRows = false;
+            this.dgvPlanAdvisors.AllowUserToDeleteRows = false;
+            this.dgvPlanAdvisors.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPlanAdvisors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPlanAdvisors.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvPlanAdvisors.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPlanAdvisors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvPlanAdvisors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPlanAdvisors.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvPlanAdvisors.EnableHeadersVisualStyles = false;
+            this.dgvPlanAdvisors.Location = new System.Drawing.Point(7, 33);
+            this.dgvPlanAdvisors.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvPlanAdvisors.MultiSelect = false;
+            this.dgvPlanAdvisors.Name = "dgvPlanAdvisors";
+            this.dgvPlanAdvisors.ReadOnly = true;
+            this.dgvPlanAdvisors.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvPlanAdvisors.RowHeadersVisible = false;
+            this.dgvPlanAdvisors.RowTemplate.Height = 24;
+            this.dgvPlanAdvisors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvPlanAdvisors.ShowEditingIcon = false;
+            this.dgvPlanAdvisors.Size = new System.Drawing.Size(1039, 402);
+            this.dgvPlanAdvisors.TabIndex = 22;
+            this.dgvPlanAdvisors.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanAdvisors_CellDoubleClick);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label22.Location = new System.Drawing.Point(4, 8);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(41, 16);
+            this.label22.TabIndex = 68;
+            this.label22.Text = "Views";
+            // 
+            // cboPlanAdvisorViews
+            // 
+            this.cboPlanAdvisorViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPlanAdvisorViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboPlanAdvisorViews.Items.AddRange(new object[] {
+            "Active Plan Advisors",
+            "Inactive Plan Advisors"});
+            this.cboPlanAdvisorViews.Location = new System.Drawing.Point(49, 6);
+            this.cboPlanAdvisorViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboPlanAdvisorViews.Name = "cboPlanAdvisorViews";
+            this.cboPlanAdvisorViews.Size = new System.Drawing.Size(157, 21);
+            this.cboPlanAdvisorViews.TabIndex = 23;
+            this.cboPlanAdvisorViews.SelectedIndexChanged += new System.EventHandler(this.cboAdvisorViews_SelectedIndexChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label21.Location = new System.Drawing.Point(210, 8);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(47, 16);
+            this.label21.TabIndex = 67;
+            this.label21.Text = "Search";
+            // 
+            // txtPlanAdvisorSearch
+            // 
+            this.txtPlanAdvisorSearch.AcceptsReturn = true;
+            this.txtPlanAdvisorSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPlanAdvisorSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtPlanAdvisorSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtPlanAdvisorSearch.Location = new System.Drawing.Point(261, 7);
+            this.txtPlanAdvisorSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPlanAdvisorSearch.Name = "txtPlanAdvisorSearch";
+            this.txtPlanAdvisorSearch.Size = new System.Drawing.Size(785, 20);
+            this.txtPlanAdvisorSearch.TabIndex = 65;
+            this.txtPlanAdvisorSearch.WordWrap = false;
+            this.txtPlanAdvisorSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAdvSearch_KeyDown);
+            // 
+            // lblSelectedAdvisor
+            // 
+            this.lblSelectedAdvisor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblSelectedAdvisor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblSelectedAdvisor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSelectedAdvisor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSelectedAdvisor.Font = new System.Drawing.Font("Gadugi", 12F);
+            this.lblSelectedAdvisor.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblSelectedAdvisor.Location = new System.Drawing.Point(7, 440);
+            this.lblSelectedAdvisor.Name = "lblSelectedAdvisor";
+            this.lblSelectedAdvisor.Size = new System.Drawing.Size(446, 32);
+            this.lblSelectedAdvisor.TabIndex = 29;
+            this.lblSelectedAdvisor.Text = "Select a plan advisor";
+            this.lblSelectedAdvisor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button10.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Gadugi", 12F);
+            this.button10.ForeColor = System.Drawing.Color.Black;
+            this.button10.Location = new System.Drawing.Point(968, 438);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(78, 32);
+            this.button10.TabIndex = 11;
+            this.button10.Text = "Open";
+            this.button10.UseVisualStyleBackColor = false;
             // 
             // panel6
             // 
@@ -951,220 +1059,9 @@
             this.label24.Location = new System.Drawing.Point(-2, 0);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(180, 50);
+            this.label24.Size = new System.Drawing.Size(273, 50);
             this.label24.TabIndex = 19;
-            this.label24.Text = "Advisors";
-            // 
-            // panel13
-            // 
-            this.panel13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel13.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel13.Controls.Add(this.dgvAdvForward);
-            this.panel13.Controls.Add(this.dgvAdvBack);
-            this.panel13.Controls.Add(this.dgvAdvisors);
-            this.panel13.Controls.Add(this.label22);
-            this.panel13.Controls.Add(this.cboAdvisorViews);
-            this.panel13.Controls.Add(this.label21);
-            this.panel13.Controls.Add(this.txtAdvisorSearch);
-            this.panel13.Controls.Add(this.lblSelectedAdvisor);
-            this.panel13.Controls.Add(this.button11);
-            this.panel13.Controls.Add(this.button4);
-            this.panel13.Controls.Add(this.button10);
-            this.panel13.Location = new System.Drawing.Point(1, 54);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(1058, 520);
-            this.panel13.TabIndex = 72;
-            // 
-            // dgvAdvForward
-            // 
-            this.dgvAdvForward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dgvAdvForward.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvAdvForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dgvAdvForward.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvAdvForward.Location = new System.Drawing.Point(494, 440);
-            this.dgvAdvForward.Name = "dgvAdvForward";
-            this.dgvAdvForward.Size = new System.Drawing.Size(29, 32);
-            this.dgvAdvForward.TabIndex = 70;
-            this.dgvAdvForward.Text = ">";
-            this.dgvAdvForward.UseVisualStyleBackColor = false;
-            this.dgvAdvForward.Click += new System.EventHandler(this.dgvAdvForward_Click);
-            // 
-            // dgvAdvBack
-            // 
-            this.dgvAdvBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dgvAdvBack.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvAdvBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dgvAdvBack.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvAdvBack.Location = new System.Drawing.Point(459, 440);
-            this.dgvAdvBack.Name = "dgvAdvBack";
-            this.dgvAdvBack.Size = new System.Drawing.Size(29, 32);
-            this.dgvAdvBack.TabIndex = 71;
-            this.dgvAdvBack.Text = "<";
-            this.dgvAdvBack.UseVisualStyleBackColor = false;
-            this.dgvAdvBack.Click += new System.EventHandler(this.dgvAdvBack_Click);
-            // 
-            // dgvAdvisors
-            // 
-            this.dgvAdvisors.AllowUserToAddRows = false;
-            this.dgvAdvisors.AllowUserToDeleteRows = false;
-            this.dgvAdvisors.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvAdvisors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvAdvisors.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvAdvisors.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAdvisors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvAdvisors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAdvisors.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvAdvisors.EnableHeadersVisualStyles = false;
-            this.dgvAdvisors.Location = new System.Drawing.Point(7, 33);
-            this.dgvAdvisors.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvAdvisors.MultiSelect = false;
-            this.dgvAdvisors.Name = "dgvAdvisors";
-            this.dgvAdvisors.ReadOnly = true;
-            this.dgvAdvisors.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvAdvisors.RowHeadersVisible = false;
-            this.dgvAdvisors.RowTemplate.Height = 24;
-            this.dgvAdvisors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvAdvisors.ShowEditingIcon = false;
-            this.dgvAdvisors.Size = new System.Drawing.Size(1039, 402);
-            this.dgvAdvisors.TabIndex = 22;
-            this.dgvAdvisors.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentDoubleClick);
-            this.dgvAdvisors.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdvisors_CellEnter);
-            this.dgvAdvisors.Sorted += new System.EventHandler(this.dgvAdvisors_Sorted);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label22.Location = new System.Drawing.Point(4, 8);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(41, 16);
-            this.label22.TabIndex = 68;
-            this.label22.Text = "Views";
-            // 
-            // cboAdvisorViews
-            // 
-            this.cboAdvisorViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAdvisorViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboAdvisorViews.Items.AddRange(new object[] {
-            "Active Advisors"});
-            this.cboAdvisorViews.Location = new System.Drawing.Point(49, 6);
-            this.cboAdvisorViews.Margin = new System.Windows.Forms.Padding(2);
-            this.cboAdvisorViews.Name = "cboAdvisorViews";
-            this.cboAdvisorViews.Size = new System.Drawing.Size(157, 21);
-            this.cboAdvisorViews.TabIndex = 23;
-            this.cboAdvisorViews.SelectedIndexChanged += new System.EventHandler(this.cboAdvViews_SelectedIndexChanged);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label21.Location = new System.Drawing.Point(210, 8);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(47, 16);
-            this.label21.TabIndex = 67;
-            this.label21.Text = "Search";
-            // 
-            // txtAdvisorSearch
-            // 
-            this.txtAdvisorSearch.AcceptsReturn = true;
-            this.txtAdvisorSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAdvisorSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtAdvisorSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtAdvisorSearch.Location = new System.Drawing.Point(261, 7);
-            this.txtAdvisorSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.txtAdvisorSearch.Name = "txtAdvisorSearch";
-            this.txtAdvisorSearch.Size = new System.Drawing.Size(619, 20);
-            this.txtAdvisorSearch.TabIndex = 65;
-            this.txtAdvisorSearch.WordWrap = false;
-            this.txtAdvisorSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAdvSearch_KeyDown);
-            // 
-            // lblSelectedAdvisor
-            // 
-            this.lblSelectedAdvisor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblSelectedAdvisor.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lblSelectedAdvisor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblSelectedAdvisor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblSelectedAdvisor.Font = new System.Drawing.Font("Gadugi", 12F);
-            this.lblSelectedAdvisor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSelectedAdvisor.Location = new System.Drawing.Point(7, 440);
-            this.lblSelectedAdvisor.Name = "lblSelectedAdvisor";
-            this.lblSelectedAdvisor.Size = new System.Drawing.Size(446, 32);
-            this.lblSelectedAdvisor.TabIndex = 29;
-            this.lblSelectedAdvisor.Text = "Select an advisor";
-            this.lblSelectedAdvisor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // button11
-            // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.Color.Black;
-            this.button11.Location = new System.Drawing.Point(884, 4);
-            this.button11.Margin = new System.Windows.Forms.Padding(2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(78, 26);
-            this.button11.TabIndex = 11;
-            this.button11.Text = "New";
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.NewAdvisor);
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Location = new System.Drawing.Point(968, 4);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(78, 26);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Delete";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
-            // button10
-            // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Gadugi", 12F);
-            this.button10.ForeColor = System.Drawing.Color.Black;
-            this.button10.Location = new System.Drawing.Point(968, 438);
-            this.button10.Margin = new System.Windows.Forms.Padding(2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(78, 32);
-            this.button10.TabIndex = 11;
-            this.button10.Text = "Open";
-            this.button10.UseVisualStyleBackColor = false;
+            this.label24.Text = "Plan Advisors";
             // 
             // tabSearch
             // 
@@ -1543,42 +1440,6 @@
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(1058, 407);
             this.panel14.TabIndex = 35;
-            // 
-            // button19
-            // 
-            this.button19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button19.BackColor = System.Drawing.Color.Transparent;
-            this.button19.BackgroundImage = global::VSP.Properties.Resources.plus;
-            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button19.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.button19.Location = new System.Drawing.Point(1001, 12);
-            this.button19.Margin = new System.Windows.Forms.Padding(0);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(20, 20);
-            this.button19.TabIndex = 96;
-            this.button19.UseVisualStyleBackColor = false;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // button20
-            // 
-            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button20.BackColor = System.Drawing.Color.Transparent;
-            this.button20.BackgroundImage = global::VSP.Properties.Resources.x;
-            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button20.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.button20.Location = new System.Drawing.Point(1026, 12);
-            this.button20.Margin = new System.Windows.Forms.Padding(0);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(20, 20);
-            this.button20.TabIndex = 97;
-            this.button20.UseVisualStyleBackColor = false;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // dgvServices
             // 
@@ -2197,6 +2058,42 @@
             this.label90.Size = new System.Drawing.Size(175, 22);
             this.label90.TabIndex = 3;
             // 
+            // button19
+            // 
+            this.button19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button19.BackColor = System.Drawing.Color.Transparent;
+            this.button19.BackgroundImage = global::VSP.Properties.Resources.plus;
+            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button19.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button19.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.button19.Location = new System.Drawing.Point(1001, 12);
+            this.button19.Margin = new System.Windows.Forms.Padding(0);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(20, 20);
+            this.button19.TabIndex = 96;
+            this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button20
+            // 
+            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button20.BackColor = System.Drawing.Color.Transparent;
+            this.button20.BackgroundImage = global::VSP.Properties.Resources.x;
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button20.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button20.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.button20.Location = new System.Drawing.Point(1026, 12);
+            this.button20.Margin = new System.Windows.Forms.Padding(0);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(20, 20);
+            this.button20.TabIndex = 97;
+            this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
             // btnSaveUserSecurity
             // 
             this.btnSaveUserSecurity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2299,15 +2196,15 @@
             this.tabAuditors.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAuditors)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.tabAdvisors.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAdvisors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlanAdvisors)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.tabSearch.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -2363,8 +2260,6 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label lblCloseForm;
         private System.Windows.Forms.Panel pnlMainHeader;
         private System.Windows.Forms.Label lblFormHeader;
@@ -2372,9 +2267,9 @@
         private System.Windows.Forms.Label lblClients;
         private System.Windows.Forms.Button dgvAdvForward;
         private System.Windows.Forms.Button dgvAdvBack;
-        public System.Windows.Forms.ComboBox cboAdvisorViews;
-        public System.Windows.Forms.DataGridView dgvAdvisors;
-        public System.Windows.Forms.TextBox txtAdvisorSearch;
+        public System.Windows.Forms.ComboBox cboPlanAdvisorViews;
+        public System.Windows.Forms.DataGridView dgvPlanAdvisors;
+        public System.Windows.Forms.TextBox txtPlanAdvisorSearch;
         private System.Windows.Forms.Label lblMinForm;
         public System.Windows.Forms.ComboBox cboUserViews;
         private System.Windows.Forms.Label label16;
@@ -2412,8 +2307,6 @@
         private System.Windows.Forms.Label label13;
         public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
@@ -2434,14 +2327,12 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
-        public System.Windows.Forms.DataGridView dataGridView3;
+        public System.Windows.Forms.DataGridView dgvAuditors;
         private System.Windows.Forms.Label label23;
-        public System.Windows.Forms.ComboBox comboBox3;
+        public System.Windows.Forms.ComboBox cboAuditorViews;
         private System.Windows.Forms.Label label25;
-        public System.Windows.Forms.TextBox textBox3;
+        public System.Windows.Forms.TextBox txtAuditorSearch;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label9;

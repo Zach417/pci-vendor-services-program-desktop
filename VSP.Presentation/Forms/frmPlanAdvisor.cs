@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace VSP.Presentation.Forms
 {
-	public partial class frmProduct : Form, IMessageFilter
+	public partial class frmPlanAdvisor : Form, IMessageFilter
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -31,47 +31,7 @@ namespace VSP.Presentation.Forms
         private HashSet<Control> controlsToMove = new HashSet<Control>();
 
         private frmMain frmMain_Parent;
-        public Product CurrentProduct;
-
-        public void frmProduct_FormLoaded()
-        {
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="mf"></param>
-        /// <param name="Close"></param>
-        public frmProduct(frmMain mf, VSP.Business.Entities.RecordKeeper recordKeeper, FormClosedEventHandler Close = null)
-        {
-            frmSplashScreen ss = new frmSplashScreen();
-            ss.Show();
-            Application.DoEvents();
-
-            InitializeComponent();
-
-            frmMain_Parent = mf;
-
-            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
-
-            Application.AddMessageFilter(this);
-            controlsToMove.Add(this.pnlSummaryTabHeader);
-            controlsToMove.Add(this.panel16);
-            controlsToMove.Add(this.label1);
-            controlsToMove.Add(this.label23);
-
-            FormClosed += Close;
-
-            CurrentProduct = new Product();
-            CurrentProduct.RecordKeeperId = recordKeeper.Id;
-            txtName.Text = CurrentProduct.Name;
-
-            lblMenuServices.Visible = false;
-
-            ss.Close();
-            this.Show();
-        }
+        public VSP.Business.Entities.PlanAdvisor CurrentPlanAdvisor;
 
         /// <summary>
         /// 
@@ -79,7 +39,7 @@ namespace VSP.Presentation.Forms
         /// <param name="mf"></param>
         /// <param name="accountId"></param>
         /// <param name="Close"></param>
-        public frmProduct(frmMain mf, Product product, FormClosedEventHandler Close = null)
+        public frmPlanAdvisor(frmMain mf, VSP.Business.Entities.PlanAdvisor planAdvisor, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -99,8 +59,10 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
-            CurrentProduct = product;
-            txtName.Text = CurrentProduct.Name;
+            DataIntegrationHub.Business.Entities.PlanAdvisor dihPA = new DataIntegrationHub.Business.Entities.PlanAdvisor(planAdvisor.Id);
+
+            CurrentPlanAdvisor = planAdvisor;
+            txtName.Text = dihPA.Name;
 
             cboServicesView.SelectedIndex = 0;
             LoadDgvServices(true);
@@ -211,13 +173,12 @@ namespace VSP.Presentation.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CurrentProduct.Name = txtName.Text;
-            CurrentProduct.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+            CurrentPlanAdvisor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
             // loop through dgvservices, and update productservice records for record keeper product
             if (dgvServices.Rows.Count > 0)
             {
-                DataTable productServices = ProductService.GetAssociated(CurrentProduct);
+                DataTable planAdvisorServices = PlanAdvisorService.GetAssociated(CurrentPlanAdvisor);
 
                 foreach (DataGridViewRow dr in dgvServices.Rows)
                 {
@@ -229,21 +190,21 @@ namespace VSP.Presentation.Forms
                         serviceOffered = bool.Parse(dr.Cells["ServiceOffered"].Value.ToString());
                     }
 
-                    var ps = productServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
+                    var ps = planAdvisorServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
                     if (ps.Any()) // rk product already has service record, so update it
                     {
-                        Guid productServiceId = new Guid(ps.CopyToDataTable().Rows[0]["ProductServiceId"].ToString());
+                        Guid productServiceId = new Guid(ps.CopyToDataTable().Rows[0]["PlanAdvisorServiceId"].ToString());
                         ProductService productService = new ProductService(productServiceId);
                         productService.ServiceOffered = serviceOffered;
                         productService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
                     }
                     else // rk product does not have service record, so create on
                     {
-                        ProductService productService = new ProductService();
-                        productService.ServiceId = serviceId;
-                        productService.ProductId = CurrentProduct.Id;
-                        productService.ServiceOffered = serviceOffered;
-                        productService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+                        PlanAdvisorService planAdvisorService = new PlanAdvisorService();
+                        planAdvisorService.ServiceId = serviceId;
+                        planAdvisorService.PlanAdvisorId = CurrentPlanAdvisor.Id;
+                        planAdvisorService.ServiceOffered = serviceOffered;
+                        planAdvisorService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
                     }
                 }
             }
@@ -273,7 +234,7 @@ namespace VSP.Presentation.Forms
                     return;
             }
 
-            dataTable = dataTable.AsEnumerable().Where(x => x["Type"].ToString() == "Record Keeper").CopyToDataTable();
+            dataTable = dataTable.AsEnumerable().Where(x => x["Type"].ToString() == "Advisor").CopyToDataTable();
 
             dataTable.Columns.Add("ServiceOffered", typeof(bool));
 
@@ -299,13 +260,13 @@ namespace VSP.Presentation.Forms
             // set service offered values
             if (refresh == true)
             {
-                DataTable productServices = ProductService.GetAssociated(CurrentProduct);
+                DataTable planAdvisorServices = PlanAdvisorService.GetAssociated(CurrentPlanAdvisor);
                 int rowIndex = 0;
 
                 foreach (DataGridViewRow drServices in dgvServices.Rows)
                 {
                     Guid serviceId = new Guid(drServices.Cells["ServiceId"].Value.ToString());
-                    var ps = productServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
+                    var ps = planAdvisorServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
                     if (ps.Any()) // rk product already has service record, so update it
                     {
                         DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)dgvServices.Rows[rowIndex].Cells["ServiceOffered"];

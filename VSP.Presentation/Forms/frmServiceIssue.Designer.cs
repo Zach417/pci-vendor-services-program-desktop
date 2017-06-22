@@ -32,26 +32,32 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.tabClientSummary = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtDescription = new System.Windows.Forms.RichTextBox();
-            this.lblAccountInformationHeader = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtAsOfDate = new System.Windows.Forms.RichTextBox();
-            this.txtSubject = new System.Windows.Forms.RichTextBox();
             this.pnlSummaryTabHeader = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
+            this.txtSubject = new System.Windows.Forms.RichTextBox();
+            this.txtAsOfDate = new System.Windows.Forms.RichTextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblAccountInformationHeader = new System.Windows.Forms.Label();
+            this.txtDescription = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboRecordKeeper = new System.Windows.Forms.ComboBox();
+            this.cboPlan = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboAuditor = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
             this.tabClientSummary.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.pnlSummaryTabHeader.SuspendLayout();
             this.tabControlClientDetail.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripSeparator3
@@ -156,9 +162,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(6, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(211, 16);
+            this.label1.Size = new System.Drawing.Size(244, 16);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Vendor Services Program - Service";
+            this.label1.Text = "Vendor Services Program - Service Issue";
             this.label1.DoubleClick += new System.EventHandler(this.MaximizeForm);
             // 
             // toolStripButton1
@@ -200,119 +206,6 @@
             this.tabClientSummary.Size = new System.Drawing.Size(981, 600);
             this.tabClientSummary.TabIndex = 0;
             this.tabClientSummary.Text = "Summary";
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.txtDescription);
-            this.panel2.Controls.Add(this.lblAccountInformationHeader);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label24);
-            this.panel2.Controls.Add(this.txtAsOfDate);
-            this.panel2.Controls.Add(this.txtSubject);
-            this.panel2.Location = new System.Drawing.Point(2, 46);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(968, 545);
-            this.panel2.TabIndex = 58;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Arial", 9F);
-            this.label2.Location = new System.Drawing.Point(19, 81);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 18);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "Description:";
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescription.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDescription.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtDescription.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDescription.Location = new System.Drawing.Point(136, 80);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDescription.Multiline = false;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtDescription.Size = new System.Drawing.Size(814, 458);
-            this.txtDescription.TabIndex = 53;
-            this.txtDescription.Text = "";
-            // 
-            // lblAccountInformationHeader
-            // 
-            this.lblAccountInformationHeader.AutoSize = true;
-            this.lblAccountInformationHeader.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAccountInformationHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(46)))), ((int)(((byte)(71)))));
-            this.lblAccountInformationHeader.Location = new System.Drawing.Point(12, 13);
-            this.lblAccountInformationHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAccountInformationHeader.Name = "lblAccountInformationHeader";
-            this.lblAccountInformationHeader.Size = new System.Drawing.Size(82, 19);
-            this.lblAccountInformationHeader.TabIndex = 40;
-            this.lblAccountInformationHeader.Text = "Summary";
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Arial", 9F);
-            this.label3.Location = new System.Drawing.Point(19, 60);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 18);
-            this.label3.TabIndex = 52;
-            this.label3.Text = "As Of Date:";
-            // 
-            // label24
-            // 
-            this.label24.Font = new System.Drawing.Font("Arial", 9F);
-            this.label24.Location = new System.Drawing.Point(19, 39);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(113, 18);
-            this.label24.TabIndex = 52;
-            this.label24.Text = "Subject:";
-            // 
-            // txtAsOfDate
-            // 
-            this.txtAsOfDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAsOfDate.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtAsOfDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAsOfDate.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtAsOfDate.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtAsOfDate.Location = new System.Drawing.Point(136, 59);
-            this.txtAsOfDate.Margin = new System.Windows.Forms.Padding(2);
-            this.txtAsOfDate.Multiline = false;
-            this.txtAsOfDate.Name = "txtAsOfDate";
-            this.txtAsOfDate.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtAsOfDate.Size = new System.Drawing.Size(814, 19);
-            this.txtAsOfDate.TabIndex = 2;
-            this.txtAsOfDate.Text = "";
-            // 
-            // txtSubject
-            // 
-            this.txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSubject.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtSubject.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSubject.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtSubject.ForeColor = System.Drawing.Color.Black;
-            this.txtSubject.Location = new System.Drawing.Point(136, 38);
-            this.txtSubject.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSubject.Multiline = false;
-            this.txtSubject.Name = "txtSubject";
-            this.txtSubject.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtSubject.Size = new System.Drawing.Size(814, 19);
-            this.txtSubject.TabIndex = 1;
-            this.txtSubject.Text = "";
-            this.txtSubject.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // pnlSummaryTabHeader
             // 
@@ -390,6 +283,197 @@
             this.tabControlClientDetail.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlClientDetail.TabIndex = 37;
             // 
+            // txtSubject
+            // 
+            this.txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSubject.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtSubject.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSubject.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtSubject.ForeColor = System.Drawing.Color.Black;
+            this.txtSubject.Location = new System.Drawing.Point(136, 38);
+            this.txtSubject.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSubject.Multiline = false;
+            this.txtSubject.Name = "txtSubject";
+            this.txtSubject.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtSubject.Size = new System.Drawing.Size(814, 19);
+            this.txtSubject.TabIndex = 1;
+            this.txtSubject.Text = "";
+            this.txtSubject.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            // 
+            // txtAsOfDate
+            // 
+            this.txtAsOfDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAsOfDate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtAsOfDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAsOfDate.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtAsOfDate.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtAsOfDate.Location = new System.Drawing.Point(136, 59);
+            this.txtAsOfDate.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAsOfDate.Multiline = false;
+            this.txtAsOfDate.Name = "txtAsOfDate";
+            this.txtAsOfDate.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtAsOfDate.Size = new System.Drawing.Size(814, 19);
+            this.txtAsOfDate.TabIndex = 2;
+            this.txtAsOfDate.Text = "";
+            // 
+            // label24
+            // 
+            this.label24.Font = new System.Drawing.Font("Arial", 9F);
+            this.label24.Location = new System.Drawing.Point(19, 39);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(113, 18);
+            this.label24.TabIndex = 52;
+            this.label24.Text = "Subject:";
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Arial", 9F);
+            this.label3.Location = new System.Drawing.Point(20, 60);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 18);
+            this.label3.TabIndex = 52;
+            this.label3.Text = "As Of Date:";
+            // 
+            // lblAccountInformationHeader
+            // 
+            this.lblAccountInformationHeader.AutoSize = true;
+            this.lblAccountInformationHeader.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccountInformationHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(46)))), ((int)(((byte)(71)))));
+            this.lblAccountInformationHeader.Location = new System.Drawing.Point(12, 13);
+            this.lblAccountInformationHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAccountInformationHeader.Name = "lblAccountInformationHeader";
+            this.lblAccountInformationHeader.Size = new System.Drawing.Size(82, 19);
+            this.lblAccountInformationHeader.TabIndex = 40;
+            this.lblAccountInformationHeader.Text = "Summary";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescription.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDescription.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtDescription.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtDescription.Location = new System.Drawing.Point(136, 149);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDescription.Multiline = false;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtDescription.Size = new System.Drawing.Size(814, 389);
+            this.txtDescription.TabIndex = 53;
+            this.txtDescription.Text = "";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Arial", 9F);
+            this.label2.Location = new System.Drawing.Point(20, 150);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 18);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Description:";
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Arial", 9F);
+            this.label4.Location = new System.Drawing.Point(20, 105);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(111, 18);
+            this.label4.TabIndex = 54;
+            this.label4.Text = "Plan:";
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Arial", 9F);
+            this.label5.Location = new System.Drawing.Point(20, 82);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 18);
+            this.label5.TabIndex = 54;
+            this.label5.Text = "Record Keeper:";
+            // 
+            // cboRecordKeeper
+            // 
+            this.cboRecordKeeper.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboRecordKeeper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRecordKeeper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboRecordKeeper.Items.AddRange(new object[] {
+            "Active Associated Issues",
+            "Inactive Associated Issues"});
+            this.cboRecordKeeper.Location = new System.Drawing.Point(136, 80);
+            this.cboRecordKeeper.Margin = new System.Windows.Forms.Padding(2);
+            this.cboRecordKeeper.Name = "cboRecordKeeper";
+            this.cboRecordKeeper.Size = new System.Drawing.Size(814, 21);
+            this.cboRecordKeeper.TabIndex = 71;
+            // 
+            // cboPlan
+            // 
+            this.cboPlan.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboPlan.Items.AddRange(new object[] {
+            "Active Associated Issues",
+            "Inactive Associated Issues"});
+            this.cboPlan.Location = new System.Drawing.Point(136, 103);
+            this.cboPlan.Margin = new System.Windows.Forms.Padding(2);
+            this.cboPlan.Name = "cboPlan";
+            this.cboPlan.Size = new System.Drawing.Size(814, 21);
+            this.cboPlan.TabIndex = 72;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Arial", 9F);
+            this.label6.Location = new System.Drawing.Point(20, 128);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(111, 18);
+            this.label6.TabIndex = 73;
+            this.label6.Text = "Auditor:";
+            // 
+            // cboAuditor
+            // 
+            this.cboAuditor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboAuditor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAuditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboAuditor.Items.AddRange(new object[] {
+            "Active Associated Issues",
+            "Inactive Associated Issues"});
+            this.cboAuditor.Location = new System.Drawing.Point(136, 126);
+            this.cboAuditor.Margin = new System.Windows.Forms.Padding(2);
+            this.cboAuditor.Name = "cboAuditor";
+            this.cboAuditor.Size = new System.Drawing.Size(814, 21);
+            this.cboAuditor.TabIndex = 74;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.cboAuditor);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.cboPlan);
+            this.panel2.Controls.Add(this.cboRecordKeeper);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.txtDescription);
+            this.panel2.Controls.Add(this.lblAccountInformationHeader);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label24);
+            this.panel2.Controls.Add(this.txtAsOfDate);
+            this.panel2.Controls.Add(this.txtSubject);
+            this.panel2.Location = new System.Drawing.Point(2, 46);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(968, 545);
+            this.panel2.TabIndex = 58;
+            // 
             // frmServiceIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,18 +490,18 @@
             this.MinimumSize = new System.Drawing.Size(755, 595);
             this.Name = "frmServiceIssue";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Account";
+            this.Text = "Service Issue";
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
             this.tabClientSummary.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.pnlSummaryTabHeader.ResumeLayout(false);
             this.pnlSummaryTabHeader.PerformLayout();
             this.tabControlClientDetail.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -435,18 +519,24 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.TabPage tabClientSummary;
-        private System.Windows.Forms.Panel panel2;
-        public System.Windows.Forms.Label lblAccountInformationHeader;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label24;
-        public System.Windows.Forms.RichTextBox txtAsOfDate;
-        public System.Windows.Forms.RichTextBox txtSubject;
         private System.Windows.Forms.Panel pnlSummaryTabHeader;
         public System.Windows.Forms.Label label23;
         public System.Windows.Forms.Label label56;
         public System.Windows.Forms.TabControl tabControlClientDetail;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.ComboBox cboAuditor;
+        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.ComboBox cboPlan;
+        public System.Windows.Forms.ComboBox cboRecordKeeper;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.RichTextBox txtDescription;
+        public System.Windows.Forms.Label lblAccountInformationHeader;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label24;
+        public System.Windows.Forms.RichTextBox txtAsOfDate;
+        public System.Windows.Forms.RichTextBox txtSubject;
 	}
 }

@@ -31,7 +31,6 @@ namespace VSP.Presentation.Forms
         private HashSet<Control> controlsToMove = new HashSet<Control>();
 
         private frmMain frmMain_Parent;
-        public VSP.Business.Entities.RecordKeeper CurrentRecordKeeper;
         public VSP.Business.Entities.ServiceIssue CurrentServiceIssue;
 
         public frmServiceIssue(frmMain mf, VSP.Business.Entities.RecordKeeper recordKeeper, FormClosedEventHandler Close = null)
@@ -54,9 +53,42 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
-            CurrentRecordKeeper = recordKeeper;
+            PreloadCbos();
+
             CurrentServiceIssue = new ServiceIssue();
-            CurrentServiceIssue.RecordKeeperId = CurrentRecordKeeper.Id;
+            CurrentServiceIssue.RecordKeeperId = recordKeeper.Id;
+            CurrentServiceIssue.AsOfDate = DateTime.Now;
+
+            txtAsOfDate.Text = CurrentServiceIssue.AsOfDate.ToString("MM/dd/yyyy");
+
+            ss.Close();
+            this.Show();
+        }
+
+        public frmServiceIssue(frmMain mf, VSP.Business.Entities.Auditor auditor, FormClosedEventHandler Close = null)
+        {
+            frmSplashScreen ss = new frmSplashScreen();
+            ss.Show();
+            Application.DoEvents();
+
+            InitializeComponent();
+
+            frmMain_Parent = mf;
+
+            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
+
+            Application.AddMessageFilter(this);
+            controlsToMove.Add(this.pnlSummaryTabHeader);
+            controlsToMove.Add(this.panel16);
+            controlsToMove.Add(this.label1);
+            controlsToMove.Add(this.label23);
+
+            FormClosed += Close;
+
+            PreloadCbos();
+
+            CurrentServiceIssue = new ServiceIssue();
+            CurrentServiceIssue.AuditorId = auditor.Id;
             CurrentServiceIssue.AsOfDate = DateTime.Now;
 
             txtAsOfDate.Text = CurrentServiceIssue.AsOfDate.ToString("MM/dd/yyyy");
@@ -85,9 +117,25 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
+            PreloadCbos();
+
             CurrentServiceIssue = serviceIssue;
-            CurrentRecordKeeper = new VSP.Business.Entities.RecordKeeper(CurrentServiceIssue.RecordKeeperId);
             CurrentServiceIssue.AsOfDate = DateTime.Now;
+
+            if (CurrentServiceIssue.RecordKeeperId != null)
+            {
+                cboRecordKeeper.Text = new DataIntegrationHub.Business.Entities.RecordKeeper((Guid)CurrentServiceIssue.RecordKeeperId).Name;
+            }
+
+            if (CurrentServiceIssue.AuditorId != null)
+            {
+                cboAuditor.Text = new DataIntegrationHub.Business.Entities.Auditor((Guid)CurrentServiceIssue.AuditorId).Name;
+            }
+
+            if (CurrentServiceIssue.PlanId != null)
+            {
+                cboPlan.Text = new Plan((Guid)CurrentServiceIssue.PlanId).Name;
+            }
 
             txtSubject.Text = CurrentServiceIssue.SubjectValue;
             txtAsOfDate.Text = CurrentServiceIssue.AsOfDate.ToString("MM/dd/yyyy");
@@ -96,6 +144,36 @@ namespace VSP.Presentation.Forms
             ss.Close();
             this.Show();
 		}
+
+        public void PreloadCbos()
+        {
+            cboRecordKeeper.Items.Clear();
+            cboAuditor.Items.Clear();
+            cboPlan.Items.Clear();
+
+            cboRecordKeeper.Items.Add(new ListItem("", ""));
+            cboAuditor.Items.Add(new ListItem("", ""));
+            cboPlan.Items.Add(new ListItem("", ""));
+
+            foreach (DataRow dr in DataIntegrationHub.Business.Entities.RecordKeeper.GetAll().Rows)
+            {
+                Guid recordKeeperId = new Guid(dr["RecordKeeperId"].ToString());
+                string name = dr["Name"].ToString();
+                cboRecordKeeper.Items.Add(new ListItem(name, recordKeeperId));
+            }
+
+            foreach (DataRow dr in DataIntegrationHub.Business.Entities.Auditor.GetAll().Rows)
+            {
+                Guid auditorId = new Guid(dr["AuditorId"].ToString());
+                string name = dr["Name"].ToString();
+                cboAuditor.Items.Add(new ListItem(name, auditorId));
+            }
+
+            foreach (Plan plan in Plan.Get().OrderBy(x => x.Name))
+            {
+                cboPlan.Items.Add(new ListItem(plan.Name, plan));
+            }
+        }
 
         /// <summary>
         /// Filters out a message before it is dispatched.
@@ -196,7 +274,42 @@ namespace VSP.Presentation.Forms
             CurrentServiceIssue.SubjectValue = txtSubject.Text;
             CurrentServiceIssue.DescriptionValue = txtDescription.Text;
             CurrentServiceIssue.AsOfDate = DateTime.Parse(txtAsOfDate.Text);
+
+            if (cboRecordKeeper.SelectedIndex <= 0)
+            {
+                CurrentServiceIssue.RecordKeeperId =  null;
+            }
+            else
+            {
+                ListItem li = (ListItem)cboRecordKeeper.SelectedItem;
+                Guid recordKeeperId = (Guid)li.HiddenObject;
+                CurrentServiceIssue.RecordKeeperId = recordKeeperId;
+            }
+
+            if (cboAuditor.SelectedIndex <= 0)
+            {
+                CurrentServiceIssue.AuditorId = null;
+            }
+            else
+            {
+                ListItem li = (ListItem)cboAuditor.SelectedItem;
+                Guid auditorId = (Guid)li.HiddenObject;
+                CurrentServiceIssue.AuditorId = auditorId;
+            }
+
+            if (cboPlan.SelectedIndex <= 0)
+            {
+                CurrentServiceIssue.PlanId = null;
+            }
+            else
+            {
+                ListItem li = (ListItem)cboPlan.SelectedItem;
+                Plan plan = (Plan)li.HiddenObject;
+                CurrentServiceIssue.PlanId = plan.PlanId;
+            }
+
             CurrentServiceIssue.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+
             this.Close();
         }
 

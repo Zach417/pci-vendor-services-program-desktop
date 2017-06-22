@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace VSP.Presentation.Forms
 {
-	public partial class frmRecordKeeper : Form, IMessageFilter
+	public partial class frmAuditor : Form, IMessageFilter
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -31,9 +31,9 @@ namespace VSP.Presentation.Forms
         private HashSet<Control> controlsToMove = new HashSet<Control>();
 
         private frmMain frmMain_Parent;
-        public VSP.Business.Entities.RecordKeeper CurrentRK;
+        public VSP.Business.Entities.Auditor CurrentAuditor;
 
-        public frmRecordKeeper(frmMain mf, VSP.Business.Entities.RecordKeeper recordKeeper, FormClosedEventHandler Close = null)
+        public frmAuditor(frmMain mf, VSP.Business.Entities.Auditor auditor, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -53,22 +53,16 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
-            DataIntegrationHub.Business.Entities.RecordKeeper dihRk = new DataIntegrationHub.Business.Entities.RecordKeeper(recordKeeper.Id);
+            DataIntegrationHub.Business.Entities.Auditor dihAuditor = new DataIntegrationHub.Business.Entities.Auditor(auditor.Id);
 
-            CurrentRK = recordKeeper;
-            txtName.Text = dihRk.Name;
-            txtRfpName.Text = dihRk.RfpContactName;
-            txtRfpEmail.Text = dihRk.RfpContactEmail;
-            txtPhilosophyStrategy.Text = CurrentRK.PhilosophyStrategy;
-            txtPoliciesProcedures.Text = CurrentRK.PoliciesProcedures;
-            txtSecurityTechnology.Text = CurrentRK.SecurityTechnology;
-            txtCredentialsExperience.Text = CurrentRK.CredentialsExperiences;
-            txtActionsPenalties.Text = CurrentRK.ActionsPenalties;
-            txtMergersAcquisitions.Text = CurrentRK.MergersAcquisitions;
-            txtFeeArrangementsRelationships.Text = CurrentRK.FeeArrangementsRelationships;
+            CurrentAuditor = auditor;
+            txtName.Text = dihAuditor.Name;
+            txtGeneralInformation.Text = CurrentAuditor.GeneralInformation;
+            txtRetirementBusiness.Text = CurrentAuditor.RetirementBusiness;
+            txtSecurity.Text = CurrentAuditor.Security;
+            txtValueBalance.Text = CurrentAuditor.ValueBalance;
 
             cboIssueViews.SelectedIndex = 0;
-            cboProductViews.SelectedIndex = 0;
 
             ss.Close();
             this.Show();
@@ -154,12 +148,6 @@ namespace VSP.Presentation.Forms
 
         }
 
-        private void lblMenuProducts_Click(object sender, EventArgs e)
-        {
-            Label label = (Label)sender;
-            tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabProducts"];
-        }
-
         private void lblMenuIssues_Click(object sender, EventArgs e)
         {
             Label label = (Label)sender;
@@ -182,14 +170,11 @@ namespace VSP.Presentation.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CurrentRK.PhilosophyStrategy = txtPhilosophyStrategy.Text;
-            CurrentRK.PoliciesProcedures = txtPoliciesProcedures.Text;
-            CurrentRK.SecurityTechnology = txtSecurityTechnology.Text;
-            CurrentRK.CredentialsExperiences = txtCredentialsExperience.Text;
-            CurrentRK.ActionsPenalties = txtActionsPenalties.Text;
-            CurrentRK.MergersAcquisitions = txtMergersAcquisitions.Text;
-            CurrentRK.FeeArrangementsRelationships = txtFeeArrangementsRelationships.Text;
-            CurrentRK.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+            CurrentAuditor.GeneralInformation = txtGeneralInformation.Text;
+            CurrentAuditor.RetirementBusiness = txtRetirementBusiness.Text;
+            CurrentAuditor.Security = txtSecurity.Text;
+            CurrentAuditor.ValueBalance = txtValueBalance.Text;
+            CurrentAuditor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
             this.Close();
         }
 
@@ -217,7 +202,7 @@ namespace VSP.Presentation.Forms
 
             if (dataTable.Rows.Count > 0)
             {
-                var dt = dataTable.AsEnumerable().Where(x => x.Field<Guid>("RecordKeeperId") == CurrentRK.Id);
+                var dt = dataTable.AsEnumerable().Where(x => x.Field<Guid?>("AuditorId") == CurrentAuditor.Id);
                 if (dt.Any())
                 {
                     dataTable = dt.CopyToDataTable();
@@ -266,7 +251,7 @@ namespace VSP.Presentation.Forms
 
         private void btnNewIssue_Click(object sender, EventArgs e)
         {
-            frmServiceIssue frmServiceIssue = new frmServiceIssue(frmMain_Parent, CurrentRK);
+            frmServiceIssue frmServiceIssue = new frmServiceIssue(frmMain_Parent, CurrentAuditor);
             frmServiceIssue.FormClosed += frmServiceIssue_FormClosed;
         }
 
@@ -301,95 +286,6 @@ namespace VSP.Presentation.Forms
             {
                 serviceIssue.DeleteRecordFromDatabase();
                 LoadDgvIssues();
-            }
-        }
-
-        private void LoadDgvProducts()
-        {
-            DataTable dataTable = new DataTable();
-
-            /// Set the datatable based on the SelectedIndex of <see cref="cboIssueViews"/>.
-            switch (cboIssueViews.SelectedIndex)
-            {
-                case 0:
-                    dataTable = Product.GetActive();
-                    break;
-                case 1:
-                    dataTable = Product.GetInactive();
-                    break;
-                default:
-                    return;
-            }
-
-            if (dataTable.Rows.Count > 0)
-            {
-                var dt = dataTable.AsEnumerable().Where(x => x.Field<Guid>("RecordKeeperId") == CurrentRK.Id);
-                if (dt.Any())
-                {
-                    dataTable = dt.CopyToDataTable();
-                }
-                else
-                {
-                    dataTable.Rows.Clear();
-                }
-            }
-
-            dgvProducts.DataSource = dataTable;
-
-            // Display/order the columns.
-            dgvProducts.Columns["ProductId"].Visible = false;
-            dgvProducts.Columns["RecordKeeperId"].Visible = false;
-            dgvProducts.Columns["CreatedBy"].Visible = false;
-            dgvProducts.Columns["ModifiedBy"].Visible = false;
-            dgvProducts.Columns["StateCode"].Visible = false;
-
-            dgvProducts.Columns["Name"].DisplayIndex = 0;
-            dgvProducts.Columns["CreatedOn"].DisplayIndex = 1;
-            dgvProducts.Columns["ModifiedOn"].DisplayIndex = 2;
-        }
-
-        private void frmProduct_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            LoadDgvProducts();
-        }
-
-        private void btnNewProduct_Click(object sender, EventArgs e)
-        {
-            frmProduct frmProduct = new frmProduct(frmMain_Parent, CurrentRK);
-            frmProduct.FormClosed += frmProduct_FormClosed;
-        }
-
-        private void dgvProducts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = dgvProducts.CurrentRow.Index;
-            Guid productId = new Guid(dgvProducts.Rows[index].Cells["ProductId"].Value.ToString());
-            Product product = new Product(productId);
-            frmProduct frmProduct = new frmProduct(frmMain_Parent, product);
-            frmProduct.FormClosed += frmProduct_FormClosed;
-        }
-
-        private void cboProductViews_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadDgvProducts();
-        }
-
-        private void btnDeleteProduct_Click(object sender, EventArgs e)
-        {
-            if (dgvProducts.CurrentRow == null)
-            {
-                return;
-            }
-
-            int index = dgvProducts.CurrentRow.Index;
-            Guid productId = new Guid(dgvProducts.Rows[index].Cells[0].Value.ToString());
-            Product product = new Product(productId);
-
-            DialogResult result = MessageBox.Show("Are you sure you wish to delete " + product.Name + "?", "Attention", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.Yes)
-            {
-                product.DeleteRecordFromDatabase();
-                LoadDgvProducts();
             }
         }
 	}

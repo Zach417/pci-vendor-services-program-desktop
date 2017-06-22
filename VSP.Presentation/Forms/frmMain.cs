@@ -68,7 +68,7 @@ namespace VSP.Presentation.Forms
         internal UserLogin CurrentLoginSession;
 
         private Stopwatch stopWatch = new Stopwatch();
-        private Pagination paginationAdvisors;
+        private Pagination paginationPlanAdvisors;
 
         /// <summary>
         /// Represents the main form of the ISP application.
@@ -104,8 +104,6 @@ namespace VSP.Presentation.Forms
                 return;
             }
 
-            LoadAutoCompleteAdvisors();
-
             HandleAppVersion();
 
             //Start app with the dashboard tab
@@ -120,8 +118,9 @@ namespace VSP.Presentation.Forms
         private void SetDefaultComboBoxValues()
         {
             cboRecordKeeperViews.SelectedIndex = 0;
-            cboAdvisorViews.SelectedIndex = 0;
+            cboPlanAdvisorViews.SelectedIndex = 0;
             cboViewsCategory.SelectedIndex = 0;
+            cboAuditorViews.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -161,7 +160,7 @@ namespace VSP.Presentation.Forms
 
                 if (Security.IsUser() == false && Security.IsAdmin() == false)
                 {
-                    MessageBox.Show("You do not sufficient security privileges to user this application. Please see your system administrator.");
+                    MessageBox.Show("You do not sufficient security privileges to use this application. Please see your system administrator.");
                     return false;
                 }
             }
@@ -226,19 +225,6 @@ namespace VSP.Presentation.Forms
         }
 
         /// <summary>
-        /// Clears and adds string values to the AutoCompleteCustomSource of <see cref="txtAdvisorSearch"/>.
-        /// </summary>
-        private void LoadAutoCompleteAdvisors()
-        {
-            txtAdvisorSearch.AutoCompleteCustomSource.Clear();
-
-            foreach (DataRow dr in UserSearches.GetAssociatedFromTable(CurrentUser.UserId, "Advisors").Rows)
-            {
-                txtAdvisorSearch.AutoCompleteCustomSource.Add(dr["SearchText"].ToString());
-            }
-        }
-
-        /// <summary>
         /// Checks if the application can connect to the relevant databases and servers.
         /// </summary>
         /// <returns>Returns true if the connection did succeed.</returns>
@@ -253,46 +239,6 @@ namespace VSP.Presentation.Forms
             }
 
             return false;
-        }
-
-        private void cboAdvViews_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            paginationAdvisors = new Pagination(dgvAdvisors, Business.Entities.Advisors.GetActive());
-            dgvAdvisors.Columns[0].Visible = false;
-        }
-
-        private void dgvAdvisors_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = dgvAdvisors.CurrentRow.Index;
-            lblSelectedAdvisor.Text = dgvAdvisors.Rows[index].Cells[1].Value.ToString();
-        }
-
-        private void frmAdvisor_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            paginationAdvisors = new Pagination(dgvAdvisors, Business.Entities.Advisors.GetActive());
-            dgvAdvisors.Columns[0].Visible = false;
-        }
-
-        private void NewAdvisor(object sender, EventArgs e)
-        {
-            frmAdvisor frmAdvisor = new frmAdvisor(this);
-            frmAdvisor.FormClosed += frmAdvisor_FormClosed;
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            int index = dgvAdvisors.CurrentRow.Index;
-            Guid advisorId = new Guid(dgvAdvisors.Rows[index].Cells[0].Value.ToString());
-            frmAdvisor frmAdvisor = new frmAdvisor(this, advisorId);
-            frmAdvisor.FormClosed += frmAdvisor_FormClosed;
-        }
-
-        private void dataGridView2_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = dgvAdvisors.CurrentRow.Index;
-            Guid advisorId = new Guid(dgvAdvisors.Rows[index].Cells[0].Value.ToString());
-            frmAdvisor frmAdvisor = new frmAdvisor(this, advisorId);
-            frmAdvisor.FormClosed += frmAdvisor_FormClosed;
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)
@@ -414,48 +360,6 @@ namespace VSP.Presentation.Forms
             tabMain.SelectedIndex = 0;
         }
 
-        private void dgvAdvBack_Click(object sender, EventArgs e)
-        {
-            paginationAdvisors.PageBackward();
-        }
-
-        private void dgvAdvForward_Click(object sender, EventArgs e)
-        {
-            paginationAdvisors.PageForward();
-        }
-
-        private void dgvAdvisors_Sorted(object sender, EventArgs e)
-        {
-            DataGridViewColumn column = dgvAdvisors.SortedColumn;
-            System.Windows.Forms.SortOrder sortOrder = dgvAdvisors.SortOrder;
-
-            paginationAdvisors.Sort(column.Name, sortOrder.ToString());
-        }
-
-        private void txtAdvSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.Handled = true;
-
-                paginationAdvisors = new Pagination(dgvAdvisors, Business.Entities.Advisors.SearchActive(txtAdvisorSearch.Text));
-                dgvAdvisors.Columns[0].Visible = false;
-
-                if (!String.IsNullOrEmpty(txtAdvisorSearch.Text))
-                {
-                    UserSearches userSearch = new UserSearches();
-                    userSearch.SearchText = txtAdvisorSearch.Text;
-                    userSearch.SearchTable = "Advisors";
-                    userSearch.SaveRecordToDatabase(CurrentUser.UserId);
-
-                    txtAdvisorSearch.AutoCompleteCustomSource.Clear();
-
-                    foreach (DataRow dr in Business.Entities.UserSearches.GetAssociatedFromTable(CurrentUser.UserId, "Advisors").Rows)
-                        txtAdvisorSearch.AutoCompleteCustomSource.Add(dr["SearchText"].ToString());
-                }
-            }
-        }
-
         private void lblMinForm_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -482,12 +386,12 @@ namespace VSP.Presentation.Forms
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            int index = dgvAdvisors.CurrentRow.Index;
-            Guid advisorId = new Guid(dgvAdvisors.Rows[index].Cells[0].Value.ToString());
+            int index = dgvPlanAdvisors.CurrentRow.Index;
+            Guid advisorId = new Guid(dgvPlanAdvisors.Rows[index].Cells[0].Value.ToString());
             Advisors advisor = new Advisors(advisorId);
             advisor.DeleteRecordFromDatabase();
-            paginationAdvisors = new Pagination(dgvAdvisors, Business.Entities.Advisors.GetActive());
-            dgvAdvisors.Columns[0].Visible = false;
+            paginationPlanAdvisors = new Pagination(dgvPlanAdvisors, Business.Entities.Advisors.GetActive());
+            dgvPlanAdvisors.Columns[0].Visible = false;
         }
 
         private void lblClients_Click(object sender, EventArgs e)
@@ -569,12 +473,13 @@ namespace VSP.Presentation.Forms
             // Display/order the columns.
             dgvServices.Columns["ServiceId"].Visible = false;
             dgvServices.Columns["CreatedBy"].Visible = false;
+            dgvServices.Columns["CreatedOn"].Visible = false;
             dgvServices.Columns["ModifiedBy"].Visible = false;
             dgvServices.Columns["StateCode"].Visible = false;
 
             dgvServices.Columns["Name"].DisplayIndex = 0;
             dgvServices.Columns["Category"].DisplayIndex = 1;
-            dgvServices.Columns["CreatedOn"].DisplayIndex = 2;
+            dgvServices.Columns["Type"].DisplayIndex = 2;
             dgvServices.Columns["ModifiedOn"].DisplayIndex = 3;
         }
 
@@ -740,13 +645,160 @@ namespace VSP.Presentation.Forms
             frmRecordKeeper.FormClosed += frmRecordKeeper_FormClosed;
         }
 
-        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        private void txtRkSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 e.Handled = true;
                 LoadDgvRecordKeeper();
             }
+        }
+
+        private void LoadDgvAuditors()
+        {
+            DataTable dataTable = DataIntegrationHub.Business.Entities.Auditor.GetAll();
+            var dataTableEnum = dataTable.AsEnumerable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRecordKeeperViews"/>.
+            switch (cboAuditorViews.SelectedIndex)
+            {
+                case 0:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<byte>("StateCode") == 0);
+                    break;
+                case 1:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<byte>("StateCode") == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            if (String.IsNullOrWhiteSpace(txtAuditorSearch.Text) == false)
+            {
+                dataTableEnum = dataTableEnum.Where(x => x.Field<string>("Name").ToUpper().Contains(txtAuditorSearch.Text.ToUpper()));
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
+            }
+
+            dgvAuditors.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvAuditors.Columns["AuditorId"].Visible = false;
+            dgvAuditors.Columns["Name"].DisplayIndex = 0;
+            dgvAuditors.Columns["CreatedBy"].Visible = false;
+            dgvAuditors.Columns["ModifiedBy"].Visible = false;
+            dgvAuditors.Columns["StateCode"].Visible = false;
+
+            dgvAuditors.Columns["Name"].DisplayIndex = 0;
+            dgvAuditors.Columns["CreatedOn"].DisplayIndex = 1;
+            dgvAuditors.Columns["ModifiedOn"].DisplayIndex = 2;
+        }
+
+        private void cboAuditorViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvAuditors();
+        }
+
+        private void txtAuditorSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                LoadDgvAuditors();
+            }
+        }
+
+        private void frmAuditor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvAuditors();
+        }
+
+        private void dgvAuditors_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvAuditors.CurrentRow.Index;
+            Guid auditorId = new Guid(dgvAuditors.Rows[index].Cells["AuditorId"].Value.ToString());
+            VSP.Business.Entities.Auditor auditor = new VSP.Business.Entities.Auditor(auditorId);
+            frmAuditor frmAuditor = new frmAuditor(this, auditor);
+            frmAuditor.FormClosed += frmAuditor_FormClosed;
+        }
+
+        private void LoadDgvPlanAdvisors()
+        {
+            DataTable dataTable = DataIntegrationHub.Business.Entities.PlanAdvisor.GetAll();
+            var dataTableEnum = dataTable.AsEnumerable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboPlanAdvisorViews"/>.
+            switch (cboPlanAdvisorViews.SelectedIndex)
+            {
+                case 0:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<byte>("StateCode") == 0);
+                    break;
+                case 1:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<byte>("StateCode") == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            if (String.IsNullOrWhiteSpace(txtPlanAdvisorSearch.Text) == false)
+            {
+                dataTableEnum = dataTableEnum.Where(x => x.Field<string>("Name").ToUpper().Contains(txtPlanAdvisorSearch.Text.ToUpper()));
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
+            }
+
+            dgvPlanAdvisors.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvPlanAdvisors.Columns["PlanAdvisorId"].Visible = false;
+            dgvPlanAdvisors.Columns["CreatedBy"].Visible = false;
+            dgvPlanAdvisors.Columns["ModifiedBy"].Visible = false;
+            dgvPlanAdvisors.Columns["StateCode"].Visible = false;
+
+            dgvPlanAdvisors.Columns["Name"].DisplayIndex = 0;
+            dgvPlanAdvisors.Columns["CreatedOn"].DisplayIndex = 1;
+            dgvPlanAdvisors.Columns["ModifiedOn"].DisplayIndex = 2;
+        }
+
+        private void cboAdvisorViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvPlanAdvisors();
+        }
+
+        private void txtAdvSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                LoadDgvPlanAdvisors();
+            }
+        }
+
+        private void frmPlanAdvisor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvPlanAdvisors();
+        }
+
+        private void dgvPlanAdvisors_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvPlanAdvisors.CurrentRow.Index;
+            Guid planAdvisorId = new Guid(dgvPlanAdvisors.Rows[index].Cells["PlanAdvisorId"].Value.ToString());
+            VSP.Business.Entities.PlanAdvisor planAdvisor = new VSP.Business.Entities.PlanAdvisor(planAdvisorId);
+            frmPlanAdvisor frmPlanAdvisor = new frmPlanAdvisor(this, planAdvisor);
+            frmPlanAdvisor.FormClosed += frmPlanAdvisor_FormClosed;
         }
     }
 }

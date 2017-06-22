@@ -113,6 +113,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\frmAuditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAuditor.Designer.cs">
+      <DependentUpon>frmAuditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPlanAdvisor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPlanAdvisor.Designer.cs">
+      <DependentUpon>frmPlanAdvisor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmRecordKeeper.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +212,12 @@
     <Compile Include="Forms\frmSplashScreen.Designer.cs">
       <DependentUpon>frmSplashScreen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\frmAuditor.resx">
+      <DependentUpon>frmAuditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPlanAdvisor.resx">
+      <DependentUpon>frmPlanAdvisor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRecordKeeper.resx">
       <DependentUpon>frmRecordKeeper.cs</DependentUpon>
     </EmbeddedResource>
