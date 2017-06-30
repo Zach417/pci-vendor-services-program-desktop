@@ -6,26 +6,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class PlanAdvisor : DatabaseEntity
+    public class AdvisorService : DatabaseEntity
     {
-        public Guid AdvisorId;
-        public Guid PlanId;
-        public DateTime? DateAdded;
-        public DateTime? DateRemoved;
+        public Guid PlanAdvisorId;
+        public Guid ServiceId;
+        public SqlBoolean ServiceOffered;
 
-        private static string _tableName = "PlanAdvisor";
+        private static string _tableName = "AdvisorService";
 
-        public PlanAdvisor()
+        public AdvisorService()
             : base(_tableName)
         {
 
         }
 
-        public PlanAdvisor(Guid primaryKey)
+        public AdvisorService(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -37,10 +37,9 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("AdvisorId", this.AdvisorId);
-            base.AddColumn("PlanId", this.PlanId);
-            base.AddColumn("DateAdded", this.DateAdded);
-            base.AddColumn("DateRemoved", this.DateRemoved);
+            base.AddColumn("PlanAdvisorId", this.PlanAdvisorId);
+            base.AddColumn("ServiceId", this.ServiceId);
+            base.AddColumn("ServiceOffered", this.ServiceOffered);
         }
 
         /// <summary>
@@ -48,10 +47,9 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.AdvisorId = (Guid)base.GetColumn("AdvisorId");
-            this.PlanId = (Guid)base.GetColumn("PlanId");
-            this.DateAdded = (DateTime?)base.GetColumn("DateAdded");
-            this.DateRemoved = (DateTime?)base.GetColumn("DateRemoved");
+            this.PlanAdvisorId = (Guid)base.GetColumn("PlanAdvisorId");
+            this.ServiceId = (Guid)base.GetColumn("ServiceId");
+            this.ServiceOffered = (SqlBoolean)base.GetColumn("ServiceOffered");
         }
 
         public static DataTable GetActive()
@@ -66,9 +64,9 @@ namespace VSP.Business.Entities
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
-        public static DataTable GetAssociated(Guid planId)
+        public static DataTable GetAssociated(Advisor planAdvisor)
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE PlanId = \'" + planId.ToString() + "\'";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE PlanAdvisorId = '" + planAdvisor.Id + "'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

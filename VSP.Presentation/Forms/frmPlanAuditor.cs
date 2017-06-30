@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace VSP.Presentation.Forms
 {
-	public partial class frmPlanAdvisor : Form, IMessageFilter
+	public partial class frmPlanAuditor : Form, IMessageFilter
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -31,14 +31,14 @@ namespace VSP.Presentation.Forms
         private HashSet<Control> controlsToMove = new HashSet<Control>();
 
         private frmMain frmMain_Parent;
-        public VSP.Business.Entities.PlanAdvisor CurrentPlanAdvisor;
+        public PlanAuditor CurrentPlanAuditor;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="mf"></param>
         /// <param name="Close"></param>
-        public frmPlanAdvisor(frmMain mf, Plan plan, FormClosedEventHandler Close = null)
+        public frmPlanAuditor(frmMain mf, Plan plan, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -60,8 +60,8 @@ namespace VSP.Presentation.Forms
 
             PreloadCbos();
 
-            CurrentPlanAdvisor = new VSP.Business.Entities.PlanAdvisor();
-            CurrentPlanAdvisor.PlanId = plan.PlanId;
+            CurrentPlanAuditor = new PlanAuditor();
+            CurrentPlanAuditor.PlanId = plan.PlanId;
 
             cboPlan.Text = plan.Name + " - " + plan.Description;
 
@@ -75,7 +75,7 @@ namespace VSP.Presentation.Forms
         /// <param name="mf"></param>
         /// <param name="accountId"></param>
         /// <param name="Close"></param>
-        public frmPlanAdvisor(frmMain mf, VSP.Business.Entities.PlanAdvisor planAdvisor, FormClosedEventHandler Close = null)
+        public frmPlanAuditor(frmMain mf, PlanAuditor planAuditor, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -97,28 +97,28 @@ namespace VSP.Presentation.Forms
 
             PreloadCbos();
 
-            CurrentPlanAdvisor = planAdvisor;
+            CurrentPlanAuditor = planAuditor;
 
-            if (CurrentPlanAdvisor.PlanId != null)
+            if (CurrentPlanAuditor.PlanId != null)
             {
-                Plan plan = new Plan(CurrentPlanAdvisor.PlanId);
+                Plan plan = new Plan(CurrentPlanAuditor.PlanId);
                 cboPlan.Text = plan.Name + " - " + plan.Description;
             }
 
-            if (CurrentPlanAdvisor.AdvisorId != null)
+            if (CurrentPlanAuditor.AuditorId != null)
             {
-                DataIntegrationHub.Business.Entities.PlanAdvisor advisor = new DataIntegrationHub.Business.Entities.PlanAdvisor(CurrentPlanAdvisor.AdvisorId);
-                cboAdvisor.Text = advisor.Name;
+                DataIntegrationHub.Business.Entities.Auditor auditor = new DataIntegrationHub.Business.Entities.Auditor(CurrentPlanAuditor.AuditorId);
+                cboAuditor.Text = auditor.Name;
             }
 
-            if (CurrentPlanAdvisor.DateAdded != null)
+            if (CurrentPlanAuditor.DateAdded != null)
             {
-                txtDateAdded.Text = ((DateTime)CurrentPlanAdvisor.DateAdded).ToString("MM/dd/yyyy");
+                txtDateAdded.Text = ((DateTime)CurrentPlanAuditor.DateAdded).ToString("MM/dd/yyyy");
             }
 
-            if (CurrentPlanAdvisor.DateRemoved != null)
+            if (CurrentPlanAuditor.DateRemoved != null)
             {
-                txtDateRemoved.Text = ((DateTime)CurrentPlanAdvisor.DateRemoved).ToString("MM/dd/yyyy");
+                txtDateRemoved.Text = ((DateTime)CurrentPlanAuditor.DateRemoved).ToString("MM/dd/yyyy");
             }
 
             ss.Close();
@@ -152,17 +152,17 @@ namespace VSP.Presentation.Forms
 
         public void PreloadCbos()
         {
-            cboAdvisor.Items.Clear();
+            cboAuditor.Items.Clear();
             cboPlan.Items.Clear();
 
-            cboAdvisor.Items.Add(new ListItem("", ""));
+            cboAuditor.Items.Add(new ListItem("", ""));
             cboPlan.Items.Add(new ListItem("", ""));
 
-            foreach (DataRow dr in DataIntegrationHub.Business.Entities.PlanAdvisor.GetAll().Rows)
+            foreach (DataRow dr in DataIntegrationHub.Business.Entities.Auditor.GetAll().Rows)
             {
-                Guid advisorId = new Guid(dr["PlanAdvisorId"].ToString());
+                Guid auditorId = new Guid(dr["AuditorId"].ToString());
                 string name = dr["Name"].ToString();
-                cboAdvisor.Items.Add(new ListItem(name, advisorId));
+                cboAuditor.Items.Add(new ListItem(name, auditorId));
             }
 
             foreach (Plan plan in Plan.Get().OrderBy(x => x.Name))
@@ -242,16 +242,16 @@ namespace VSP.Presentation.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (cboAdvisor.SelectedIndex <= 0)
+            if (cboAuditor.SelectedIndex <= 0)
             {
-                MessageBox.Show("Error: Advisor cannot be left blank.");
+                MessageBox.Show("Error: Auditor cannot be left blank.");
                 return;
             }
             else
             {
-                ListItem li = (ListItem)cboAdvisor.SelectedItem;
-                Guid advisorId = (Guid)li.HiddenObject;
-                CurrentPlanAdvisor.AdvisorId = advisorId;
+                ListItem li = (ListItem)cboAuditor.SelectedItem;
+                Guid auditorId = (Guid)li.HiddenObject;
+                CurrentPlanAuditor.AuditorId = auditorId;
             }
 
             if (cboPlan.SelectedIndex <= 0)
@@ -263,18 +263,18 @@ namespace VSP.Presentation.Forms
             {
                 ListItem li = (ListItem)cboPlan.SelectedItem;
                 Plan plan = (Plan)li.HiddenObject;
-                CurrentPlanAdvisor.PlanId = plan.PlanId;
+                CurrentPlanAuditor.PlanId = plan.PlanId;
             }
 
             if (String.IsNullOrWhiteSpace(txtDateAdded.Text))
             {
-                CurrentPlanAdvisor.DateAdded = null;
+                CurrentPlanAuditor.DateAdded = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanAdvisor.DateAdded = DateTime.Parse(txtDateAdded.Text);
+                    CurrentPlanAuditor.DateAdded = DateTime.Parse(txtDateAdded.Text);
                 }
                 catch
                 {
@@ -285,13 +285,13 @@ namespace VSP.Presentation.Forms
 
             if (String.IsNullOrWhiteSpace(txtDateRemoved.Text))
             {
-                CurrentPlanAdvisor.DateRemoved = null;
+                CurrentPlanAuditor.DateRemoved = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanAdvisor.DateRemoved = DateTime.Parse(txtDateRemoved.Text);
+                    CurrentPlanAuditor.DateRemoved = DateTime.Parse(txtDateRemoved.Text);
                 }
                 catch
                 {
@@ -300,7 +300,7 @@ namespace VSP.Presentation.Forms
                 }
             }
 
-            CurrentPlanAdvisor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+            CurrentPlanAuditor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
             this.Close();
         }

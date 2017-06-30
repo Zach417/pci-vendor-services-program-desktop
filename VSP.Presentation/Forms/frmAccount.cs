@@ -15,6 +15,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
+using FastMember;
+
 namespace VSP.Presentation.Forms
 {
 	public partial class frmAccount : Form, IMessageFilter
@@ -73,6 +75,8 @@ namespace VSP.Presentation.Forms
             txtAddressState.Text = CurrentCustomer.Address.State;
             txtAddressZip.Text = CurrentCustomer.Address.ZipCode;
 
+            cboPlanViews.SelectedIndex = 0;
+
             ss.Close();
             this.Show();
 		}
@@ -104,7 +108,7 @@ namespace VSP.Presentation.Forms
 
         void pictureBox1Click(object sender, EventArgs e)
         {
-            tabControlClientDetail.SelectedIndex = 0;
+            tabControlDetail.SelectedIndex = 0;
         }
 
         void pictureBox1MouseEnter(object sender, EventArgs e)
@@ -119,7 +123,7 @@ namespace VSP.Presentation.Forms
 
         void pictureBox2Click(object sender, EventArgs e)
         {
-            tabControlClientDetail.SelectedIndex = 1;
+            tabControlDetail.SelectedIndex = 1;
         }
 
         private void label23_TextChanged(object sender, EventArgs e)
@@ -130,20 +134,13 @@ namespace VSP.Presentation.Forms
         private void label46_Click(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            tabControlClientDetail.SelectedIndex = 0;
-
+            tabControlDetail.SelectedIndex = 0;
         }
 
-        private void label47_Click(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            tabControlClientDetail.SelectedIndex = 1;
-        }
-
-        private void label49_Click(object sender, EventArgs e)
-        {
-            Label label = (Label)sender;
-            tabControlClientDetail.SelectedIndex = 2;
+            tabControlDetail.SelectedIndex = 1;
         }
 
         private void CloseFormButton_MouseEnter(object sender, EventArgs e)
@@ -206,6 +203,68 @@ namespace VSP.Presentation.Forms
         private void label38_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void LoadDgvPlans()
+        {
+            List<Plan> plans = Plan.Get().FindAll(x => x.CustomerId == CurrentCustomer.CustomerId);
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboPlanViews"/>.
+            switch (cboPlanViews.SelectedIndex)
+            {
+                case 0:
+                    plans = plans.FindAll(x => x.StateCode == 0);
+                    break;
+                case 1:
+                    plans = plans.FindAll(x => x.StateCode == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            // convert list to datatable
+            DataTable dataTable = new DataTable();
+            using (var reader = ObjectReader.Create(plans))
+            {
+                dataTable.Load(reader);
+            }
+
+            dgvPlans.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvPlans.Columns["PlanId"].Visible = false;
+            dgvPlans.Columns["CustomerId"].Visible = false;
+            dgvPlans.Columns["IsManagedPlan"].Visible = false;
+            dgvPlans.Columns["MorningstarName"].Visible = false;
+            dgvPlans.Columns["InceptionDate"].Visible = false;
+            dgvPlans.Columns["CreatedBy"].Visible = false;
+            dgvPlans.Columns["CreatedOn"].Visible = false;
+            dgvPlans.Columns["ModifiedBy"].Visible = false;
+            dgvPlans.Columns["ModifiedOn"].Visible = false;
+            dgvPlans.Columns["StateCode"].Visible = false;
+
+            dgvPlans.Columns["Name"].DisplayIndex = 0;
+            dgvPlans.Columns["Type"].DisplayIndex = 1;
+            dgvPlans.Columns["Description"].DisplayIndex = 2;
+        }
+
+        private void cboPlanViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvPlans();
+        }
+
+        private void dgvPlans_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvPlans.CurrentRow.Index;
+            Guid planId = new Guid(dgvPlans.Rows[index].Cells["PlanId"].Value.ToString());
+            Plan plan = new Plan(planId);
+            frmPlan frmPlan = new frmPlan(frmMain_Parent, plan);
+            frmPlan.FormClosed += frmPlan_FormClosed;
+        }
+
+        private void frmPlan_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvPlans();
         }
 	}
 }

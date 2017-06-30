@@ -10,22 +10,22 @@ using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class PlanAdvisor : DatabaseEntity
+    public class PlanRecordKeeper : DatabaseEntity
     {
-        public Guid AdvisorId;
+        public Guid RecordKeeperId;
         public Guid PlanId;
         public DateTime? DateAdded;
         public DateTime? DateRemoved;
 
-        private static string _tableName = "PlanAdvisor";
+        private static string _tableName = "PlanRecordKeeper";
 
-        public PlanAdvisor()
+        public PlanRecordKeeper()
             : base(_tableName)
         {
 
         }
 
-        public PlanAdvisor(Guid primaryKey)
+        public PlanRecordKeeper(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -37,7 +37,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("AdvisorId", this.AdvisorId);
+            base.AddColumn("RecordKeeperId", this.RecordKeeperId);
             base.AddColumn("PlanId", this.PlanId);
             base.AddColumn("DateAdded", this.DateAdded);
             base.AddColumn("DateRemoved", this.DateRemoved);
@@ -48,7 +48,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.AdvisorId = (Guid)base.GetColumn("AdvisorId");
+            this.RecordKeeperId = (Guid)base.GetColumn("RecordKeeperId");
             this.PlanId = (Guid)base.GetColumn("PlanId");
             this.DateAdded = (DateTime?)base.GetColumn("DateAdded");
             this.DateRemoved = (DateTime?)base.GetColumn("DateRemoved");

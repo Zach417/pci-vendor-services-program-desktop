@@ -25,11 +25,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <MinimumRequiredVersion>0.1.2.0</MinimumRequiredVersion>
+    <MinimumRequiredVersion>0.1.2.1</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>0.1.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -119,11 +119,11 @@
     <Compile Include="Forms\frmAuditor.Designer.cs">
       <DependentUpon>frmAuditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmPlanAdvisor.cs">
+    <Compile Include="Forms\frmAdvisor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmPlanAdvisor.Designer.cs">
-      <DependentUpon>frmPlanAdvisor.cs</DependentUpon>
+    <Compile Include="Forms\frmAdvisor.Designer.cs">
+      <DependentUpon>frmAdvisor.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmRecordKeeper.cs">
       <SubType>Form</SubType>
@@ -136,6 +136,30 @@
     </Compile>
     <Compile Include="Forms\frmProduct.Designer.cs">
       <DependentUpon>frmProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPlan.Designer.cs">
+      <DependentUpon>frmPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPlanRecordKeeper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPlanRecordKeeper.Designer.cs">
+      <DependentUpon>frmPlanRecordKeeper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPlanAdvisor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPlanAdvisor.Designer.cs">
+      <DependentUpon>frmPlanAdvisor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPlanAuditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPlanAuditor.Designer.cs">
+      <DependentUpon>frmPlanAuditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmServiceIssue.cs">
       <SubType>Form</SubType>
@@ -197,14 +221,26 @@
     <EmbeddedResource Include="Forms\frmAuditor.resx">
       <DependentUpon>frmAuditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmPlanAdvisor.resx">
-      <DependentUpon>frmPlanAdvisor.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmAdvisor.resx">
+      <DependentUpon>frmAdvisor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRecordKeeper.resx">
       <DependentUpon>frmRecordKeeper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPlan.resx">
+      <DependentUpon>frmPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPlanRecordKeeper.resx">
+      <DependentUpon>frmPlanRecordKeeper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPlanAdvisor.resx">
+      <DependentUpon>frmPlanAdvisor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPlanAuditor.resx">
+      <DependentUpon>frmPlanAuditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmServiceIssue.resx">
       <DependentUpon>frmServiceIssue.cs</DependentUpon>
@@ -274,6 +310,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\pci-investment-services-program\ISP.Business\ISP.Business.csproj">
+      <Project>{d37153ea-6f66-4472-8097-6dedb9df86d1}</Project>
+      <Name>ISP.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VSP.Business\VSP.Business.csproj">
       <Project>{8a320d7c-0bee-4a9f-963f-ab75b2d49015}</Project>
       <Name>VSP.Business</Name>

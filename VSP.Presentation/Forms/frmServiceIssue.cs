@@ -33,6 +33,53 @@ namespace VSP.Presentation.Forms
         private frmMain frmMain_Parent;
         public VSP.Business.Entities.ServiceIssue CurrentServiceIssue;
 
+        public frmServiceIssue(frmMain mf, DataIntegrationHub.Business.Entities.Plan plan, FormClosedEventHandler Close = null)
+        {
+            frmSplashScreen ss = new frmSplashScreen();
+            ss.Show();
+            Application.DoEvents();
+
+            InitializeComponent();
+
+            frmMain_Parent = mf;
+
+            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
+
+            Application.AddMessageFilter(this);
+            controlsToMove.Add(this.pnlSummaryTabHeader);
+            controlsToMove.Add(this.panel16);
+            controlsToMove.Add(this.label1);
+            controlsToMove.Add(this.label23);
+
+            FormClosed += Close;
+
+            PreloadCbos();
+
+            CurrentServiceIssue = new ServiceIssue();
+            CurrentServiceIssue.PlanId = plan.PlanId;
+            CurrentServiceIssue.AsOfDate = DateTime.Now;
+
+            if (CurrentServiceIssue.RecordKeeperId != null)
+            {
+                cboRecordKeeper.Text = new DataIntegrationHub.Business.Entities.RecordKeeper((Guid)CurrentServiceIssue.RecordKeeperId).Name;
+            }
+
+            if (CurrentServiceIssue.AuditorId != null)
+            {
+                cboAuditor.Text = new DataIntegrationHub.Business.Entities.Auditor((Guid)CurrentServiceIssue.AuditorId).Name;
+            }
+
+            if (CurrentServiceIssue.PlanId != null)
+            {
+                cboPlan.Text = plan.Name + " - " + plan.Description;
+            }
+
+            txtAsOfDate.Text = CurrentServiceIssue.AsOfDate.ToString("MM/dd/yyyy");
+
+            ss.Close();
+            this.Show();
+        }
+
         public frmServiceIssue(frmMain mf, VSP.Business.Entities.RecordKeeper recordKeeper, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
@@ -71,7 +118,8 @@ namespace VSP.Presentation.Forms
 
             if (CurrentServiceIssue.PlanId != null)
             {
-                cboPlan.Text = new Plan((Guid)CurrentServiceIssue.PlanId).Name;
+                Plan plan = new Plan((Guid)CurrentServiceIssue.PlanId);
+                cboPlan.Text = plan.Name + " - " + plan.Description;
             }
 
             txtAsOfDate.Text = CurrentServiceIssue.AsOfDate.ToString("MM/dd/yyyy");
@@ -118,7 +166,8 @@ namespace VSP.Presentation.Forms
 
             if (CurrentServiceIssue.PlanId != null)
             {
-                cboPlan.Text = new Plan((Guid)CurrentServiceIssue.PlanId).Name;
+                Plan plan = new Plan((Guid)CurrentServiceIssue.PlanId);
+                cboPlan.Text = plan.Name + " - " + plan.Description;
             }
 
             txtAsOfDate.Text = CurrentServiceIssue.AsOfDate.ToString("MM/dd/yyyy");
@@ -201,7 +250,7 @@ namespace VSP.Presentation.Forms
 
             foreach (Plan plan in Plan.Get().OrderBy(x => x.Name))
             {
-                cboPlan.Items.Add(new ListItem(plan.Name, plan));
+                cboPlan.Items.Add(new ListItem(plan.Name + " - " + plan.Description, plan));
             }
         }
 

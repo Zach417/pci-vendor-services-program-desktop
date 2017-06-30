@@ -1,6 +1,6 @@
 ﻿namespace VSP.Presentation.Forms
 {
-    partial class frmPlanAdvisor
+    partial class frmPlanRecordKeeper
 	{
 		private System.ComponentModel.IContainer components = null;
 		
@@ -17,7 +17,7 @@
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlanAdvisor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlanRecordKeeper));
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -33,20 +33,20 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.tabClientSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cboPlan = new System.Windows.Forms.ComboBox();
+            this.cboRecordKeeper = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDateRemoved = new System.Windows.Forms.RichTextBox();
+            this.lblAccountInformationHeader = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.txtDateAdded = new System.Windows.Forms.RichTextBox();
-            this.lblAccountInformationHeader = new System.Windows.Forms.Label();
             this.pnlSummaryTabHeader = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
-            this.cboPlan = new System.Windows.Forms.ComboBox();
-            this.cboAdvisor = new System.Windows.Forms.ComboBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -158,9 +158,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(6, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 16);
+            this.label1.Size = new System.Drawing.Size(286, 16);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Vendor Services Program - Plan Advisor";
+            this.label1.Text = "Vendor Services Program - Plan Record Keeper";
             this.label1.DoubleClick += new System.EventHandler(this.MaximizeForm);
             // 
             // toolStripButton1
@@ -211,18 +211,46 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.cboPlan);
-            this.panel2.Controls.Add(this.cboAdvisor);
+            this.panel2.Controls.Add(this.cboRecordKeeper);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.txtDateRemoved);
+            this.panel2.Controls.Add(this.lblAccountInformationHeader);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label24);
             this.panel2.Controls.Add(this.txtDateAdded);
-            this.panel2.Controls.Add(this.lblAccountInformationHeader);
             this.panel2.Location = new System.Drawing.Point(2, 46);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
+            // 
+            // cboPlan
+            // 
+            this.cboPlan.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboPlan.Items.AddRange(new object[] {
+            "Active Associated Issues",
+            "Inactive Associated Issues"});
+            this.cboPlan.Location = new System.Drawing.Point(136, 57);
+            this.cboPlan.Margin = new System.Windows.Forms.Padding(2);
+            this.cboPlan.Name = "cboPlan";
+            this.cboPlan.Size = new System.Drawing.Size(814, 21);
+            this.cboPlan.TabIndex = 74;
+            // 
+            // cboRecordKeeper
+            // 
+            this.cboRecordKeeper.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboRecordKeeper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRecordKeeper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboRecordKeeper.Items.AddRange(new object[] {
+            "Active Associated Issues",
+            "Inactive Associated Issues"});
+            this.cboRecordKeeper.Location = new System.Drawing.Point(136, 34);
+            this.cboRecordKeeper.Margin = new System.Windows.Forms.Padding(2);
+            this.cboRecordKeeper.Name = "cboRecordKeeper";
+            this.cboRecordKeeper.Size = new System.Drawing.Size(814, 21);
+            this.cboRecordKeeper.TabIndex = 73;
             // 
             // label4
             // 
@@ -231,7 +259,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 18);
-            this.label4.TabIndex = 64;
+            this.label4.TabIndex = 56;
             this.label4.Text = "Plan:";
             // 
             // label2
@@ -241,7 +269,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 18);
-            this.label2.TabIndex = 62;
+            this.label2.TabIndex = 54;
             this.label2.Text = "Date Removed:";
             // 
             // txtDateRemoved
@@ -258,8 +286,20 @@
             this.txtDateRemoved.Name = "txtDateRemoved";
             this.txtDateRemoved.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.txtDateRemoved.Size = new System.Drawing.Size(814, 19);
-            this.txtDateRemoved.TabIndex = 61;
+            this.txtDateRemoved.TabIndex = 53;
             this.txtDateRemoved.Text = "";
+            // 
+            // lblAccountInformationHeader
+            // 
+            this.lblAccountInformationHeader.AutoSize = true;
+            this.lblAccountInformationHeader.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccountInformationHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(46)))), ((int)(((byte)(71)))));
+            this.lblAccountInformationHeader.Location = new System.Drawing.Point(12, 13);
+            this.lblAccountInformationHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAccountInformationHeader.Name = "lblAccountInformationHeader";
+            this.lblAccountInformationHeader.Size = new System.Drawing.Size(82, 19);
+            this.lblAccountInformationHeader.TabIndex = 40;
+            this.lblAccountInformationHeader.Text = "Summary";
             // 
             // label3
             // 
@@ -268,7 +308,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 18);
-            this.label3.TabIndex = 59;
+            this.label3.TabIndex = 52;
             this.label3.Text = "Date Added:";
             // 
             // label24
@@ -278,8 +318,8 @@
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(113, 18);
-            this.label24.TabIndex = 60;
-            this.label24.Text = "Advisor:";
+            this.label24.TabIndex = 52;
+            this.label24.Text = "Record Keeper:";
             // 
             // txtDateAdded
             // 
@@ -295,20 +335,8 @@
             this.txtDateAdded.Name = "txtDateAdded";
             this.txtDateAdded.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.txtDateAdded.Size = new System.Drawing.Size(814, 19);
-            this.txtDateAdded.TabIndex = 58;
+            this.txtDateAdded.TabIndex = 2;
             this.txtDateAdded.Text = "";
-            // 
-            // lblAccountInformationHeader
-            // 
-            this.lblAccountInformationHeader.AutoSize = true;
-            this.lblAccountInformationHeader.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAccountInformationHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(46)))), ((int)(((byte)(71)))));
-            this.lblAccountInformationHeader.Location = new System.Drawing.Point(12, 13);
-            this.lblAccountInformationHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAccountInformationHeader.Name = "lblAccountInformationHeader";
-            this.lblAccountInformationHeader.Size = new System.Drawing.Size(82, 19);
-            this.lblAccountInformationHeader.TabIndex = 40;
-            this.lblAccountInformationHeader.Text = "Summary";
             // 
             // pnlSummaryTabHeader
             // 
@@ -353,9 +381,9 @@
             this.label23.Location = new System.Drawing.Point(-3, 1);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(215, 44);
+            this.label23.Size = new System.Drawing.Size(320, 44);
             this.label23.TabIndex = 0;
-            this.label23.Text = "Plan Advisor";
+            this.label23.Text = "Plan Record Keeper";
             this.label23.DoubleClick += new System.EventHandler(this.MaximizeForm);
             // 
             // label56
@@ -386,35 +414,7 @@
             this.tabControlClientDetail.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlClientDetail.TabIndex = 37;
             // 
-            // cboPlan
-            // 
-            this.cboPlan.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboPlan.Items.AddRange(new object[] {
-            "Active Associated Issues",
-            "Inactive Associated Issues"});
-            this.cboPlan.Location = new System.Drawing.Point(136, 57);
-            this.cboPlan.Margin = new System.Windows.Forms.Padding(2);
-            this.cboPlan.Name = "cboPlan";
-            this.cboPlan.Size = new System.Drawing.Size(814, 21);
-            this.cboPlan.TabIndex = 78;
-            // 
-            // cboAdvisor
-            // 
-            this.cboAdvisor.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboAdvisor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAdvisor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboAdvisor.Items.AddRange(new object[] {
-            "Active Associated Issues",
-            "Inactive Associated Issues"});
-            this.cboAdvisor.Location = new System.Drawing.Point(136, 34);
-            this.cboAdvisor.Margin = new System.Windows.Forms.Padding(2);
-            this.cboAdvisor.Name = "cboAdvisor";
-            this.cboAdvisor.Size = new System.Drawing.Size(814, 21);
-            this.cboAdvisor.TabIndex = 77;
-            // 
-            // frmPlanAdvisor
+            // frmPlanRecordKeeper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -428,9 +428,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(755, 595);
-            this.Name = "frmPlanAdvisor";
+            this.Name = "frmPlanRecordKeeper";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Service";
+            this.Text = "Plan Record Keeper";
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -461,18 +461,18 @@
         private System.Windows.Forms.TabPage tabClientSummary;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.Label lblAccountInformationHeader;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label24;
+        public System.Windows.Forms.RichTextBox txtDateAdded;
         private System.Windows.Forms.Panel pnlSummaryTabHeader;
         public System.Windows.Forms.Label label23;
         public System.Windows.Forms.Label label56;
         public System.Windows.Forms.TabControl tabControlClientDetail;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.RichTextBox txtDateRemoved;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label24;
-        public System.Windows.Forms.RichTextBox txtDateAdded;
+        private System.Windows.Forms.Label label4;
         public System.Windows.Forms.ComboBox cboPlan;
-        public System.Windows.Forms.ComboBox cboAdvisor;
+        public System.Windows.Forms.ComboBox cboRecordKeeper;
 	}
 }

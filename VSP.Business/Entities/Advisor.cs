@@ -6,29 +6,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
 using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class PlanAdvisorService : DatabaseEntity
+    public class Advisor : DatabaseEntity
     {
-        public Guid PlanAdvisorId;
-        public Guid ServiceId;
-        public SqlBoolean ServiceOffered;
+        //public string GeneralInformation;
 
-        private static string _tableName = "PlanAdvisorService";
+        private static string _tableName = "Advisor";
 
-        public PlanAdvisorService()
+        public Advisor()
             : base(_tableName)
         {
 
         }
 
-        public PlanAdvisorService(Guid primaryKey)
+        public Advisor(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
-            RefreshMembers();
+            RefreshMembers(true);
         }
 
         /// <summary>
@@ -37,9 +34,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("PlanAdvisorId", this.PlanAdvisorId);
-            base.AddColumn("ServiceId", this.ServiceId);
-            base.AddColumn("ServiceOffered", this.ServiceOffered);
+            //base.AddColumn("GeneralInformation", this.GeneralInformation);
         }
 
         /// <summary>
@@ -47,9 +42,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.PlanAdvisorId = (Guid)base.GetColumn("PlanAdvisorId");
-            this.ServiceId = (Guid)base.GetColumn("ServiceId");
-            this.ServiceOffered = (SqlBoolean)base.GetColumn("ServiceOffered");
+            //this.GeneralInformation = (string)base.GetColumn("GeneralInformation");
         }
 
         public static DataTable GetActive()
@@ -61,12 +54,6 @@ namespace VSP.Business.Entities
         public static DataTable GetInactive()
         {
             string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1";
-            return Access.VspDbAccess.ExecuteSqlQuery(sql);
-        }
-
-        public static DataTable GetAssociated(PlanAdvisor planAdvisor)
-        {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE PlanAdvisorId = '" + planAdvisor.Id + "'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

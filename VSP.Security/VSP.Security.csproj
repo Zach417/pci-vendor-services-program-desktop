@@ -7,8 +7,8 @@
     <ProjectGuid>{0BCC1867-B6FC-4019-BCE7-159EFD5015DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ISP.Security</RootNamespace>
-    <AssemblyName>ISP.Security</AssemblyName>
+    <RootNamespace>VSP.Security</RootNamespace>
+    <AssemblyName>VSP.Security</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

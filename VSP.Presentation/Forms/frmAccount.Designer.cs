@@ -18,8 +18,10 @@
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccount));
-            this.tabControlClientDetail = new System.Windows.Forms.TabControl();
-            this.tabClientSummary = new System.Windows.Forms.TabPage();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.tabControlDetail = new System.Windows.Forms.TabControl();
+            this.tabSummary = new System.Windows.Forms.TabPage();
             this.pnlSummaryTabHeader = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
@@ -62,43 +64,57 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.tabControlClientDetail.SuspendLayout();
-            this.tabClientSummary.SuspendLayout();
+            this.tabPlans = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.dgvPlans = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboPlanViews = new System.Windows.Forms.ComboBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tabControlDetail.SuspendLayout();
+            this.tabSummary.SuspendLayout();
             this.pnlSummaryTabHeader.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
+            this.tabPlans.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlans)).BeginInit();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControlClientDetail
+            // tabControlDetail
             // 
-            this.tabControlClientDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabControlDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlClientDetail.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControlClientDetail.Controls.Add(this.tabClientSummary);
-            this.tabControlClientDetail.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.tabControlClientDetail.Location = new System.Drawing.Point(-6, 0);
-            this.tabControlClientDetail.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControlClientDetail.Name = "tabControlClientDetail";
-            this.tabControlClientDetail.SelectedIndex = 0;
-            this.tabControlClientDetail.Size = new System.Drawing.Size(989, 629);
-            this.tabControlClientDetail.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControlClientDetail.TabIndex = 37;
+            this.tabControlDetail.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.tabControlDetail.Controls.Add(this.tabSummary);
+            this.tabControlDetail.Controls.Add(this.tabPlans);
+            this.tabControlDetail.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tabControlDetail.Location = new System.Drawing.Point(-6, 0);
+            this.tabControlDetail.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControlDetail.Name = "tabControlDetail";
+            this.tabControlDetail.SelectedIndex = 0;
+            this.tabControlDetail.Size = new System.Drawing.Size(989, 629);
+            this.tabControlDetail.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControlDetail.TabIndex = 37;
             // 
-            // tabClientSummary
+            // tabSummary
             // 
-            this.tabClientSummary.BackColor = System.Drawing.Color.Gainsboro;
-            this.tabClientSummary.Controls.Add(this.pnlSummaryTabHeader);
-            this.tabClientSummary.Controls.Add(this.panel2);
-            this.tabClientSummary.Location = new System.Drawing.Point(4, 25);
-            this.tabClientSummary.Margin = new System.Windows.Forms.Padding(2);
-            this.tabClientSummary.Name = "tabClientSummary";
-            this.tabClientSummary.Padding = new System.Windows.Forms.Padding(2);
-            this.tabClientSummary.Size = new System.Drawing.Size(981, 600);
-            this.tabClientSummary.TabIndex = 0;
-            this.tabClientSummary.Text = "Summary";
+            this.tabSummary.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabSummary.Controls.Add(this.pnlSummaryTabHeader);
+            this.tabSummary.Controls.Add(this.panel2);
+            this.tabSummary.Location = new System.Drawing.Point(4, 25);
+            this.tabSummary.Margin = new System.Windows.Forms.Padding(2);
+            this.tabSummary.Name = "tabSummary";
+            this.tabSummary.Padding = new System.Windows.Forms.Padding(2);
+            this.tabSummary.Size = new System.Drawing.Size(981, 600);
+            this.tabSummary.TabIndex = 0;
+            this.tabSummary.Text = "Summary";
             // 
             // pnlSummaryTabHeader
             // 
@@ -556,6 +572,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.Silver;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label46);
             this.panel3.Location = new System.Drawing.Point(0, 615);
             this.panel3.Name = "panel3";
@@ -647,6 +664,157 @@
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
             // 
+            // tabPlans
+            // 
+            this.tabPlans.Controls.Add(this.panel6);
+            this.tabPlans.Controls.Add(this.panel7);
+            this.tabPlans.Location = new System.Drawing.Point(4, 25);
+            this.tabPlans.Name = "tabPlans";
+            this.tabPlans.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPlans.Size = new System.Drawing.Size(981, 600);
+            this.tabPlans.TabIndex = 1;
+            this.tabPlans.Text = "Plans";
+            this.tabPlans.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label2.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(117, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 25);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Plans";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
+            this.label2.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.dgvPlans);
+            this.panel6.Controls.Add(this.label5);
+            this.panel6.Controls.Add(this.cboPlanViews);
+            this.panel6.Location = new System.Drawing.Point(2, 46);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(968, 545);
+            this.panel6.TabIndex = 64;
+            // 
+            // dgvPlans
+            // 
+            this.dgvPlans.AllowUserToAddRows = false;
+            this.dgvPlans.AllowUserToDeleteRows = false;
+            this.dgvPlans.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPlans.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPlans.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvPlans.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPlans.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvPlans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPlans.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPlans.EnableHeadersVisualStyles = false;
+            this.dgvPlans.Location = new System.Drawing.Point(8, 34);
+            this.dgvPlans.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvPlans.MultiSelect = false;
+            this.dgvPlans.Name = "dgvPlans";
+            this.dgvPlans.ReadOnly = true;
+            this.dgvPlans.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvPlans.RowHeadersVisible = false;
+            this.dgvPlans.RowTemplate.Height = 24;
+            this.dgvPlans.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvPlans.ShowEditingIcon = false;
+            this.dgvPlans.Size = new System.Drawing.Size(944, 504);
+            this.dgvPlans.TabIndex = 69;
+            this.dgvPlans.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlans_CellDoubleClick);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label5.Location = new System.Drawing.Point(5, 9);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 16);
+            this.label5.TabIndex = 71;
+            this.label5.Text = "Views";
+            // 
+            // cboPlanViews
+            // 
+            this.cboPlanViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPlanViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboPlanViews.Items.AddRange(new object[] {
+            "Active Associated Plans",
+            "Inactive Associated Plans"});
+            this.cboPlanViews.Location = new System.Drawing.Point(50, 7);
+            this.cboPlanViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboPlanViews.Name = "cboPlanViews";
+            this.cboPlanViews.Size = new System.Drawing.Size(157, 21);
+            this.cboPlanViews.TabIndex = 70;
+            this.cboPlanViews.SelectedIndexChanged += new System.EventHandler(this.cboPlanViews_SelectedIndexChanged);
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.BackColor = System.Drawing.SystemColors.Control;
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.label6);
+            this.panel7.Controls.Add(this.label14);
+            this.panel7.Font = new System.Drawing.Font("High Tower Text", 32F);
+            this.panel7.Location = new System.Drawing.Point(2, 0);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(968, 49);
+            this.panel7.TabIndex = 63;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("High Tower Text", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(-3, 1);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 44);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Plans";
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Gadugi", 20F);
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(8, 46);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(152, 38);
+            this.label14.TabIndex = 40;
+            this.label14.Text = "Summary";
+            // 
             // frmAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -656,7 +824,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel16);
-            this.Controls.Add(this.tabControlClientDetail);
+            this.Controls.Add(this.tabControlDetail);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -664,8 +832,8 @@
             this.Name = "frmAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Account";
-            this.tabControlClientDetail.ResumeLayout(false);
-            this.tabClientSummary.ResumeLayout(false);
+            this.tabControlDetail.ResumeLayout(false);
+            this.tabSummary.ResumeLayout(false);
             this.pnlSummaryTabHeader.ResumeLayout(false);
             this.pnlSummaryTabHeader.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -675,6 +843,12 @@
             this.panel3.PerformLayout();
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
+            this.tabPlans.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPlans)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -703,11 +877,11 @@
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TabPage tabClientSummary;
+        private System.Windows.Forms.TabPage tabSummary;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
         public System.Windows.Forms.RichTextBox assetvalue;
-        public System.Windows.Forms.TabControl tabControlClientDetail;
+        public System.Windows.Forms.TabControl tabControlDetail;
         private System.Windows.Forms.Panel panel4;
         public System.Windows.Forms.Label label25;
         private System.Windows.Forms.Panel pnlSummaryTabHeader;
@@ -722,5 +896,14 @@
         public System.Windows.Forms.Label lblAddressHeader;
         public System.Windows.Forms.Label label56;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.TabPage tabPlans;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel6;
+        public System.Windows.Forms.DataGridView dgvPlans;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.ComboBox cboPlanViews;
+        private System.Windows.Forms.Panel panel7;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label label14;
 	}
 }

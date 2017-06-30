@@ -1,6 +1,6 @@
 ﻿namespace VSP.Presentation.Forms
 {
-    partial class frmPlanAdvisor
+    partial class frmPlanAuditor
 	{
 		private System.ComponentModel.IContainer components = null;
 		
@@ -17,7 +17,7 @@
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlanAdvisor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlanAuditor));
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -46,7 +46,7 @@
             this.label56 = new System.Windows.Forms.Label();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
             this.cboPlan = new System.Windows.Forms.ComboBox();
-            this.cboAdvisor = new System.Windows.Forms.ComboBox();
+            this.cboAuditor = new System.Windows.Forms.ComboBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -158,9 +158,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(6, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 16);
+            this.label1.Size = new System.Drawing.Size(241, 16);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Vendor Services Program - Plan Advisor";
+            this.label1.Text = "Vendor Services Program - Plan Auditor";
             this.label1.DoubleClick += new System.EventHandler(this.MaximizeForm);
             // 
             // toolStripButton1
@@ -211,7 +211,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.cboPlan);
-            this.panel2.Controls.Add(this.cboAdvisor);
+            this.panel2.Controls.Add(this.cboAuditor);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.txtDateRemoved);
@@ -279,7 +279,7 @@
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(113, 18);
             this.label24.TabIndex = 60;
-            this.label24.Text = "Advisor:";
+            this.label24.Text = "Auditor:";
             // 
             // txtDateAdded
             // 
@@ -353,9 +353,9 @@
             this.label23.Location = new System.Drawing.Point(-3, 1);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(215, 44);
+            this.label23.Size = new System.Drawing.Size(216, 44);
             this.label23.TabIndex = 0;
-            this.label23.Text = "Plan Advisor";
+            this.label23.Text = "Plan Auditor";
             this.label23.DoubleClick += new System.EventHandler(this.MaximizeForm);
             // 
             // label56
@@ -398,23 +398,23 @@
             this.cboPlan.Margin = new System.Windows.Forms.Padding(2);
             this.cboPlan.Name = "cboPlan";
             this.cboPlan.Size = new System.Drawing.Size(814, 21);
-            this.cboPlan.TabIndex = 78;
+            this.cboPlan.TabIndex = 76;
             // 
-            // cboAdvisor
+            // cboAuditor
             // 
-            this.cboAdvisor.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboAdvisor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAdvisor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboAdvisor.Items.AddRange(new object[] {
+            this.cboAuditor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboAuditor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAuditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboAuditor.Items.AddRange(new object[] {
             "Active Associated Issues",
             "Inactive Associated Issues"});
-            this.cboAdvisor.Location = new System.Drawing.Point(136, 34);
-            this.cboAdvisor.Margin = new System.Windows.Forms.Padding(2);
-            this.cboAdvisor.Name = "cboAdvisor";
-            this.cboAdvisor.Size = new System.Drawing.Size(814, 21);
-            this.cboAdvisor.TabIndex = 77;
+            this.cboAuditor.Location = new System.Drawing.Point(136, 34);
+            this.cboAuditor.Margin = new System.Windows.Forms.Padding(2);
+            this.cboAuditor.Name = "cboAuditor";
+            this.cboAuditor.Size = new System.Drawing.Size(814, 21);
+            this.cboAuditor.TabIndex = 75;
             // 
-            // frmPlanAdvisor
+            // frmPlanAuditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -428,7 +428,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(755, 595);
-            this.Name = "frmPlanAdvisor";
+            this.Name = "frmPlanAuditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Service";
             this.panel4.ResumeLayout(false);
@@ -473,6 +473,6 @@
         private System.Windows.Forms.Label label24;
         public System.Windows.Forms.RichTextBox txtDateAdded;
         public System.Windows.Forms.ComboBox cboPlan;
-        public System.Windows.Forms.ComboBox cboAdvisor;
+        public System.Windows.Forms.ComboBox cboAuditor;
 	}
 }

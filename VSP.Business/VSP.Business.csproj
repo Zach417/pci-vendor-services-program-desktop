@@ -7,8 +7,8 @@
     <ProjectGuid>{8A320D7C-0BEE-4A9F-963F-AB75B2D49015}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ISP.Business.Entities</RootNamespace>
-    <AssemblyName>ISP.Business</AssemblyName>
+    <RootNamespace>VSP.Business.Entities</RootNamespace>
+    <AssemblyName>VSP.Business</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -48,23 +48,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Access.cs" />
-    <Compile Include="Entities\Advisors.cs" />
-    <Compile Include="Entities\PlanAdvisor.cs" />
+    <Compile Include="Entities\Advisor.cs" />
     <Compile Include="Entities\DatabaseEntity.cs" />
     <Compile Include="Entities\IDatabaseEntity.cs" />
     <Compile Include="Entities\Auditor.cs" />
-    <Compile Include="Entities\PlanAdvisorService.cs" />
+    <Compile Include="Entities\AdvisorService.cs" />
+    <Compile Include="Entities\PlanAdvisor.cs" />
+    <Compile Include="Entities\PlanAuditor.cs" />
+    <Compile Include="Entities\PlanRecordKeeper.cs" />
     <Compile Include="Entities\RecordKeeper.cs" />
     <Compile Include="Entities\SecurityRole.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductService.cs" />
+    <Compile Include="Entities\PlanDetail.cs" />
     <Compile Include="Entities\ServiceIssue.cs" />
     <Compile Include="Entities\Service.cs" />
     <Compile Include="Entities\UserLogin.cs" />
     <Compile Include="Entities\UserSecurityRole.cs" />
     <Compile Include="Utilities\NullHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entities\UserSearches.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Workflows\" />

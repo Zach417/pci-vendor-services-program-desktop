@@ -95,12 +95,7 @@ namespace VSP.Presentation.Forms
 
             CurrentRecordType = selectRecordType;
 
-            if (originalRecord is Advisors)
-            {
-                txtOriginalRecordName.Text = ((Advisors)originalRecord).Name;
-                lblOriginalRecordType.Text = "Advisor";
-            }
-            else if (originalRecord is User)
+            if (originalRecord is User)
             {
                 txtOriginalRecordName.Text = ((User)originalRecord).FullName;
                 lblOriginalRecordType.Text = "User";

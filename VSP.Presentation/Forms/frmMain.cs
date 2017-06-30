@@ -1,7 +1,6 @@
 ﻿using DataIntegrationHub.Business.Entities;
 using DataIntegrationHub.Business.Components;
 
-using VSP;
 using VSP.Business.Components;
 using VSP.Business.Entities;
 using VSP.Presentation;
@@ -13,6 +12,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Deployment.Application;
 using System.Diagnostics;
 using System.Drawing;
@@ -387,16 +387,6 @@ namespace VSP.Presentation.Forms
             }
         }
 
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            int index = dgvPlanAdvisors.CurrentRow.Index;
-            Guid advisorId = new Guid(dgvPlanAdvisors.Rows[index].Cells[0].Value.ToString());
-            Advisors advisor = new Advisors(advisorId);
-            advisor.DeleteRecordFromDatabase();
-            paginationPlanAdvisors = new Pagination(dgvPlanAdvisors, Business.Entities.Advisors.GetActive());
-            dgvPlanAdvisors.Columns[0].Visible = false;
-        }
-
         private void lblClients_Click(object sender, EventArgs e)
         {
             tabMain.SelectedTab = tabMain.TabPages["tabClients"];
@@ -624,7 +614,6 @@ namespace VSP.Presentation.Forms
             dgvRecordKeepers.Columns["RecordKeeperId"].Visible = false;
             dgvRecordKeepers.Columns["PrimaryRfpContactName"].Visible = false;
             dgvRecordKeepers.Columns["PrimaryRfpContactEmail"].Visible = false;
-            dgvRecordKeepers.Columns["Name"].DisplayIndex = 0;
             dgvRecordKeepers.Columns["CreatedBy"].Visible = false;
             dgvRecordKeepers.Columns["ModifiedBy"].Visible = false;
             dgvRecordKeepers.Columns["StateCode"].Visible = false;
@@ -799,8 +788,8 @@ namespace VSP.Presentation.Forms
         {
             int index = dgvPlanAdvisors.CurrentRow.Index;
             Guid planAdvisorId = new Guid(dgvPlanAdvisors.Rows[index].Cells["PlanAdvisorId"].Value.ToString());
-            VSP.Business.Entities.PlanAdvisor planAdvisor = new VSP.Business.Entities.PlanAdvisor(planAdvisorId);
-            frmPlanAdvisor frmPlanAdvisor = new frmPlanAdvisor(this, planAdvisor);
+            VSP.Business.Entities.Advisor planAdvisor = new VSP.Business.Entities.Advisor(planAdvisorId);
+            frmAdvisor frmPlanAdvisor = new frmAdvisor(this, planAdvisor);
             frmPlanAdvisor.FormClosed += frmPlanAdvisor_FormClosed;
         }
 
@@ -812,18 +801,22 @@ namespace VSP.Presentation.Forms
             /// Set the datatable based on the SelectedIndex of <see cref="cboClientViews"/>.
             switch (cboClientViews.SelectedIndex)
             {
-                case 0:
+                case 0: //Active Clients
                     dataTableEnum = dataTableEnum.Where(x => x.Field<byte>("StateCode") == 0);
                     break;
-                case 1:
+                case 1: // Active 3(21) Clients
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<bool>("Is321"));
                     break;
-                case 2:
+                case 2: // Active 3(38) Clients
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<bool>("Is338"));
                     break;
-                case 3:
+                case 3: // Active EC Clients
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<bool>("IsEC"));
                     break;
-                case 4:
+                case 4: // Active VM Clients
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<bool>("IsVM"));
                     break;
-                case 5:
+                case 5: // Inactive Clients
                     dataTableEnum = dataTableEnum.Where(x => x.Field<byte>("StateCode") == 1);
                     break;
                 default:
@@ -857,6 +850,10 @@ namespace VSP.Presentation.Forms
             dgvClients.Columns["AddressCity"].Visible = false;
             dgvClients.Columns["AddressState"].Visible = false;
             dgvClients.Columns["AddressZip"].Visible = false;
+            dgvClients.Columns["Is321"].Visible = false;
+            dgvClients.Columns["Is338"].Visible = false;
+            dgvClients.Columns["IsEC"].Visible = false;
+            dgvClients.Columns["IsVM"].Visible = false;
             dgvClients.Columns["ModifiedBy"].Visible = false;
             dgvClients.Columns["Createdon"].Visible = false;
             dgvClients.Columns["CreatedBy"].Visible = false;

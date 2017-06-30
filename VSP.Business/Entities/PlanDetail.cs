@@ -10,22 +10,19 @@ using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class PlanAdvisor : DatabaseEntity
+    public class PlanDetail : DatabaseEntity
     {
-        public Guid AdvisorId;
         public Guid PlanId;
-        public DateTime? DateAdded;
-        public DateTime? DateRemoved;
 
-        private static string _tableName = "PlanAdvisor";
+        private static string _tableName = "PlanDetail";
 
-        public PlanAdvisor()
+        public PlanDetail()
             : base(_tableName)
         {
 
         }
 
-        public PlanAdvisor(Guid primaryKey)
+        public PlanDetail(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -37,10 +34,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("AdvisorId", this.AdvisorId);
             base.AddColumn("PlanId", this.PlanId);
-            base.AddColumn("DateAdded", this.DateAdded);
-            base.AddColumn("DateRemoved", this.DateRemoved);
         }
 
         /// <summary>
@@ -48,27 +42,18 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.AdvisorId = (Guid)base.GetColumn("AdvisorId");
             this.PlanId = (Guid)base.GetColumn("PlanId");
-            this.DateAdded = (DateTime?)base.GetColumn("DateAdded");
-            this.DateRemoved = (DateTime?)base.GetColumn("DateRemoved");
         }
 
         public static DataTable GetActive()
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0 ORDER BY [Type], [Category], [Name]";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
         public static DataTable GetInactive()
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1";
-            return Access.VspDbAccess.ExecuteSqlQuery(sql);
-        }
-
-        public static DataTable GetAssociated(Guid planId)
-        {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE PlanId = \'" + planId.ToString() + "\'";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1 ORDER BY [Type], [Category], [Name]";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }
