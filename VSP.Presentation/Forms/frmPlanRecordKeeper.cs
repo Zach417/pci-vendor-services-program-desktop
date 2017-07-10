@@ -65,6 +65,9 @@ namespace VSP.Presentation.Forms
 
             cboPlan.Text = plan.Name + " - " + plan.Description;
 
+            lblMenuFees.Visible = false;
+            lblMenuServices.Visible = false;
+
             ss.Close();
             this.Show();
         }
@@ -120,6 +123,10 @@ namespace VSP.Presentation.Forms
             {
                 txtDateRemoved.Text = ((DateTime)CurrentPlanRecordKeeper.DateRemoved).ToString("MM/dd/yyyy");
             }
+
+            cboFeeViews.SelectedIndex = 0;
+            cboServicesView.SelectedIndex = 0;
+            LoadDgvServices(true);
 
             ss.Close();
             this.Show();
@@ -300,9 +307,193 @@ namespace VSP.Presentation.Forms
                 }
             }
 
+            // loop through dgvservices, and update productservice records for record keeper product
+            if (dgvServices.Rows.Count > 0)
+            {
+                DataTable productServices = PlanRecordKeeperService.GetAssociated(CurrentPlanRecordKeeper);
+
+                foreach (DataGridViewRow dr in dgvServices.Rows)
+                {
+                    Guid serviceId = new Guid(dr.Cells["ServiceId"].Value.ToString());
+
+                    bool serviceOffered = false;
+                    if (dr.Cells["ServiceOffered"].Value.ToString() != "")
+                    {
+                        serviceOffered = bool.Parse(dr.Cells["ServiceOffered"].Value.ToString());
+                    }
+
+                    var ps = productServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
+                    if (ps.Any()) // rk product already has service record, so update it
+                    {
+                        Guid planRkServiceId = new Guid(ps.CopyToDataTable().Rows[0]["PlanRecordKeeperServiceId"].ToString());
+                        PlanRecordKeeperService planRkService = new PlanRecordKeeperService(planRkServiceId);
+                        planRkService.ServiceOffered = serviceOffered;
+                        planRkService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+                    }
+                    else // rk product does not have service record, so create on
+                    {
+                        PlanRecordKeeperService planRkService = new PlanRecordKeeperService();
+                        planRkService.ServiceId = serviceId;
+                        planRkService.PlanRecordKeeperId = CurrentPlanRecordKeeper.Id;
+                        planRkService.ServiceOffered = serviceOffered;
+                        planRkService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+                    }
+                }
+            }
+
             CurrentPlanRecordKeeper.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
             this.Close();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabServices"];
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabFees"];
+        }
+
+        private void LoadDgvFees()
+        {
+            DataTable dataTable = new DataTable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboInvestmentViews"/>.
+            switch (cboFeeViews.SelectedIndex)
+            {
+                case 0:
+                    dataTable = PlanRecordKeeperFee.GetAssociatedActive(CurrentPlanRecordKeeper);
+                    break;
+                case 1:
+                    dataTable = PlanRecordKeeperFee.GetAssociatedActive(CurrentPlanRecordKeeper);
+                    break;
+                default:
+                    return;
+            }
+
+            dgvFees.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvFees.Columns["PlanRecordKeeperFeeId"].Visible = false;
+            dgvFees.Columns["PlanId"].Visible = false;
+            dgvFees.Columns["RecordKeeperId"].Visible = false;
+            dgvFees.Columns["CreatedBy"].Visible = false;
+            dgvFees.Columns["ModifiedBy"].Visible = false;
+            dgvFees.Columns["StateCode"].Visible = false;
+
+            dgvFees.Columns["Fee"].DisplayIndex = 0;
+            dgvFees.Columns["AsOfDate"].DisplayIndex = 1;
+            dgvFees.Columns["CreatedOn"].DisplayIndex = 2;
+            dgvFees.Columns["ModifiedOn"].DisplayIndex = 3;
+        }
+
+        private void cboFeeViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvFees();
+        }
+
+        private void btnNewFee_Click(object sender, EventArgs e)
+        {
+            frmPlanRecordKeeperFee frmPlanRecordKeeperFee = new frmPlanRecordKeeperFee(frmMain_Parent, CurrentPlanRecordKeeper);
+            frmPlanRecordKeeperFee.FormClosed += frmPlanRecordKeeperFee_FormClosed;
+        }
+
+        private void frmPlanRecordKeeperFee_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvFees();
+        }
+
+        private void dgvFees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvFees.CurrentRow.Index;
+            Guid planRkFeeId = new Guid(dgvFees.Rows[index].Cells["PlanRecordKeeperFeeId"].Value.ToString());
+            PlanRecordKeeperFee planRkFee = new PlanRecordKeeperFee(planRkFeeId);
+            frmPlanRecordKeeperFee frmPlanRecordKeeperFee = new frmPlanRecordKeeperFee(frmMain_Parent, planRkFee);
+            frmPlanRecordKeeperFee.FormClosed += frmPlanRecordKeeperFee_FormClosed;
+        }
+
+        private void btnDeleteFee_Click(object sender, EventArgs e)
+        {
+            int index = dgvFees.CurrentRow.Index;
+            Guid planRkFeeId = new Guid(dgvFees.Rows[index].Cells["PlanRecordKeeperFeeId"].Value.ToString());
+            PlanRecordKeeperFee planRkFee = new PlanRecordKeeperFee(planRkFeeId);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete the selected plan record keeper fee?", "Attention", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                planRkFee.DeleteRecordFromDatabase();
+                LoadDgvFees();
+            }
+        }
+
+        private void LoadDgvServices(bool refresh = false)
+        {
+            DataTable dataTable = new DataTable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboServicesView"/>.
+            switch (cboServicesView.SelectedIndex)
+            {
+                case 0:
+                    dataTable = Service.GetActive();
+                    break;
+                case 1:
+                    dataTable = Service.GetInactive();
+                    break;
+                default:
+                    return;
+            }
+
+            dataTable = dataTable.AsEnumerable().Where(x => x["Type"].ToString() == "Record Keeper").CopyToDataTable();
+
+            dataTable.Columns.Add("ServiceOffered", typeof(bool));
+
+            dgvServices.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvServices.Columns["ServiceId"].Visible = false;
+            dgvServices.Columns["Type"].Visible = false;
+            dgvServices.Columns["CreatedBy"].Visible = false;
+            dgvServices.Columns["CreatedOn"].Visible = false;
+            dgvServices.Columns["ModifiedBy"].Visible = false;
+            dgvServices.Columns["ModifiedOn"].Visible = false;
+            dgvServices.Columns["StateCode"].Visible = false;
+
+            dgvServices.Columns["Name"].DisplayIndex = 0;
+            dgvServices.Columns["Name"].ReadOnly = true;
+            dgvServices.Columns["Category"].DisplayIndex = 1;
+            dgvServices.Columns["Category"].ReadOnly = true;
+            dgvServices.Columns["ServiceOffered"].DisplayIndex = 2;
+            dgvServices.Columns["ServiceOffered"].ReadOnly = false;
+
+
+            // set service offered values
+            if (refresh == true)
+            {
+                DataTable planRkServices = PlanRecordKeeperService.GetAssociated(CurrentPlanRecordKeeper);
+                int rowIndex = 0;
+
+                foreach (DataGridViewRow drServices in dgvServices.Rows)
+                {
+                    Guid serviceId = new Guid(drServices.Cells["ServiceId"].Value.ToString());
+                    var ps = planRkServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
+                    if (ps.Any()) // rk product already has service record, so update it
+                    {
+                        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)dgvServices.Rows[rowIndex].Cells["ServiceOffered"];
+                        var serviceOffered = SqlBoolean.Parse(ps.CopyToDataTable().Rows[0]["ServiceOffered"].ToString()).IsTrue;
+                        dgvServices.Rows[rowIndex].Cells["ServiceOffered"].Value = serviceOffered.ToString();
+                    }
+
+                    rowIndex++;
+                }
+            }
+        }
+
+        private void cboServicesView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvServices();
         }
 	}
 }

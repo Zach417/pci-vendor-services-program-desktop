@@ -161,6 +161,18 @@
     <Compile Include="Forms\frmPlanAuditor.Designer.cs">
       <DependentUpon>frmPlanAuditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmPlanRecordKeeperFee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPlanRecordKeeperFee.Designer.cs">
+      <DependentUpon>frmPlanRecordKeeperFee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSearch.Designer.cs">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmServiceIssue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +253,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPlanAuditor.resx">
       <DependentUpon>frmPlanAuditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPlanRecordKeeperFee.resx">
+      <DependentUpon>frmPlanRecordKeeperFee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSearch.resx">
+      <DependentUpon>frmSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmServiceIssue.resx">
       <DependentUpon>frmServiceIssue.cs</DependentUpon>

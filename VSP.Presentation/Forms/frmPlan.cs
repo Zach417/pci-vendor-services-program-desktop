@@ -498,12 +498,37 @@ namespace VSP.Presentation.Forms
 
             dgvInvestments.DataSource = dataTable;
 
+            dataTable.Columns.Add("Balance", typeof(string));
+            dataTable.Columns.Add("BalanceAsOf", typeof(string));
+
+            int rowIndex = 0;
+            foreach (DataGridViewRow drInvestments in dgvInvestments.Rows)
+            {
+                Guid rfpId = new Guid(drInvestments.Cells["Relational_Funds_PlansId"].Value.ToString());
+                ISP.Business.Entities.Relational_Funds_Plans rfp = new ISP.Business.Entities.Relational_Funds_Plans(rfpId);
+
+                if (rfp.AssetValue != null)
+                {
+                    dgvInvestments.Rows[rowIndex].Cells["Balance"].Value = "$" + ((decimal)rfp.AssetValue).ToString("#,##.##");
+                }
+
+                if (rfp.AssetValueAsOf != null)
+                {
+                    dgvInvestments.Rows[rowIndex].Cells["BalanceAsOf"].Value = ((DateTime)rfp.AssetValueAsOf).ToString("MM/dd/yyyy");
+                }
+
+                rowIndex++;
+            }
+
             // Display/order the columns.
             dgvInvestments.Columns["FundId"].Visible = false;
             dgvInvestments.Columns["Relational_Funds_PlansId"].Visible = false;
             dgvInvestments.Columns["Ordinal"].Visible = false;
 
-            //dgvInvestments.Columns["FundName"].DisplayIndex = 0;
+            dgvInvestments.Columns["Ticker"].DisplayIndex = 0;
+            dgvInvestments.Columns["Fund Name"].DisplayIndex = 1;
+            dgvInvestments.Columns["Balance"].DisplayIndex = 2;
+            dgvInvestments.Columns["BalanceAsOf"].DisplayIndex = 3;
         }
 
         private void cboInvestments_SelectedIndexChanged(object sender, EventArgs e)
@@ -606,6 +631,15 @@ namespace VSP.Presentation.Forms
                 serviceIssue.DeleteRecordFromDatabase();
                 LoadDgvIssues();
             }
+        }
+
+        private void dgvRKs_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvRKs.CurrentRow.Index;
+            Guid planRkId = new Guid(dgvRKs.Rows[index].Cells["PlanRecordKeeperId"].Value.ToString());
+            PlanRecordKeeper planRK = new PlanRecordKeeper(planRkId);
+            frmPlanRecordKeeper frmPlanRecordKeeper = new frmPlanRecordKeeper(frmMain_Parent, planRK);
+            frmPlanRecordKeeper.FormClosed += frmPlanRecordKeeper_FormClosed;
         }
 	}
 }

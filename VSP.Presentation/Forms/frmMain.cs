@@ -127,6 +127,7 @@ namespace VSP.Presentation.Forms
             cboViewsCategory.SelectedIndex = 0;
             cboAuditorViews.SelectedIndex = 0;
             cboClientViews.SelectedIndex = 0;
+            cboSearchViews.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -887,9 +888,85 @@ namespace VSP.Presentation.Forms
             frmAccount.FormClosed += frmAccount_FormClosed;
         }
 
-        void frmAccount_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmAccount_FormClosed(object sender, FormClosedEventArgs e)
         {
             LoadDgvClients();
+        }
+
+        private void btnNewSearch_Click(object sender, EventArgs e)
+        {
+            frmSearch frmSearch = new frmSearch(this);
+            frmSearch.FormClosed += frmSearch_FormClosed;
+        }
+
+        private void LoadDgvSearches()
+        {
+            DataTable dataTable = new DataTable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboSearchViews"/>.
+            switch (cboSearchViews.SelectedIndex)
+            {
+                case 0:
+                    dataTable = Search.GetActive();
+                    break;
+                case 1:
+                    dataTable = Search.GetInactive();
+                    break;
+                default:
+                    return;
+            }
+
+            dgvSearches.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvSearches.Columns["SearchId"].Visible = false;
+            dgvSearches.Columns["PlanId"].Visible = false;
+            dgvSearches.Columns["CreatedBy"].Visible = false;
+            dgvSearches.Columns["ModifiedBy"].Visible = false;
+            dgvSearches.Columns["StateCode"].Visible = false;
+
+            dgvSearches.Columns["Name"].DisplayIndex = 0;
+            dgvSearches.Columns["CreatedOn"].DisplayIndex = 1;
+            dgvSearches.Columns["ModifiedOn"].DisplayIndex = 2;
+        }
+
+        void frmSearch_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvSearches();
+        }
+
+        private void cboSearchViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvSearches();
+        }
+
+        private void dgvSearches_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvSearches.CurrentRow.Index;
+            Guid searchId = new Guid(dgvSearches.Rows[index].Cells["SearchId"].Value.ToString());
+            Search search = new Search(searchId);
+            frmSearch frmSearch = new frmSearch(this, search);
+            frmSearch.FormClosed += frmSearch_FormClosed;
+        }
+
+        private void btnDeleteSearch_Click(object sender, EventArgs e)
+        {
+            if (dgvSearches.CurrentRow == null)
+            {
+                return;
+            }
+
+            int index = dgvSearches.CurrentRow.Index;
+            Guid searchId = new Guid(dgvSearches.Rows[index].Cells[0].Value.ToString());
+            Search search = new Search(searchId);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete " + search.Name + "?", "Attention", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                search.DeleteRecordFromDatabase();
+                LoadDgvSearches();
+            }
         }
     }
 }
