@@ -11,20 +11,23 @@ using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class Search : DatabaseEntity
+    public class SearchService : DatabaseEntity
     {
-        public Guid PlanId;
-        public string Name;
+        public Guid SearchId;
+        public Guid ServiceId;
+        public SqlBoolean ServiceRequired;
+        public SqlBoolean ServicePreferred;
+        public SqlBoolean ServiceOptional;
 
-        private static string _tableName = "Search";
+        private static string _tableName = "SearchService";
 
-        public Search()
+        public SearchService()
             : base(_tableName)
         {
 
         }
 
-        public Search(Guid primaryKey)
+        public SearchService(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -36,8 +39,11 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("PlanId", this.PlanId);
-            base.AddColumn("Name", this.Name);
+            base.AddColumn("SearchId", this.SearchId);
+            base.AddColumn("ServiceId", this.ServiceId);
+            base.AddColumn("ServiceRequired", this.ServiceRequired);
+            base.AddColumn("ServicePreferred", this.ServicePreferred);
+            base.AddColumn("ServiceOptional", this.ServiceOptional);
         }
 
         /// <summary>
@@ -45,19 +51,11 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.PlanId = (Guid)base.GetColumn("PlanId");
-            this.Name = (string)base.GetColumn("Name");
-        }
-
-        /// <summary>
-        /// Inserts matching record keeper results in SearchRecordKeeper table
-        /// </summary>
-        public void ExecuteSearch(Guid userId)
-        {
-            Hashtable hashTable = new Hashtable();
-            hashTable.Add("@SearchId", this.Id);
-            hashTable.Add("@UserId", userId);
-            Access.VspDbAccess.ExecuteStoredProcedureNonQuery("usp_ExecuteSearch", hashTable);
+            this.SearchId = (Guid)base.GetColumn("SearchId");
+            this.ServiceId = (Guid)base.GetColumn("ServiceId");
+            this.ServiceRequired = (SqlBoolean)base.GetColumn("ServiceRequired");
+            this.ServicePreferred = (SqlBoolean)base.GetColumn("ServicePreferred");
+            this.ServiceOptional = (SqlBoolean)base.GetColumn("ServiceOptional");
         }
 
         public static DataTable GetActive()
@@ -69,6 +67,12 @@ namespace VSP.Business.Entities
         public static DataTable GetInactive()
         {
             string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
+        }
+
+        public static DataTable GetAssociated(Search search)
+        {
+            string sql = @"SELECT * FROM " + _tableName + " WHERE SearchId = '" + search.Id + "'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

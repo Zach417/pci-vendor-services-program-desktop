@@ -25,6 +25,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -33,8 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabClients = new System.Windows.Forms.TabPage();
@@ -91,6 +91,12 @@
             this.label24 = new System.Windows.Forms.Label();
             this.tabSearch = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.btnNewSearch = new System.Windows.Forms.Button();
+            this.btnDeleteSearch = new System.Windows.Forms.Button();
+            this.dgvSearches = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboSearchViews = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.tabSettings = new System.Windows.Forms.TabPage();
@@ -117,6 +123,8 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
             this.dgvServices = new System.Windows.Forms.DataGridView();
             this.label31 = new System.Windows.Forms.Label();
             this.cboServiceViews = new System.Windows.Forms.ComboBox();
@@ -157,14 +165,6 @@
             this.txtCategory = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label90 = new System.Windows.Forms.Label();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.btnNewSearch = new System.Windows.Forms.Button();
-            this.btnDeleteSearch = new System.Windows.Forms.Button();
-            this.dgvSearches = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cboSearchViews = new System.Windows.Forms.ComboBox();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
             this.btnSaveUserSecurity = new System.Windows.Forms.Button();
             this.btnRemoveUser = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
@@ -188,6 +188,8 @@
             this.panel6.SuspendLayout();
             this.tabSearch.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSearches)).BeginInit();
             this.panel4.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -211,8 +213,6 @@
             this.pnlMainHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserSecurity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).BeginInit();
-            this.panel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSearches)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMain
@@ -265,7 +265,7 @@
             this.panel5.Controls.Add(this.button6);
             this.panel5.Location = new System.Drawing.Point(1, 54);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1058, 520);
+            this.panel5.Size = new System.Drawing.Size(1035, 520);
             this.panel5.TabIndex = 73;
             // 
             // button1
@@ -332,7 +332,7 @@
             this.dgvClients.RowTemplate.Height = 24;
             this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvClients.ShowEditingIcon = false;
-            this.dgvClients.Size = new System.Drawing.Size(1039, 402);
+            this.dgvClients.Size = new System.Drawing.Size(1017, 402);
             this.dgvClients.TabIndex = 22;
             this.dgvClients.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellDoubleClick);
             // 
@@ -390,7 +390,7 @@
             this.txtClientSearch.Location = new System.Drawing.Point(261, 7);
             this.txtClientSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientSearch.Name = "txtClientSearch";
-            this.txtClientSearch.Size = new System.Drawing.Size(785, 20);
+            this.txtClientSearch.Size = new System.Drawing.Size(763, 20);
             this.txtClientSearch.TabIndex = 65;
             this.txtClientSearch.WordWrap = false;
             this.txtClientSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClientSearch_KeyDown);
@@ -417,7 +417,7 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Gadugi", 12F);
             this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(968, 438);
+            this.button6.Location = new System.Drawing.Point(946, 438);
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(78, 32);
@@ -435,7 +435,7 @@
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1058, 55);
+            this.panel1.Size = new System.Drawing.Size(1035, 55);
             this.panel1.TabIndex = 22;
             // 
             // label5
@@ -479,7 +479,7 @@
             this.panel7.Controls.Add(this.button13);
             this.panel7.Location = new System.Drawing.Point(1, 54);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1058, 520);
+            this.panel7.Size = new System.Drawing.Size(1036, 520);
             this.panel7.TabIndex = 73;
             // 
             // button7
@@ -546,7 +546,7 @@
             this.dgvRecordKeepers.RowTemplate.Height = 24;
             this.dgvRecordKeepers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvRecordKeepers.ShowEditingIcon = false;
-            this.dgvRecordKeepers.Size = new System.Drawing.Size(1039, 402);
+            this.dgvRecordKeepers.Size = new System.Drawing.Size(1017, 402);
             this.dgvRecordKeepers.TabIndex = 22;
             this.dgvRecordKeepers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecordKeepers_CellDoubleClick);
             // 
@@ -600,7 +600,7 @@
             this.txtRkSearch.Location = new System.Drawing.Point(261, 7);
             this.txtRkSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtRkSearch.Name = "txtRkSearch";
-            this.txtRkSearch.Size = new System.Drawing.Size(785, 20);
+            this.txtRkSearch.Size = new System.Drawing.Size(763, 20);
             this.txtRkSearch.TabIndex = 65;
             this.txtRkSearch.WordWrap = false;
             this.txtRkSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRkSearch_KeyDown);
@@ -627,7 +627,7 @@
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Gadugi", 12F);
             this.button13.ForeColor = System.Drawing.Color.Black;
-            this.button13.Location = new System.Drawing.Point(968, 438);
+            this.button13.Location = new System.Drawing.Point(946, 438);
             this.button13.Margin = new System.Windows.Forms.Padding(2);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(78, 32);
@@ -645,7 +645,7 @@
             this.panel2.Location = new System.Drawing.Point(1, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1058, 55);
+            this.panel2.Size = new System.Drawing.Size(1036, 55);
             this.panel2.TabIndex = 23;
             // 
             // label7
@@ -689,7 +689,7 @@
             this.panel8.Controls.Add(this.button18);
             this.panel8.Location = new System.Drawing.Point(1, 54);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1058, 520);
+            this.panel8.Size = new System.Drawing.Size(1036, 520);
             this.panel8.TabIndex = 73;
             // 
             // button14
@@ -756,7 +756,7 @@
             this.dgvAuditors.RowTemplate.Height = 24;
             this.dgvAuditors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvAuditors.ShowEditingIcon = false;
-            this.dgvAuditors.Size = new System.Drawing.Size(1039, 402);
+            this.dgvAuditors.Size = new System.Drawing.Size(1017, 402);
             this.dgvAuditors.TabIndex = 22;
             this.dgvAuditors.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAuditors_CellDoubleClick);
             // 
@@ -810,7 +810,7 @@
             this.txtAuditorSearch.Location = new System.Drawing.Point(261, 7);
             this.txtAuditorSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtAuditorSearch.Name = "txtAuditorSearch";
-            this.txtAuditorSearch.Size = new System.Drawing.Size(785, 20);
+            this.txtAuditorSearch.Size = new System.Drawing.Size(763, 20);
             this.txtAuditorSearch.TabIndex = 65;
             this.txtAuditorSearch.WordWrap = false;
             this.txtAuditorSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAuditorSearch_KeyDown);
@@ -837,7 +837,7 @@
             this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button18.Font = new System.Drawing.Font("Gadugi", 12F);
             this.button18.ForeColor = System.Drawing.Color.Black;
-            this.button18.Location = new System.Drawing.Point(968, 438);
+            this.button18.Location = new System.Drawing.Point(946, 438);
             this.button18.Margin = new System.Windows.Forms.Padding(2);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(78, 32);
@@ -855,7 +855,7 @@
             this.panel3.Location = new System.Drawing.Point(1, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1058, 55);
+            this.panel3.Size = new System.Drawing.Size(1036, 55);
             this.panel3.TabIndex = 23;
             // 
             // label9
@@ -900,7 +900,7 @@
             this.panel13.Controls.Add(this.button10);
             this.panel13.Location = new System.Drawing.Point(1, 54);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(1058, 520);
+            this.panel13.Size = new System.Drawing.Size(1036, 520);
             this.panel13.TabIndex = 72;
             // 
             // dgvAdvForward
@@ -967,7 +967,7 @@
             this.dgvPlanAdvisors.RowTemplate.Height = 24;
             this.dgvPlanAdvisors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvPlanAdvisors.ShowEditingIcon = false;
-            this.dgvPlanAdvisors.Size = new System.Drawing.Size(1039, 402);
+            this.dgvPlanAdvisors.Size = new System.Drawing.Size(1017, 402);
             this.dgvPlanAdvisors.TabIndex = 22;
             this.dgvPlanAdvisors.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanAdvisors_CellDoubleClick);
             // 
@@ -1021,7 +1021,7 @@
             this.txtPlanAdvisorSearch.Location = new System.Drawing.Point(261, 7);
             this.txtPlanAdvisorSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlanAdvisorSearch.Name = "txtPlanAdvisorSearch";
-            this.txtPlanAdvisorSearch.Size = new System.Drawing.Size(785, 20);
+            this.txtPlanAdvisorSearch.Size = new System.Drawing.Size(763, 20);
             this.txtPlanAdvisorSearch.TabIndex = 65;
             this.txtPlanAdvisorSearch.WordWrap = false;
             this.txtPlanAdvisorSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAdvSearch_KeyDown);
@@ -1048,7 +1048,7 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Gadugi", 12F);
             this.button10.ForeColor = System.Drawing.Color.Black;
-            this.button10.Location = new System.Drawing.Point(968, 438);
+            this.button10.Location = new System.Drawing.Point(946, 438);
             this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(78, 32);
@@ -1066,7 +1066,7 @@
             this.panel6.Location = new System.Drawing.Point(1, 0);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1058, 55);
+            this.panel6.Size = new System.Drawing.Size(1036, 55);
             this.panel6.TabIndex = 21;
             this.panel6.DoubleClick += new System.EventHandler(this.MaximizeForm);
             // 
@@ -1095,13 +1095,134 @@
             // 
             // panel9
             // 
+            this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel9.BackColor = System.Drawing.Color.Gainsboro;
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.panel15);
             this.panel9.Location = new System.Drawing.Point(1, 54);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1058, 482);
+            this.panel9.Size = new System.Drawing.Size(1036, 482);
             this.panel9.TabIndex = 34;
+            // 
+            // panel15
+            // 
+            this.panel15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel15.Controls.Add(this.btnNewSearch);
+            this.panel15.Controls.Add(this.btnDeleteSearch);
+            this.panel15.Controls.Add(this.dgvSearches);
+            this.panel15.Controls.Add(this.label4);
+            this.panel15.Controls.Add(this.cboSearchViews);
+            this.panel15.Location = new System.Drawing.Point(-2, -2);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(1037, 482);
+            this.panel15.TabIndex = 67;
+            // 
+            // btnNewSearch
+            // 
+            this.btnNewSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewSearch.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNewSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewSearch.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewSearch.ForeColor = System.Drawing.Color.Black;
+            this.btnNewSearch.Location = new System.Drawing.Point(865, 4);
+            this.btnNewSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewSearch.Name = "btnNewSearch";
+            this.btnNewSearch.Size = new System.Drawing.Size(78, 26);
+            this.btnNewSearch.TabIndex = 74;
+            this.btnNewSearch.Text = "New";
+            this.btnNewSearch.UseVisualStyleBackColor = false;
+            this.btnNewSearch.Click += new System.EventHandler(this.btnNewSearch_Click);
+            // 
+            // btnDeleteSearch
+            // 
+            this.btnDeleteSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteSearch.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDeleteSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteSearch.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteSearch.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteSearch.Location = new System.Drawing.Point(949, 4);
+            this.btnDeleteSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteSearch.Name = "btnDeleteSearch";
+            this.btnDeleteSearch.Size = new System.Drawing.Size(78, 26);
+            this.btnDeleteSearch.TabIndex = 75;
+            this.btnDeleteSearch.Text = "Delete";
+            this.btnDeleteSearch.UseVisualStyleBackColor = false;
+            this.btnDeleteSearch.Click += new System.EventHandler(this.btnDeleteSearch_Click);
+            // 
+            // dgvSearches
+            // 
+            this.dgvSearches.AllowUserToAddRows = false;
+            this.dgvSearches.AllowUserToDeleteRows = false;
+            this.dgvSearches.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSearches.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSearches.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvSearches.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSearches.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvSearches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSearches.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvSearches.EnableHeadersVisualStyles = false;
+            this.dgvSearches.Location = new System.Drawing.Point(8, 34);
+            this.dgvSearches.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvSearches.MultiSelect = false;
+            this.dgvSearches.Name = "dgvSearches";
+            this.dgvSearches.ReadOnly = true;
+            this.dgvSearches.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvSearches.RowHeadersVisible = false;
+            this.dgvSearches.RowTemplate.Height = 24;
+            this.dgvSearches.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvSearches.ShowEditingIcon = false;
+            this.dgvSearches.Size = new System.Drawing.Size(1019, 438);
+            this.dgvSearches.TabIndex = 69;
+            this.dgvSearches.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearches_CellDoubleClick);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label4.Location = new System.Drawing.Point(5, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 16);
+            this.label4.TabIndex = 71;
+            this.label4.Text = "Views";
+            // 
+            // cboSearchViews
+            // 
+            this.cboSearchViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSearchViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboSearchViews.Items.AddRange(new object[] {
+            "Active Searches",
+            "Inactive Searches"});
+            this.cboSearchViews.Location = new System.Drawing.Point(50, 7);
+            this.cboSearchViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboSearchViews.Name = "cboSearchViews";
+            this.cboSearchViews.Size = new System.Drawing.Size(157, 21);
+            this.cboSearchViews.TabIndex = 70;
+            this.cboSearchViews.SelectedIndexChanged += new System.EventHandler(this.cboSearchViews_SelectedIndexChanged);
             // 
             // panel4
             // 
@@ -1113,7 +1234,7 @@
             this.panel4.Location = new System.Drawing.Point(1, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1058, 55);
+            this.panel4.Size = new System.Drawing.Size(1036, 55);
             this.panel4.TabIndex = 23;
             // 
             // label10
@@ -1152,7 +1273,7 @@
             this.panel10.Location = new System.Drawing.Point(1, 0);
             this.panel10.Margin = new System.Windows.Forms.Padding(2);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1058, 55);
+            this.panel10.Size = new System.Drawing.Size(1036, 55);
             this.panel10.TabIndex = 25;
             this.panel10.DoubleClick += new System.EventHandler(this.MaximizeForm);
             // 
@@ -1178,7 +1299,7 @@
             this.panel24.Controls.Add(this.label89);
             this.panel24.Location = new System.Drawing.Point(1, 492);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(1058, 41);
+            this.panel24.Size = new System.Drawing.Size(1036, 41);
             this.panel24.TabIndex = 29;
             // 
             // label1
@@ -1278,7 +1399,7 @@
             this.panel22.Location = new System.Drawing.Point(1, 0);
             this.panel22.Margin = new System.Windows.Forms.Padding(2);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(1058, 35);
+            this.panel22.Size = new System.Drawing.Size(1036, 35);
             this.panel22.TabIndex = 32;
             // 
             // label33
@@ -1302,7 +1423,7 @@
             this.panel11.Controls.Add(this.cboUsersViews);
             this.panel11.Location = new System.Drawing.Point(1, 33);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(1058, 406);
+            this.panel11.Size = new System.Drawing.Size(1036, 406);
             this.panel11.TabIndex = 33;
             // 
             // dgvUsers
@@ -1343,7 +1464,7 @@
             this.dgvUsers.RowTemplate.Height = 24;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvUsers.ShowEditingIcon = false;
-            this.dgvUsers.Size = new System.Drawing.Size(1036, 362);
+            this.dgvUsers.Size = new System.Drawing.Size(1014, 362);
             this.dgvUsers.TabIndex = 69;
             this.dgvUsers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellDoubleClick);
             // 
@@ -1461,6 +1582,42 @@
             this.panel14.Size = new System.Drawing.Size(1058, 407);
             this.panel14.TabIndex = 35;
             // 
+            // button19
+            // 
+            this.button19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button19.BackColor = System.Drawing.Color.Transparent;
+            this.button19.BackgroundImage = global::VSP.Properties.Resources.plus;
+            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button19.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button19.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.button19.Location = new System.Drawing.Point(1001, 12);
+            this.button19.Margin = new System.Windows.Forms.Padding(0);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(20, 20);
+            this.button19.TabIndex = 96;
+            this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button20
+            // 
+            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button20.BackColor = System.Drawing.Color.Transparent;
+            this.button20.BackgroundImage = global::VSP.Properties.Resources.x;
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button20.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button20.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.button20.Location = new System.Drawing.Point(1026, 12);
+            this.button20.Margin = new System.Windows.Forms.Padding(0);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(20, 20);
+            this.button20.TabIndex = 97;
+            this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
             // dgvServices
             // 
             this.dgvServices.AllowUserToAddRows = false;
@@ -1537,7 +1694,7 @@
             this.lblCloseForm.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblCloseForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCloseForm.ForeColor = System.Drawing.Color.White;
-            this.lblCloseForm.Location = new System.Drawing.Point(1030, 1);
+            this.lblCloseForm.Location = new System.Drawing.Point(1007, 1);
             this.lblCloseForm.Name = "lblCloseForm";
             this.lblCloseForm.Size = new System.Drawing.Size(25, 25);
             this.lblCloseForm.TabIndex = 22;
@@ -1587,7 +1744,7 @@
             this.lblLoginStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblLoginStatus.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoginStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblLoginStatus.Location = new System.Drawing.Point(776, 2);
+            this.lblLoginStatus.Location = new System.Drawing.Point(754, 2);
             this.lblLoginStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLoginStatus.Name = "lblLoginStatus";
             this.lblLoginStatus.Size = new System.Drawing.Size(278, 15);
@@ -1620,7 +1777,7 @@
             this.pnlAppStatus.Location = new System.Drawing.Point(0, 609);
             this.pnlAppStatus.Margin = new System.Windows.Forms.Padding(2);
             this.pnlAppStatus.Name = "pnlAppStatus";
-            this.pnlAppStatus.Size = new System.Drawing.Size(1058, 21);
+            this.pnlAppStatus.Size = new System.Drawing.Size(1036, 21);
             this.pnlAppStatus.TabIndex = 58;
             // 
             // pnlMainMnu
@@ -1637,7 +1794,7 @@
             this.pnlMainMnu.Controls.Add(this.lblClients);
             this.pnlMainMnu.Location = new System.Drawing.Point(0, 557);
             this.pnlMainMnu.Name = "pnlMainMnu";
-            this.pnlMainMnu.Size = new System.Drawing.Size(1058, 53);
+            this.pnlMainMnu.Size = new System.Drawing.Size(1036, 53);
             this.pnlMainMnu.TabIndex = 21;
             // 
             // lblSearch
@@ -1735,7 +1892,7 @@
             this.pnlMainHeader.Controls.Add(this.lblFormHeader);
             this.pnlMainHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlMainHeader.Name = "pnlMainHeader";
-            this.pnlMainHeader.Size = new System.Drawing.Size(1058, 27);
+            this.pnlMainHeader.Size = new System.Drawing.Size(1035, 27);
             this.pnlMainHeader.TabIndex = 59;
             this.pnlMainHeader.DoubleClick += new System.EventHandler(this.MaximizeForm);
             // 
@@ -1745,7 +1902,7 @@
             this.lblMinForm.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblMinForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMinForm.ForeColor = System.Drawing.Color.White;
-            this.lblMinForm.Location = new System.Drawing.Point(1002, 1);
+            this.lblMinForm.Location = new System.Drawing.Point(979, 1);
             this.lblMinForm.Name = "lblMinForm";
             this.lblMinForm.Size = new System.Drawing.Size(25, 25);
             this.lblMinForm.TabIndex = 22;
@@ -2078,160 +2235,6 @@
             this.label90.Size = new System.Drawing.Size(175, 22);
             this.label90.TabIndex = 3;
             // 
-            // panel15
-            // 
-            this.panel15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel15.Controls.Add(this.btnNewSearch);
-            this.panel15.Controls.Add(this.btnDeleteSearch);
-            this.panel15.Controls.Add(this.dgvSearches);
-            this.panel15.Controls.Add(this.label4);
-            this.panel15.Controls.Add(this.cboSearchViews);
-            this.panel15.Location = new System.Drawing.Point(-2, -2);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(1058, 482);
-            this.panel15.TabIndex = 67;
-            // 
-            // btnNewSearch
-            // 
-            this.btnNewSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNewSearch.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNewSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewSearch.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnNewSearch.Location = new System.Drawing.Point(885, 4);
-            this.btnNewSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNewSearch.Name = "btnNewSearch";
-            this.btnNewSearch.Size = new System.Drawing.Size(78, 26);
-            this.btnNewSearch.TabIndex = 74;
-            this.btnNewSearch.Text = "New";
-            this.btnNewSearch.UseVisualStyleBackColor = false;
-            this.btnNewSearch.Click += new System.EventHandler(this.btnNewSearch_Click);
-            // 
-            // btnDeleteSearch
-            // 
-            this.btnDeleteSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeleteSearch.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnDeleteSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteSearch.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnDeleteSearch.Location = new System.Drawing.Point(969, 4);
-            this.btnDeleteSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeleteSearch.Name = "btnDeleteSearch";
-            this.btnDeleteSearch.Size = new System.Drawing.Size(78, 26);
-            this.btnDeleteSearch.TabIndex = 75;
-            this.btnDeleteSearch.Text = "Delete";
-            this.btnDeleteSearch.UseVisualStyleBackColor = false;
-            this.btnDeleteSearch.Click += new System.EventHandler(this.btnDeleteSearch_Click);
-            // 
-            // dgvSearches
-            // 
-            this.dgvSearches.AllowUserToAddRows = false;
-            this.dgvSearches.AllowUserToDeleteRows = false;
-            this.dgvSearches.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvSearches.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvSearches.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvSearches.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSearches.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvSearches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSearches.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvSearches.EnableHeadersVisualStyles = false;
-            this.dgvSearches.Location = new System.Drawing.Point(8, 34);
-            this.dgvSearches.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvSearches.MultiSelect = false;
-            this.dgvSearches.Name = "dgvSearches";
-            this.dgvSearches.ReadOnly = true;
-            this.dgvSearches.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvSearches.RowHeadersVisible = false;
-            this.dgvSearches.RowTemplate.Height = 24;
-            this.dgvSearches.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvSearches.ShowEditingIcon = false;
-            this.dgvSearches.Size = new System.Drawing.Size(1039, 438);
-            this.dgvSearches.TabIndex = 69;
-            this.dgvSearches.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearches_CellDoubleClick);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(5, 9);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 16);
-            this.label4.TabIndex = 71;
-            this.label4.Text = "Views";
-            // 
-            // cboSearchViews
-            // 
-            this.cboSearchViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSearchViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboSearchViews.Items.AddRange(new object[] {
-            "Active Searches",
-            "Inactive Searches"});
-            this.cboSearchViews.Location = new System.Drawing.Point(50, 7);
-            this.cboSearchViews.Margin = new System.Windows.Forms.Padding(2);
-            this.cboSearchViews.Name = "cboSearchViews";
-            this.cboSearchViews.Size = new System.Drawing.Size(157, 21);
-            this.cboSearchViews.TabIndex = 70;
-            this.cboSearchViews.SelectedIndexChanged += new System.EventHandler(this.cboSearchViews_SelectedIndexChanged);
-            // 
-            // button19
-            // 
-            this.button19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button19.BackColor = System.Drawing.Color.Transparent;
-            this.button19.BackgroundImage = global::VSP.Properties.Resources.plus;
-            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button19.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.button19.Location = new System.Drawing.Point(1001, 12);
-            this.button19.Margin = new System.Windows.Forms.Padding(0);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(20, 20);
-            this.button19.TabIndex = 96;
-            this.button19.UseVisualStyleBackColor = false;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // button20
-            // 
-            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button20.BackColor = System.Drawing.Color.Transparent;
-            this.button20.BackgroundImage = global::VSP.Properties.Resources.x;
-            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button20.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.button20.Location = new System.Drawing.Point(1026, 12);
-            this.button20.Margin = new System.Windows.Forms.Padding(0);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(20, 20);
-            this.button20.TabIndex = 97;
-            this.button20.UseVisualStyleBackColor = false;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
-            // 
             // btnSaveUserSecurity
             // 
             this.btnSaveUserSecurity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2306,7 +2309,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1058, 630);
+            this.ClientSize = new System.Drawing.Size(1036, 630);
             this.Controls.Add(this.pnlMainMnu);
             this.Controls.Add(this.pnlAppStatus);
             this.Controls.Add(this.pnlMainHeader);
@@ -2345,6 +2348,9 @@
             this.panel6.PerformLayout();
             this.tabSearch.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSearches)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.tabSettings.ResumeLayout(false);
@@ -2378,9 +2384,6 @@
             this.pnlMainHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserSecurity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).EndInit();
-            this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSearches)).EndInit();
             this.ResumeLayout(false);
 
         }

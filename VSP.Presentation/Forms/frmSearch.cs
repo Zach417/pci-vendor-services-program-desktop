@@ -94,6 +94,12 @@ namespace VSP.Presentation.Forms
             CurrentSearch = search;
             txtName.Text = CurrentSearch.Name;
 
+            cboResultsView.SelectedIndex = 0;
+            cboFundViews.SelectedIndex = 0;
+            cboQuestionViews.SelectedIndex = 0;
+            cboServicesView.SelectedIndex = 0;
+            LoadDgvServices(true);
+
             ss.Close();
             this.Show();
 		}
@@ -174,7 +180,7 @@ namespace VSP.Presentation.Forms
         private void label46_Click(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            tabControlClientDetail.SelectedIndex = 0;
+            tabControlDetail.SelectedIndex = 0;
 
         }
 
@@ -194,14 +200,246 @@ namespace VSP.Presentation.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CurrentSearch.Name = txtName.Text;
-            CurrentSearch.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+            Save();
             this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             label23.Text = txtName.Text;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabServices"];
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabResults"];
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabQuestions"];
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabFunds"];
+        }
+
+        private void LoadDgvServices(bool refresh = false)
+        {
+            DataTable dataTable = new DataTable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboServicesView"/>.
+            switch (cboServicesView.SelectedIndex)
+            {
+                case 0:
+                    dataTable = Service.GetActive();
+                    break;
+                case 1:
+                    dataTable = Service.GetInactive();
+                    break;
+                default:
+                    return;
+            }
+
+            dataTable = dataTable.AsEnumerable().Where(x => x["Type"].ToString() == "Record Keeper").CopyToDataTable();
+
+            dataTable.Columns.Add("ServiceRequired", typeof(bool));
+            dataTable.Columns.Add("ServicePreferred", typeof(bool));
+            dataTable.Columns.Add("ServiceOptional", typeof(bool));
+
+            dgvServices.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvServices.Columns["ServiceId"].Visible = false;
+            dgvServices.Columns["Type"].Visible = false;
+            dgvServices.Columns["CreatedBy"].Visible = false;
+            dgvServices.Columns["CreatedOn"].Visible = false;
+            dgvServices.Columns["ModifiedBy"].Visible = false;
+            dgvServices.Columns["ModifiedOn"].Visible = false;
+            dgvServices.Columns["StateCode"].Visible = false;
+
+            dgvServices.Columns["Name"].DisplayIndex = 0;
+            dgvServices.Columns["Name"].ReadOnly = true;
+            dgvServices.Columns["Category"].DisplayIndex = 1;
+            dgvServices.Columns["Category"].ReadOnly = true;
+            dgvServices.Columns["ServiceRequired"].DisplayIndex = 2;
+            dgvServices.Columns["ServiceRequired"].ReadOnly = false;
+            dgvServices.Columns["ServicePreferred"].DisplayIndex = 3;
+            dgvServices.Columns["ServicePreferred"].ReadOnly = false;
+            dgvServices.Columns["ServiceOptional"].DisplayIndex = 4;
+            dgvServices.Columns["ServiceOptional"].ReadOnly = false;
+
+
+            // set service offered values
+            if (refresh == true)
+            {
+                DataTable planRkServices = SearchService.GetAssociated(CurrentSearch);
+                int rowIndex = 0;
+
+                foreach (DataGridViewRow drServices in dgvServices.Rows)
+                {
+                    Guid serviceId = new Guid(drServices.Cells["ServiceId"].Value.ToString());
+                    var ps = planRkServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
+                    if (ps.Any()) // rk product already has service record, so update it
+                    {
+                        var serviceRequired = SqlBoolean.Parse(ps.CopyToDataTable().Rows[0]["ServiceRequired"].ToString()).IsTrue;
+                        dgvServices.Rows[rowIndex].Cells["ServiceRequired"].Value = serviceRequired.ToString();
+
+                        var servicePreferred = SqlBoolean.Parse(ps.CopyToDataTable().Rows[0]["ServicePreferred"].ToString()).IsTrue;
+                        dgvServices.Rows[rowIndex].Cells["ServicePreferred"].Value = servicePreferred.ToString();
+
+                        var serviceOptional = SqlBoolean.Parse(ps.CopyToDataTable().Rows[0]["ServiceOptional"].ToString()).IsTrue;
+                        dgvServices.Rows[rowIndex].Cells["ServiceOptional"].Value = serviceOptional.ToString();
+                    }
+
+                    rowIndex++;
+                }
+            }
+        }
+
+        private void cboServicesView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvServices();
+        }
+
+        private void LoadDgvResults()
+        {
+            DataTable dataTable = SearchRecordKeeper.GetAssociated(CurrentSearch);
+            var dataTableEnum = dataTable.AsEnumerable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboResultsView"/>.
+            switch (cboResultsView.SelectedIndex)
+            {
+                case 0:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 0);
+                    break;
+                case 1:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
+            }
+
+            dataTable.Columns.Add("RecordKeeper", typeof(string));
+
+            dgvResults.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvResults.Columns["SearchRecordKeeperId"].Visible = false;
+            dgvResults.Columns["SearchId"].Visible = false;
+            dgvResults.Columns["RecordKeeperId"].Visible = false;
+            dgvResults.Columns["ModifiedBy"].Visible = false;
+            dgvResults.Columns["ModifiedOn"].Visible = false;
+            dgvResults.Columns["CreatedBy"].Visible = false;
+            dgvResults.Columns["CreatedOn"].Visible = false;
+            dgvResults.Columns["StateCode"].Visible = false;
+
+            dgvResults.Columns["Ordinal"].DisplayIndex = 0;
+            dgvResults.Columns["RecordKeeper"].DisplayIndex = 1;
+
+
+            int rowIndex = 0;
+            foreach (DataGridViewRow dr in dgvResults.Rows)
+            {
+                Guid recordKeeperId = new Guid(dr.Cells["RecordKeeperId"].Value.ToString());
+                DataIntegrationHub.Business.Entities.RecordKeeper recordKeeper = new DataIntegrationHub.Business.Entities.RecordKeeper(recordKeeperId);
+                dgvResults.Rows[rowIndex].Cells["RecordKeeper"].Value = recordKeeper.Name;
+                rowIndex++;
+            }
+        }
+
+        private void cboResultsView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvResults();
+        }
+
+        private void SaveServices()
+        {
+            // loop through dgvservices, and update productservice records for record keeper product
+            if (dgvServices.Rows.Count > 0)
+            {
+                DataTable searchServices = SearchService.GetAssociated(CurrentSearch);
+
+                foreach (DataGridViewRow dr in dgvServices.Rows)
+                {
+                    Guid serviceId = new Guid(dr.Cells["ServiceId"].Value.ToString());
+
+                    bool serviceRequired = false;
+                    bool servicePreferred = false;
+                    bool serviceOptional = false;
+
+                    if (dr.Cells["ServiceRequired"].Value.ToString() != "")
+                    {
+                        serviceRequired = bool.Parse(dr.Cells["ServiceRequired"].Value.ToString());
+                    }
+
+                    if (dr.Cells["ServicePreferred"].Value.ToString() != "")
+                    {
+                        servicePreferred = bool.Parse(dr.Cells["ServicePreferred"].Value.ToString());
+                    }
+
+                    if (dr.Cells["ServiceOptional"].Value.ToString() != "")
+                    {
+                        serviceOptional = bool.Parse(dr.Cells["ServiceOptional"].Value.ToString());
+                    }
+
+                    var ps = searchServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
+                    if (ps.Any()) // rk product already has service record, so update it
+                    {
+                        Guid searchServiceId = new Guid(ps.CopyToDataTable().Rows[0]["SearchServiceId"].ToString());
+                        SearchService searchService = new SearchService(searchServiceId);
+                        searchService.ServiceRequired = serviceRequired;
+                        searchService.ServicePreferred = servicePreferred;
+                        searchService.ServiceOptional = serviceOptional;
+                        searchService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+                    }
+                    else // rk product does not have service record, so create one
+                    {
+                        SearchService searchService = new SearchService();
+                        searchService.ServiceId = serviceId;
+                        searchService.SearchId = CurrentSearch.Id;
+                        searchService.ServiceRequired = serviceRequired;
+                        searchService.ServicePreferred = servicePreferred;
+                        searchService.ServiceOptional = serviceOptional;
+                        searchService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+                    }
+                }
+            }
+        }
+
+        private void Save()
+        {
+            CurrentSearch.Name = txtName.Text;
+            CurrentSearch.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+            SaveServices();
+        }
+
+        private void btnExecuteSearch_Click(object sender, EventArgs e)
+        {
+            frmSplashScreen frmSplashScreen = new frmSplashScreen();
+            frmSplashScreen.Show();
+            Application.DoEvents();
+
+            SaveServices();
+            CurrentSearch.ExecuteSearch(frmMain_Parent.CurrentUser.UserId);
+            LoadDgvResults();
+            tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabResults"];
+
+            frmSplashScreen.Close();
         }
 	}
 }

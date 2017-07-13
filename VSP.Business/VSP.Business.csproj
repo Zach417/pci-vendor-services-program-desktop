@@ -56,6 +56,8 @@
     <Compile Include="Entities\PlanAdvisor.cs" />
     <Compile Include="Entities\PlanAuditor.cs" />
     <Compile Include="Entities\PlanRecordKeeper.cs" />
+    <Compile Include="Entities\SearchRecordKeeper.cs" />
+    <Compile Include="Entities\SearchService.cs" />
     <Compile Include="Entities\PlanRecordKeeperService.cs" />
     <Compile Include="Entities\PlanRecordKeeperFee.cs" />
     <Compile Include="Entities\RecordKeeper.cs" />
