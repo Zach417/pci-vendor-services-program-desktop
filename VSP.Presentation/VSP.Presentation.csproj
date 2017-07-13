@@ -173,6 +173,18 @@
     <Compile Include="Forms\frmSearch.Designer.cs">
       <DependentUpon>frmSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmSearchQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSearchQuestion.Designer.cs">
+      <DependentUpon>frmSearchQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSearchFund.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSearchFund.Designer.cs">
+      <DependentUpon>frmSearchFund.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmServiceIssue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +271,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmSearch.resx">
       <DependentUpon>frmSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSearchQuestion.resx">
+      <DependentUpon>frmSearchQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSearchFund.resx">
+      <DependentUpon>frmSearchFund.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmServiceIssue.resx">
       <DependentUpon>frmServiceIssue.cs</DependentUpon>

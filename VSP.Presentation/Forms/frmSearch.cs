@@ -335,6 +335,7 @@ namespace VSP.Presentation.Forms
             }
 
             dataTable.Columns.Add("RecordKeeper", typeof(string));
+            dataTable.Columns.Add("URL", typeof(string));
 
             dgvResults.DataSource = dataTable;
 
@@ -350,6 +351,7 @@ namespace VSP.Presentation.Forms
 
             dgvResults.Columns["Ordinal"].DisplayIndex = 0;
             dgvResults.Columns["RecordKeeper"].DisplayIndex = 1;
+            dgvResults.Columns["URL"].DisplayIndex = 2;
 
 
             int rowIndex = 0;
@@ -358,6 +360,7 @@ namespace VSP.Presentation.Forms
                 Guid recordKeeperId = new Guid(dr.Cells["RecordKeeperId"].Value.ToString());
                 DataIntegrationHub.Business.Entities.RecordKeeper recordKeeper = new DataIntegrationHub.Business.Entities.RecordKeeper(recordKeeperId);
                 dgvResults.Rows[rowIndex].Cells["RecordKeeper"].Value = recordKeeper.Name;
+                dgvResults.Rows[rowIndex].Cells["URL"].Value = "http://vendor.pension-consultants.com/bid/?rk=" + recordKeeper.RecordKeeperId.ToString() + "&s=" + CurrentSearch.Id.ToString();
                 rowIndex++;
             }
         }
@@ -440,6 +443,168 @@ namespace VSP.Presentation.Forms
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabResults"];
 
             frmSplashScreen.Close();
+        }
+
+        private void LoadDgvQuestions()
+        {
+            DataTable dataTable = SearchQuestion.GetAssociated(CurrentSearch);
+            var dataTableEnum = dataTable.AsEnumerable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboResultsView"/>.
+            switch (cboQuestionViews.SelectedIndex)
+            {
+                case 0:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 0);
+                    break;
+                case 1:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
+            }
+
+            dgvQuestions.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvQuestions.Columns["SearchQuestionId"].Visible = false;
+            dgvQuestions.Columns["SearchId"].Visible = false;
+            dgvQuestions.Columns["ModifiedBy"].Visible = false;
+            dgvQuestions.Columns["ModifiedOn"].Visible = false;
+            dgvQuestions.Columns["CreatedBy"].Visible = false;
+            dgvQuestions.Columns["CreatedOn"].Visible = false;
+            dgvQuestions.Columns["StateCode"].Visible = false;
+
+            dgvQuestions.Columns["SubjectValue"].DisplayIndex = 0;
+            dgvQuestions.Columns["AnswerValue"].DisplayIndex = 1;
+        }
+
+        private void cboQuestionViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvQuestions();
+        }
+
+        private void LoadDgvFunds()
+        {
+            DataTable dataTable = SearchFund.GetAssociated(CurrentSearch);
+            var dataTableEnum = dataTable.AsEnumerable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboResultsView"/>.
+            switch (cboFundViews.SelectedIndex)
+            {
+                case 0:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 0);
+                    break;
+                case 1:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
+            }
+
+            dgvFunds.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvFunds.Columns["SearchFundId"].Visible = false;
+            dgvFunds.Columns["SearchId"].Visible = false;
+            dgvFunds.Columns["ModifiedBy"].Visible = false;
+            dgvFunds.Columns["ModifiedOn"].Visible = false;
+            dgvFunds.Columns["CreatedBy"].Visible = false;
+            dgvFunds.Columns["CreatedOn"].Visible = false;
+            dgvFunds.Columns["StateCode"].Visible = false;
+
+            dgvFunds.Columns["Ticker"].DisplayIndex = 0;
+            dgvFunds.Columns["FundName"].DisplayIndex = 1;
+        }
+
+        private void cboFundViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvFunds();
+        }
+
+        private void btnNewQuestion_Click(object sender, EventArgs e)
+        {
+            frmSearchQuestion frmSearchQuestion = new frmSearchQuestion(frmMain_Parent, CurrentSearch);
+            frmSearchQuestion.FormClosed += frmSearchQuestion_FormClosed;
+        }
+
+        void frmSearchQuestion_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvQuestions();
+        }
+
+        private void btnNewFund_Click(object sender, EventArgs e)
+        {
+            frmSearchFund frmSearchFund = new frmSearchFund(frmMain_Parent, CurrentSearch);
+            frmSearchFund.FormClosed += frmSearchFund_FormClosed;
+        }
+
+        void frmSearchFund_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvFunds();
+        }
+
+        private void dgvQuestions_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvQuestions.CurrentRow.Index;
+            Guid searchQuestionId = new Guid(dgvQuestions.Rows[index].Cells["SearchQuestionId"].Value.ToString());
+            SearchQuestion searchQuestion = new SearchQuestion(searchQuestionId);
+            frmSearchQuestion frmSearchQuestion = new frmSearchQuestion(frmMain_Parent, searchQuestion);
+            frmSearchQuestion.FormClosed += frmSearchQuestion_FormClosed;
+        }
+
+        private void dgvFunds_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvFunds.CurrentRow.Index;
+            Guid searchFundId = new Guid(dgvFunds.Rows[index].Cells["SearchFundId"].Value.ToString());
+            SearchFund searchFund = new SearchFund(searchFundId);
+            frmSearchFund frmSearchFund = new frmSearchFund(frmMain_Parent, searchFund);
+            frmSearchFund.FormClosed += frmSearchFund_FormClosed;
+        }
+
+        private void btnDeleteFund_Click(object sender, EventArgs e)
+        {
+            int index = dgvFunds.CurrentRow.Index;
+            Guid searchFundId = new Guid(dgvFunds.Rows[index].Cells["SearchFundId"].Value.ToString());
+            SearchFund searchFund = new SearchFund(searchFundId);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete " + searchFund.FundName + "?", "Attention", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                searchFund.DeleteRecordFromDatabase();
+                LoadDgvFunds();
+            }
+        }
+
+        private void btnDeleteQuestion_Click(object sender, EventArgs e)
+        {
+            int index = dgvQuestions.CurrentRow.Index;
+            Guid searchQuestionId = new Guid(dgvQuestions.Rows[index].Cells["SearchQuestionId"].Value.ToString());
+            SearchQuestion searchQuestion = new SearchQuestion(searchQuestionId);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete \"" + searchQuestion.SubjectValue + "\"?", "Attention", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                searchQuestion.DeleteRecordFromDatabase();
+                LoadDgvQuestions();
+            }
         }
 	}
 }
