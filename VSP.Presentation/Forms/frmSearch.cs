@@ -58,6 +58,8 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
+            PreloadCbos();
+
             CurrentSearch = new Search();
             txtName.Text = CurrentSearch.Name;
 
@@ -91,7 +93,20 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
+            PreloadCbos();
+
             CurrentSearch = search;
+
+            try
+            {
+                Plan plan = new Plan(CurrentSearch.PlanId);
+                cboPlan.Text = plan.Name + " - " + plan.Description;
+            }
+            catch
+            {
+                MessageBox.Show("This search does not have a valid plan selected.");
+            }
+
             txtName.Text = CurrentSearch.Name;
 
             cboResultsView.SelectedIndex = 0;
@@ -127,6 +142,18 @@ namespace VSP.Presentation.Forms
                 return true;
             }
             return false;
+        }
+
+        public void PreloadCbos()
+        {
+            cboPlan.Items.Clear();
+
+            cboPlan.Items.Add(new ListItem("", ""));
+
+            foreach (Plan plan in Plan.Get().OrderBy(x => x.Name))
+            {
+                cboPlan.Items.Add(new ListItem(plan.Name + " - " + plan.Description, plan));
+            }
         }
 
         private void CloseFormButton_MouseEnter(object sender, EventArgs e)
@@ -427,6 +454,19 @@ namespace VSP.Presentation.Forms
         private void Save()
         {
             CurrentSearch.Name = txtName.Text;
+
+            if (cboPlan.SelectedIndex <= 0)
+            {
+                MessageBox.Show("Error: Selected plan in plan list box cannot be left blank");
+                return;
+            }
+            else
+            {
+                ListItem li = (ListItem)cboPlan.SelectedItem;
+                Plan plan = (Plan)li.HiddenObject;
+                CurrentSearch.PlanId = plan.PlanId;
+            }
+
             CurrentSearch.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
             SaveServices();
         }
@@ -556,7 +596,7 @@ namespace VSP.Presentation.Forms
             frmSearchFund.FormClosed += frmSearchFund_FormClosed;
         }
 
-        void frmSearchFund_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmSearchFund_FormClosed(object sender, FormClosedEventArgs e)
         {
             LoadDgvFunds();
         }
@@ -605,6 +645,42 @@ namespace VSP.Presentation.Forms
                 searchQuestion.DeleteRecordFromDatabase();
                 LoadDgvQuestions();
             }
+        }
+
+        private void btnNewRk_Click(object sender, EventArgs e)
+        {
+            frmSearchRecordKeeper frmSearchRecordKeeper = new frmSearchRecordKeeper(frmMain_Parent, CurrentSearch);
+            frmSearchRecordKeeper.FormClosed += frmSearchRecordKeeper_FormClosed;
+        }
+
+        private void btnDeleteRk_Click(object sender, EventArgs e)
+        {
+            int index = dgvResults.CurrentRow.Index;
+            Guid searchRecordKeeperId = new Guid(dgvResults.Rows[index].Cells["SearchRecordKeeperId"].Value.ToString());
+            SearchRecordKeeper searchRecordKeeper = new SearchRecordKeeper(searchRecordKeeperId);
+            DataIntegrationHub.Business.Entities.RecordKeeper rk = new DataIntegrationHub.Business.Entities.RecordKeeper(searchRecordKeeper.RecordKeeperId);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to remove " + rk.Name + " from the search results?", "Attention", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                searchRecordKeeper.DeleteRecordFromDatabase();
+                LoadDgvResults();
+            }
+        }
+
+        private void dgvResults_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvResults.CurrentRow.Index;
+            Guid searchRecordKeeperId = new Guid(dgvResults.Rows[index].Cells["SearchRecordKeeperId"].Value.ToString());
+            SearchRecordKeeper searchRecordKeeper = new SearchRecordKeeper(searchRecordKeeperId);
+
+            frmSearchRecordKeeper frmSearchRecordKeeper = new frmSearchRecordKeeper(frmMain_Parent, searchRecordKeeper);
+            frmSearchRecordKeeper.FormClosed += frmSearchRecordKeeper_FormClosed;
+        }
+
+        private void frmSearchRecordKeeper_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvResults();
         }
 	}
 }
