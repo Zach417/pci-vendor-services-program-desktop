@@ -33,6 +33,8 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.tabClientSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cboPlan = new System.Windows.Forms.ComboBox();
+            this.cboAuditor = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDateRemoved = new System.Windows.Forms.RichTextBox();
@@ -45,8 +47,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
-            this.cboPlan = new System.Windows.Forms.ComboBox();
-            this.cboAuditor = new System.Windows.Forms.ComboBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -224,6 +224,34 @@
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
             // 
+            // cboPlan
+            // 
+            this.cboPlan.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboPlan.Items.AddRange(new object[] {
+            "Active Associated Issues",
+            "Inactive Associated Issues"});
+            this.cboPlan.Location = new System.Drawing.Point(136, 57);
+            this.cboPlan.Margin = new System.Windows.Forms.Padding(2);
+            this.cboPlan.Name = "cboPlan";
+            this.cboPlan.Size = new System.Drawing.Size(814, 21);
+            this.cboPlan.TabIndex = 76;
+            // 
+            // cboAuditor
+            // 
+            this.cboAuditor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboAuditor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAuditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboAuditor.Items.AddRange(new object[] {
+            "Active Associated Issues",
+            "Inactive Associated Issues"});
+            this.cboAuditor.Location = new System.Drawing.Point(136, 34);
+            this.cboAuditor.Margin = new System.Windows.Forms.Padding(2);
+            this.cboAuditor.Name = "cboAuditor";
+            this.cboAuditor.Size = new System.Drawing.Size(814, 21);
+            this.cboAuditor.TabIndex = 75;
+            // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Arial", 9F);
@@ -385,34 +413,6 @@
             this.tabControlClientDetail.Size = new System.Drawing.Size(989, 629);
             this.tabControlClientDetail.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlClientDetail.TabIndex = 37;
-            // 
-            // cboPlan
-            // 
-            this.cboPlan.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboPlan.Items.AddRange(new object[] {
-            "Active Associated Issues",
-            "Inactive Associated Issues"});
-            this.cboPlan.Location = new System.Drawing.Point(136, 57);
-            this.cboPlan.Margin = new System.Windows.Forms.Padding(2);
-            this.cboPlan.Name = "cboPlan";
-            this.cboPlan.Size = new System.Drawing.Size(814, 21);
-            this.cboPlan.TabIndex = 76;
-            // 
-            // cboAuditor
-            // 
-            this.cboAuditor.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboAuditor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAuditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboAuditor.Items.AddRange(new object[] {
-            "Active Associated Issues",
-            "Inactive Associated Issues"});
-            this.cboAuditor.Location = new System.Drawing.Point(136, 34);
-            this.cboAuditor.Margin = new System.Windows.Forms.Padding(2);
-            this.cboAuditor.Name = "cboAuditor";
-            this.cboAuditor.Size = new System.Drawing.Size(814, 21);
-            this.cboAuditor.TabIndex = 75;
             // 
             // frmPlanAuditor
             // 

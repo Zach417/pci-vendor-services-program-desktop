@@ -111,9 +111,34 @@ namespace VSP.Presentation.Forms
                 txtFee.Text = ((decimal)CurrentPlanRecordKeeperFee.Fee).ToString("#,##");
             }
 
+            if (CurrentPlanRecordKeeperFee.BenchmarkFee != null)
+            {
+                txtBenchmarkFee.Text = ((decimal)CurrentPlanRecordKeeperFee.BenchmarkFee).ToString("#,##");
+            }
+
             if (CurrentPlanRecordKeeperFee.AsOfDate != null)
             {
                 txtAsOfDate.Text = ((DateTime)CurrentPlanRecordKeeperFee.AsOfDate).ToString("MM/dd/yyyy");
+            }
+
+            if (CurrentPlanRecordKeeperFee.PaymentRevenueSharing != null)
+            {
+                txtPaymentRevenueSharing.Text = ((decimal)CurrentPlanRecordKeeperFee.PaymentRevenueSharing).ToString("#,##");
+            }
+
+            if (CurrentPlanRecordKeeperFee.PaymentForfeitures != null)
+            {
+                txtPaymentForfeitures.Text = ((decimal)CurrentPlanRecordKeeperFee.PaymentForfeitures).ToString("#,##");
+            }
+
+            if (CurrentPlanRecordKeeperFee.PaymentParticipants != null)
+            {
+                txtPaymentParticipants.Text = ((decimal)CurrentPlanRecordKeeperFee.PaymentParticipants).ToString("#,##");
+            }
+
+            if (CurrentPlanRecordKeeperFee.PaymentPlanSponsor != null)
+            {
+                txtPaymentPlanSponsor.Text = ((decimal)CurrentPlanRecordKeeperFee.PaymentPlanSponsor).ToString("#,##");
             }
 
             ss.Close();
@@ -232,6 +257,24 @@ namespace VSP.Presentation.Forms
                     return;
                 }
             }
+
+            if (String.IsNullOrWhiteSpace(txtBenchmarkFee.Text))
+            {
+                CurrentPlanRecordKeeperFee.BenchmarkFee = null;
+            }
+            else
+            {
+                try
+                {
+                    CurrentPlanRecordKeeperFee.BenchmarkFee = Decimal.Parse(txtBenchmarkFee.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Benchmark fee string not in decimal format");
+                    return;
+                }
+            }
+
             if (String.IsNullOrWhiteSpace(txtAsOfDate.Text))
             {
                 CurrentPlanRecordKeeperFee.AsOfDate = null;
@@ -249,6 +292,74 @@ namespace VSP.Presentation.Forms
                 }
             }
 
+            if (String.IsNullOrWhiteSpace(txtPaymentRevenueSharing.Text))
+            {
+                CurrentPlanRecordKeeperFee.PaymentRevenueSharing = null;
+            }
+            else
+            {
+                try
+                {
+                    CurrentPlanRecordKeeperFee.PaymentRevenueSharing = Decimal.Parse(txtPaymentRevenueSharing.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Revenue sharing payment string not in decimal format");
+                    return;
+                }
+            }
+
+            if (String.IsNullOrWhiteSpace(txtPaymentForfeitures.Text))
+            {
+                CurrentPlanRecordKeeperFee.PaymentForfeitures = null;
+            }
+            else
+            {
+                try
+                {
+                    CurrentPlanRecordKeeperFee.PaymentForfeitures = Decimal.Parse(txtPaymentForfeitures.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Forfeiture payment string not in decimal format");
+                    return;
+                }
+            }
+
+            if (String.IsNullOrWhiteSpace(txtPaymentParticipants.Text))
+            {
+                CurrentPlanRecordKeeperFee.PaymentParticipants = null;
+            }
+            else
+            {
+                try
+                {
+                    CurrentPlanRecordKeeperFee.PaymentParticipants = Decimal.Parse(txtPaymentParticipants.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Participant payment string not in decimal format");
+                    return;
+                }
+            }
+
+            if (String.IsNullOrWhiteSpace(txtPaymentPlanSponsor.Text))
+            {
+                CurrentPlanRecordKeeperFee.PaymentPlanSponsor = null;
+            }
+            else
+            {
+                try
+                {
+                    CurrentPlanRecordKeeperFee.PaymentPlanSponsor = Decimal.Parse(txtPaymentPlanSponsor.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Plan Sponsor payment string not in decimal format");
+                    return;
+                }
+            }
+
             CurrentPlanRecordKeeperFee.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
             this.Close();
         }
@@ -256,6 +367,11 @@ namespace VSP.Presentation.Forms
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             label23.Text = txtPlan.Text;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
 	}
 }

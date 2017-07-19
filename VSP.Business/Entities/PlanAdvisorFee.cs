@@ -10,27 +10,23 @@ using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class PlanRecordKeeperFee : DatabaseEntity
+    public class PlanAdvisorFee : DatabaseEntity
     {
-        public Guid RecordKeeperId;
+        public Guid AdvisorId;
         public Guid PlanId;
         public decimal? Fee;
         public decimal? BenchmarkFee;
-        public decimal? PaymentRevenueSharing;
-        public decimal? PaymentForfeitures;
-        public decimal? PaymentParticipants;
-        public decimal? PaymentPlanSponsor;
         public DateTime? AsOfDate;
 
-        private static string _tableName = "PlanRecordKeeperFee";
+        private static string _tableName = "PlanAdvisorFee";
 
-        public PlanRecordKeeperFee()
+        public PlanAdvisorFee()
             : base(_tableName)
         {
 
         }
 
-        public PlanRecordKeeperFee(Guid primaryKey)
+        public PlanAdvisorFee(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -42,14 +38,10 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("RecordKeeperId", this.RecordKeeperId);
+            base.AddColumn("AdvisorId", this.AdvisorId);
             base.AddColumn("PlanId", this.PlanId);
             base.AddColumn("Fee", this.Fee);
             base.AddColumn("BenchmarkFee", this.BenchmarkFee);
-            base.AddColumn("PaymentRevenueSharing", this.PaymentRevenueSharing);
-            base.AddColumn("PaymentForfeitures", this.PaymentForfeitures);
-            base.AddColumn("PaymentParticipants", this.PaymentParticipants);
-            base.AddColumn("PaymentPlanSponsor", this.PaymentPlanSponsor);
             base.AddColumn("AsOfDate", this.AsOfDate);
         }
 
@@ -58,14 +50,10 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.RecordKeeperId = (Guid)base.GetColumn("RecordKeeperId");
+            this.AdvisorId = (Guid)base.GetColumn("AdvisorId");
             this.PlanId = (Guid)base.GetColumn("PlanId");
             this.Fee = (decimal?)base.GetColumn("Fee");
             this.BenchmarkFee = (decimal?)base.GetColumn("BenchmarkFee");
-            this.PaymentRevenueSharing = (decimal?)base.GetColumn("PaymentRevenueSharing");
-            this.PaymentForfeitures = (decimal?)base.GetColumn("PaymentForfeitures");
-            this.PaymentParticipants = (decimal?)base.GetColumn("PaymentParticipants");
-            this.PaymentPlanSponsor = (decimal?)base.GetColumn("PaymentPlanSponsor");
             this.AsOfDate = (DateTime?)base.GetColumn("AsOfDate");
         }
 
@@ -81,15 +69,15 @@ namespace VSP.Business.Entities
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
-        public static DataTable GetAssociatedActive(PlanRecordKeeper planRK)
+        public static DataTable GetAssociatedActive(PlanAdvisor planAdvisor)
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0 AND PlanId = \'" + planRK.PlanId.ToString() + "\' AND RecordKeeperId = \'" + planRK.RecordKeeperId + "\'";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0 AND PlanId = \'" + planAdvisor.PlanId.ToString() + "\' AND AdvisorId = \'" + planAdvisor.AdvisorId + "\'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
-        public static DataTable GetAssociatedInactive(PlanRecordKeeper planRK)
+        public static DataTable GetAssociatedInactive(PlanAdvisor planAdvisor)
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1 AND PlanId = \'" + planRK.PlanId.ToString() + "\' AND RecordKeeperId = \'" + planRK.RecordKeeperId + "\'";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1 AND PlanId = \'" + planAdvisor.PlanId.ToString() + "\' AND AdvisorId = \'" + planAdvisor.AdvisorId + "\'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

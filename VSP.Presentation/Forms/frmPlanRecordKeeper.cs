@@ -384,8 +384,8 @@ namespace VSP.Presentation.Forms
             dgvFees.Columns["StateCode"].Visible = false;
 
             dgvFees.Columns["Fee"].DisplayIndex = 0;
-            dgvFees.Columns["AsOfDate"].DisplayIndex = 1;
-            dgvFees.Columns["CreatedOn"].DisplayIndex = 2;
+            dgvFees.Columns["BenchmarkFee"].DisplayIndex = 1;
+            dgvFees.Columns["AsOfDate"].DisplayIndex = 2;
             dgvFees.Columns["ModifiedOn"].DisplayIndex = 3;
         }
 

@@ -68,6 +68,10 @@ namespace VSP.Presentation.Forms
             cboAuditorViews.SelectedIndex = 0;
             cboInvestmentViews.SelectedIndex = 0;
             cboIssueViews.SelectedIndex = 0;
+            cboContributionViews.SelectedIndex = 0;
+            cboDistributionViews.SelectedIndex = 0;
+            cboActiveParticipantViews.SelectedIndex = 0;
+            cboEligibleParticipantsViews.SelectedIndex = 0;
 
             ss.Close();
             this.Show();
@@ -247,7 +251,7 @@ namespace VSP.Presentation.Forms
             var dataTableEnum = dataTable.AsEnumerable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
-            switch (cboRkViews.SelectedIndex)
+            switch (cboAuditorViews.SelectedIndex)
             {
                 case 0:
                     dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 0);
@@ -307,7 +311,7 @@ namespace VSP.Presentation.Forms
             var dataTableEnum = dataTable.AsEnumerable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
-            switch (cboRkViews.SelectedIndex)
+            switch (cboAdvisorViews.SelectedIndex)
             {
                 case 0:
                     dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 0);
@@ -640,6 +644,214 @@ namespace VSP.Presentation.Forms
             PlanRecordKeeper planRK = new PlanRecordKeeper(planRkId);
             frmPlanRecordKeeper frmPlanRecordKeeper = new frmPlanRecordKeeper(frmMain_Parent, planRK);
             frmPlanRecordKeeper.FormClosed += frmPlanRecordKeeper_FormClosed;
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+            tabControlDetail.SelectedTab = tabContributions;
+        }
+
+        private void label26_Click(object sender, EventArgs e)
+        {
+            tabControlDetail.SelectedTab = tabDistributions;
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+            tabControlDetail.SelectedTab = tabActiveParticipants;
+        }
+
+        private void label28_Click(object sender, EventArgs e)
+        {
+            tabControlDetail.SelectedTab = tabEligibleParticipants;
+        }
+
+        private void LoadDgvContributions()
+        {
+            DataTable dataTable = VSP.Business.Entities.PlanContribution.GetAssociated(CurrentPlan.PlanId);
+            var dataTableEnum = dataTable.AsEnumerable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
+            switch (cboContributionViews.SelectedIndex)
+            {
+                case 0:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 0);
+                    break;
+                case 1:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
+            }
+
+            dgvContributions.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvContributions.Columns["PlanContributionId"].Visible = false;
+            dgvContributions.Columns["PlanId"].Visible = false;
+            dgvContributions.Columns["CreatedBy"].Visible = false;
+            dgvContributions.Columns["ModifiedBy"].Visible = false;
+            dgvContributions.Columns["StateCode"].Visible = false;
+
+            dgvContributions.Columns["Contribution"].DisplayIndex = 0;
+            dgvContributions.Columns["AsOfDate"].DisplayIndex = 1;
+            dgvContributions.Columns["ModifiedOn"].DisplayIndex = 2;
+            dgvContributions.Columns["CreatedOn"].DisplayIndex = 3;
+        }
+
+        private void cboContributionViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvContributions();
+        }
+
+        private void LoadDgvDistributions()
+        {
+            DataTable dataTable = VSP.Business.Entities.PlanDistribution.GetAssociated(CurrentPlan.PlanId);
+            var dataTableEnum = dataTable.AsEnumerable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
+            switch (cboDistributionViews.SelectedIndex)
+            {
+                case 0:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 0);
+                    break;
+                case 1:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
+            }
+
+            dgvDistributions.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvDistributions.Columns["PlanDistributionId"].Visible = false;
+            dgvDistributions.Columns["PlanId"].Visible = false;
+            dgvDistributions.Columns["CreatedBy"].Visible = false;
+            dgvDistributions.Columns["ModifiedBy"].Visible = false;
+            dgvDistributions.Columns["StateCode"].Visible = false;
+
+            dgvDistributions.Columns["Distribution"].DisplayIndex = 0;
+            dgvDistributions.Columns["AsOfDate"].DisplayIndex = 1;
+            dgvDistributions.Columns["ModifiedOn"].DisplayIndex = 2;
+            dgvDistributions.Columns["CreatedOn"].DisplayIndex = 3;
+        }
+
+        private void cboDistributionViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvDistributions();
+        }
+
+        private void LoadDgvEligibleParticipantsView()
+        {
+            DataTable dataTable = VSP.Business.Entities.PlanParticipantsEligible.GetAssociated(CurrentPlan.PlanId);
+            var dataTableEnum = dataTable.AsEnumerable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
+            switch (cboEligibleParticipantsViews.SelectedIndex)
+            {
+                case 0:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 0);
+                    break;
+                case 1:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
+            }
+
+            dgvEligibleParticipants.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvEligibleParticipants.Columns["PlanParticipantsEligibleId"].Visible = false;
+            dgvEligibleParticipants.Columns["PlanId"].Visible = false;
+            dgvEligibleParticipants.Columns["CreatedBy"].Visible = false;
+            dgvEligibleParticipants.Columns["ModifiedBy"].Visible = false;
+            dgvEligibleParticipants.Columns["StateCode"].Visible = false;
+
+            dgvEligibleParticipants.Columns["ParticipantCount"].DisplayIndex = 0;
+            dgvEligibleParticipants.Columns["AsOfDate"].DisplayIndex = 1;
+            dgvEligibleParticipants.Columns["ModifiedOn"].DisplayIndex = 2;
+            dgvEligibleParticipants.Columns["CreatedOn"].DisplayIndex = 3;
+        }
+
+        private void cboEligibleParticipantsViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvEligibleParticipantsView();
+        }
+
+        private void LoadDgvActiveParticipants()
+        {
+            DataTable dataTable = VSP.Business.Entities.PlanParticipantsActive.GetAssociated(CurrentPlan.PlanId);
+            var dataTableEnum = dataTable.AsEnumerable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
+            switch (cboActiveParticipantViews.SelectedIndex)
+            {
+                case 0:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 0);
+                    break;
+                case 1:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
+            }
+
+            dgvActiveParticipants.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvActiveParticipants.Columns["PlanParticipantsActiveId"].Visible = false;
+            dgvActiveParticipants.Columns["PlanId"].Visible = false;
+            dgvActiveParticipants.Columns["CreatedBy"].Visible = false;
+            dgvActiveParticipants.Columns["ModifiedBy"].Visible = false;
+            dgvActiveParticipants.Columns["StateCode"].Visible = false;
+
+            dgvActiveParticipants.Columns["ParticipantCount"].DisplayIndex = 0;
+            dgvActiveParticipants.Columns["AsOfDate"].DisplayIndex = 1;
+            dgvActiveParticipants.Columns["ModifiedOn"].DisplayIndex = 2;
+            dgvActiveParticipants.Columns["CreatedOn"].DisplayIndex = 3;
+        }
+
+        private void cboActiveParticipantViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvActiveParticipants();
         }
 	}
 }

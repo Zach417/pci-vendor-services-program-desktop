@@ -121,6 +121,8 @@ namespace VSP.Presentation.Forms
                 txtDateRemoved.Text = ((DateTime)CurrentPlanAdvisor.DateRemoved).ToString("MM/dd/yyyy");
             }
 
+            cboFeeViews.SelectedIndex = 0;
+
             ss.Close();
             this.Show();
 		}
@@ -303,6 +305,49 @@ namespace VSP.Presentation.Forms
             CurrentPlanAdvisor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
             this.Close();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabFees"];
+        }
+
+        private void LoadDgvFees()
+        {
+            DataTable dataTable = new DataTable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboInvestmentViews"/>.
+            switch (cboFeeViews.SelectedIndex)
+            {
+                case 0:
+                    dataTable = PlanAdvisorFee.GetAssociatedActive(CurrentPlanAdvisor);
+                    break;
+                case 1:
+                    dataTable = PlanAdvisorFee.GetAssociatedActive(CurrentPlanAdvisor);
+                    break;
+                default:
+                    return;
+            }
+
+            dgvFees.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvFees.Columns["PlanAdvisorFeeId"].Visible = false;
+            dgvFees.Columns["PlanId"].Visible = false;
+            dgvFees.Columns["AdvisorId"].Visible = false;
+            dgvFees.Columns["CreatedBy"].Visible = false;
+            dgvFees.Columns["ModifiedBy"].Visible = false;
+            dgvFees.Columns["StateCode"].Visible = false;
+
+            dgvFees.Columns["Fee"].DisplayIndex = 0;
+            dgvFees.Columns["BenchmarkFee"].DisplayIndex = 1;
+            dgvFees.Columns["AsOfDate"].DisplayIndex = 2;
+            dgvFees.Columns["ModifiedOn"].DisplayIndex = 3;
+        }
+
+        private void cboFeeViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvFees();
         }
 	}
 }

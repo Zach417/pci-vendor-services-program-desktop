@@ -17,17 +17,25 @@
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle235 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle236 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle237 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle238 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle239 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle240 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle241 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle242 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle243 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle244 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlan));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle245 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle246 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle247 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle248 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle249 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle250 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle251 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle252 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -35,6 +43,10 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -104,6 +116,46 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.tabContributions = new System.Windows.Forms.TabPage();
+            this.tabDistributions = new System.Windows.Forms.TabPage();
+            this.tabActiveParticipants = new System.Windows.Forms.TabPage();
+            this.tabEligibleParticipants = new System.Windows.Forms.TabPage();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.btnNewContributions = new System.Windows.Forms.Button();
+            this.btnDeleteContribution = new System.Windows.Forms.Button();
+            this.dgvContributions = new System.Windows.Forms.DataGridView();
+            this.label29 = new System.Windows.Forms.Label();
+            this.cboContributionViews = new System.Windows.Forms.ComboBox();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.btnNewDistribution = new System.Windows.Forms.Button();
+            this.btnDeleteDistribution = new System.Windows.Forms.Button();
+            this.dgvDistributions = new System.Windows.Forms.DataGridView();
+            this.label32 = new System.Windows.Forms.Label();
+            this.cboDistributionViews = new System.Windows.Forms.ComboBox();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.btnNewActiveParticipants = new System.Windows.Forms.Button();
+            this.btnDeleteActiveParticipants = new System.Windows.Forms.Button();
+            this.dgvActiveParticipants = new System.Windows.Forms.DataGridView();
+            this.label35 = new System.Windows.Forms.Label();
+            this.cboActiveParticipantViews = new System.Windows.Forms.ComboBox();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.btnNewEligibleParticipants = new System.Windows.Forms.Button();
+            this.btnDeleteEligibleParticipants = new System.Windows.Forms.Button();
+            this.dgvEligibleParticipants = new System.Windows.Forms.DataGridView();
+            this.label39 = new System.Windows.Forms.Label();
+            this.cboEligibleParticipantsViews = new System.Windows.Forms.ComboBox();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -131,6 +183,22 @@
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).BeginInit();
             this.panel13.SuspendLayout();
+            this.tabContributions.SuspendLayout();
+            this.tabDistributions.SuspendLayout();
+            this.tabActiveParticipants.SuspendLayout();
+            this.tabEligibleParticipants.SuspendLayout();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContributions)).BeginInit();
+            this.panel15.SuspendLayout();
+            this.panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDistributions)).BeginInit();
+            this.panel18.SuspendLayout();
+            this.panel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActiveParticipants)).BeginInit();
+            this.panel20.SuspendLayout();
+            this.panel21.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEligibleParticipants)).BeginInit();
+            this.panel22.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripSeparator3
@@ -174,17 +242,22 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.AutoScroll = true;
             this.panel3.BackColor = System.Drawing.Color.Silver;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label28);
+            this.panel3.Controls.Add(this.label27);
+            this.panel3.Controls.Add(this.label26);
+            this.panel3.Controls.Add(this.label22);
             this.panel3.Controls.Add(this.label21);
             this.panel3.Controls.Add(this.label20);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label46);
-            this.panel3.Location = new System.Drawing.Point(0, 615);
+            this.panel3.Location = new System.Drawing.Point(0, 599);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(968, 53);
+            this.panel3.Size = new System.Drawing.Size(968, 69);
             this.panel3.TabIndex = 58;
             // 
             // label4
@@ -218,6 +291,70 @@
             this.label3.Click += new System.EventHandler(this.label3_Click);
             this.label3.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
             this.label3.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label28.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.Black;
+            this.label28.Location = new System.Drawing.Point(1005, 15);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(192, 25);
+            this.label28.TabIndex = 0;
+            this.label28.Text = "Eligible Participants";
+            this.label28.Click += new System.EventHandler(this.label28_Click);
+            this.label28.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
+            this.label28.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.Transparent;
+            this.label27.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label27.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.Black;
+            this.label27.Location = new System.Drawing.Point(816, 15);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(183, 25);
+            this.label27.TabIndex = 0;
+            this.label27.Text = "Active Participants";
+            this.label27.Click += new System.EventHandler(this.label27_Click);
+            this.label27.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
+            this.label27.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label26.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Black;
+            this.label26.Location = new System.Drawing.Point(681, 15);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(129, 25);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Distributions";
+            this.label26.Click += new System.EventHandler(this.label26_Click);
+            this.label26.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
+            this.label26.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label22.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(538, 15);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(137, 25);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "Contributions";
+            this.label22.Click += new System.EventHandler(this.label22_Click);
+            this.label22.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
+            this.label22.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
             // 
             // label21
             // 
@@ -465,6 +602,10 @@
             this.tabControlDetail.Controls.Add(this.tabRK);
             this.tabControlDetail.Controls.Add(this.tabAuditor);
             this.tabControlDetail.Controls.Add(this.tabAdvisor);
+            this.tabControlDetail.Controls.Add(this.tabContributions);
+            this.tabControlDetail.Controls.Add(this.tabDistributions);
+            this.tabControlDetail.Controls.Add(this.tabActiveParticipants);
+            this.tabControlDetail.Controls.Add(this.tabEligibleParticipants);
             this.tabControlDetail.Controls.Add(this.tabIssues);
             this.tabControlDetail.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControlDetail.Location = new System.Drawing.Point(-6, 0);
@@ -511,23 +652,23 @@
             this.dgvInvestments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInvestments.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvInvestments.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInvestments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle235.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle235.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle235.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle235.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle235.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle235.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle235.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInvestments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle235;
             this.dgvInvestments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInvestments.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle236.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle236.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle236.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle236.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle236.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle236.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle236.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInvestments.DefaultCellStyle = dataGridViewCellStyle236;
             this.dgvInvestments.EnableHeadersVisualStyles = false;
             this.dgvInvestments.Location = new System.Drawing.Point(8, 34);
             this.dgvInvestments.Margin = new System.Windows.Forms.Padding(2);
@@ -539,7 +680,7 @@
             this.dgvInvestments.RowTemplate.Height = 24;
             this.dgvInvestments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvInvestments.ShowEditingIcon = false;
-            this.dgvInvestments.Size = new System.Drawing.Size(944, 504);
+            this.dgvInvestments.Size = new System.Drawing.Size(944, 488);
             this.dgvInvestments.TabIndex = 69;
             // 
             // label13
@@ -678,23 +819,23 @@
             this.dgvRKs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRKs.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvRKs.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRKs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle237.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle237.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle237.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle237.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle237.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle237.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle237.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRKs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle237;
             this.dgvRKs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRKs.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle238.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle238.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle238.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle238.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle238.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle238.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle238.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRKs.DefaultCellStyle = dataGridViewCellStyle238;
             this.dgvRKs.EnableHeadersVisualStyles = false;
             this.dgvRKs.Location = new System.Drawing.Point(8, 34);
             this.dgvRKs.Margin = new System.Windows.Forms.Padding(2);
@@ -706,7 +847,7 @@
             this.dgvRKs.RowTemplate.Height = 24;
             this.dgvRKs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvRKs.ShowEditingIcon = false;
-            this.dgvRKs.Size = new System.Drawing.Size(944, 504);
+            this.dgvRKs.Size = new System.Drawing.Size(944, 488);
             this.dgvRKs.TabIndex = 69;
             this.dgvRKs.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRKs_CellDoubleClick);
             // 
@@ -846,23 +987,23 @@
             this.dgvAuditors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAuditors.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvAuditors.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAuditors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle239.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle239.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle239.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle239.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle239.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle239.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle239.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAuditors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle239;
             this.dgvAuditors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAuditors.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle240.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle240.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle240.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle240.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle240.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle240.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle240.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAuditors.DefaultCellStyle = dataGridViewCellStyle240;
             this.dgvAuditors.EnableHeadersVisualStyles = false;
             this.dgvAuditors.Location = new System.Drawing.Point(8, 34);
             this.dgvAuditors.Margin = new System.Windows.Forms.Padding(2);
@@ -874,7 +1015,7 @@
             this.dgvAuditors.RowTemplate.Height = 24;
             this.dgvAuditors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvAuditors.ShowEditingIcon = false;
-            this.dgvAuditors.Size = new System.Drawing.Size(944, 504);
+            this.dgvAuditors.Size = new System.Drawing.Size(944, 488);
             this.dgvAuditors.TabIndex = 69;
             // 
             // label7
@@ -1013,23 +1154,23 @@
             this.dgvAdvisors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAdvisors.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvAdvisors.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAdvisors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle241.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle241.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle241.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle241.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle241.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle241.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle241.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAdvisors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle241;
             this.dgvAdvisors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAdvisors.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle242.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle242.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle242.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle242.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle242.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle242.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle242.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAdvisors.DefaultCellStyle = dataGridViewCellStyle242;
             this.dgvAdvisors.EnableHeadersVisualStyles = false;
             this.dgvAdvisors.Location = new System.Drawing.Point(8, 34);
             this.dgvAdvisors.Margin = new System.Windows.Forms.Padding(2);
@@ -1041,7 +1182,7 @@
             this.dgvAdvisors.RowTemplate.Height = 24;
             this.dgvAdvisors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvAdvisors.ShowEditingIcon = false;
-            this.dgvAdvisors.Size = new System.Drawing.Size(944, 504);
+            this.dgvAdvisors.Size = new System.Drawing.Size(944, 488);
             this.dgvAdvisors.TabIndex = 69;
             // 
             // label10
@@ -1180,23 +1321,23 @@
             this.dgvIssues.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvIssues.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvIssues.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvIssues.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle243.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle243.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle243.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle243.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle243.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle243.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle243.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvIssues.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle243;
             this.dgvIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvIssues.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle244.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle244.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle244.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle244.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle244.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle244.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle244.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvIssues.DefaultCellStyle = dataGridViewCellStyle244;
             this.dgvIssues.EnableHeadersVisualStyles = false;
             this.dgvIssues.Location = new System.Drawing.Point(8, 34);
             this.dgvIssues.Margin = new System.Windows.Forms.Padding(2);
@@ -1208,7 +1349,7 @@
             this.dgvIssues.RowTemplate.Height = 24;
             this.dgvIssues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvIssues.ShowEditingIcon = false;
-            this.dgvIssues.Size = new System.Drawing.Size(944, 504);
+            this.dgvIssues.Size = new System.Drawing.Size(944, 488);
             this.dgvIssues.TabIndex = 69;
             // 
             // label17
@@ -1304,6 +1445,667 @@
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
             // 
+            // tabContributions
+            // 
+            this.tabContributions.Controls.Add(this.panel14);
+            this.tabContributions.Controls.Add(this.panel15);
+            this.tabContributions.Location = new System.Drawing.Point(4, 25);
+            this.tabContributions.Name = "tabContributions";
+            this.tabContributions.Padding = new System.Windows.Forms.Padding(3);
+            this.tabContributions.Size = new System.Drawing.Size(981, 600);
+            this.tabContributions.TabIndex = 6;
+            this.tabContributions.Text = "Contributions";
+            this.tabContributions.UseVisualStyleBackColor = true;
+            // 
+            // tabDistributions
+            // 
+            this.tabDistributions.Controls.Add(this.panel17);
+            this.tabDistributions.Controls.Add(this.panel18);
+            this.tabDistributions.Location = new System.Drawing.Point(4, 25);
+            this.tabDistributions.Name = "tabDistributions";
+            this.tabDistributions.Size = new System.Drawing.Size(981, 600);
+            this.tabDistributions.TabIndex = 7;
+            this.tabDistributions.Text = "Distributions";
+            this.tabDistributions.UseVisualStyleBackColor = true;
+            // 
+            // tabActiveParticipants
+            // 
+            this.tabActiveParticipants.Controls.Add(this.panel19);
+            this.tabActiveParticipants.Controls.Add(this.panel20);
+            this.tabActiveParticipants.Location = new System.Drawing.Point(4, 25);
+            this.tabActiveParticipants.Name = "tabActiveParticipants";
+            this.tabActiveParticipants.Size = new System.Drawing.Size(981, 600);
+            this.tabActiveParticipants.TabIndex = 8;
+            this.tabActiveParticipants.Text = "Active Participants";
+            this.tabActiveParticipants.UseVisualStyleBackColor = true;
+            // 
+            // tabEligibleParticipants
+            // 
+            this.tabEligibleParticipants.Controls.Add(this.panel21);
+            this.tabEligibleParticipants.Controls.Add(this.panel22);
+            this.tabEligibleParticipants.Location = new System.Drawing.Point(4, 25);
+            this.tabEligibleParticipants.Name = "tabEligibleParticipants";
+            this.tabEligibleParticipants.Size = new System.Drawing.Size(981, 600);
+            this.tabEligibleParticipants.TabIndex = 9;
+            this.tabEligibleParticipants.Text = "Eligible Participants";
+            this.tabEligibleParticipants.UseVisualStyleBackColor = true;
+            // 
+            // panel14
+            // 
+            this.panel14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel14.Controls.Add(this.btnNewContributions);
+            this.panel14.Controls.Add(this.btnDeleteContribution);
+            this.panel14.Controls.Add(this.dgvContributions);
+            this.panel14.Controls.Add(this.label29);
+            this.panel14.Controls.Add(this.cboContributionViews);
+            this.panel14.Location = new System.Drawing.Point(2, 46);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(968, 545);
+            this.panel14.TabIndex = 70;
+            // 
+            // btnNewContributions
+            // 
+            this.btnNewContributions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewContributions.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNewContributions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewContributions.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewContributions.ForeColor = System.Drawing.Color.Black;
+            this.btnNewContributions.Location = new System.Drawing.Point(790, 4);
+            this.btnNewContributions.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewContributions.Name = "btnNewContributions";
+            this.btnNewContributions.Size = new System.Drawing.Size(78, 26);
+            this.btnNewContributions.TabIndex = 76;
+            this.btnNewContributions.Text = "New";
+            this.btnNewContributions.UseVisualStyleBackColor = false;
+            // 
+            // btnDeleteContribution
+            // 
+            this.btnDeleteContribution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteContribution.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDeleteContribution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteContribution.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteContribution.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteContribution.Location = new System.Drawing.Point(874, 4);
+            this.btnDeleteContribution.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteContribution.Name = "btnDeleteContribution";
+            this.btnDeleteContribution.Size = new System.Drawing.Size(78, 26);
+            this.btnDeleteContribution.TabIndex = 77;
+            this.btnDeleteContribution.Text = "Delete";
+            this.btnDeleteContribution.UseVisualStyleBackColor = false;
+            // 
+            // dgvContributions
+            // 
+            this.dgvContributions.AllowUserToAddRows = false;
+            this.dgvContributions.AllowUserToDeleteRows = false;
+            this.dgvContributions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvContributions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvContributions.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvContributions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle245.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle245.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle245.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle245.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle245.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle245.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle245.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvContributions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle245;
+            this.dgvContributions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle246.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle246.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle246.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle246.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle246.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle246.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle246.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvContributions.DefaultCellStyle = dataGridViewCellStyle246;
+            this.dgvContributions.EnableHeadersVisualStyles = false;
+            this.dgvContributions.Location = new System.Drawing.Point(8, 34);
+            this.dgvContributions.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvContributions.MultiSelect = false;
+            this.dgvContributions.Name = "dgvContributions";
+            this.dgvContributions.ReadOnly = true;
+            this.dgvContributions.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvContributions.RowHeadersVisible = false;
+            this.dgvContributions.RowTemplate.Height = 24;
+            this.dgvContributions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvContributions.ShowEditingIcon = false;
+            this.dgvContributions.Size = new System.Drawing.Size(944, 488);
+            this.dgvContributions.TabIndex = 69;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label29.Location = new System.Drawing.Point(5, 9);
+            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(41, 16);
+            this.label29.TabIndex = 71;
+            this.label29.Text = "Views";
+            // 
+            // cboContributionViews
+            // 
+            this.cboContributionViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboContributionViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboContributionViews.Items.AddRange(new object[] {
+            "Active Associated Contributions",
+            "Inactive Associated Contributions"});
+            this.cboContributionViews.Location = new System.Drawing.Point(50, 7);
+            this.cboContributionViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboContributionViews.Name = "cboContributionViews";
+            this.cboContributionViews.Size = new System.Drawing.Size(157, 21);
+            this.cboContributionViews.TabIndex = 70;
+            this.cboContributionViews.SelectedIndexChanged += new System.EventHandler(this.cboContributionViews_SelectedIndexChanged);
+            // 
+            // panel15
+            // 
+            this.panel15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel15.BackColor = System.Drawing.SystemColors.Control;
+            this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel15.Controls.Add(this.label30);
+            this.panel15.Controls.Add(this.label31);
+            this.panel15.Font = new System.Drawing.Font("High Tower Text", 32F);
+            this.panel15.Location = new System.Drawing.Point(2, 0);
+            this.panel15.Margin = new System.Windows.Forms.Padding(2);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(968, 49);
+            this.panel15.TabIndex = 69;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("High Tower Text", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.Black;
+            this.label30.Location = new System.Drawing.Point(-3, 1);
+            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(233, 44);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Contributions";
+            // 
+            // label31
+            // 
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Gadugi", 20F);
+            this.label31.ForeColor = System.Drawing.Color.Black;
+            this.label31.Location = new System.Drawing.Point(8, 46);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(152, 38);
+            this.label31.TabIndex = 40;
+            this.label31.Text = "Summary";
+            // 
+            // panel17
+            // 
+            this.panel17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel17.Controls.Add(this.btnNewDistribution);
+            this.panel17.Controls.Add(this.btnDeleteDistribution);
+            this.panel17.Controls.Add(this.dgvDistributions);
+            this.panel17.Controls.Add(this.label32);
+            this.panel17.Controls.Add(this.cboDistributionViews);
+            this.panel17.Location = new System.Drawing.Point(2, 46);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(968, 545);
+            this.panel17.TabIndex = 72;
+            // 
+            // btnNewDistribution
+            // 
+            this.btnNewDistribution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewDistribution.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNewDistribution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewDistribution.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewDistribution.ForeColor = System.Drawing.Color.Black;
+            this.btnNewDistribution.Location = new System.Drawing.Point(790, 4);
+            this.btnNewDistribution.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewDistribution.Name = "btnNewDistribution";
+            this.btnNewDistribution.Size = new System.Drawing.Size(78, 26);
+            this.btnNewDistribution.TabIndex = 76;
+            this.btnNewDistribution.Text = "New";
+            this.btnNewDistribution.UseVisualStyleBackColor = false;
+            // 
+            // btnDeleteDistribution
+            // 
+            this.btnDeleteDistribution.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteDistribution.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDeleteDistribution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteDistribution.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteDistribution.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteDistribution.Location = new System.Drawing.Point(874, 4);
+            this.btnDeleteDistribution.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteDistribution.Name = "btnDeleteDistribution";
+            this.btnDeleteDistribution.Size = new System.Drawing.Size(78, 26);
+            this.btnDeleteDistribution.TabIndex = 77;
+            this.btnDeleteDistribution.Text = "Delete";
+            this.btnDeleteDistribution.UseVisualStyleBackColor = false;
+            // 
+            // dgvDistributions
+            // 
+            this.dgvDistributions.AllowUserToAddRows = false;
+            this.dgvDistributions.AllowUserToDeleteRows = false;
+            this.dgvDistributions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvDistributions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDistributions.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvDistributions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle247.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle247.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle247.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle247.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle247.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle247.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle247.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDistributions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle247;
+            this.dgvDistributions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle248.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle248.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle248.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle248.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle248.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle248.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle248.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDistributions.DefaultCellStyle = dataGridViewCellStyle248;
+            this.dgvDistributions.EnableHeadersVisualStyles = false;
+            this.dgvDistributions.Location = new System.Drawing.Point(8, 34);
+            this.dgvDistributions.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvDistributions.MultiSelect = false;
+            this.dgvDistributions.Name = "dgvDistributions";
+            this.dgvDistributions.ReadOnly = true;
+            this.dgvDistributions.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvDistributions.RowHeadersVisible = false;
+            this.dgvDistributions.RowTemplate.Height = 24;
+            this.dgvDistributions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvDistributions.ShowEditingIcon = false;
+            this.dgvDistributions.Size = new System.Drawing.Size(944, 488);
+            this.dgvDistributions.TabIndex = 69;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Transparent;
+            this.label32.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label32.Location = new System.Drawing.Point(5, 9);
+            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(41, 16);
+            this.label32.TabIndex = 71;
+            this.label32.Text = "Views";
+            // 
+            // cboDistributionViews
+            // 
+            this.cboDistributionViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDistributionViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboDistributionViews.Items.AddRange(new object[] {
+            "Active Associated Distributions",
+            "Inactive Associated Distributions"});
+            this.cboDistributionViews.Location = new System.Drawing.Point(50, 7);
+            this.cboDistributionViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboDistributionViews.Name = "cboDistributionViews";
+            this.cboDistributionViews.Size = new System.Drawing.Size(157, 21);
+            this.cboDistributionViews.TabIndex = 70;
+            this.cboDistributionViews.SelectedIndexChanged += new System.EventHandler(this.cboDistributionViews_SelectedIndexChanged);
+            // 
+            // panel18
+            // 
+            this.panel18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel18.BackColor = System.Drawing.SystemColors.Control;
+            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel18.Controls.Add(this.label33);
+            this.panel18.Controls.Add(this.label34);
+            this.panel18.Font = new System.Drawing.Font("High Tower Text", 32F);
+            this.panel18.Location = new System.Drawing.Point(2, 0);
+            this.panel18.Margin = new System.Windows.Forms.Padding(2);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(968, 49);
+            this.panel18.TabIndex = 71;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("High Tower Text", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.Black;
+            this.label33.Location = new System.Drawing.Point(-3, 1);
+            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(222, 44);
+            this.label33.TabIndex = 0;
+            this.label33.Text = "Distributions";
+            // 
+            // label34
+            // 
+            this.label34.BackColor = System.Drawing.Color.Transparent;
+            this.label34.Font = new System.Drawing.Font("Gadugi", 20F);
+            this.label34.ForeColor = System.Drawing.Color.Black;
+            this.label34.Location = new System.Drawing.Point(8, 46);
+            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(152, 38);
+            this.label34.TabIndex = 40;
+            this.label34.Text = "Summary";
+            // 
+            // panel19
+            // 
+            this.panel19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.panel19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel19.Controls.Add(this.btnNewActiveParticipants);
+            this.panel19.Controls.Add(this.btnDeleteActiveParticipants);
+            this.panel19.Controls.Add(this.dgvActiveParticipants);
+            this.panel19.Controls.Add(this.label35);
+            this.panel19.Controls.Add(this.cboActiveParticipantViews);
+            this.panel19.Location = new System.Drawing.Point(2, 46);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(968, 545);
+            this.panel19.TabIndex = 74;
+            // 
+            // btnNewActiveParticipants
+            // 
+            this.btnNewActiveParticipants.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewActiveParticipants.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNewActiveParticipants.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewActiveParticipants.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewActiveParticipants.ForeColor = System.Drawing.Color.Black;
+            this.btnNewActiveParticipants.Location = new System.Drawing.Point(790, 4);
+            this.btnNewActiveParticipants.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewActiveParticipants.Name = "btnNewActiveParticipants";
+            this.btnNewActiveParticipants.Size = new System.Drawing.Size(78, 26);
+            this.btnNewActiveParticipants.TabIndex = 76;
+            this.btnNewActiveParticipants.Text = "New";
+            this.btnNewActiveParticipants.UseVisualStyleBackColor = false;
+            // 
+            // btnDeleteActiveParticipants
+            // 
+            this.btnDeleteActiveParticipants.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteActiveParticipants.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDeleteActiveParticipants.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteActiveParticipants.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteActiveParticipants.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteActiveParticipants.Location = new System.Drawing.Point(874, 4);
+            this.btnDeleteActiveParticipants.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteActiveParticipants.Name = "btnDeleteActiveParticipants";
+            this.btnDeleteActiveParticipants.Size = new System.Drawing.Size(78, 26);
+            this.btnDeleteActiveParticipants.TabIndex = 77;
+            this.btnDeleteActiveParticipants.Text = "Delete";
+            this.btnDeleteActiveParticipants.UseVisualStyleBackColor = false;
+            // 
+            // dgvActiveParticipants
+            // 
+            this.dgvActiveParticipants.AllowUserToAddRows = false;
+            this.dgvActiveParticipants.AllowUserToDeleteRows = false;
+            this.dgvActiveParticipants.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvActiveParticipants.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvActiveParticipants.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvActiveParticipants.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle249.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle249.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle249.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle249.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle249.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle249.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle249.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvActiveParticipants.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle249;
+            this.dgvActiveParticipants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle250.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle250.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle250.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle250.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle250.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle250.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle250.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvActiveParticipants.DefaultCellStyle = dataGridViewCellStyle250;
+            this.dgvActiveParticipants.EnableHeadersVisualStyles = false;
+            this.dgvActiveParticipants.Location = new System.Drawing.Point(8, 34);
+            this.dgvActiveParticipants.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvActiveParticipants.MultiSelect = false;
+            this.dgvActiveParticipants.Name = "dgvActiveParticipants";
+            this.dgvActiveParticipants.ReadOnly = true;
+            this.dgvActiveParticipants.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvActiveParticipants.RowHeadersVisible = false;
+            this.dgvActiveParticipants.RowTemplate.Height = 24;
+            this.dgvActiveParticipants.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvActiveParticipants.ShowEditingIcon = false;
+            this.dgvActiveParticipants.Size = new System.Drawing.Size(944, 488);
+            this.dgvActiveParticipants.TabIndex = 69;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.Transparent;
+            this.label35.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label35.Location = new System.Drawing.Point(5, 9);
+            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(41, 16);
+            this.label35.TabIndex = 71;
+            this.label35.Text = "Views";
+            // 
+            // cboActiveParticipantViews
+            // 
+            this.cboActiveParticipantViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboActiveParticipantViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboActiveParticipantViews.Items.AddRange(new object[] {
+            "Active Associated Active Participants",
+            "Inactive Associated Active Participants"});
+            this.cboActiveParticipantViews.Location = new System.Drawing.Point(50, 7);
+            this.cboActiveParticipantViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboActiveParticipantViews.Name = "cboActiveParticipantViews";
+            this.cboActiveParticipantViews.Size = new System.Drawing.Size(157, 21);
+            this.cboActiveParticipantViews.TabIndex = 70;
+            this.cboActiveParticipantViews.SelectedIndexChanged += new System.EventHandler(this.cboActiveParticipantViews_SelectedIndexChanged);
+            // 
+            // panel20
+            // 
+            this.panel20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel20.BackColor = System.Drawing.SystemColors.Control;
+            this.panel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel20.Controls.Add(this.label36);
+            this.panel20.Controls.Add(this.label37);
+            this.panel20.Font = new System.Drawing.Font("High Tower Text", 32F);
+            this.panel20.Location = new System.Drawing.Point(2, 0);
+            this.panel20.Margin = new System.Windows.Forms.Padding(2);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(968, 49);
+            this.panel20.TabIndex = 73;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("High Tower Text", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.Color.Black;
+            this.label36.Location = new System.Drawing.Point(-3, 1);
+            this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(309, 44);
+            this.label36.TabIndex = 0;
+            this.label36.Text = "Active Participants";
+            // 
+            // label37
+            // 
+            this.label37.BackColor = System.Drawing.Color.Transparent;
+            this.label37.Font = new System.Drawing.Font("Gadugi", 20F);
+            this.label37.ForeColor = System.Drawing.Color.Black;
+            this.label37.Location = new System.Drawing.Point(8, 46);
+            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(152, 38);
+            this.label37.TabIndex = 40;
+            this.label37.Text = "Summary";
+            // 
+            // panel21
+            // 
+            this.panel21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.panel21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel21.Controls.Add(this.btnNewEligibleParticipants);
+            this.panel21.Controls.Add(this.btnDeleteEligibleParticipants);
+            this.panel21.Controls.Add(this.dgvEligibleParticipants);
+            this.panel21.Controls.Add(this.label39);
+            this.panel21.Controls.Add(this.cboEligibleParticipantsViews);
+            this.panel21.Location = new System.Drawing.Point(2, 46);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(968, 545);
+            this.panel21.TabIndex = 76;
+            // 
+            // btnNewEligibleParticipants
+            // 
+            this.btnNewEligibleParticipants.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewEligibleParticipants.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNewEligibleParticipants.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewEligibleParticipants.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewEligibleParticipants.ForeColor = System.Drawing.Color.Black;
+            this.btnNewEligibleParticipants.Location = new System.Drawing.Point(790, 4);
+            this.btnNewEligibleParticipants.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewEligibleParticipants.Name = "btnNewEligibleParticipants";
+            this.btnNewEligibleParticipants.Size = new System.Drawing.Size(78, 26);
+            this.btnNewEligibleParticipants.TabIndex = 76;
+            this.btnNewEligibleParticipants.Text = "New";
+            this.btnNewEligibleParticipants.UseVisualStyleBackColor = false;
+            // 
+            // btnDeleteEligibleParticipants
+            // 
+            this.btnDeleteEligibleParticipants.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteEligibleParticipants.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDeleteEligibleParticipants.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteEligibleParticipants.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteEligibleParticipants.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteEligibleParticipants.Location = new System.Drawing.Point(874, 4);
+            this.btnDeleteEligibleParticipants.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteEligibleParticipants.Name = "btnDeleteEligibleParticipants";
+            this.btnDeleteEligibleParticipants.Size = new System.Drawing.Size(78, 26);
+            this.btnDeleteEligibleParticipants.TabIndex = 77;
+            this.btnDeleteEligibleParticipants.Text = "Delete";
+            this.btnDeleteEligibleParticipants.UseVisualStyleBackColor = false;
+            // 
+            // dgvEligibleParticipants
+            // 
+            this.dgvEligibleParticipants.AllowUserToAddRows = false;
+            this.dgvEligibleParticipants.AllowUserToDeleteRows = false;
+            this.dgvEligibleParticipants.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvEligibleParticipants.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvEligibleParticipants.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvEligibleParticipants.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle251.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle251.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle251.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle251.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle251.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle251.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle251.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEligibleParticipants.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle251;
+            this.dgvEligibleParticipants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle252.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle252.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle252.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle252.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle252.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle252.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle252.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEligibleParticipants.DefaultCellStyle = dataGridViewCellStyle252;
+            this.dgvEligibleParticipants.EnableHeadersVisualStyles = false;
+            this.dgvEligibleParticipants.Location = new System.Drawing.Point(8, 34);
+            this.dgvEligibleParticipants.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvEligibleParticipants.MultiSelect = false;
+            this.dgvEligibleParticipants.Name = "dgvEligibleParticipants";
+            this.dgvEligibleParticipants.ReadOnly = true;
+            this.dgvEligibleParticipants.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvEligibleParticipants.RowHeadersVisible = false;
+            this.dgvEligibleParticipants.RowTemplate.Height = 24;
+            this.dgvEligibleParticipants.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvEligibleParticipants.ShowEditingIcon = false;
+            this.dgvEligibleParticipants.Size = new System.Drawing.Size(944, 488);
+            this.dgvEligibleParticipants.TabIndex = 69;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.BackColor = System.Drawing.Color.Transparent;
+            this.label39.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label39.Location = new System.Drawing.Point(5, 9);
+            this.label39.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(41, 16);
+            this.label39.TabIndex = 71;
+            this.label39.Text = "Views";
+            // 
+            // cboEligibleParticipantsViews
+            // 
+            this.cboEligibleParticipantsViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEligibleParticipantsViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboEligibleParticipantsViews.Items.AddRange(new object[] {
+            "Active Associated Eligible Participants",
+            "Inactive Associated Eligible Participants"});
+            this.cboEligibleParticipantsViews.Location = new System.Drawing.Point(50, 7);
+            this.cboEligibleParticipantsViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboEligibleParticipantsViews.Name = "cboEligibleParticipantsViews";
+            this.cboEligibleParticipantsViews.Size = new System.Drawing.Size(157, 21);
+            this.cboEligibleParticipantsViews.TabIndex = 70;
+            this.cboEligibleParticipantsViews.SelectedIndexChanged += new System.EventHandler(this.cboEligibleParticipantsViews_SelectedIndexChanged);
+            // 
+            // panel22
+            // 
+            this.panel22.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel22.BackColor = System.Drawing.SystemColors.Control;
+            this.panel22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel22.Controls.Add(this.label40);
+            this.panel22.Controls.Add(this.label41);
+            this.panel22.Font = new System.Drawing.Font("High Tower Text", 32F);
+            this.panel22.Location = new System.Drawing.Point(2, 0);
+            this.panel22.Margin = new System.Windows.Forms.Padding(2);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(968, 49);
+            this.panel22.TabIndex = 75;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("High Tower Text", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.ForeColor = System.Drawing.Color.Black;
+            this.label40.Location = new System.Drawing.Point(-3, 1);
+            this.label40.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(325, 44);
+            this.label40.TabIndex = 0;
+            this.label40.Text = "Eligible Participants";
+            // 
+            // label41
+            // 
+            this.label41.BackColor = System.Drawing.Color.Transparent;
+            this.label41.Font = new System.Drawing.Font("Gadugi", 20F);
+            this.label41.ForeColor = System.Drawing.Color.Black;
+            this.label41.Location = new System.Drawing.Point(8, 46);
+            this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(152, 38);
+            this.label41.TabIndex = 40;
+            this.label41.Text = "Summary";
+            // 
             // frmPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1362,6 +2164,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).EndInit();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
+            this.tabContributions.ResumeLayout(false);
+            this.tabDistributions.ResumeLayout(false);
+            this.tabActiveParticipants.ResumeLayout(false);
+            this.tabEligibleParticipants.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContributions)).EndInit();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDistributions)).EndInit();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActiveParticipants)).EndInit();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
+            this.panel21.ResumeLayout(false);
+            this.panel21.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEligibleParticipants)).EndInit();
+            this.panel22.ResumeLayout(false);
+            this.panel22.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1441,5 +2267,49 @@
         public System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TabPage tabContributions;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Button btnNewContributions;
+        private System.Windows.Forms.Button btnDeleteContribution;
+        public System.Windows.Forms.DataGridView dgvContributions;
+        private System.Windows.Forms.Label label29;
+        public System.Windows.Forms.ComboBox cboContributionViews;
+        private System.Windows.Forms.Panel panel15;
+        public System.Windows.Forms.Label label30;
+        public System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TabPage tabDistributions;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Button btnNewDistribution;
+        private System.Windows.Forms.Button btnDeleteDistribution;
+        public System.Windows.Forms.DataGridView dgvDistributions;
+        private System.Windows.Forms.Label label32;
+        public System.Windows.Forms.ComboBox cboDistributionViews;
+        private System.Windows.Forms.Panel panel18;
+        public System.Windows.Forms.Label label33;
+        public System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TabPage tabActiveParticipants;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Button btnNewActiveParticipants;
+        private System.Windows.Forms.Button btnDeleteActiveParticipants;
+        public System.Windows.Forms.DataGridView dgvActiveParticipants;
+        private System.Windows.Forms.Label label35;
+        public System.Windows.Forms.ComboBox cboActiveParticipantViews;
+        private System.Windows.Forms.Panel panel20;
+        public System.Windows.Forms.Label label36;
+        public System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TabPage tabEligibleParticipants;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Button btnNewEligibleParticipants;
+        private System.Windows.Forms.Button btnDeleteEligibleParticipants;
+        public System.Windows.Forms.DataGridView dgvEligibleParticipants;
+        private System.Windows.Forms.Label label39;
+        public System.Windows.Forms.ComboBox cboEligibleParticipantsViews;
+        private System.Windows.Forms.Panel panel22;
+        public System.Windows.Forms.Label label40;
+        public System.Windows.Forms.Label label41;
 	}
 }

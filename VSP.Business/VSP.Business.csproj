@@ -54,7 +54,12 @@
     <Compile Include="Entities\Auditor.cs" />
     <Compile Include="Entities\AdvisorService.cs" />
     <Compile Include="Entities\PlanAdvisor.cs" />
+    <Compile Include="Entities\PlanAdvisorFee.cs" />
     <Compile Include="Entities\PlanAuditor.cs" />
+    <Compile Include="Entities\PlanContribution.cs" />
+    <Compile Include="Entities\PlanDistribution.cs" />
+    <Compile Include="Entities\PlanParticipantsActive.cs" />
+    <Compile Include="Entities\PlanParticipantsEligible.cs" />
     <Compile Include="Entities\PlanRecordKeeper.cs" />
     <Compile Include="Entities\SearchFund.cs" />
     <Compile Include="Entities\SearchQuestion.cs" />
