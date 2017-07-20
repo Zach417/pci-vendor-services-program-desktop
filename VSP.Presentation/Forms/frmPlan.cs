@@ -760,7 +760,7 @@ namespace VSP.Presentation.Forms
             LoadDgvDistributions();
         }
 
-        private void LoadDgvEligibleParticipantsView()
+        private void LoadDgvEligibleParticipants()
         {
             DataTable dataTable = VSP.Business.Entities.PlanParticipantsEligible.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
@@ -804,7 +804,7 @@ namespace VSP.Presentation.Forms
 
         private void cboEligibleParticipantsViews_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadDgvEligibleParticipantsView();
+            LoadDgvEligibleParticipants();
         }
 
         private void LoadDgvActiveParticipants()
@@ -852,6 +852,166 @@ namespace VSP.Presentation.Forms
         private void cboActiveParticipantViews_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadDgvActiveParticipants();
+        }
+
+        private void dgvContributions_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvContributions.CurrentRow.Index;
+            Guid id = new Guid(dgvContributions.Rows[index].Cells["PlanContributionId"].Value.ToString());
+            PlanContribution obj = new PlanContribution(id);
+            frmPlanContribution frmPlanContribution = new frmPlanContribution(frmMain_Parent, obj);
+            frmPlanContribution.FormClosed += frmPlanContribution_FormClosed;
+        }
+
+        private void frmPlanContribution_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvContributions();
+        }
+
+        private void btnNewContributions_Click(object sender, EventArgs e)
+        {
+            frmPlanContribution frmPlanContribution = new frmPlanContribution(frmMain_Parent, CurrentPlan);
+            frmPlanContribution.FormClosed += frmPlanContribution_FormClosed;
+        }
+
+        private void btnDeleteContribution_Click(object sender, EventArgs e)
+        {
+            if (dgvContributions.CurrentRow == null)
+            {
+                return;
+            }
+
+            int index = dgvContributions.CurrentRow.Index;
+            Guid id = new Guid(dgvContributions.Rows[index].Cells["PlanContributionId"].Value.ToString());
+            PlanContribution obj = new PlanContribution(id);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete contribution on " + obj.AsOfDate.ToString("MM/dd/yyyy") + "?", "Attention", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                obj.DeleteRecordFromDatabase();
+                LoadDgvContributions();
+            }
+        }
+
+        private void dgvDistributions_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvDistributions.CurrentRow.Index;
+            Guid id = new Guid(dgvDistributions.Rows[index].Cells["PlanDistributionId"].Value.ToString());
+            PlanDistribution obj = new PlanDistribution(id);
+            frmPlanDistribution frmPlanDistribution = new frmPlanDistribution(frmMain_Parent, obj);
+            frmPlanDistribution.FormClosed += frmPlanDistribution_FormClosed;
+        }
+
+        private void frmPlanDistribution_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvDistributions();
+        }
+
+        private void btnNewDistribution_Click(object sender, EventArgs e)
+        {
+            frmPlanDistribution frmPlanDistribution = new frmPlanDistribution(frmMain_Parent, CurrentPlan);
+            frmPlanDistribution.FormClosed += frmPlanDistribution_FormClosed;
+        }
+
+        private void btnDeleteDistribution_Click(object sender, EventArgs e)
+        {
+            if (dgvDistributions.CurrentRow == null)
+            {
+                return;
+            }
+
+            int index = dgvDistributions.CurrentRow.Index;
+            Guid id = new Guid(dgvDistributions.Rows[index].Cells["PlanDistributionId"].Value.ToString());
+            PlanDistribution obj = new PlanDistribution(id);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete distribution on " + obj.AsOfDate.ToString("MM/dd/yyyy") + "?", "Attention", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                obj.DeleteRecordFromDatabase();
+                LoadDgvDistributions();
+            }
+        }
+
+        private void dgvActiveParticipants_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvActiveParticipants.CurrentRow.Index;
+            Guid id = new Guid(dgvActiveParticipants.Rows[index].Cells["PlanParticipantsActiveId"].Value.ToString());
+            PlanParticipantsActive obj = new PlanParticipantsActive(id);
+            frmPlanParticipantsActive frmPlanParticipantsActive = new frmPlanParticipantsActive(frmMain_Parent, obj);
+            frmPlanParticipantsActive.FormClosed += frmPlanParticipantsActive_FormClosed;
+        }
+
+        private void frmPlanParticipantsActive_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvActiveParticipants();
+        }
+
+        private void btnNewActiveParticipants_Click(object sender, EventArgs e)
+        {
+            frmPlanParticipantsActive frmPlanParticipantsActive = new frmPlanParticipantsActive(frmMain_Parent, CurrentPlan);
+            frmPlanParticipantsActive.FormClosed += frmPlanParticipantsActive_FormClosed;
+        }
+
+        private void btnDeleteActiveParticipants_Click(object sender, EventArgs e)
+        {
+            if (dgvActiveParticipants.CurrentRow == null)
+            {
+                return;
+            }
+
+            int index = dgvActiveParticipants.CurrentRow.Index;
+            Guid id = new Guid(dgvActiveParticipants.Rows[index].Cells["PlanParticipantsActiveId"].Value.ToString());
+            PlanParticipantsActive obj = new PlanParticipantsActive(id);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete active plan participants on " + obj.AsOfDate.ToString("MM/dd/yyyy") + "?", "Attention", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                obj.DeleteRecordFromDatabase();
+                LoadDgvActiveParticipants();
+            }
+        }
+
+        private void dgvEligibleParticipants_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvEligibleParticipants.CurrentRow.Index;
+            Guid id = new Guid(dgvEligibleParticipants.Rows[index].Cells["PlanParticipantsEligibleId"].Value.ToString());
+            PlanParticipantsEligible obj = new PlanParticipantsEligible(id);
+            frmPlanParticipantsEligible frmPlanParticipantsEligible = new frmPlanParticipantsEligible(frmMain_Parent, obj);
+            frmPlanParticipantsEligible.FormClosed += frmPlanParticipantsEligible_FormClosed;
+        }
+
+        private void frmPlanParticipantsEligible_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvEligibleParticipants();
+        }
+
+        private void btnNewEligibleParticipants_Click(object sender, EventArgs e)
+        {
+            frmPlanParticipantsEligible frmPlanParticipantsEligible = new frmPlanParticipantsEligible(frmMain_Parent, CurrentPlan);
+            frmPlanParticipantsEligible.FormClosed += frmPlanParticipantsEligible_FormClosed;
+        }
+
+        private void btnDeleteEligibleParticipants_Click(object sender, EventArgs e)
+        {
+            if (dgvEligibleParticipants.CurrentRow == null)
+            {
+                return;
+            }
+
+            int index = dgvEligibleParticipants.CurrentRow.Index;
+            Guid id = new Guid(dgvEligibleParticipants.Rows[index].Cells["PlanParticipantsEligibleId"].Value.ToString());
+            PlanParticipantsEligible obj = new PlanParticipantsEligible(id);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete eligible plan participants on " + obj.AsOfDate.ToString("MM/dd/yyyy") + "?", "Attention", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                obj.DeleteRecordFromDatabase();
+                LoadDgvEligibleParticipants();
+            }
         }
 	}
 }

@@ -1,0 +1,75 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - My ASP.NET Application</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="container-fluid" style="background-color:#f1f4f6;color:#ffffff;padding:15px 0px;background-image:url(https://pension-consultants.com/wp-content/themes/_pension/img/eye_lighter.png);background-repeat:no-repeat;background-position:-300px -68px;">
+            <div class="container">
+                <div class="row">
+                <img src="https://pension-consultants.com/wp-content/themes/_pension/img/pension_logo.png" style="width: 180px; display: block;" />
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" style="background-color:#0e2e47;color:#ffffff;padding:15px 0px;height:45px;">
+            <div class="container">
+                <div class="row">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" style="background-color:#a3a8aa;color:#ffffff;padding:15px 0px;height:32px;">
+            <div class="container">
+                <div class="row">
+                </div>
+            </div>
+        </div><asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="container-fluid" style="padding:15px 0px;background-color:#0e2e47;color:#fff;">
+            <div class="container">
+                <div class="row">
+                    <div style="font-size: 0.9em;">
+                        <p>Pension Consultants, Inc. is registered with U.S. Securities and Exchange Commission as an investment adviser. ©2017 Pension Consultants, Inc. All Rights Reserved.</p>
+				        <p>Pension Consultants, Inc. (“PCI”) is not a law firm and does not provide legal services. A compliance consulting relationship with PCI is not provided those legal and professional protections that normally exist under an attorney-client relationship. For more information, please visit our <a href="https://pension-consultants.com/important-disclosures/">Disclosures</a> webpage. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

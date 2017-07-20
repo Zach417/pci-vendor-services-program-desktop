@@ -125,6 +125,30 @@
     <Compile Include="Forms\frmAdvisor.Designer.cs">
       <DependentUpon>frmAdvisor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmPlanParticipantsEligible.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPlanParticipantsEligible.Designer.cs">
+      <DependentUpon>frmPlanParticipantsEligible.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPlanParticipantsActive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPlanParticipantsActive.Designer.cs">
+      <DependentUpon>frmPlanParticipantsActive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPlanDistribution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPlanDistribution.Designer.cs">
+      <DependentUpon>frmPlanDistribution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPlanContribution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPlanContribution.Designer.cs">
+      <DependentUpon>frmPlanContribution.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmRecordKeeper.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +277,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAdvisor.resx">
       <DependentUpon>frmAdvisor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPlanParticipantsEligible.resx">
+      <DependentUpon>frmPlanParticipantsEligible.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPlanParticipantsActive.resx">
+      <DependentUpon>frmPlanParticipantsActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPlanDistribution.resx">
+      <DependentUpon>frmPlanDistribution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPlanContribution.resx">
+      <DependentUpon>frmPlanContribution.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRecordKeeper.resx">
       <DependentUpon>frmRecordKeeper.cs</DependentUpon>
