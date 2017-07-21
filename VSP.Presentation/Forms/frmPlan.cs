@@ -61,7 +61,10 @@ namespace VSP.Presentation.Forms
             FormClosed += Close;
 
             CurrentPlan = plan;
+            CurrentPlanDetail = new PlanDetail(plan.PlanId);
             txtName.Text = CurrentPlan.Name;
+            txtOutstandingLoans.Text = CurrentPlanDetail.LoansOutstanding.ToString();
+            txtSelfDirectedBrokerageAccounts.Text = CurrentPlanDetail.SelfDirectedBrokerageAccounts.ToString();
 
             cboRkViews.SelectedIndex = 0;
             cboAdvisorViews.SelectedIndex = 0;
@@ -173,11 +176,42 @@ namespace VSP.Presentation.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //CurrentService.Name = txtName.Text;
-            //CurrentService.Category = txtCategory.Text;
-            //CurrentService.Type = txtType.Text;
-            //CurrentService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            //this.Close();
+            if (String.IsNullOrWhiteSpace(txtSelfDirectedBrokerageAccounts.Text))
+            {
+                CurrentPlanDetail.SelfDirectedBrokerageAccounts = 0;
+            }
+            else
+            {
+                try
+                {
+                    CurrentPlanDetail.SelfDirectedBrokerageAccounts = int.Parse(txtSelfDirectedBrokerageAccounts.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Self-directed brokerage accounts string not in integer format");
+                    return;
+                }
+            }
+
+            if (String.IsNullOrWhiteSpace(txtOutstandingLoans.Text))
+            {
+                CurrentPlanDetail.LoansOutstanding = 0;
+            }
+            else
+            {
+                try
+                {
+                    CurrentPlanDetail.LoansOutstanding = int.Parse(txtOutstandingLoans.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Loans outstanding string not in integer format");
+                    return;
+                }
+            }
+
+            CurrentPlanDetail.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+            this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

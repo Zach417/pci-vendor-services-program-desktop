@@ -13,6 +13,8 @@ namespace VSP.Business.Entities
     public class PlanDetail : DatabaseEntity
     {
         public Guid PlanId;
+        public int? LoansOutstanding;
+        public int? SelfDirectedBrokerageAccounts;
 
         private static string _tableName = "PlanDetail";
 
@@ -35,6 +37,8 @@ namespace VSP.Business.Entities
         protected override void RegisterMembers()
         {
             base.AddColumn("PlanId", this.PlanId);
+            base.AddColumn("LoansOutstanding", this.LoansOutstanding);
+            base.AddColumn("SelfDirectedBrokerageAccounts", this.SelfDirectedBrokerageAccounts);
         }
 
         /// <summary>
@@ -43,17 +47,19 @@ namespace VSP.Business.Entities
         protected override void SetRegisteredMembers()
         {
             this.PlanId = (Guid)base.GetColumn("PlanId");
+            this.LoansOutstanding = (int?)base.GetColumn("LoansOutstanding");
+            this.SelfDirectedBrokerageAccounts = (int?)base.GetColumn("SelfDirectedBrokerageAccounts");
         }
 
         public static DataTable GetActive()
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0 ORDER BY [Type], [Category], [Name]";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
         public static DataTable GetInactive()
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1 ORDER BY [Type], [Category], [Name]";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }
