@@ -11,21 +11,22 @@ using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class Search : DatabaseEntity
+    public class SearchBidQuestion : DatabaseEntity
     {
-        public Guid PlanId;
-        public string Name;
-        public string CurrentRkNotes;
+        public Guid SearchBidId;
+        public Guid SearchQuestionId;
+        public SqlBoolean AnswerValue;
 
-        private static string _tableName = "Search";
 
-        public Search()
+        private static string _tableName = "SearchBidQuestion";
+
+        public SearchBidQuestion()
             : base(_tableName)
         {
 
         }
 
-        public Search(Guid primaryKey)
+        public SearchBidQuestion(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -37,9 +38,9 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("PlanId", this.PlanId);
-            base.AddColumn("Name", this.Name);
-            base.AddColumn("CurrentRkNotes", this.CurrentRkNotes);
+            base.AddColumn("SearchBidId", this.SearchBidId);
+            base.AddColumn("SearchQuestionId", this.SearchQuestionId);
+            base.AddColumn("AnswerValue", this.AnswerValue);
         }
 
         /// <summary>
@@ -47,20 +48,9 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.PlanId = (Guid)base.GetColumn("PlanId");
-            this.Name = (string)base.GetColumn("Name");
-            this.CurrentRkNotes = (string)base.GetColumn("CurrentRkNotes");
-        }
-
-        /// <summary>
-        /// Inserts matching record keeper results in SearchRecordKeeper table
-        /// </summary>
-        public void ExecuteSearch(Guid userId)
-        {
-            Hashtable hashTable = new Hashtable();
-            hashTable.Add("@SearchId", this.Id);
-            hashTable.Add("@UserId", userId);
-            Access.VspDbAccess.ExecuteStoredProcedureNonQuery("usp_ExecuteSearch", hashTable);
+            this.SearchBidId = (Guid)base.GetColumn("SearchBidId");
+            this.SearchQuestionId = (Guid)base.GetColumn("SearchQuestionId");
+            this.AnswerValue = (SqlBoolean)base.GetColumn("AnswerValue");
         }
 
         public static DataTable GetActive()
@@ -72,6 +62,12 @@ namespace VSP.Business.Entities
         public static DataTable GetInactive()
         {
             string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
+        }
+
+        public static DataTable GetAssociated(SearchBid searchBid)
+        {
+            string sql = @"SELECT * FROM " + _tableName + " WHERE SearchBidId = '" + searchBid.Id + "'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

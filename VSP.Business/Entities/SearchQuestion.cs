@@ -14,7 +14,7 @@ namespace VSP.Business.Entities
     public class SearchQuestion : DatabaseEntity
     {
         public Guid SearchId;
-        public string SubjectValue;
+        public string SubjectValue { get; set; }
         public SqlBoolean AnswerValue;
 
         private static string _tableName = "SearchQuestion";

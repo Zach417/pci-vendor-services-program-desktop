@@ -921,6 +921,7 @@ namespace VSP.Presentation.Forms
             // Display/order the columns.
             dgvSearches.Columns["SearchId"].Visible = false;
             dgvSearches.Columns["PlanId"].Visible = false;
+            dgvSearches.Columns["CurrentRkNotes"].Visible = false;
             dgvSearches.Columns["CreatedBy"].Visible = false;
             dgvSearches.Columns["ModifiedBy"].Visible = false;
             dgvSearches.Columns["StateCode"].Visible = false;

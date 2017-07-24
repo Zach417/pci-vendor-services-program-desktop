@@ -62,6 +62,7 @@ namespace VSP.Presentation.Forms
 
             CurrentSearch = new Search();
             txtName.Text = CurrentSearch.Name;
+            txtCurrentRkNotes.Text = CurrentSearch.CurrentRkNotes;
 
             ss.Close();
             this.Show();
@@ -108,8 +109,10 @@ namespace VSP.Presentation.Forms
             }
 
             txtName.Text = CurrentSearch.Name;
+            txtCurrentRkNotes.Text = CurrentSearch.CurrentRkNotes;
 
             cboResultsView.SelectedIndex = 0;
+            cboBidViews.SelectedIndex = 0;
             cboFundViews.SelectedIndex = 0;
             cboQuestionViews.SelectedIndex = 0;
             cboServicesView.SelectedIndex = 0;
@@ -454,6 +457,7 @@ namespace VSP.Presentation.Forms
         private void Save()
         {
             CurrentSearch.Name = txtName.Text;
+            CurrentSearch.CurrentRkNotes = txtCurrentRkNotes.Text;
 
             if (cboPlan.SelectedIndex <= 0)
             {
@@ -681,6 +685,108 @@ namespace VSP.Presentation.Forms
         private void frmSearchRecordKeeper_FormClosed(object sender, FormClosedEventArgs e)
         {
             LoadDgvResults();
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+            tabControlDetail.SelectedTab = tabBids;
+        }
+
+        private void LoadDgvBids()
+        {
+            DataTable dataTable = SearchBid.GetAssociated(CurrentSearch);
+            var dataTableEnum = dataTable.AsEnumerable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboBidViews"/>.
+            switch (cboBidViews.SelectedIndex)
+            {
+                case 0:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 0);
+                    break;
+                case 1:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
+            }
+
+            dataTable.Columns.Add("RecordKeeper", typeof(string));
+
+            dgvBids.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvBids.Columns["SearchBidId"].Visible = false;
+            dgvBids.Columns["SearchId"].Visible = false;
+            dgvBids.Columns["RecordKeeperId"].Visible = false;
+            dgvBids.Columns["Email"].Visible = false;
+            dgvBids.Columns["ConfirmInvestments"].Visible = false;
+            dgvBids.Columns["ConfirmServices"].Visible = false;
+            dgvBids.Columns["RequiredRevenueExplanation"].Visible = false;
+            dgvBids.Columns["AncillaryServices"].Visible = false;
+            dgvBids.Columns["Notes"].Visible = false;
+            dgvBids.Columns["ModifiedBy"].Visible = false;
+            dgvBids.Columns["ModifiedOn"].Visible = false;
+            dgvBids.Columns["CreatedBy"].Visible = false;
+            dgvBids.Columns["CreatedOn"].Visible = false;
+            dgvBids.Columns["StateCode"].Visible = false;
+
+            dgvBids.Columns["FullName"].DisplayIndex = 0;
+            dgvBids.Columns["RecordKeeper"].DisplayIndex = 1;
+            dgvBids.Columns["RequiredRevenue"].DisplayIndex = 2;
+            dgvBids.Columns["IsFinalist"].DisplayIndex = 3;
+            dgvBids.Columns["IsRecommended"].DisplayIndex = 4;
+
+            int rowIndex = 0;
+            foreach (DataGridViewRow dr in dgvBids.Rows)
+            {
+                Guid recordKeeperId = new Guid(dr.Cells["RecordKeeperId"].Value.ToString());
+                DataIntegrationHub.Business.Entities.RecordKeeper recordKeeper = new DataIntegrationHub.Business.Entities.RecordKeeper(recordKeeperId);
+                dgvBids.Rows[rowIndex].Cells["RecordKeeper"].Value = recordKeeper.Name;
+                rowIndex++;
+            }
+        }
+
+        private void cboBidViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvBids();
+        }
+
+        private void dgvBids_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvBids.CurrentRow.Index;
+            Guid searchBidId = new Guid(dgvBids.Rows[index].Cells["SearchBidId"].Value.ToString());
+            SearchBid searchBid = new SearchBid(searchBidId);
+
+            frmSearchBid frmSearchBid = new frmSearchBid(frmMain_Parent, searchBid);
+            frmSearchBid.FormClosed += frmSearchBid_FormClosed;
+        }
+
+        void frmSearchBid_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvBids();
+        }
+
+        private void btnDeleteBid_Click(object sender, EventArgs e)
+        {
+            int index = dgvBids.CurrentRow.Index;
+            Guid searchBidId = new Guid(dgvBids.Rows[index].Cells["SearchBidId"].Value.ToString());
+            SearchBid searchBid = new SearchBid(searchBidId);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete the selected bid?", "Attention", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                searchBid.DeleteRecordFromDatabase();
+                LoadDgvBids();
+            }
         }
 	}
 }

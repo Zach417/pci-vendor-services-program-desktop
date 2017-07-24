@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace VSP.Presentation.Forms
 {
-	public partial class frmSearchFund : Form, IMessageFilter
+	public partial class frmSearchBid : Form, IMessageFilter
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -31,41 +31,7 @@ namespace VSP.Presentation.Forms
         private HashSet<Control> controlsToMove = new HashSet<Control>();
 
         private frmMain frmMain_Parent;
-        public SearchFund CurrentSearchFund;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="mf"></param>
-        /// <param name="Close"></param>
-        public frmSearchFund(frmMain mf, Search search, FormClosedEventHandler Close = null)
-        {
-            frmSplashScreen ss = new frmSplashScreen();
-            ss.Show();
-            Application.DoEvents();
-
-            InitializeComponent();
-
-            frmMain_Parent = mf;
-
-            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
-
-            Application.AddMessageFilter(this);
-            controlsToMove.Add(this.pnlSummaryTabHeader);
-            controlsToMove.Add(this.panel16);
-            controlsToMove.Add(this.label1);
-            controlsToMove.Add(this.label23);
-
-            FormClosed += Close;
-
-            CurrentSearchFund = new SearchFund();
-            CurrentSearchFund.SearchId = search.Id;
-            txtTicker.Text = CurrentSearchFund.Ticker;
-            txtFundName.Text = CurrentSearchFund.FundName;
-
-            ss.Close();
-            this.Show();
-        }
+        public SearchBid CurrentSearchBid;
 
         /// <summary>
         /// 
@@ -73,7 +39,7 @@ namespace VSP.Presentation.Forms
         /// <param name="mf"></param>
         /// <param name="accountId"></param>
         /// <param name="Close"></param>
-        public frmSearchFund(frmMain mf, SearchFund searchFund, FormClosedEventHandler Close = null)
+        public frmSearchBid(frmMain mf, SearchBid searchBid, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -93,9 +59,44 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
-            CurrentSearchFund = searchFund;
-            txtTicker.Text = CurrentSearchFund.Ticker;
-            txtFundName.Text = CurrentSearchFund.FundName;
+            CurrentSearchBid = searchBid;
+            txtRecordKeeper.Text = new DataIntegrationHub.Business.Entities.RecordKeeper(searchBid.RecordKeeperId).Name;
+            txtFullName.Text = searchBid.FullName;
+            txtEmail.Text = searchBid.Email;
+            txtConfirmInvestments.Text = searchBid.ConfirmInvestments.ToString();
+            txtConfirmServices.Text = searchBid.ConfirmServices.ToString();
+            txtRequiredRevenue.Text = searchBid.RequiredRevenue.ToString("#,##.##");
+            txtRequiredRevenueExplanation.Text = searchBid.RequiredRevenueExplanation;
+            txtAncillaryServices.Text = searchBid.AncillaryServices;
+            txtNotes.Text = searchBid.Notes;
+
+            if (searchBid.IsFinalist == null)
+            {
+                cboIsFinalist.SelectedIndex = 0;
+            }
+            else if (((SqlBoolean)searchBid.IsFinalist) == SqlBoolean.True)
+            {
+                cboIsFinalist.SelectedIndex = 1;
+            }
+            else
+            {
+                cboIsFinalist.SelectedIndex = 2;
+            }
+
+            if (searchBid.IsRecommended == null)
+            {
+                cboIsRecommended.SelectedIndex = 0;
+            }
+            else if (((SqlBoolean)searchBid.IsRecommended) == SqlBoolean.True)
+            {
+                cboIsRecommended.SelectedIndex = 1;
+            }
+            else
+            {
+                cboIsRecommended.SelectedIndex = 2;
+            }
+
+            cboQuestionViews.SelectedIndex = 0;
 
             ss.Close();
             this.Show();
@@ -195,17 +196,93 @@ namespace VSP.Presentation.Forms
             label.BackColor = System.Drawing.Color.Transparent;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
         {
-            CurrentSearchFund.Ticker = txtTicker.Text;
-            CurrentSearchFund.FundName = txtFundName.Text;
-            CurrentSearchFund.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            this.Close();
+            tabControlClientDetail.SelectedTab = tabQuestions;
         }
 
-        private void txtName_TextChanged(object sender, EventArgs e)
+        private void LoadDgvQuestions()
         {
-            label23.Text = txtFundName.Text;
+            DataTable dataTable = SearchBidQuestion.GetAssociated(CurrentSearchBid);
+            var dataTableEnum = dataTable.AsEnumerable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboQuestionViews"/>.
+            switch (cboQuestionViews.SelectedIndex)
+            {
+                case 0:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 0);
+                    break;
+                case 1:
+                    dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 1);
+                    break;
+                default:
+                    return;
+            }
+
+            if (dataTableEnum.Any())
+            {
+                dataTable = dataTableEnum.CopyToDataTable();
+            }
+            else
+            {
+                dataTable.Rows.Clear();
+            }
+
+            dataTable.Columns.Add("Question", typeof(string));
+
+            dgvQuestions.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvQuestions.Columns["SearchBidQuestionId"].Visible = false;
+            dgvQuestions.Columns["SearchBidId"].Visible = false;
+            dgvQuestions.Columns["SearchQuestionId"].Visible = false;
+            dgvQuestions.Columns["ModifiedBy"].Visible = false;
+            dgvQuestions.Columns["ModifiedOn"].Visible = false;
+            dgvQuestions.Columns["CreatedBy"].Visible = false;
+            dgvQuestions.Columns["CreatedOn"].Visible = false;
+            dgvQuestions.Columns["StateCode"].Visible = false;
+
+            dgvQuestions.Columns["Question"].DisplayIndex = 0;
+            dgvQuestions.Columns["AnswerValue"].DisplayIndex = 1;
+
+            int rowIndex = 0;
+            foreach (DataGridViewRow dr in dgvQuestions.Rows)
+            {
+                Guid searchQuestionId = new Guid(dr.Cells["SearchQuestionId"].Value.ToString());
+                SearchQuestion searchQuestion = new SearchQuestion(searchQuestionId);
+                dgvQuestions.Rows[rowIndex].Cells["Question"].Value = searchQuestion.SubjectValue;
+                rowIndex++;
+            }
+        }
+
+        private void cboQuestionViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvQuestions();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(cboIsFinalist.Text))
+            {
+                CurrentSearchBid.IsFinalist = null;
+            }
+            else
+            {
+                CurrentSearchBid.IsFinalist = SqlBoolean.Parse(cboIsFinalist.Text.ToLower());
+            }
+
+            if (String.IsNullOrWhiteSpace(cboIsRecommended.Text))
+            {
+                CurrentSearchBid.IsRecommended = null;
+            }
+            else
+            {
+                CurrentSearchBid.IsRecommended = SqlBoolean.Parse(cboIsRecommended.Text.ToLower());
+            }
+
+            CurrentSearchBid.Notes = txtNotes.Text;
+            CurrentSearchBid.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+            this.Close();
         }
 	}
 }
