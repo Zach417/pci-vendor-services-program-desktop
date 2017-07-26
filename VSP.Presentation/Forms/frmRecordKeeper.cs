@@ -67,6 +67,16 @@ namespace VSP.Presentation.Forms
             txtMergersAcquisitions.Text = CurrentRK.MergersAcquisitions;
             txtFeeArrangementsRelationships.Text = CurrentRK.FeeArrangementsRelationships;
 
+            if (CurrentRK.PlansServiced != null)
+            {
+                txtPlansServiced.Text = ((int)CurrentRK.PlansServiced).ToString();
+            }
+
+            if (CurrentRK.AssetsServiced != null)
+            {
+                txtAssetsServiced.Text = ((decimal)CurrentRK.AssetsServiced).ToString();
+            }
+
             cboIssueViews.SelectedIndex = 0;
             cboProductViews.SelectedIndex = 0;
 
@@ -189,6 +199,41 @@ namespace VSP.Presentation.Forms
             CurrentRK.ActionsPenalties = txtActionsPenalties.Text;
             CurrentRK.MergersAcquisitions = txtMergersAcquisitions.Text;
             CurrentRK.FeeArrangementsRelationships = txtFeeArrangementsRelationships.Text;
+
+            if (String.IsNullOrWhiteSpace(txtPlansServiced.Text))
+            {
+                CurrentRK.PlansServiced = null;
+            }
+            else
+            {
+                try
+                {
+                    CurrentRK.PlansServiced = int.Parse(txtPlansServiced.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Plans Serviced field is not in an integer format.");
+                    return;
+                }
+            }
+
+            if (String.IsNullOrWhiteSpace(txtAssetsServiced.Text))
+            {
+                CurrentRK.AssetsServiced = null;
+            }
+            else
+            {
+                try
+                {
+                    CurrentRK.AssetsServiced = decimal.Parse(txtAssetsServiced.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Assets Serviced field is not in a decimal format.");
+                    return;
+                }
+            }
+
             CurrentRK.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
             this.Close();
         }

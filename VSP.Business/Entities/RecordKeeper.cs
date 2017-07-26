@@ -19,6 +19,8 @@ namespace VSP.Business.Entities
         public string ActionsPenalties;
         public string MergersAcquisitions;
         public string FeeArrangementsRelationships;
+        public int? PlansServiced;
+        public decimal? AssetsServiced;
 
         private static string _tableName = "RecordKeeper";
 
@@ -47,6 +49,8 @@ namespace VSP.Business.Entities
             base.AddColumn("ActionsPenalties", this.ActionsPenalties);
             base.AddColumn("MergersAcquisitions", this.MergersAcquisitions);
             base.AddColumn("FeeArrangementsRelationships", this.FeeArrangementsRelationships);
+            base.AddColumn("PlansServiced", this.PlansServiced);
+            base.AddColumn("AssetsServiced", this.AssetsServiced);
         }
 
         /// <summary>
@@ -61,6 +65,8 @@ namespace VSP.Business.Entities
             this.ActionsPenalties = (string)base.GetColumn("ActionsPenalties");
             this.MergersAcquisitions = (string)base.GetColumn("MergersAcquisitions");
             this.FeeArrangementsRelationships = (string)base.GetColumn("FeeArrangementsRelationships");
+            this.PlansServiced = (int?)base.GetColumn("PlansServiced");
+            this.AssetsServiced = (decimal?)base.GetColumn("AssetsServiced");
         }
 
         public static DataTable GetActive()
