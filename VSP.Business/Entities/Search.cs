@@ -16,6 +16,7 @@ namespace VSP.Business.Entities
         public Guid PlanId;
         public string Name;
         public string CurrentRkNotes;
+        public DateTime? AsOfDate;
 
         private static string _tableName = "Search";
 
@@ -40,6 +41,7 @@ namespace VSP.Business.Entities
             base.AddColumn("PlanId", this.PlanId);
             base.AddColumn("Name", this.Name);
             base.AddColumn("CurrentRkNotes", this.CurrentRkNotes);
+            base.AddColumn("AsOfDate", this.AsOfDate);
         }
 
         /// <summary>
@@ -50,6 +52,7 @@ namespace VSP.Business.Entities
             this.PlanId = (Guid)base.GetColumn("PlanId");
             this.Name = (string)base.GetColumn("Name");
             this.CurrentRkNotes = (string)base.GetColumn("CurrentRkNotes");
+            this.AsOfDate = (DateTime?)base.GetColumn("AsOfDate");
         }
 
         /// <summary>

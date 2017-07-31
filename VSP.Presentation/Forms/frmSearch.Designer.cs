@@ -45,6 +45,8 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabClientSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtCurrentRkNotes = new System.Windows.Forms.RichTextBox();
             this.cboPlan = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblAccountInformationHeader = new System.Windows.Forms.Label();
@@ -110,8 +112,8 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.label26 = new System.Windows.Forms.Label();
-            this.txtCurrentRkNotes = new System.Windows.Forms.RichTextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtAsOfDate = new System.Windows.Forms.RichTextBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -353,6 +355,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label27);
+            this.panel2.Controls.Add(this.txtAsOfDate);
             this.panel2.Controls.Add(this.label26);
             this.panel2.Controls.Add(this.txtCurrentRkNotes);
             this.panel2.Controls.Add(this.cboPlan);
@@ -364,6 +368,33 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
+            // 
+            // label26
+            // 
+            this.label26.Font = new System.Drawing.Font("Arial", 9F);
+            this.label26.Location = new System.Drawing.Point(19, 103);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(113, 18);
+            this.label26.TabIndex = 75;
+            this.label26.Text = "Current RK Notes:";
+            // 
+            // txtCurrentRkNotes
+            // 
+            this.txtCurrentRkNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCurrentRkNotes.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtCurrentRkNotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCurrentRkNotes.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtCurrentRkNotes.ForeColor = System.Drawing.Color.Black;
+            this.txtCurrentRkNotes.Location = new System.Drawing.Point(136, 102);
+            this.txtCurrentRkNotes.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCurrentRkNotes.Multiline = false;
+            this.txtCurrentRkNotes.Name = "txtCurrentRkNotes";
+            this.txtCurrentRkNotes.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtCurrentRkNotes.Size = new System.Drawing.Size(814, 113);
+            this.txtCurrentRkNotes.TabIndex = 74;
+            this.txtCurrentRkNotes.Text = "";
             // 
             // cboPlan
             // 
@@ -1416,32 +1447,32 @@
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
             // 
-            // label26
+            // label27
             // 
-            this.label26.Font = new System.Drawing.Font("Arial", 9F);
-            this.label26.Location = new System.Drawing.Point(19, 83);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(113, 18);
-            this.label26.TabIndex = 75;
-            this.label26.Text = "Current RK Notes:";
+            this.label27.Font = new System.Drawing.Font("Arial", 9F);
+            this.label27.Location = new System.Drawing.Point(19, 83);
+            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(113, 18);
+            this.label27.TabIndex = 77;
+            this.label27.Text = "As Of Date:";
             // 
-            // txtCurrentRkNotes
+            // txtAsOfDate
             // 
-            this.txtCurrentRkNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtAsOfDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCurrentRkNotes.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtCurrentRkNotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCurrentRkNotes.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtCurrentRkNotes.ForeColor = System.Drawing.Color.Black;
-            this.txtCurrentRkNotes.Location = new System.Drawing.Point(136, 82);
-            this.txtCurrentRkNotes.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCurrentRkNotes.Multiline = false;
-            this.txtCurrentRkNotes.Name = "txtCurrentRkNotes";
-            this.txtCurrentRkNotes.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtCurrentRkNotes.Size = new System.Drawing.Size(814, 113);
-            this.txtCurrentRkNotes.TabIndex = 74;
-            this.txtCurrentRkNotes.Text = "";
+            this.txtAsOfDate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtAsOfDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAsOfDate.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtAsOfDate.ForeColor = System.Drawing.Color.Black;
+            this.txtAsOfDate.Location = new System.Drawing.Point(136, 82);
+            this.txtAsOfDate.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAsOfDate.Multiline = false;
+            this.txtAsOfDate.Name = "txtAsOfDate";
+            this.txtAsOfDate.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtAsOfDate.Size = new System.Drawing.Size(814, 19);
+            this.txtAsOfDate.TabIndex = 76;
+            this.txtAsOfDate.Text = "";
             // 
             // frmSearch
             // 
@@ -1588,5 +1619,7 @@
         public System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label26;
         public System.Windows.Forms.RichTextBox txtCurrentRkNotes;
+        private System.Windows.Forms.Label label27;
+        public System.Windows.Forms.RichTextBox txtAsOfDate;
 	}
 }

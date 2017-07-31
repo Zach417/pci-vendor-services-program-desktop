@@ -256,7 +256,7 @@
                     <p>Use this area to provide additional information.</p>
                 </div>
                 <label for="requirerevenue" class="input-label">
-                    What is your required revenue?<br>
+                    What is your required revenue? (decimal values only)<br>
                     <input name="requirerevenue" class="input-text" id="requirerevenue" runat="server" style="min-width:100%;min-height:100px;" />
                 </label>
                 <label for="requirerevenueexplanation" class="input-label">

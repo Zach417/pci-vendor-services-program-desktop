@@ -64,6 +64,12 @@ namespace VSP.Presentation.Forms
             txtName.Text = CurrentSearch.Name;
             txtCurrentRkNotes.Text = CurrentSearch.CurrentRkNotes;
 
+            if (CurrentSearch.AsOfDate != null)
+            {
+                txtAsOfDate.Text = ((DateTime)CurrentSearch.AsOfDate).ToString("MM/dd/yyyy");
+            }
+
+
             ss.Close();
             this.Show();
         }
@@ -110,6 +116,11 @@ namespace VSP.Presentation.Forms
 
             txtName.Text = CurrentSearch.Name;
             txtCurrentRkNotes.Text = CurrentSearch.CurrentRkNotes;
+
+            if (CurrentSearch.AsOfDate != null)
+            {
+                txtAsOfDate.Text = ((DateTime)CurrentSearch.AsOfDate).ToString("MM/dd/yyyy");
+            }
 
             cboResultsView.SelectedIndex = 0;
             cboBidViews.SelectedIndex = 0;
@@ -469,6 +480,23 @@ namespace VSP.Presentation.Forms
                 ListItem li = (ListItem)cboPlan.SelectedItem;
                 Plan plan = (Plan)li.HiddenObject;
                 CurrentSearch.PlanId = plan.PlanId;
+            }
+
+            if (String.IsNullOrWhiteSpace(txtAsOfDate.Text))
+            {
+                CurrentSearch.AsOfDate = null;
+            }
+            else
+            {
+                try
+                {
+                    CurrentSearch.AsOfDate = DateTime.Parse(txtAsOfDate.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Error: As Of Date field is not in a date format.");
+                    return;
+                }
             }
 
             CurrentSearch.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
