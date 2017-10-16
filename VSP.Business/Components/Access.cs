@@ -14,7 +14,7 @@ namespace VSP.Business.Components
         /// <summary>
         /// Represents a database connection to the production VSP database.
         /// </summary>
-        public static DataAccessComponent VspDbAccess = new DataAccessComponent(DataAccessComponent.Connections.PCIDB_VendorServicesProgram);
+        public static DataAccessComponent VspDbAccess = new DataAccessComponent(DataAccessComponent.Connections.PCIDB_VendorServicesProgram, DataAccessComponent.SecurityTypes.Impersonate);
 
         ///// <summary>
         ///// Represents a database connection to the development VSP database.
