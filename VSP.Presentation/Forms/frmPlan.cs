@@ -1047,5 +1047,23 @@ namespace VSP.Presentation.Forms
                 LoadDgvEligibleParticipants();
             }
         }
+
+        private void dgvAuditors_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvAuditors.CurrentRow.Index;
+            Guid planAuditorId = new Guid(dgvAuditors.Rows[index].Cells["PlanAuditorId"].Value.ToString());
+            PlanAuditor planAuditor = new PlanAuditor(planAuditorId);
+            frmPlanAuditor frmPlanAuditor = new frmPlanAuditor(frmMain_Parent, planAuditor);
+            frmPlanAuditor.FormClosed += frmPlanAuditor_FormClosed;
+        }
+
+        private void dgvAdvisor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvAdvisors.CurrentRow.Index;
+            Guid planAdvisorId = new Guid(dgvAdvisors.Rows[index].Cells["PlanAdvisorId"].Value.ToString());
+            VSP.Business.Entities.PlanAdvisor planAdvisor = new VSP.Business.Entities.PlanAdvisor(planAdvisorId);
+            frmPlanAdvisor frmPlanAdvisor = new frmPlanAdvisor(frmMain_Parent, planAdvisor);
+            frmPlanAdvisor.FormClosed += frmPlanAdvisor_FormClosed;
+        }
 	}
 }

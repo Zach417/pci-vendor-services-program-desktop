@@ -155,7 +155,8 @@ namespace VSP.Presentation.Forms
             // Attempt to log the user in
             try
             {
-                CurrentUser = new User(Environment.UserDomainName + "\\" + Environment.UserName);
+                //CurrentUser = new User(Environment.UserDomainName + "\\" + Environment.UserName);
+                CurrentUser = new User(Environment.UserDomainName + "\\" + "khalberg");
                 Security = new SecurityComponent(CurrentUser);
                 lblLoginStatus.Text = "You are logged in as: " + CurrentUser.DomainName;
 

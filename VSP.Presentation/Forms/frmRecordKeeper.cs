@@ -262,7 +262,7 @@ namespace VSP.Presentation.Forms
 
             if (dataTable.Rows.Count > 0)
             {
-                var dt = dataTable.AsEnumerable().Where(x => x.Field<Guid>("RecordKeeperId") == CurrentRK.Id);
+                var dt = dataTable.AsEnumerable().Where(x => x.Field<Guid?>("RecordKeeperId") == CurrentRK.Id);
                 if (dt.Any())
                 {
                     dataTable = dt.CopyToDataTable();
