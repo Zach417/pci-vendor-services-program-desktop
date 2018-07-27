@@ -59,10 +59,11 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>2DAA9B131CF4A5DEE093B4B0318212296A76FCAB</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>08233A26FF22492E913974B415ECE5AB4159DC59</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>VSP.Presentation_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
