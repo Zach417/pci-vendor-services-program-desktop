@@ -63,8 +63,9 @@ namespace VSP.Presentation.Forms
             CurrentPlan = plan;
             CurrentPlanDetail = new PlanDetail(plan.PlanId);
             txtName.Text = CurrentPlan.Name;
-            txtOutstandingLoans.Text = CurrentPlanDetail.LoansOutstanding.ToString();
-            txtSelfDirectedBrokerageAccounts.Text = CurrentPlanDetail.SelfDirectedBrokerageAccounts.ToString();
+            txtNotes.Text = CurrentPlanDetail.Notes;
+            //txtOutstandingLoans.Text = CurrentPlanDetail.LoansOutstanding.ToString();
+            //txtSelfDirectedBrokerageAccounts.Text = CurrentPlanDetail.SelfDirectedBrokerageAccounts.ToString();
 
             cboRkViews.SelectedIndex = 0;
             cboAdvisorViews.SelectedIndex = 0;
@@ -176,7 +177,7 @@ namespace VSP.Presentation.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(txtSelfDirectedBrokerageAccounts.Text))
+            /*if (String.IsNullOrWhiteSpace(txtSelfDirectedBrokerageAccounts.Text))
             {
                 CurrentPlanDetail.SelfDirectedBrokerageAccounts = 0;
             }
@@ -208,8 +209,9 @@ namespace VSP.Presentation.Forms
                     MessageBox.Show("Error: Loans outstanding string not in integer format");
                     return;
                 }
-            }
+            }*/
 
+            CurrentPlanDetail.Notes = txtNotes.Text;
             CurrentPlanDetail.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
             this.Close();
         }
