@@ -17,8 +17,8 @@
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAuditor));
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -33,16 +33,8 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtValueBalance = new System.Windows.Forms.RichTextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtSecurity = new System.Windows.Forms.RichTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtRetirementBusiness = new System.Windows.Forms.RichTextBox();
             this.lblAccountInformationHeader = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.txtGeneralInformation = new System.Windows.Forms.RichTextBox();
             this.txtName = new System.Windows.Forms.RichTextBox();
             this.pnlSummaryTabHeader = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
@@ -62,6 +54,8 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNotes = new System.Windows.Forms.RichTextBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -219,99 +213,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.txtValueBalance);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.txtSecurity);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.txtRetirementBusiness);
+            this.panel2.Controls.Add(this.txtNotes);
             this.panel2.Controls.Add(this.lblAccountInformationHeader);
-            this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label24);
-            this.panel2.Controls.Add(this.txtGeneralInformation);
             this.panel2.Controls.Add(this.txtName);
             this.panel2.Location = new System.Drawing.Point(2, 46);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Arial", 9F);
-            this.label5.Location = new System.Drawing.Point(19, 228);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 53);
-            this.label5.TabIndex = 58;
-            this.label5.Text = "Value Balance:";
-            // 
-            // txtValueBalance
-            // 
-            this.txtValueBalance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValueBalance.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtValueBalance.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtValueBalance.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtValueBalance.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtValueBalance.Location = new System.Drawing.Point(136, 227);
-            this.txtValueBalance.Margin = new System.Windows.Forms.Padding(2);
-            this.txtValueBalance.Name = "txtValueBalance";
-            this.txtValueBalance.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtValueBalance.Size = new System.Drawing.Size(814, 54);
-            this.txtValueBalance.TabIndex = 57;
-            this.txtValueBalance.Text = "";
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Arial", 9F);
-            this.label4.Location = new System.Drawing.Point(19, 172);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 53);
-            this.label4.TabIndex = 56;
-            this.label4.Text = "Security:";
-            // 
-            // txtSecurity
-            // 
-            this.txtSecurity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSecurity.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtSecurity.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSecurity.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtSecurity.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtSecurity.Location = new System.Drawing.Point(136, 171);
-            this.txtSecurity.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSecurity.Name = "txtSecurity";
-            this.txtSecurity.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtSecurity.Size = new System.Drawing.Size(814, 54);
-            this.txtSecurity.TabIndex = 55;
-            this.txtSecurity.Text = "";
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Arial", 9F);
-            this.label2.Location = new System.Drawing.Point(19, 116);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 53);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "Dedicated Retirement Plan Business:";
-            // 
-            // txtRetirementBusiness
-            // 
-            this.txtRetirementBusiness.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRetirementBusiness.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtRetirementBusiness.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtRetirementBusiness.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtRetirementBusiness.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtRetirementBusiness.Location = new System.Drawing.Point(136, 115);
-            this.txtRetirementBusiness.Margin = new System.Windows.Forms.Padding(2);
-            this.txtRetirementBusiness.Name = "txtRetirementBusiness";
-            this.txtRetirementBusiness.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtRetirementBusiness.Size = new System.Drawing.Size(814, 54);
-            this.txtRetirementBusiness.TabIndex = 53;
-            this.txtRetirementBusiness.Text = "";
             // 
             // lblAccountInformationHeader
             // 
@@ -325,16 +235,6 @@
             this.lblAccountInformationHeader.TabIndex = 40;
             this.lblAccountInformationHeader.Text = "Summary";
             // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Arial", 9F);
-            this.label3.Location = new System.Drawing.Point(19, 60);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 53);
-            this.label3.TabIndex = 52;
-            this.label3.Text = "General Information:";
-            // 
             // label24
             // 
             this.label24.Font = new System.Drawing.Font("Arial", 9F);
@@ -344,22 +244,6 @@
             this.label24.Size = new System.Drawing.Size(113, 18);
             this.label24.TabIndex = 52;
             this.label24.Text = "Name:";
-            // 
-            // txtGeneralInformation
-            // 
-            this.txtGeneralInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtGeneralInformation.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtGeneralInformation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtGeneralInformation.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtGeneralInformation.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtGeneralInformation.Location = new System.Drawing.Point(136, 59);
-            this.txtGeneralInformation.Margin = new System.Windows.Forms.Padding(2);
-            this.txtGeneralInformation.Name = "txtGeneralInformation";
-            this.txtGeneralInformation.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtGeneralInformation.Size = new System.Drawing.Size(814, 54);
-            this.txtGeneralInformation.TabIndex = 2;
-            this.txtGeneralInformation.Text = "";
             // 
             // txtName
             // 
@@ -528,23 +412,23 @@
             this.dgvIssues.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvIssues.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvIssues.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvIssues.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvIssues.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvIssues.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvIssues.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvIssues.EnableHeadersVisualStyles = false;
             this.dgvIssues.Location = new System.Drawing.Point(8, 34);
             this.dgvIssues.Margin = new System.Windows.Forms.Padding(2);
@@ -653,6 +537,33 @@
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
             // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Arial", 9F);
+            this.label2.Location = new System.Drawing.Point(19, 62);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 18);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Notes:";
+            // 
+            // txtNotes
+            // 
+            this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNotes.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtNotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNotes.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtNotes.ForeColor = System.Drawing.Color.Black;
+            this.txtNotes.Location = new System.Drawing.Point(136, 61);
+            this.txtNotes.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNotes.MaxLength = 2000;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtNotes.Size = new System.Drawing.Size(814, 200);
+            this.txtNotes.TabIndex = 53;
+            this.txtNotes.Text = "";
+            // 
             // frmAuditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -706,22 +617,14 @@
         private System.Windows.Forms.TabPage tabSummary;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.Label lblAccountInformationHeader;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label24;
-        public System.Windows.Forms.RichTextBox txtGeneralInformation;
         public System.Windows.Forms.RichTextBox txtName;
         private System.Windows.Forms.Panel pnlSummaryTabHeader;
         public System.Windows.Forms.Label label23;
         public System.Windows.Forms.Label label56;
         public System.Windows.Forms.TabControl tabControlDetail;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.RichTextBox txtRetirementBusiness;
         private System.Windows.Forms.Label lblMenuIssues;
-        private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.RichTextBox txtValueBalance;
-        private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.RichTextBox txtSecurity;
         private System.Windows.Forms.TabPage tabIssues;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
@@ -732,5 +635,7 @@
         public System.Windows.Forms.ComboBox cboIssueViews;
         private System.Windows.Forms.Button btnNewIssue;
         private System.Windows.Forms.Button btnDeleteIssue;
-	}
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.RichTextBox txtNotes;
+    }
 }

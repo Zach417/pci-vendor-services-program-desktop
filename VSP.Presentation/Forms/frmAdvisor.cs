@@ -63,6 +63,7 @@ namespace VSP.Presentation.Forms
 
             CurrentPlanAdvisor = planAdvisor;
             txtName.Text = dihPA.Name;
+            txtNotes.Text = CurrentPlanAdvisor.Notes;
 
             cboServicesView.SelectedIndex = 0;
             LoadDgvServices(true);
@@ -173,6 +174,7 @@ namespace VSP.Presentation.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            CurrentPlanAdvisor.Notes = txtNotes.Text;
             CurrentPlanAdvisor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
             // loop through dgvservices, and update productservice records for record keeper product

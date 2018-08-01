@@ -57,10 +57,7 @@ namespace VSP.Presentation.Forms
 
             CurrentAuditor = auditor;
             txtName.Text = dihAuditor.Name;
-            txtGeneralInformation.Text = CurrentAuditor.GeneralInformation;
-            txtRetirementBusiness.Text = CurrentAuditor.RetirementBusiness;
-            txtSecurity.Text = CurrentAuditor.Security;
-            txtValueBalance.Text = CurrentAuditor.ValueBalance;
+            txtNotes.Text = CurrentAuditor.Notes;
 
             cboIssueViews.SelectedIndex = 0;
 
@@ -170,10 +167,7 @@ namespace VSP.Presentation.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CurrentAuditor.GeneralInformation = txtGeneralInformation.Text;
-            CurrentAuditor.RetirementBusiness = txtRetirementBusiness.Text;
-            CurrentAuditor.Security = txtSecurity.Text;
-            CurrentAuditor.ValueBalance = txtValueBalance.Text;
+            CurrentAuditor.Notes = txtNotes.Text;
             CurrentAuditor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
             this.Close();
         }
