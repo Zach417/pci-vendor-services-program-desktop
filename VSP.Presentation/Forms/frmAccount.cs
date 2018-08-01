@@ -255,11 +255,15 @@ namespace VSP.Presentation.Forms
 
         private void dgvPlans_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = dgvPlans.CurrentRow.Index;
-            Guid planId = new Guid(dgvPlans.Rows[index].Cells["PlanId"].Value.ToString());
-            Plan plan = new Plan(planId);
-            frmPlan frmPlan = new frmPlan(frmMain_Parent, plan);
-            frmPlan.FormClosed += frmPlan_FormClosed;
+            // Handle case of clicking header
+            if (e.RowIndex >= 0)
+            {
+                int index = dgvPlans.CurrentRow.Index;
+                Guid planId = new Guid(dgvPlans.Rows[index].Cells["PlanId"].Value.ToString());
+                Plan plan = new Plan(planId);
+                frmPlan frmPlan = new frmPlan(frmMain_Parent, plan);
+                frmPlan.FormClosed += frmPlan_FormClosed;
+            }
         }
 
         private void frmPlan_FormClosed(object sender, FormClosedEventArgs e)
