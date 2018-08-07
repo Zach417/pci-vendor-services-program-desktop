@@ -71,6 +71,7 @@ namespace VSP.Presentation.Forms
             cboAdvisorViews.SelectedIndex = 0;
             cboAuditorViews.SelectedIndex = 0;
             cboInvestmentViews.SelectedIndex = 0;
+            cboOtherViews.SelectedIndex = 0;
             cboIssueViews.SelectedIndex = 0;
             cboContributionViews.SelectedIndex = 0;
             cboDistributionViews.SelectedIndex = 0;
@@ -424,6 +425,11 @@ namespace VSP.Presentation.Forms
         private void label21_Click(object sender, EventArgs e)
         {
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabIssues"];
+        }
+
+        private void label43_Click(object sender, EventArgs e)
+        {
+            tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabOther"];
         }
 
         private void btnNewRK_Click(object sender, EventArgs e)
@@ -1067,5 +1073,10 @@ namespace VSP.Presentation.Forms
             frmPlanAdvisor frmPlanAdvisor = new frmPlanAdvisor(frmMain_Parent, planAdvisor);
             frmPlanAdvisor.FormClosed += frmPlanAdvisor_FormClosed;
         }
-	}
+
+        private void btnNewOther_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
