@@ -382,11 +382,34 @@ namespace VSP.Presentation.Forms
             dgvFees.Columns["CreatedBy"].Visible = false;
             dgvFees.Columns["ModifiedBy"].Visible = false;
             dgvFees.Columns["StateCode"].Visible = false;
+            dgvFees.Columns["Notes"].Visible = false;
 
             dgvFees.Columns["Fee"].DisplayIndex = 0;
-            dgvFees.Columns["BenchmarkFee"].DisplayIndex = 1;
-            dgvFees.Columns["AsOfDate"].DisplayIndex = 2;
-            dgvFees.Columns["ModifiedOn"].DisplayIndex = 3;
+
+            dgvFees.Columns["Benchmark25Fee"].DisplayIndex = 1;
+            dgvFees.Columns["Benchmark25Fee"].HeaderText = "25% Benchmark";
+
+            dgvFees.Columns["Benchmark50Fee"].DisplayIndex = 2;
+            dgvFees.Columns["Benchmark50Fee"].HeaderText = "50% Benchmark";
+
+            dgvFees.Columns["Benchmark75Fee"].DisplayIndex = 3;
+            dgvFees.Columns["Benchmark75Fee"].HeaderText = "75% Benchmark";
+            
+            dgvFees.Columns["RevenueSharingPaid"].DisplayIndex = 4;
+            dgvFees.Columns["RevenueSharingPaid"].HeaderText = "Revenue Sharing Paid";
+
+            dgvFees.Columns["ForfeituresPaid"].DisplayIndex = 5;
+            dgvFees.Columns["ForfeituresPaid"].HeaderText = "Forfeitures Paid";
+
+            dgvFees.Columns["ParticipantsPaid"].DisplayIndex = 6;
+            dgvFees.Columns["ParticipantsPaid"].HeaderText = "Participants Paid";
+
+            dgvFees.Columns["PlanSponsorPaid"].DisplayIndex = 7;
+            dgvFees.Columns["PlanSponsorPaid"].HeaderText = "Plan Sponsor Paid";
+
+            dgvFees.Columns["AsOfDate"].DisplayIndex = 8;
+            dgvFees.Columns["ModifiedOn"].DisplayIndex = 9;
+            dgvFees.Columns["CreatedOn"].DisplayIndex = 10;
         }
 
         private void cboFeeViews_SelectedIndexChanged(object sender, EventArgs e)

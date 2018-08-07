@@ -15,12 +15,15 @@ namespace VSP.Business.Entities
         public Guid RecordKeeperId;
         public Guid PlanId;
         public decimal? Fee;
-        public decimal? BenchmarkFee;
-        public decimal? PaymentRevenueSharing;
-        public decimal? PaymentForfeitures;
-        public decimal? PaymentParticipants;
-        public decimal? PaymentPlanSponsor;
+        public decimal? Benchmark25Fee;
+        public decimal? Benchmark50Fee;
+        public decimal? Benchmark75Fee;
+        public bool RevenueSharingPaid;
+        public bool ForfeituresPaid;
+        public bool ParticipantsPaid;
+        public bool PlanSponsorPaid;
         public DateTime? AsOfDate;
+        public string Notes;
 
         private static string _tableName = "PlanRecordKeeperFee";
 
@@ -45,12 +48,15 @@ namespace VSP.Business.Entities
             base.AddColumn("RecordKeeperId", this.RecordKeeperId);
             base.AddColumn("PlanId", this.PlanId);
             base.AddColumn("Fee", this.Fee);
-            base.AddColumn("BenchmarkFee", this.BenchmarkFee);
-            base.AddColumn("PaymentRevenueSharing", this.PaymentRevenueSharing);
-            base.AddColumn("PaymentForfeitures", this.PaymentForfeitures);
-            base.AddColumn("PaymentParticipants", this.PaymentParticipants);
-            base.AddColumn("PaymentPlanSponsor", this.PaymentPlanSponsor);
+            base.AddColumn("Benchmark25Fee", this.Benchmark25Fee);
+            base.AddColumn("Benchmark50Fee", this.Benchmark50Fee);
+            base.AddColumn("Benchmark75Fee", this.Benchmark75Fee);
+            base.AddColumn("RevenueSharingPaid", this.RevenueSharingPaid);
+            base.AddColumn("ForfeituresPaid", this.ForfeituresPaid);
+            base.AddColumn("ParticipantsPaid", this.ParticipantsPaid);
+            base.AddColumn("PlanSponsorPaid", this.PlanSponsorPaid);
             base.AddColumn("AsOfDate", this.AsOfDate);
+            base.AddColumn("Notes", this.Notes);
         }
 
         /// <summary>
@@ -61,12 +67,15 @@ namespace VSP.Business.Entities
             this.RecordKeeperId = (Guid)base.GetColumn("RecordKeeperId");
             this.PlanId = (Guid)base.GetColumn("PlanId");
             this.Fee = (decimal?)base.GetColumn("Fee");
-            this.BenchmarkFee = (decimal?)base.GetColumn("BenchmarkFee");
-            this.PaymentRevenueSharing = (decimal?)base.GetColumn("PaymentRevenueSharing");
-            this.PaymentForfeitures = (decimal?)base.GetColumn("PaymentForfeitures");
-            this.PaymentParticipants = (decimal?)base.GetColumn("PaymentParticipants");
-            this.PaymentPlanSponsor = (decimal?)base.GetColumn("PaymentPlanSponsor");
+            this.Benchmark25Fee = (decimal?)base.GetColumn("Benchmark25Fee");
+            this.Benchmark50Fee = (decimal?)base.GetColumn("Benchmark50Fee");
+            this.Benchmark75Fee = (decimal?)base.GetColumn("Benchmark75Fee");
+            this.RevenueSharingPaid = (System.Data.SqlTypes.SqlBoolean)base.GetColumn("RevenueSharingPaid") ? true : false;
+            this.ForfeituresPaid = (System.Data.SqlTypes.SqlBoolean)base.GetColumn("ForfeituresPaid") ? true : false;
+            this.ParticipantsPaid = (System.Data.SqlTypes.SqlBoolean)base.GetColumn("ParticipantsPaid") ? true : false;
+            this.PlanSponsorPaid = (System.Data.SqlTypes.SqlBoolean)base.GetColumn("PlanSponsorPaid") ? true : false;
             this.AsOfDate = (DateTime?)base.GetColumn("AsOfDate");
+            this.Notes = (string)base.GetColumn("Notes");
         }
 
         public static DataTable GetActive()

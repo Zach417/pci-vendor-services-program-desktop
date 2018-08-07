@@ -33,10 +33,14 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.tabClientSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtBenchmarkFee = new System.Windows.Forms.RichTextBox();
+            this.txtBenchmark25Fee = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtAsOfDate = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFee = new System.Windows.Forms.RichTextBox();
             this.lblAccountInformationHeader = new System.Windows.Forms.Label();
@@ -49,15 +53,17 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtPaymentParticipants = new System.Windows.Forms.RichTextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtPaymentPlanSponsor = new System.Windows.Forms.RichTextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtPaymentForfeitures = new System.Windows.Forms.RichTextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtPaymentRevenueSharing = new System.Windows.Forms.RichTextBox();
+            this.chbxPlanSponsorPaid = new System.Windows.Forms.CheckBox();
+            this.chbxParticipantsPaid = new System.Windows.Forms.CheckBox();
+            this.chbxForfeituresPaid = new System.Windows.Forms.CheckBox();
+            this.chbxRevenueSharingPaid = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtBenchmark50Fee = new System.Windows.Forms.RichTextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtBenchmark75Fee = new System.Windows.Forms.RichTextBox();
+            this.dateAsOfDate = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtNotes = new System.Windows.Forms.RichTextBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -221,19 +227,25 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.txtNotes);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.dateAsOfDate);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.txtBenchmark75Fee);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.txtBenchmark50Fee);
+            this.panel2.Controls.Add(this.chbxPlanSponsorPaid);
+            this.panel2.Controls.Add(this.chbxParticipantsPaid);
+            this.panel2.Controls.Add(this.chbxForfeituresPaid);
+            this.panel2.Controls.Add(this.chbxRevenueSharingPaid);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.txtPaymentParticipants);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.txtPaymentPlanSponsor);
             this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.txtPaymentForfeitures);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.txtPaymentRevenueSharing);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.txtBenchmarkFee);
+            this.panel2.Controls.Add(this.txtBenchmark25Fee);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.txtAsOfDate);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.txtFee);
             this.panel2.Controls.Add(this.lblAccountInformationHeader);
@@ -246,60 +258,95 @@
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
             // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Arial", 9F);
+            this.label7.Location = new System.Drawing.Point(19, 278);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(111, 18);
+            this.label7.TabIndex = 67;
+            this.label7.Text = "Participants:";
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Arial", 9F);
+            this.label8.Location = new System.Drawing.Point(19, 299);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(111, 18);
+            this.label8.TabIndex = 66;
+            this.label8.Text = "Plan Sponsor:";
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Arial", 9F);
+            this.label9.Location = new System.Drawing.Point(19, 257);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(111, 18);
+            this.label9.TabIndex = 65;
+            this.label9.Text = "Forfeitures:";
+            // 
+            // label10
+            // 
+            this.label10.Font = new System.Drawing.Font("Arial", 9F);
+            this.label10.Location = new System.Drawing.Point(19, 236);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(111, 18);
+            this.label10.TabIndex = 64;
+            this.label10.Text = "Revenue Sharing:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(46)))), ((int)(((byte)(71)))));
+            this.label6.Location = new System.Drawing.Point(12, 208);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 19);
+            this.label6.TabIndex = 59;
+            this.label6.Text = "Payment";
+            // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Arial", 9F);
             this.label5.Location = new System.Drawing.Point(19, 102);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 18);
+            this.label5.Size = new System.Drawing.Size(128, 18);
             this.label5.TabIndex = 58;
-            this.label5.Text = "Benchmark Fee:";
+            this.label5.Text = "Benchmark 25% Fee:";
             // 
-            // txtBenchmarkFee
+            // txtBenchmark25Fee
             // 
-            this.txtBenchmarkFee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtBenchmark25Fee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBenchmarkFee.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtBenchmarkFee.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBenchmarkFee.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtBenchmarkFee.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtBenchmarkFee.Location = new System.Drawing.Point(136, 101);
-            this.txtBenchmarkFee.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBenchmarkFee.Multiline = false;
-            this.txtBenchmarkFee.Name = "txtBenchmarkFee";
-            this.txtBenchmarkFee.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtBenchmarkFee.Size = new System.Drawing.Size(814, 19);
-            this.txtBenchmarkFee.TabIndex = 4;
-            this.txtBenchmarkFee.Text = "";
+            this.txtBenchmark25Fee.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtBenchmark25Fee.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBenchmark25Fee.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtBenchmark25Fee.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtBenchmark25Fee.Location = new System.Drawing.Point(151, 101);
+            this.txtBenchmark25Fee.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBenchmark25Fee.Multiline = false;
+            this.txtBenchmark25Fee.Name = "txtBenchmark25Fee";
+            this.txtBenchmark25Fee.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtBenchmark25Fee.Size = new System.Drawing.Size(799, 19);
+            this.txtBenchmark25Fee.TabIndex = 4;
+            this.txtBenchmark25Fee.Text = "";
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Arial", 9F);
-            this.label4.Location = new System.Drawing.Point(19, 123);
+            this.label4.Location = new System.Drawing.Point(19, 165);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(111, 18);
             this.label4.TabIndex = 56;
             this.label4.Text = "As Of Date:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // txtAsOfDate
-            // 
-            this.txtAsOfDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAsOfDate.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtAsOfDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAsOfDate.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtAsOfDate.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtAsOfDate.Location = new System.Drawing.Point(136, 122);
-            this.txtAsOfDate.Margin = new System.Windows.Forms.Padding(2);
-            this.txtAsOfDate.Multiline = false;
-            this.txtAsOfDate.Name = "txtAsOfDate";
-            this.txtAsOfDate.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtAsOfDate.Size = new System.Drawing.Size(814, 19);
-            this.txtAsOfDate.TabIndex = 5;
-            this.txtAsOfDate.Text = "";
             // 
             // label2
             // 
@@ -319,12 +366,12 @@
             this.txtFee.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFee.Font = new System.Drawing.Font("Arial", 8F);
             this.txtFee.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtFee.Location = new System.Drawing.Point(136, 80);
+            this.txtFee.Location = new System.Drawing.Point(151, 80);
             this.txtFee.Margin = new System.Windows.Forms.Padding(2);
             this.txtFee.Multiline = false;
             this.txtFee.Name = "txtFee";
             this.txtFee.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtFee.Size = new System.Drawing.Size(814, 19);
+            this.txtFee.Size = new System.Drawing.Size(799, 19);
             this.txtFee.TabIndex = 3;
             this.txtFee.Text = "";
             // 
@@ -368,13 +415,13 @@
             this.txtRecordKeeper.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRecordKeeper.Font = new System.Drawing.Font("Arial", 8F);
             this.txtRecordKeeper.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtRecordKeeper.Location = new System.Drawing.Point(136, 59);
+            this.txtRecordKeeper.Location = new System.Drawing.Point(151, 59);
             this.txtRecordKeeper.Margin = new System.Windows.Forms.Padding(2);
             this.txtRecordKeeper.Multiline = false;
             this.txtRecordKeeper.Name = "txtRecordKeeper";
             this.txtRecordKeeper.ReadOnly = true;
             this.txtRecordKeeper.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtRecordKeeper.Size = new System.Drawing.Size(814, 19);
+            this.txtRecordKeeper.Size = new System.Drawing.Size(799, 19);
             this.txtRecordKeeper.TabIndex = 2;
             this.txtRecordKeeper.Text = "";
             // 
@@ -386,13 +433,13 @@
             this.txtPlan.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPlan.Font = new System.Drawing.Font("Arial", 8F);
             this.txtPlan.ForeColor = System.Drawing.Color.Black;
-            this.txtPlan.Location = new System.Drawing.Point(136, 38);
+            this.txtPlan.Location = new System.Drawing.Point(151, 38);
             this.txtPlan.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlan.Multiline = false;
             this.txtPlan.Name = "txtPlan";
             this.txtPlan.ReadOnly = true;
             this.txtPlan.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtPlan.Size = new System.Drawing.Size(814, 19);
+            this.txtPlan.Size = new System.Drawing.Size(799, 19);
             this.txtPlan.TabIndex = 1;
             this.txtPlan.Text = "";
             this.txtPlan.TextChanged += new System.EventHandler(this.txtName_TextChanged);
@@ -473,125 +520,136 @@
             this.tabControlClientDetail.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlClientDetail.TabIndex = 37;
             // 
-            // label6
+            // chbxPlanSponsorPaid
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(46)))), ((int)(((byte)(71)))));
-            this.label6.Location = new System.Drawing.Point(12, 163);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 19);
-            this.label6.TabIndex = 59;
-            this.label6.Text = "Payment";
+            this.chbxPlanSponsorPaid.AutoSize = true;
+            this.chbxPlanSponsorPaid.Location = new System.Drawing.Point(135, 299);
+            this.chbxPlanSponsorPaid.Name = "chbxPlanSponsorPaid";
+            this.chbxPlanSponsorPaid.Size = new System.Drawing.Size(47, 17);
+            this.chbxPlanSponsorPaid.TabIndex = 71;
+            this.chbxPlanSponsorPaid.Text = "Paid";
+            this.chbxPlanSponsorPaid.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // chbxParticipantsPaid
             // 
-            this.label7.Font = new System.Drawing.Font("Arial", 9F);
-            this.label7.Location = new System.Drawing.Point(19, 233);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(111, 18);
-            this.label7.TabIndex = 67;
-            this.label7.Text = "Participants:";
+            this.chbxParticipantsPaid.AutoSize = true;
+            this.chbxParticipantsPaid.Location = new System.Drawing.Point(136, 278);
+            this.chbxParticipantsPaid.Name = "chbxParticipantsPaid";
+            this.chbxParticipantsPaid.Size = new System.Drawing.Size(47, 17);
+            this.chbxParticipantsPaid.TabIndex = 70;
+            this.chbxParticipantsPaid.Text = "Paid";
+            this.chbxParticipantsPaid.UseVisualStyleBackColor = true;
             // 
-            // txtPaymentParticipants
+            // chbxForfeituresPaid
             // 
-            this.txtPaymentParticipants.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.chbxForfeituresPaid.AutoSize = true;
+            this.chbxForfeituresPaid.Location = new System.Drawing.Point(136, 257);
+            this.chbxForfeituresPaid.Name = "chbxForfeituresPaid";
+            this.chbxForfeituresPaid.Size = new System.Drawing.Size(47, 17);
+            this.chbxForfeituresPaid.TabIndex = 69;
+            this.chbxForfeituresPaid.Text = "Paid";
+            this.chbxForfeituresPaid.UseVisualStyleBackColor = true;
+            // 
+            // chbxRevenueSharingPaid
+            // 
+            this.chbxRevenueSharingPaid.AutoSize = true;
+            this.chbxRevenueSharingPaid.Location = new System.Drawing.Point(136, 236);
+            this.chbxRevenueSharingPaid.Name = "chbxRevenueSharingPaid";
+            this.chbxRevenueSharingPaid.Size = new System.Drawing.Size(47, 17);
+            this.chbxRevenueSharingPaid.TabIndex = 68;
+            this.chbxRevenueSharingPaid.Text = "Paid";
+            this.chbxRevenueSharingPaid.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.Font = new System.Drawing.Font("Arial", 9F);
+            this.label11.Location = new System.Drawing.Point(19, 123);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(128, 18);
+            this.label11.TabIndex = 73;
+            this.label11.Text = "Benchmark 50% Fee:";
+            // 
+            // txtBenchmark50Fee
+            // 
+            this.txtBenchmark50Fee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPaymentParticipants.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPaymentParticipants.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPaymentParticipants.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtPaymentParticipants.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtPaymentParticipants.Location = new System.Drawing.Point(136, 232);
-            this.txtPaymentParticipants.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPaymentParticipants.Multiline = false;
-            this.txtPaymentParticipants.Name = "txtPaymentParticipants";
-            this.txtPaymentParticipants.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtPaymentParticipants.Size = new System.Drawing.Size(814, 19);
-            this.txtPaymentParticipants.TabIndex = 62;
-            this.txtPaymentParticipants.Text = "";
+            this.txtBenchmark50Fee.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtBenchmark50Fee.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBenchmark50Fee.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtBenchmark50Fee.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtBenchmark50Fee.Location = new System.Drawing.Point(151, 122);
+            this.txtBenchmark50Fee.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBenchmark50Fee.Multiline = false;
+            this.txtBenchmark50Fee.Name = "txtBenchmark50Fee";
+            this.txtBenchmark50Fee.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtBenchmark50Fee.Size = new System.Drawing.Size(799, 19);
+            this.txtBenchmark50Fee.TabIndex = 72;
+            this.txtBenchmark50Fee.Text = "";
             // 
-            // label8
+            // label12
             // 
-            this.label8.Font = new System.Drawing.Font("Arial", 9F);
-            this.label8.Location = new System.Drawing.Point(19, 254);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 18);
-            this.label8.TabIndex = 66;
-            this.label8.Text = "Plan Sponsor:";
+            this.label12.Font = new System.Drawing.Font("Arial", 9F);
+            this.label12.Location = new System.Drawing.Point(19, 144);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(128, 18);
+            this.label12.TabIndex = 75;
+            this.label12.Text = "Benchmark 75% Fee:";
             // 
-            // txtPaymentPlanSponsor
+            // txtBenchmark75Fee
             // 
-            this.txtPaymentPlanSponsor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtBenchmark75Fee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPaymentPlanSponsor.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPaymentPlanSponsor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPaymentPlanSponsor.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtPaymentPlanSponsor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtPaymentPlanSponsor.Location = new System.Drawing.Point(136, 253);
-            this.txtPaymentPlanSponsor.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPaymentPlanSponsor.Multiline = false;
-            this.txtPaymentPlanSponsor.Name = "txtPaymentPlanSponsor";
-            this.txtPaymentPlanSponsor.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtPaymentPlanSponsor.Size = new System.Drawing.Size(814, 19);
-            this.txtPaymentPlanSponsor.TabIndex = 63;
-            this.txtPaymentPlanSponsor.Text = "";
+            this.txtBenchmark75Fee.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtBenchmark75Fee.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBenchmark75Fee.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtBenchmark75Fee.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtBenchmark75Fee.Location = new System.Drawing.Point(151, 143);
+            this.txtBenchmark75Fee.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBenchmark75Fee.Multiline = false;
+            this.txtBenchmark75Fee.Name = "txtBenchmark75Fee";
+            this.txtBenchmark75Fee.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtBenchmark75Fee.Size = new System.Drawing.Size(799, 19);
+            this.txtBenchmark75Fee.TabIndex = 74;
+            this.txtBenchmark75Fee.Text = "";
             // 
-            // label9
+            // dateAsOfDate
             // 
-            this.label9.Font = new System.Drawing.Font("Arial", 9F);
-            this.label9.Location = new System.Drawing.Point(19, 212);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(111, 18);
-            this.label9.TabIndex = 65;
-            this.label9.Text = "Forfeitures:";
+            this.dateAsOfDate.CustomFormat = "MM/dd/yyyy";
+            this.dateAsOfDate.Location = new System.Drawing.Point(151, 163);
+            this.dateAsOfDate.Name = "dateAsOfDate";
+            this.dateAsOfDate.Size = new System.Drawing.Size(200, 20);
+            this.dateAsOfDate.TabIndex = 76;
             // 
-            // txtPaymentForfeitures
+            // label13
             // 
-            this.txtPaymentForfeitures.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(46)))), ((int)(((byte)(71)))));
+            this.label13.Location = new System.Drawing.Point(12, 348);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(54, 19);
+            this.label13.TabIndex = 77;
+            this.label13.Text = "Notes";
+            // 
+            // txtNotes
+            // 
+            this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPaymentForfeitures.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPaymentForfeitures.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPaymentForfeitures.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtPaymentForfeitures.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtPaymentForfeitures.Location = new System.Drawing.Point(136, 211);
-            this.txtPaymentForfeitures.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPaymentForfeitures.Multiline = false;
-            this.txtPaymentForfeitures.Name = "txtPaymentForfeitures";
-            this.txtPaymentForfeitures.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtPaymentForfeitures.Size = new System.Drawing.Size(814, 19);
-            this.txtPaymentForfeitures.TabIndex = 61;
-            this.txtPaymentForfeitures.Text = "";
-            // 
-            // label10
-            // 
-            this.label10.Font = new System.Drawing.Font("Arial", 9F);
-            this.label10.Location = new System.Drawing.Point(19, 191);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 18);
-            this.label10.TabIndex = 64;
-            this.label10.Text = "Revenue Sharing:";
-            // 
-            // txtPaymentRevenueSharing
-            // 
-            this.txtPaymentRevenueSharing.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPaymentRevenueSharing.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPaymentRevenueSharing.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPaymentRevenueSharing.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtPaymentRevenueSharing.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtPaymentRevenueSharing.Location = new System.Drawing.Point(136, 190);
-            this.txtPaymentRevenueSharing.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPaymentRevenueSharing.Multiline = false;
-            this.txtPaymentRevenueSharing.Name = "txtPaymentRevenueSharing";
-            this.txtPaymentRevenueSharing.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtPaymentRevenueSharing.Size = new System.Drawing.Size(814, 19);
-            this.txtPaymentRevenueSharing.TabIndex = 60;
-            this.txtPaymentRevenueSharing.Text = "";
+            this.txtNotes.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtNotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNotes.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtNotes.ForeColor = System.Drawing.Color.Black;
+            this.txtNotes.Location = new System.Drawing.Point(22, 369);
+            this.txtNotes.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNotes.MaxLength = 4000;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtNotes.Size = new System.Drawing.Size(928, 159);
+            this.txtNotes.TabIndex = 78;
+            this.txtNotes.Text = "";
             // 
             // frmPlanRecordKeeperFee
             // 
@@ -652,17 +710,23 @@
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.RichTextBox txtFee;
         private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.RichTextBox txtAsOfDate;
         private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.RichTextBox txtBenchmarkFee;
+        public System.Windows.Forms.RichTextBox txtBenchmark25Fee;
         private System.Windows.Forms.Label label7;
-        public System.Windows.Forms.RichTextBox txtPaymentParticipants;
         private System.Windows.Forms.Label label8;
-        public System.Windows.Forms.RichTextBox txtPaymentPlanSponsor;
         private System.Windows.Forms.Label label9;
-        public System.Windows.Forms.RichTextBox txtPaymentForfeitures;
         private System.Windows.Forms.Label label10;
-        public System.Windows.Forms.RichTextBox txtPaymentRevenueSharing;
         public System.Windows.Forms.Label label6;
-	}
+        private System.Windows.Forms.Label label12;
+        public System.Windows.Forms.RichTextBox txtBenchmark75Fee;
+        private System.Windows.Forms.Label label11;
+        public System.Windows.Forms.RichTextBox txtBenchmark50Fee;
+        private System.Windows.Forms.CheckBox chbxPlanSponsorPaid;
+        private System.Windows.Forms.CheckBox chbxParticipantsPaid;
+        private System.Windows.Forms.CheckBox chbxForfeituresPaid;
+        private System.Windows.Forms.CheckBox chbxRevenueSharingPaid;
+        public System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker dateAsOfDate;
+        public System.Windows.Forms.RichTextBox txtNotes;
+    }
 }

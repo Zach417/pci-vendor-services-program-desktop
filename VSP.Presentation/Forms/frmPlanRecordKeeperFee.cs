@@ -77,7 +77,7 @@ namespace VSP.Presentation.Forms
         /// 
         /// </summary>
         /// <param name="mf"></param>
-        /// <param name="accountId"></param>
+        /// <param name="planRecordKeeperFee"></param>
         /// <param name="Close"></param>
         public frmPlanRecordKeeperFee(frmMain mf, PlanRecordKeeperFee planRecordKeeperFee, FormClosedEventHandler Close = null)
         {
@@ -105,41 +105,37 @@ namespace VSP.Presentation.Forms
             CurrentPlanRecordKeeperFee = planRecordKeeperFee;
             txtPlan.Text = plan.Name;
             txtRecordKeeper.Text = rk.Name;
+            txtNotes.Text = CurrentPlanRecordKeeperFee.Notes;
 
             if (CurrentPlanRecordKeeperFee.Fee != null)
             {
                 txtFee.Text = ((decimal)CurrentPlanRecordKeeperFee.Fee).ToString("#,##");
             }
 
-            if (CurrentPlanRecordKeeperFee.BenchmarkFee != null)
+            if (CurrentPlanRecordKeeperFee.Benchmark25Fee != null)
             {
-                txtBenchmarkFee.Text = ((decimal)CurrentPlanRecordKeeperFee.BenchmarkFee).ToString("#,##");
+                txtBenchmark25Fee.Text = ((decimal)CurrentPlanRecordKeeperFee.Benchmark25Fee).ToString("#,##");
             }
 
-            if (CurrentPlanRecordKeeperFee.AsOfDate != null)
+            if (CurrentPlanRecordKeeperFee.Benchmark50Fee != null)
             {
-                txtAsOfDate.Text = ((DateTime)CurrentPlanRecordKeeperFee.AsOfDate).ToString("MM/dd/yyyy");
+                txtBenchmark50Fee.Text = ((decimal)CurrentPlanRecordKeeperFee.Benchmark50Fee).ToString("#,##");
             }
 
-            if (CurrentPlanRecordKeeperFee.PaymentRevenueSharing != null)
+            if (CurrentPlanRecordKeeperFee.Benchmark75Fee != null)
             {
-                txtPaymentRevenueSharing.Text = ((decimal)CurrentPlanRecordKeeperFee.PaymentRevenueSharing).ToString("#,##");
+                txtBenchmark75Fee.Text = ((decimal)CurrentPlanRecordKeeperFee.Benchmark75Fee).ToString("#,##");
             }
 
-            if (CurrentPlanRecordKeeperFee.PaymentForfeitures != null)
-            {
-                txtPaymentForfeitures.Text = ((decimal)CurrentPlanRecordKeeperFee.PaymentForfeitures).ToString("#,##");
-            }
+            //if (CurrentPlanRecordKeeperFee.AsOfDate != null)
+            //{
+                dateAsOfDate.Value = (DateTime)CurrentPlanRecordKeeperFee.AsOfDate;
+            //}
 
-            if (CurrentPlanRecordKeeperFee.PaymentParticipants != null)
-            {
-                txtPaymentParticipants.Text = ((decimal)CurrentPlanRecordKeeperFee.PaymentParticipants).ToString("#,##");
-            }
-
-            if (CurrentPlanRecordKeeperFee.PaymentPlanSponsor != null)
-            {
-                txtPaymentPlanSponsor.Text = ((decimal)CurrentPlanRecordKeeperFee.PaymentPlanSponsor).ToString("#,##");
-            }
+            chbxRevenueSharingPaid.Checked = CurrentPlanRecordKeeperFee.RevenueSharingPaid;
+            chbxForfeituresPaid.Checked = CurrentPlanRecordKeeperFee.ForfeituresPaid;
+            chbxParticipantsPaid.Checked = CurrentPlanRecordKeeperFee.ParticipantsPaid;
+            chbxPlanSponsorPaid.Checked = CurrentPlanRecordKeeperFee.PlanSponsorPaid;
 
             ss.Close();
             this.Show();
@@ -258,107 +254,63 @@ namespace VSP.Presentation.Forms
                 }
             }
 
-            if (String.IsNullOrWhiteSpace(txtBenchmarkFee.Text))
+            if (String.IsNullOrWhiteSpace(txtBenchmark25Fee.Text))
             {
-                CurrentPlanRecordKeeperFee.BenchmarkFee = null;
+                CurrentPlanRecordKeeperFee.Benchmark25Fee = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeperFee.BenchmarkFee = Decimal.Parse(txtBenchmarkFee.Text);
+                    CurrentPlanRecordKeeperFee.Benchmark25Fee = Decimal.Parse(txtBenchmark25Fee.Text);
                 }
                 catch
                 {
-                    MessageBox.Show("Error: Benchmark fee string not in decimal format");
+                    MessageBox.Show("Error: Benchmark 25% fee string not in decimal format");
                     return;
                 }
             }
 
-            if (String.IsNullOrWhiteSpace(txtAsOfDate.Text))
+            if (String.IsNullOrWhiteSpace(txtBenchmark50Fee.Text))
             {
-                CurrentPlanRecordKeeperFee.AsOfDate = null;
+                CurrentPlanRecordKeeperFee.Benchmark50Fee = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeperFee.AsOfDate = DateTime.Parse(txtAsOfDate.Text);
+                    CurrentPlanRecordKeeperFee.Benchmark50Fee = Decimal.Parse(txtBenchmark50Fee.Text);
                 }
                 catch
                 {
-                    MessageBox.Show("Error: As Of Date string not in date format");
+                    MessageBox.Show("Error: Benchmark 50% fee string not in decimal format");
                     return;
                 }
             }
 
-            if (String.IsNullOrWhiteSpace(txtPaymentRevenueSharing.Text))
+            if (String.IsNullOrWhiteSpace(txtBenchmark75Fee.Text))
             {
-                CurrentPlanRecordKeeperFee.PaymentRevenueSharing = null;
+                CurrentPlanRecordKeeperFee.Benchmark75Fee = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeperFee.PaymentRevenueSharing = Decimal.Parse(txtPaymentRevenueSharing.Text);
+                    CurrentPlanRecordKeeperFee.Benchmark75Fee = Decimal.Parse(txtBenchmark75Fee.Text);
                 }
                 catch
                 {
-                    MessageBox.Show("Error: Revenue sharing payment string not in decimal format");
+                    MessageBox.Show("Error: Benchmark 75% fee string not in decimal format");
                     return;
                 }
             }
 
-            if (String.IsNullOrWhiteSpace(txtPaymentForfeitures.Text))
-            {
-                CurrentPlanRecordKeeperFee.PaymentForfeitures = null;
-            }
-            else
-            {
-                try
-                {
-                    CurrentPlanRecordKeeperFee.PaymentForfeitures = Decimal.Parse(txtPaymentForfeitures.Text);
-                }
-                catch
-                {
-                    MessageBox.Show("Error: Forfeiture payment string not in decimal format");
-                    return;
-                }
-            }
-
-            if (String.IsNullOrWhiteSpace(txtPaymentParticipants.Text))
-            {
-                CurrentPlanRecordKeeperFee.PaymentParticipants = null;
-            }
-            else
-            {
-                try
-                {
-                    CurrentPlanRecordKeeperFee.PaymentParticipants = Decimal.Parse(txtPaymentParticipants.Text);
-                }
-                catch
-                {
-                    MessageBox.Show("Error: Participant payment string not in decimal format");
-                    return;
-                }
-            }
-
-            if (String.IsNullOrWhiteSpace(txtPaymentPlanSponsor.Text))
-            {
-                CurrentPlanRecordKeeperFee.PaymentPlanSponsor = null;
-            }
-            else
-            {
-                try
-                {
-                    CurrentPlanRecordKeeperFee.PaymentPlanSponsor = Decimal.Parse(txtPaymentPlanSponsor.Text);
-                }
-                catch
-                {
-                    MessageBox.Show("Error: Plan Sponsor payment string not in decimal format");
-                    return;
-                }
-            }
+            CurrentPlanRecordKeeperFee.AsOfDate = dateAsOfDate.Value;
+            CurrentPlanRecordKeeperFee.RevenueSharingPaid = chbxRevenueSharingPaid.Checked;
+            CurrentPlanRecordKeeperFee.ForfeituresPaid = chbxForfeituresPaid.Checked;
+            CurrentPlanRecordKeeperFee.ParticipantsPaid = chbxParticipantsPaid.Checked;
+            CurrentPlanRecordKeeperFee.PlanSponsorPaid = chbxPlanSponsorPaid.Checked;
+            CurrentPlanRecordKeeperFee.Notes = txtNotes.Text;
 
             CurrentPlanRecordKeeperFee.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
             this.Close();
