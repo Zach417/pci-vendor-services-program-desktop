@@ -11,21 +11,21 @@ using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class PlanRecordKeeperService : DatabaseEntity
+    public class PlanRecordKeeperProductService : DatabaseEntity
     {
-        public Guid PlanRecordKeeperId;
+        public Guid PlanRecordKeeperProductId;
         public Guid ServiceId;
         public SqlBoolean ServiceOffered;
 
-        private static string _tableName = "PlanRecordKeeperService";
+        private static string _tableName = "PlanRecordKeeperProductService";
 
-        public PlanRecordKeeperService()
+        public PlanRecordKeeperProductService()
             : base(_tableName)
         {
 
         }
 
-        public PlanRecordKeeperService(Guid primaryKey)
+        public PlanRecordKeeperProductService(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -37,7 +37,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("PlanRecordKeeperId", this.PlanRecordKeeperId);
+            base.AddColumn("PlanRecordKeeperProductId", this.PlanRecordKeeperProductId);
             base.AddColumn("ServiceId", this.ServiceId);
             base.AddColumn("ServiceOffered", this.ServiceOffered);
             this.ServiceOffered = (SqlBoolean)base.GetColumn("ServiceOffered");
@@ -48,7 +48,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.PlanRecordKeeperId = (Guid)base.GetColumn("PlanRecordKeeperId");
+            this.PlanRecordKeeperProductId = (Guid)base.GetColumn("PlanRecordKeeperProductId");
             this.ServiceId = (Guid)base.GetColumn("ServiceId");
         }
 
@@ -64,9 +64,9 @@ namespace VSP.Business.Entities
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
-        public static DataTable GetAssociated(PlanRecordKeeper planRecordKeeper)
+        public static DataTable GetAssociated(PlanRecordKeeperProduct planRecordKeeperProduct)
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE PlanRecordKeeperId = '" + planRecordKeeper.Id + "'";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE PlanRecordKeeperProductId = '" + planRecordKeeperProduct.Id + "'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

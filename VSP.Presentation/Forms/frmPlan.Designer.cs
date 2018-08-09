@@ -78,13 +78,13 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.tabRK = new System.Windows.Forms.TabPage();
+            this.tabRKProduct = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnNewRK = new System.Windows.Forms.Button();
-            this.btnDeleteRK = new System.Windows.Forms.Button();
-            this.dgvRKs = new System.Windows.Forms.DataGridView();
+            this.btnNewRKProduct = new System.Windows.Forms.Button();
+            this.btnDeleteRKProduct = new System.Windows.Forms.Button();
+            this.dgvRKProducts = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.cboRkViews = new System.Windows.Forms.ComboBox();
+            this.cboRkProductViews = new System.Windows.Forms.ComboBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -160,6 +160,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.tabOther = new System.Windows.Forms.TabPage();
             this.panel23 = new System.Windows.Forms.Panel();
+            this.btnNewOther = new System.Windows.Forms.Button();
             this.btnDeleteOther = new System.Windows.Forms.Button();
             this.dvgOther = new System.Windows.Forms.DataGridView();
             this.label44 = new System.Windows.Forms.Label();
@@ -170,7 +171,6 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.btnNewOther = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -182,9 +182,9 @@
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvestments)).BeginInit();
             this.panel11.SuspendLayout();
-            this.tabRK.SuspendLayout();
+            this.tabRKProduct.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRKs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRKProducts)).BeginInit();
             this.panel7.SuspendLayout();
             this.tabAuditor.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -287,7 +287,7 @@
             this.label43.Cursor = System.Windows.Forms.Cursors.Default;
             this.label43.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label43.ForeColor = System.Drawing.Color.Black;
-            this.label43.Location = new System.Drawing.Point(464, 15);
+            this.label43.Location = new System.Drawing.Point(542, 15);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(65, 25);
             this.label43.TabIndex = 1;
@@ -301,7 +301,7 @@
             this.label4.Cursor = System.Windows.Forms.Cursors.Default;
             this.label4.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(377, 15);
+            this.label4.Location = new System.Drawing.Point(455, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 25);
             this.label4.TabIndex = 0;
@@ -317,7 +317,7 @@
             this.label3.Cursor = System.Windows.Forms.Cursors.Default;
             this.label3.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(290, 15);
+            this.label3.Location = new System.Drawing.Point(368, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 25);
             this.label3.TabIndex = 0;
@@ -333,7 +333,7 @@
             this.label28.Cursor = System.Windows.Forms.Cursors.Default;
             this.label28.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.Black;
-            this.label28.Location = new System.Drawing.Point(1076, 15);
+            this.label28.Location = new System.Drawing.Point(1154, 15);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(192, 25);
             this.label28.TabIndex = 0;
@@ -349,7 +349,7 @@
             this.label27.Cursor = System.Windows.Forms.Cursors.Default;
             this.label27.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.Black;
-            this.label27.Location = new System.Drawing.Point(887, 15);
+            this.label27.Location = new System.Drawing.Point(965, 15);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(183, 25);
             this.label27.TabIndex = 0;
@@ -365,7 +365,7 @@
             this.label26.Cursor = System.Windows.Forms.Cursors.Default;
             this.label26.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.Black;
-            this.label26.Location = new System.Drawing.Point(752, 15);
+            this.label26.Location = new System.Drawing.Point(830, 15);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(129, 25);
             this.label26.TabIndex = 0;
@@ -381,7 +381,7 @@
             this.label22.Cursor = System.Windows.Forms.Cursors.Default;
             this.label22.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(609, 15);
+            this.label22.Location = new System.Drawing.Point(687, 15);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(137, 25);
             this.label22.TabIndex = 0;
@@ -397,7 +397,7 @@
             this.label21.Cursor = System.Windows.Forms.Cursors.Default;
             this.label21.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(535, 15);
+            this.label21.Location = new System.Drawing.Point(613, 15);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(68, 25);
             this.label21.TabIndex = 0;
@@ -431,9 +431,9 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(247, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 25);
+            this.label2.Size = new System.Drawing.Size(115, 25);
             this.label2.TabIndex = 0;
-            this.label2.Text = "RK";
+            this.label2.Text = "RK Product";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             this.label2.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
             this.label2.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
@@ -662,7 +662,7 @@
             this.tabControlDetail.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControlDetail.Controls.Add(this.tabClientSummary);
             this.tabControlDetail.Controls.Add(this.tabInvestments);
-            this.tabControlDetail.Controls.Add(this.tabRK);
+            this.tabControlDetail.Controls.Add(this.tabRKProduct);
             this.tabControlDetail.Controls.Add(this.tabAuditor);
             this.tabControlDetail.Controls.Add(this.tabAdvisor);
             this.tabControlDetail.Controls.Add(this.tabContributions);
@@ -813,16 +813,16 @@
             this.label16.TabIndex = 40;
             this.label16.Text = "Summary";
             // 
-            // tabRK
+            // tabRKProduct
             // 
-            this.tabRK.Controls.Add(this.panel6);
-            this.tabRK.Controls.Add(this.panel7);
-            this.tabRK.Location = new System.Drawing.Point(4, 25);
-            this.tabRK.Name = "tabRK";
-            this.tabRK.Size = new System.Drawing.Size(981, 600);
-            this.tabRK.TabIndex = 1;
-            this.tabRK.Text = "RK";
-            this.tabRK.UseVisualStyleBackColor = true;
+            this.tabRKProduct.Controls.Add(this.panel6);
+            this.tabRKProduct.Controls.Add(this.panel7);
+            this.tabRKProduct.Location = new System.Drawing.Point(4, 25);
+            this.tabRKProduct.Name = "tabRKProduct";
+            this.tabRKProduct.Size = new System.Drawing.Size(981, 600);
+            this.tabRKProduct.TabIndex = 1;
+            this.tabRKProduct.Text = "RK";
+            this.tabRKProduct.UseVisualStyleBackColor = true;
             // 
             // panel6
             // 
@@ -831,58 +831,58 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.btnNewRK);
-            this.panel6.Controls.Add(this.btnDeleteRK);
-            this.panel6.Controls.Add(this.dgvRKs);
+            this.panel6.Controls.Add(this.btnNewRKProduct);
+            this.panel6.Controls.Add(this.btnDeleteRKProduct);
+            this.panel6.Controls.Add(this.dgvRKProducts);
             this.panel6.Controls.Add(this.label5);
-            this.panel6.Controls.Add(this.cboRkViews);
+            this.panel6.Controls.Add(this.cboRkProductViews);
             this.panel6.Location = new System.Drawing.Point(2, 46);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(968, 545);
             this.panel6.TabIndex = 66;
             // 
-            // btnNewRK
+            // btnNewRKProduct
             // 
-            this.btnNewRK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNewRK.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNewRK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewRK.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewRK.ForeColor = System.Drawing.Color.Black;
-            this.btnNewRK.Location = new System.Drawing.Point(790, 4);
-            this.btnNewRK.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNewRK.Name = "btnNewRK";
-            this.btnNewRK.Size = new System.Drawing.Size(78, 26);
-            this.btnNewRK.TabIndex = 74;
-            this.btnNewRK.Text = "New";
-            this.btnNewRK.UseVisualStyleBackColor = false;
-            this.btnNewRK.Click += new System.EventHandler(this.btnNewRK_Click);
+            this.btnNewRKProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewRKProduct.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNewRKProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewRKProduct.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewRKProduct.ForeColor = System.Drawing.Color.Black;
+            this.btnNewRKProduct.Location = new System.Drawing.Point(790, 4);
+            this.btnNewRKProduct.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewRKProduct.Name = "btnNewRKProduct";
+            this.btnNewRKProduct.Size = new System.Drawing.Size(78, 26);
+            this.btnNewRKProduct.TabIndex = 74;
+            this.btnNewRKProduct.Text = "New";
+            this.btnNewRKProduct.UseVisualStyleBackColor = false;
+            this.btnNewRKProduct.Click += new System.EventHandler(this.btnNewRKProduct_Click);
             // 
-            // btnDeleteRK
+            // btnDeleteRKProduct
             // 
-            this.btnDeleteRK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeleteRK.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnDeleteRK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteRK.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteRK.ForeColor = System.Drawing.Color.Black;
-            this.btnDeleteRK.Location = new System.Drawing.Point(874, 4);
-            this.btnDeleteRK.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeleteRK.Name = "btnDeleteRK";
-            this.btnDeleteRK.Size = new System.Drawing.Size(78, 26);
-            this.btnDeleteRK.TabIndex = 75;
-            this.btnDeleteRK.Text = "Delete";
-            this.btnDeleteRK.UseVisualStyleBackColor = false;
-            this.btnDeleteRK.Click += new System.EventHandler(this.btnDeleteRK_Click);
+            this.btnDeleteRKProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteRKProduct.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDeleteRKProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteRKProduct.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteRKProduct.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteRKProduct.Location = new System.Drawing.Point(874, 4);
+            this.btnDeleteRKProduct.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteRKProduct.Name = "btnDeleteRKProduct";
+            this.btnDeleteRKProduct.Size = new System.Drawing.Size(78, 26);
+            this.btnDeleteRKProduct.TabIndex = 75;
+            this.btnDeleteRKProduct.Text = "Delete";
+            this.btnDeleteRKProduct.UseVisualStyleBackColor = false;
+            this.btnDeleteRKProduct.Click += new System.EventHandler(this.btnDeleteRKProduct_Click);
             // 
-            // dgvRKs
+            // dgvRKProducts
             // 
-            this.dgvRKs.AllowUserToAddRows = false;
-            this.dgvRKs.AllowUserToDeleteRows = false;
-            this.dgvRKs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvRKProducts.AllowUserToAddRows = false;
+            this.dgvRKProducts.AllowUserToDeleteRows = false;
+            this.dgvRKProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvRKs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvRKs.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvRKs.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvRKProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRKProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvRKProducts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Gadugi", 8.25F);
@@ -890,8 +890,8 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRKs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvRKs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvRKProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvRKProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Gadugi", 7.8F);
@@ -899,21 +899,21 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRKs.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvRKs.EnableHeadersVisualStyles = false;
-            this.dgvRKs.Location = new System.Drawing.Point(8, 34);
-            this.dgvRKs.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvRKs.MultiSelect = false;
-            this.dgvRKs.Name = "dgvRKs";
-            this.dgvRKs.ReadOnly = true;
-            this.dgvRKs.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvRKs.RowHeadersVisible = false;
-            this.dgvRKs.RowTemplate.Height = 24;
-            this.dgvRKs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvRKs.ShowEditingIcon = false;
-            this.dgvRKs.Size = new System.Drawing.Size(944, 488);
-            this.dgvRKs.TabIndex = 69;
-            this.dgvRKs.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRKs_CellDoubleClick);
+            this.dgvRKProducts.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvRKProducts.EnableHeadersVisualStyles = false;
+            this.dgvRKProducts.Location = new System.Drawing.Point(8, 34);
+            this.dgvRKProducts.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvRKProducts.MultiSelect = false;
+            this.dgvRKProducts.Name = "dgvRKProducts";
+            this.dgvRKProducts.ReadOnly = true;
+            this.dgvRKProducts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvRKProducts.RowHeadersVisible = false;
+            this.dgvRKProducts.RowTemplate.Height = 24;
+            this.dgvRKProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvRKProducts.ShowEditingIcon = false;
+            this.dgvRKProducts.Size = new System.Drawing.Size(944, 488);
+            this.dgvRKProducts.TabIndex = 69;
+            this.dgvRKProducts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRKProducts_CellDoubleClick);
             // 
             // label5
             // 
@@ -928,19 +928,19 @@
             this.label5.TabIndex = 71;
             this.label5.Text = "Views";
             // 
-            // cboRkViews
+            // cboRkProductViews
             // 
-            this.cboRkViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRkViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboRkViews.Items.AddRange(new object[] {
+            this.cboRkProductViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRkProductViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboRkProductViews.Items.AddRange(new object[] {
             "Active Associated RKs",
             "Inactive Associated RKs"});
-            this.cboRkViews.Location = new System.Drawing.Point(50, 7);
-            this.cboRkViews.Margin = new System.Windows.Forms.Padding(2);
-            this.cboRkViews.Name = "cboRkViews";
-            this.cboRkViews.Size = new System.Drawing.Size(157, 21);
-            this.cboRkViews.TabIndex = 70;
-            this.cboRkViews.SelectedIndexChanged += new System.EventHandler(this.cboRkViews_SelectedIndexChanged);
+            this.cboRkProductViews.Location = new System.Drawing.Point(50, 7);
+            this.cboRkProductViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboRkProductViews.Name = "cboRkProductViews";
+            this.cboRkProductViews.Size = new System.Drawing.Size(157, 21);
+            this.cboRkProductViews.TabIndex = 70;
+            this.cboRkProductViews.SelectedIndexChanged += new System.EventHandler(this.cboRkViews_SelectedIndexChanged);
             // 
             // panel7
             // 
@@ -965,9 +965,9 @@
             this.label6.Location = new System.Drawing.Point(-3, 1);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(257, 44);
+            this.label6.Size = new System.Drawing.Size(385, 44);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Record Keepers";
+            this.label6.Text = "Record Keeper Products";
             // 
             // label14
             // 
@@ -2185,6 +2185,21 @@
             this.panel23.Size = new System.Drawing.Size(968, 545);
             this.panel23.TabIndex = 70;
             // 
+            // btnNewOther
+            // 
+            this.btnNewOther.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewOther.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNewOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewOther.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewOther.ForeColor = System.Drawing.Color.Black;
+            this.btnNewOther.Location = new System.Drawing.Point(792, 4);
+            this.btnNewOther.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewOther.Name = "btnNewOther";
+            this.btnNewOther.Size = new System.Drawing.Size(78, 26);
+            this.btnNewOther.TabIndex = 76;
+            this.btnNewOther.Text = "New";
+            this.btnNewOther.UseVisualStyleBackColor = false;
+            // 
             // btnDeleteOther
             // 
             this.btnDeleteOther.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2333,21 +2348,6 @@
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
             // 
-            // btnNewOther
-            // 
-            this.btnNewOther.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNewOther.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNewOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewOther.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewOther.ForeColor = System.Drawing.Color.Black;
-            this.btnNewOther.Location = new System.Drawing.Point(792, 4);
-            this.btnNewOther.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNewOther.Name = "btnNewOther";
-            this.btnNewOther.Size = new System.Drawing.Size(78, 26);
-            this.btnNewOther.TabIndex = 76;
-            this.btnNewOther.Text = "New";
-            this.btnNewOther.UseVisualStyleBackColor = false;
-            // 
             // frmPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2382,10 +2382,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvestments)).EndInit();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
-            this.tabRK.ResumeLayout(false);
+            this.tabRKProduct.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRKs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRKProducts)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.tabAuditor.ResumeLayout(false);
@@ -2465,13 +2465,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TabPage tabRK;
+        private System.Windows.Forms.TabPage tabRKProduct;
         private System.Windows.Forms.TabPage tabAuditor;
         private System.Windows.Forms.TabPage tabAdvisor;
         private System.Windows.Forms.Panel panel6;
-        public System.Windows.Forms.DataGridView dgvRKs;
+        public System.Windows.Forms.DataGridView dgvRKProducts;
         private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.ComboBox cboRkViews;
+        public System.Windows.Forms.ComboBox cboRkProductViews;
         private System.Windows.Forms.Panel panel7;
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label label14;
@@ -2489,8 +2489,8 @@
         private System.Windows.Forms.Panel panel9;
         public System.Windows.Forms.Label label11;
         public System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button btnNewRK;
-        private System.Windows.Forms.Button btnDeleteRK;
+        private System.Windows.Forms.Button btnNewRKProduct;
+        private System.Windows.Forms.Button btnDeleteRKProduct;
         private System.Windows.Forms.Button btnNewAuditor;
         private System.Windows.Forms.Button btnDeleteAuditor;
         private System.Windows.Forms.Button btnNewAdvisor;

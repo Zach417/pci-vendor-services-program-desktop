@@ -10,9 +10,9 @@ using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class PlanRecordKeeperFee : DatabaseEntity
+    public class PlanRecordKeeperProductFee : DatabaseEntity
     {
-        public Guid RecordKeeperId;
+        public Guid RecordKeeperProductId;
         public Guid PlanId;
         public decimal? Fee;
         public decimal? Benchmark25Fee;
@@ -25,15 +25,15 @@ namespace VSP.Business.Entities
         public DateTime? AsOfDate;
         public string Notes;
 
-        private static string _tableName = "PlanRecordKeeperFee";
+        private static string _tableName = "PlanRecordKeeperProductFee";
 
-        public PlanRecordKeeperFee()
+        public PlanRecordKeeperProductFee()
             : base(_tableName)
         {
 
         }
 
-        public PlanRecordKeeperFee(Guid primaryKey)
+        public PlanRecordKeeperProductFee(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -45,7 +45,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("RecordKeeperId", this.RecordKeeperId);
+            base.AddColumn("RecordKeeperProductId", this.RecordKeeperProductId);
             base.AddColumn("PlanId", this.PlanId);
             base.AddColumn("Fee", this.Fee);
             base.AddColumn("Benchmark25Fee", this.Benchmark25Fee);
@@ -64,7 +64,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.RecordKeeperId = (Guid)base.GetColumn("RecordKeeperId");
+            this.RecordKeeperProductId = (Guid)base.GetColumn("RecordKeeperProductId");
             this.PlanId = (Guid)base.GetColumn("PlanId");
             this.Fee = (decimal?)base.GetColumn("Fee");
             this.Benchmark25Fee = (decimal?)base.GetColumn("Benchmark25Fee");
@@ -90,15 +90,15 @@ namespace VSP.Business.Entities
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
-        public static DataTable GetAssociatedActive(PlanRecordKeeper planRK)
+        public static DataTable GetAssociatedActive(PlanRecordKeeperProduct planRKProduct)
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0 AND PlanId = \'" + planRK.PlanId.ToString() + "\' AND RecordKeeperId = \'" + planRK.RecordKeeperId + "\'";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0 AND PlanId = \'" + planRKProduct.PlanId.ToString() + "\' AND RecordKeeperProductId = \'" + planRKProduct.RecordKeeperProductId + "\'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
-        public static DataTable GetAssociatedInactive(PlanRecordKeeper planRK)
+        public static DataTable GetAssociatedInactive(PlanRecordKeeperProduct planRKProduct)
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1 AND PlanId = \'" + planRK.PlanId.ToString() + "\' AND RecordKeeperId = \'" + planRK.RecordKeeperId + "\'";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1 AND PlanId = \'" + planRKProduct.PlanId.ToString() + "\' AND RecordKeeperProductId = \'" + planRKProduct.RecordKeeperProductId + "\'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

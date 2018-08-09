@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace VSP.Presentation.Forms
 {
-	public partial class frmPlanRecordKeeperFee : Form, IMessageFilter
+	public partial class frmPlanRecordKeeperProductFee : Form, IMessageFilter
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -31,15 +31,15 @@ namespace VSP.Presentation.Forms
         private HashSet<Control> controlsToMove = new HashSet<Control>();
 
         private frmMain frmMain_Parent;
-        public PlanRecordKeeperFee CurrentPlanRecordKeeperFee;
+        public PlanRecordKeeperProductFee CurrentPlanRecordKeeperProductFee;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="mf"></param>
-        /// <param name="accountId"></param>
+        /// <param name="planRecordKeeperProduct"></param>
         /// <param name="Close"></param>
-        public frmPlanRecordKeeperFee(frmMain mf, PlanRecordKeeper planRecordKeeper, FormClosedEventHandler Close = null)
+        public frmPlanRecordKeeperProductFee(frmMain mf, PlanRecordKeeperProduct planRecordKeeperProduct, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -59,14 +59,18 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
-            Plan plan = new Plan(planRecordKeeper.PlanId);
-            DataIntegrationHub.Business.Entities.RecordKeeper rk = new DataIntegrationHub.Business.Entities.RecordKeeper(planRecordKeeper.RecordKeeperId);
+            Plan plan = new Plan(planRecordKeeperProduct.PlanId);
+            PlanRecordKeeperProduct rkpd = new PlanRecordKeeperProduct(planRecordKeeperProduct.RecordKeeperProductId);
+            Product pd = new Product(rkpd.ProductId);
+            txtProduct.Text = pd.Name;
 
-            CurrentPlanRecordKeeperFee = new PlanRecordKeeperFee();
-            CurrentPlanRecordKeeperFee.PlanId = plan.PlanId;
-            CurrentPlanRecordKeeperFee.RecordKeeperId = rk.RecordKeeperId;
+            CurrentPlanRecordKeeperProductFee = new PlanRecordKeeperProductFee();
+            CurrentPlanRecordKeeperProductFee.PlanId = plan.PlanId;
+            CurrentPlanRecordKeeperProductFee.RecordKeeperProductId = rkpd.RecordKeeperProductId;
 
             txtPlan.Text = plan.Name;
+
+            DataIntegrationHub.Business.Entities.RecordKeeper rk = new DataIntegrationHub.Business.Entities.RecordKeeper(pd.RecordKeeperId);
             txtRecordKeeper.Text = rk.Name;
 
             ss.Close();
@@ -77,9 +81,9 @@ namespace VSP.Presentation.Forms
         /// 
         /// </summary>
         /// <param name="mf"></param>
-        /// <param name="planRecordKeeperFee"></param>
+        /// <param name="planRecordKeeperProductFee"></param>
         /// <param name="Close"></param>
-        public frmPlanRecordKeeperFee(frmMain mf, PlanRecordKeeperFee planRecordKeeperFee, FormClosedEventHandler Close = null)
+        public frmPlanRecordKeeperProductFee(frmMain mf, PlanRecordKeeperProductFee planRecordKeeperProductFee, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -99,43 +103,51 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
-            Plan plan = new Plan(planRecordKeeperFee.PlanId);
-            DataIntegrationHub.Business.Entities.RecordKeeper rk = new DataIntegrationHub.Business.Entities.RecordKeeper(planRecordKeeperFee.RecordKeeperId);
+            Plan plan = new Plan(planRecordKeeperProductFee.PlanId);
+            PlanRecordKeeperProduct rkpd = new PlanRecordKeeperProduct(planRecordKeeperProductFee.RecordKeeperProductId);
+            Product pd = new Product(rkpd.ProductId);
+            DataIntegrationHub.Business.Entities.RecordKeeper rk = new DataIntegrationHub.Business.Entities.RecordKeeper(pd.RecordKeeperId);
 
-            CurrentPlanRecordKeeperFee = planRecordKeeperFee;
+            CurrentPlanRecordKeeperProductFee = planRecordKeeperProductFee;
             txtPlan.Text = plan.Name;
             txtRecordKeeper.Text = rk.Name;
-            txtNotes.Text = CurrentPlanRecordKeeperFee.Notes;
+            txtProduct.Text = pd.Name;
+            txtNotes.Text = CurrentPlanRecordKeeperProductFee.Notes;
 
-            if (CurrentPlanRecordKeeperFee.Fee != null)
+            if (CurrentPlanRecordKeeperProductFee.Fee != null)
             {
-                txtFee.Text = ((decimal)CurrentPlanRecordKeeperFee.Fee).ToString("#,##");
+                txtFee.Text = ((decimal)CurrentPlanRecordKeeperProductFee.Fee).ToString("#,##");
             }
 
-            if (CurrentPlanRecordKeeperFee.Benchmark25Fee != null)
+            if (CurrentPlanRecordKeeperProductFee.Benchmark25Fee != null)
             {
-                txtBenchmark25Fee.Text = ((decimal)CurrentPlanRecordKeeperFee.Benchmark25Fee).ToString("#,##");
+                txtBenchmark25Fee.Text = ((decimal)CurrentPlanRecordKeeperProductFee.Benchmark25Fee).ToString("#,##");
             }
 
-            if (CurrentPlanRecordKeeperFee.Benchmark50Fee != null)
+            if (CurrentPlanRecordKeeperProductFee.Benchmark50Fee != null)
             {
-                txtBenchmark50Fee.Text = ((decimal)CurrentPlanRecordKeeperFee.Benchmark50Fee).ToString("#,##");
+                txtBenchmark50Fee.Text = ((decimal)CurrentPlanRecordKeeperProductFee.Benchmark50Fee).ToString("#,##");
             }
 
-            if (CurrentPlanRecordKeeperFee.Benchmark75Fee != null)
+            if (CurrentPlanRecordKeeperProductFee.Benchmark75Fee != null)
             {
-                txtBenchmark75Fee.Text = ((decimal)CurrentPlanRecordKeeperFee.Benchmark75Fee).ToString("#,##");
+                txtBenchmark75Fee.Text = ((decimal)CurrentPlanRecordKeeperProductFee.Benchmark75Fee).ToString("#,##");
             }
 
-            //if (CurrentPlanRecordKeeperFee.AsOfDate != null)
-            //{
-                dateAsOfDate.Value = (DateTime)CurrentPlanRecordKeeperFee.AsOfDate;
-            //}
+            if (CurrentPlanRecordKeeperProductFee.AsOfDate != null)
+            {
+                dateAsOfDate.Value = (DateTime)CurrentPlanRecordKeeperProductFee.AsOfDate;
+                dateAsOfDate.Checked = true;
+            }
+            else
+            {
+                dateAsOfDate.Checked = false;
+            }
 
-            chbxRevenueSharingPaid.Checked = CurrentPlanRecordKeeperFee.RevenueSharingPaid;
-            chbxForfeituresPaid.Checked = CurrentPlanRecordKeeperFee.ForfeituresPaid;
-            chbxParticipantsPaid.Checked = CurrentPlanRecordKeeperFee.ParticipantsPaid;
-            chbxPlanSponsorPaid.Checked = CurrentPlanRecordKeeperFee.PlanSponsorPaid;
+            chbxRevenueSharingPaid.Checked = CurrentPlanRecordKeeperProductFee.RevenueSharingPaid;
+            chbxForfeituresPaid.Checked = CurrentPlanRecordKeeperProductFee.ForfeituresPaid;
+            chbxParticipantsPaid.Checked = CurrentPlanRecordKeeperProductFee.ParticipantsPaid;
+            chbxPlanSponsorPaid.Checked = CurrentPlanRecordKeeperProductFee.PlanSponsorPaid;
 
             ss.Close();
             this.Show();
@@ -239,13 +251,13 @@ namespace VSP.Presentation.Forms
         {
             if (String.IsNullOrWhiteSpace(txtFee.Text))
             {
-                CurrentPlanRecordKeeperFee.Fee = null;
+                CurrentPlanRecordKeeperProductFee.Fee = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeperFee.Fee = Decimal.Parse(txtFee.Text);
+                    CurrentPlanRecordKeeperProductFee.Fee = Decimal.Parse(txtFee.Text);
                 }
                 catch
                 {
@@ -256,13 +268,13 @@ namespace VSP.Presentation.Forms
 
             if (String.IsNullOrWhiteSpace(txtBenchmark25Fee.Text))
             {
-                CurrentPlanRecordKeeperFee.Benchmark25Fee = null;
+                CurrentPlanRecordKeeperProductFee.Benchmark25Fee = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeperFee.Benchmark25Fee = Decimal.Parse(txtBenchmark25Fee.Text);
+                    CurrentPlanRecordKeeperProductFee.Benchmark25Fee = Decimal.Parse(txtBenchmark25Fee.Text);
                 }
                 catch
                 {
@@ -273,13 +285,13 @@ namespace VSP.Presentation.Forms
 
             if (String.IsNullOrWhiteSpace(txtBenchmark50Fee.Text))
             {
-                CurrentPlanRecordKeeperFee.Benchmark50Fee = null;
+                CurrentPlanRecordKeeperProductFee.Benchmark50Fee = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeperFee.Benchmark50Fee = Decimal.Parse(txtBenchmark50Fee.Text);
+                    CurrentPlanRecordKeeperProductFee.Benchmark50Fee = Decimal.Parse(txtBenchmark50Fee.Text);
                 }
                 catch
                 {
@@ -290,13 +302,13 @@ namespace VSP.Presentation.Forms
 
             if (String.IsNullOrWhiteSpace(txtBenchmark75Fee.Text))
             {
-                CurrentPlanRecordKeeperFee.Benchmark75Fee = null;
+                CurrentPlanRecordKeeperProductFee.Benchmark75Fee = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeperFee.Benchmark75Fee = Decimal.Parse(txtBenchmark75Fee.Text);
+                    CurrentPlanRecordKeeperProductFee.Benchmark75Fee = Decimal.Parse(txtBenchmark75Fee.Text);
                 }
                 catch
                 {
@@ -305,14 +317,21 @@ namespace VSP.Presentation.Forms
                 }
             }
 
-            CurrentPlanRecordKeeperFee.AsOfDate = dateAsOfDate.Value;
-            CurrentPlanRecordKeeperFee.RevenueSharingPaid = chbxRevenueSharingPaid.Checked;
-            CurrentPlanRecordKeeperFee.ForfeituresPaid = chbxForfeituresPaid.Checked;
-            CurrentPlanRecordKeeperFee.ParticipantsPaid = chbxParticipantsPaid.Checked;
-            CurrentPlanRecordKeeperFee.PlanSponsorPaid = chbxPlanSponsorPaid.Checked;
-            CurrentPlanRecordKeeperFee.Notes = txtNotes.Text;
+            if (dateAsOfDate.Checked)
+            {
+                CurrentPlanRecordKeeperProductFee.AsOfDate = dateAsOfDate.Value;
+            }
+            else
+            {
+                CurrentPlanRecordKeeperProductFee.AsOfDate = null;
+            }
+            CurrentPlanRecordKeeperProductFee.RevenueSharingPaid = chbxRevenueSharingPaid.Checked;
+            CurrentPlanRecordKeeperProductFee.ForfeituresPaid = chbxForfeituresPaid.Checked;
+            CurrentPlanRecordKeeperProductFee.ParticipantsPaid = chbxParticipantsPaid.Checked;
+            CurrentPlanRecordKeeperProductFee.PlanSponsorPaid = chbxPlanSponsorPaid.Checked;
+            CurrentPlanRecordKeeperProductFee.Notes = txtNotes.Text;
 
-            CurrentPlanRecordKeeperFee.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+            CurrentPlanRecordKeeperProductFee.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
             this.Close();
         }
 

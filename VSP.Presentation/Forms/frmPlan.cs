@@ -67,7 +67,7 @@ namespace VSP.Presentation.Forms
             //txtOutstandingLoans.Text = CurrentPlanDetail.LoansOutstanding.ToString();
             //txtSelfDirectedBrokerageAccounts.Text = CurrentPlanDetail.SelfDirectedBrokerageAccounts.ToString();
 
-            cboRkViews.SelectedIndex = 0;
+            cboRkProductViews.SelectedIndex = 0;
             cboAdvisorViews.SelectedIndex = 0;
             cboAuditorViews.SelectedIndex = 0;
             cboInvestmentViews.SelectedIndex = 0;
@@ -222,13 +222,13 @@ namespace VSP.Presentation.Forms
             label23.Text = txtName.Text;
         }
 
-        private void LoadDgvRks()
+        private void LoadDgvRkPds()
         {
-            DataTable dataTable = PlanRecordKeeper.GetAssociated(CurrentPlan.PlanId);
+            DataTable dataTable = PlanRecordKeeperProduct.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
-            /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
-            switch (cboRkViews.SelectedIndex)
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRkProductViews"/>.
+            switch (cboRkProductViews.SelectedIndex)
             {
                 case 0:
                     dataTableEnum = dataTableEnum.Where(x => x.Field<int>("StateCode") == 0);
@@ -249,37 +249,43 @@ namespace VSP.Presentation.Forms
                 dataTable.Rows.Clear();
             }
 
-            dataTable.Columns.Add("Name");
+            dataTable.Columns.Add("Record Keeper");
+            dataTable.Columns.Add("Product");
 
             int i = 0;
             foreach (DataRow dr in dataTable.Rows)
             {
-                Guid recordKeeperId = new Guid(dr["RecordKeeperId"].ToString());
-                DataIntegrationHub.Business.Entities.RecordKeeper recordKeeper = new DataIntegrationHub.Business.Entities.RecordKeeper(recordKeeperId);
-                dataTable.Rows[i]["Name"] = recordKeeper.Name;
+                string s = dr["ProductId"].ToString();
+                Guid productId = new Guid(dr["ProductId"].ToString());
+                Product pd = new Product(productId);
+                dataTable.Rows[i]["Product"] = pd.Name;
+
+                DataIntegrationHub.Business.Entities.RecordKeeper recordKeeper = new DataIntegrationHub.Business.Entities.RecordKeeper(pd.RecordKeeperId);
+                dataTable.Rows[i]["Record Keeper"] = recordKeeper.Name;
                 i++;
             }
 
-            dgvRKs.DataSource = dataTable;
+            dgvRKProducts.DataSource = dataTable;
 
             // Display/order the columns.
-            dgvRKs.Columns["PlanRecordKeeperId"].Visible = false;
-            dgvRKs.Columns["RecordKeeperId"].Visible = false;
-            dgvRKs.Columns["PlanId"].Visible = false;
-            dgvRKs.Columns["CreatedBy"].Visible = false;
-            dgvRKs.Columns["CreatedOn"].Visible = false;
-            dgvRKs.Columns["ModifiedBy"].Visible = false;
-            dgvRKs.Columns["ModifiedOn"].Visible = false;
-            dgvRKs.Columns["StateCode"].Visible = false;
+            dgvRKProducts.Columns["PlanRecordKeeperProductId"].Visible = false;
+            dgvRKProducts.Columns["PlanId"].Visible = false;
+            dgvRKProducts.Columns["CreatedBy"].Visible = false;
+            dgvRKProducts.Columns["CreatedOn"].Visible = false;
+            dgvRKProducts.Columns["ModifiedBy"].Visible = false;
+            dgvRKProducts.Columns["ModifiedOn"].Visible = false;
+            dgvRKProducts.Columns["StateCode"].Visible = false;
+            dgvRKProducts.Columns["ProductId"].Visible = false;
 
-            dgvRKs.Columns["Name"].DisplayIndex = 0;
-            dgvRKs.Columns["DateAdded"].DisplayIndex = 1;
-            dgvRKs.Columns["DateRemoved"].DisplayIndex = 2;
+            dgvRKProducts.Columns["Record Keeper"].DisplayIndex = 0;
+            dgvRKProducts.Columns["Product"].DisplayIndex = 1;
+            dgvRKProducts.Columns["DateAdded"].DisplayIndex = 2;
+            dgvRKProducts.Columns["DateRemoved"].DisplayIndex = 3;
         }
 
         private void cboRkViews_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadDgvRks();
+            LoadDgvRkPds();
         }
 
         private void LoadDgvAuditors()
@@ -287,7 +293,7 @@ namespace VSP.Presentation.Forms
             DataTable dataTable = PlanAuditor.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
-            /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRkProductViews"/>.
             switch (cboAuditorViews.SelectedIndex)
             {
                 case 0:
@@ -347,7 +353,7 @@ namespace VSP.Presentation.Forms
             DataTable dataTable = VSP.Business.Entities.PlanAdvisor.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
-            /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRkProductViews"/>.
             switch (cboAdvisorViews.SelectedIndex)
             {
                 case 0:
@@ -404,7 +410,7 @@ namespace VSP.Presentation.Forms
 
         private void label2_Click(object sender, EventArgs e)
         {
-            tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabRK"];
+            tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabRKProduct"];
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -432,34 +438,34 @@ namespace VSP.Presentation.Forms
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabOther"];
         }
 
-        private void btnNewRK_Click(object sender, EventArgs e)
+        private void btnNewRKProduct_Click(object sender, EventArgs e)
         {
-            frmPlanRecordKeeper frmPlanRecordKeeper = new frmPlanRecordKeeper(frmMain_Parent, CurrentPlan);
-            frmPlanRecordKeeper.FormClosed += frmPlanRecordKeeper_FormClosed;
+            frmPlanRecordKeeperProduct frmPlanRecordKeeperProduct = new frmPlanRecordKeeperProduct(frmMain_Parent, CurrentPlan);
+            frmPlanRecordKeeperProduct.FormClosed += frmPlanRecordKeeperProduct_FormClosed;
         }
 
-        private void frmPlanRecordKeeper_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmPlanRecordKeeperProduct_FormClosed(object sender, FormClosedEventArgs e)
         {
-            LoadDgvRks();
+            LoadDgvRkPds();
         }
 
-        private void btnDeleteRK_Click(object sender, EventArgs e)
+        private void btnDeleteRKProduct_Click(object sender, EventArgs e)
         {
-            if (dgvRKs.CurrentRow == null)
+            if (dgvRKProducts.CurrentRow == null)
             {
                 return;
             }
 
-            int index = dgvRKs.CurrentRow.Index;
-            Guid planRecordKeeperId = new Guid(dgvRKs.Rows[index].Cells[0].Value.ToString());
-            PlanRecordKeeper planRecordKeeper = new PlanRecordKeeper(planRecordKeeperId);
+            int index = dgvRKProducts.CurrentRow.Index;
+            Guid planRecordKeeperProductId = new Guid(dgvRKProducts.Rows[index].Cells[0].Value.ToString());
+            PlanRecordKeeperProduct planRecordKeeper = new PlanRecordKeeperProduct(planRecordKeeperProductId);
 
-            DialogResult result = MessageBox.Show("Are you sure you wish to permanently delete the selected record keeper from the plan?", "Attention", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Are you sure you wish to permanently delete the selected record keeper product from the plan?", "Attention", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
                 planRecordKeeper.DeleteRecordFromDatabase();
-                LoadDgvRks();
+                LoadDgvRkPds();
             }
         }
 
@@ -679,13 +685,13 @@ namespace VSP.Presentation.Forms
             }
         }
 
-        private void dgvRKs_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvRKProducts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = dgvRKs.CurrentRow.Index;
-            Guid planRkId = new Guid(dgvRKs.Rows[index].Cells["PlanRecordKeeperId"].Value.ToString());
-            PlanRecordKeeper planRK = new PlanRecordKeeper(planRkId);
-            frmPlanRecordKeeper frmPlanRecordKeeper = new frmPlanRecordKeeper(frmMain_Parent, planRK);
-            frmPlanRecordKeeper.FormClosed += frmPlanRecordKeeper_FormClosed;
+            int index = dgvRKProducts.CurrentRow.Index;
+            Guid planRkPdId = new Guid(dgvRKProducts.Rows[index].Cells["PlanRecordKeeperProductId"].Value.ToString());
+            PlanRecordKeeperProduct planRKProduct = new PlanRecordKeeperProduct(planRkPdId);
+            frmPlanRecordKeeperProduct frmPlanRecordKeeperProduct = new frmPlanRecordKeeperProduct(frmMain_Parent, planRKProduct);
+            frmPlanRecordKeeperProduct.FormClosed += frmPlanRecordKeeperProduct_FormClosed;
         }
 
         private void label22_Click(object sender, EventArgs e)
@@ -713,7 +719,7 @@ namespace VSP.Presentation.Forms
             DataTable dataTable = VSP.Business.Entities.PlanContribution.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
-            /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRkProductViews"/>.
             switch (cboContributionViews.SelectedIndex)
             {
                 case 0:
@@ -760,7 +766,7 @@ namespace VSP.Presentation.Forms
             DataTable dataTable = VSP.Business.Entities.PlanDistribution.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
-            /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRkProductViews"/>.
             switch (cboDistributionViews.SelectedIndex)
             {
                 case 0:
@@ -807,7 +813,7 @@ namespace VSP.Presentation.Forms
             DataTable dataTable = VSP.Business.Entities.PlanParticipantsEligible.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
-            /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRkProductViews"/>.
             switch (cboEligibleParticipantsViews.SelectedIndex)
             {
                 case 0:
@@ -854,7 +860,7 @@ namespace VSP.Presentation.Forms
             DataTable dataTable = VSP.Business.Entities.PlanParticipantsActive.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
-            /// Set the datatable based on the SelectedIndex of <see cref="cboRkViews"/>.
+            /// Set the datatable based on the SelectedIndex of <see cref="cboRkProductViews"/>.
             switch (cboActiveParticipantViews.SelectedIndex)
             {
                 case 0:

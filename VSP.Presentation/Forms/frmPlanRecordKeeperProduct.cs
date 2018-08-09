@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace VSP.Presentation.Forms
 {
-	public partial class frmPlanRecordKeeper : Form, IMessageFilter
+	public partial class frmPlanRecordKeeperProduct : Form, IMessageFilter
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -31,14 +31,14 @@ namespace VSP.Presentation.Forms
         private HashSet<Control> controlsToMove = new HashSet<Control>();
 
         private frmMain frmMain_Parent;
-        public PlanRecordKeeper CurrentPlanRecordKeeper;
+        public PlanRecordKeeperProduct CurrentPlanRecordKeeperProduct;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="mf"></param>
         /// <param name="Close"></param>
-        public frmPlanRecordKeeper(frmMain mf, Plan plan, FormClosedEventHandler Close = null)
+        public frmPlanRecordKeeperProduct(frmMain mf, Plan plan, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -60,8 +60,8 @@ namespace VSP.Presentation.Forms
 
             PreloadCbos();
 
-            CurrentPlanRecordKeeper = new PlanRecordKeeper();
-            CurrentPlanRecordKeeper.PlanId = plan.PlanId;
+            CurrentPlanRecordKeeperProduct = new PlanRecordKeeperProduct();
+            CurrentPlanRecordKeeperProduct.PlanId = plan.PlanId;
 
             cboPlan.Text = plan.Name + " - " + plan.Description;
 
@@ -78,7 +78,7 @@ namespace VSP.Presentation.Forms
         /// <param name="mf"></param>
         /// <param name="accountId"></param>
         /// <param name="Close"></param>
-        public frmPlanRecordKeeper(frmMain mf, PlanRecordKeeper planRecordKeeper, FormClosedEventHandler Close = null)
+        public frmPlanRecordKeeperProduct(frmMain mf, PlanRecordKeeperProduct planRecordKeeperProduct, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -100,28 +100,46 @@ namespace VSP.Presentation.Forms
 
             PreloadCbos();
 
-            CurrentPlanRecordKeeper = planRecordKeeper;
+            CurrentPlanRecordKeeperProduct = planRecordKeeperProduct;
 
-            if (CurrentPlanRecordKeeper.PlanId != null)
+            if (CurrentPlanRecordKeeperProduct.PlanId != null)
             {
-                Plan plan = new Plan(CurrentPlanRecordKeeper.PlanId);
+                Plan plan = new Plan(CurrentPlanRecordKeeperProduct.PlanId);
                 cboPlan.Text = plan.Name + " - " + plan.Description;
             }
 
-            if (CurrentPlanRecordKeeper.RecordKeeperId != null)
+            if (CurrentPlanRecordKeeperProduct.ProductId != null)
             {
-                DataIntegrationHub.Business.Entities.RecordKeeper recordKeeper = new DataIntegrationHub.Business.Entities.RecordKeeper(CurrentPlanRecordKeeper.RecordKeeperId);
+                Product pd = new Product(CurrentPlanRecordKeeperProduct.ProductId);
+                DataIntegrationHub.Business.Entities.RecordKeeper recordKeeper = new DataIntegrationHub.Business.Entities.RecordKeeper(pd.RecordKeeperId);
                 cboRecordKeeper.Text = recordKeeper.Name;
+
+                LoadCboProduct();
+                cboProduct.Text = pd.Name;
+            }
+            else
+            {
+                LoadCboProduct();
             }
 
-            if (CurrentPlanRecordKeeper.DateAdded != null)
+            if (CurrentPlanRecordKeeperProduct.DateAdded != null)
             {
-                txtDateAdded.Text = ((DateTime)CurrentPlanRecordKeeper.DateAdded).ToString("MM/dd/yyyy");
+                dateAdded.Value = (DateTime)CurrentPlanRecordKeeperProduct.DateAdded;
+                dateAdded.Checked = true;
+            }
+            else
+            {
+                dateAdded.Checked = false;
             }
 
-            if (CurrentPlanRecordKeeper.DateRemoved != null)
+            if (CurrentPlanRecordKeeperProduct.DateRemoved != null)
             {
-                txtDateRemoved.Text = ((DateTime)CurrentPlanRecordKeeper.DateRemoved).ToString("MM/dd/yyyy");
+                dateRemoved.Value = (DateTime)CurrentPlanRecordKeeperProduct.DateRemoved;
+                dateRemoved.Checked = true;
+            }
+            else
+            {
+                dateRemoved.Checked = false;
             }
 
             cboFeeViews.SelectedIndex = 0;
@@ -254,11 +272,17 @@ namespace VSP.Presentation.Forms
                 MessageBox.Show("Error: Record keeper cannot be left blank.");
                 return;
             }
+
+            if (cboProduct.SelectedIndex <= 0)
+            {
+                MessageBox.Show("Error: Product cannot be left blank.");
+                return;
+            }
             else
             {
-                ListItem li = (ListItem)cboRecordKeeper.SelectedItem;
-                Guid recordKeeperId = (Guid)li.HiddenObject;
-                CurrentPlanRecordKeeper.RecordKeeperId = recordKeeperId;
+                ListItem li = (ListItem)cboProduct.SelectedItem;
+                Guid productId = (Guid)li.HiddenObject;
+                CurrentPlanRecordKeeperProduct.ProductId = productId;
             }
 
             if (cboPlan.SelectedIndex <= 0)
@@ -270,18 +294,18 @@ namespace VSP.Presentation.Forms
             {
                 ListItem li = (ListItem)cboPlan.SelectedItem;
                 Plan plan = (Plan)li.HiddenObject;
-                CurrentPlanRecordKeeper.PlanId = plan.PlanId;
+                CurrentPlanRecordKeeperProduct.PlanId = plan.PlanId;
             }
 
-            if (String.IsNullOrWhiteSpace(txtDateAdded.Text))
+            if (dateAdded.Checked == false)
             {
-                CurrentPlanRecordKeeper.DateAdded = null;
+                CurrentPlanRecordKeeperProduct.DateAdded = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeper.DateAdded = DateTime.Parse(txtDateAdded.Text);
+                    CurrentPlanRecordKeeperProduct.DateAdded = dateAdded.Value;
                 }
                 catch
                 {
@@ -290,15 +314,15 @@ namespace VSP.Presentation.Forms
                 }
             }
 
-            if (String.IsNullOrWhiteSpace(txtDateRemoved.Text))
+            if (dateRemoved.Checked == false)
             {
-                CurrentPlanRecordKeeper.DateRemoved = null;
+                CurrentPlanRecordKeeperProduct.DateRemoved = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeper.DateRemoved = DateTime.Parse(txtDateRemoved.Text);
+                    CurrentPlanRecordKeeperProduct.DateRemoved = dateRemoved.Value;
                 }
                 catch
                 {
@@ -310,7 +334,7 @@ namespace VSP.Presentation.Forms
             // loop through dgvservices, and update productservice records for record keeper product
             if (dgvServices.Rows.Count > 0)
             {
-                DataTable productServices = PlanRecordKeeperService.GetAssociated(CurrentPlanRecordKeeper);
+                DataTable productServices = PlanRecordKeeperProductService.GetAssociated(CurrentPlanRecordKeeperProduct);
 
                 foreach (DataGridViewRow dr in dgvServices.Rows)
                 {
@@ -325,23 +349,23 @@ namespace VSP.Presentation.Forms
                     var ps = productServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
                     if (ps.Any()) // rk product already has service record, so update it
                     {
-                        Guid planRkServiceId = new Guid(ps.CopyToDataTable().Rows[0]["PlanRecordKeeperServiceId"].ToString());
-                        PlanRecordKeeperService planRkService = new PlanRecordKeeperService(planRkServiceId);
-                        planRkService.ServiceOffered = serviceOffered;
-                        planRkService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+                        Guid planRkPdServiceId = new Guid(ps.CopyToDataTable().Rows[0]["PlanRecordKeeperProductServiceId"].ToString());
+                        PlanRecordKeeperProductService planRkPdService = new PlanRecordKeeperProductService(planRkPdServiceId);
+                        planRkPdService.ServiceOffered = serviceOffered;
+                        planRkPdService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
                     }
                     else // rk product does not have service record, so create on
                     {
-                        PlanRecordKeeperService planRkService = new PlanRecordKeeperService();
-                        planRkService.ServiceId = serviceId;
-                        planRkService.PlanRecordKeeperId = CurrentPlanRecordKeeper.Id;
-                        planRkService.ServiceOffered = serviceOffered;
-                        planRkService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+                        PlanRecordKeeperProductService planRkPdService = new PlanRecordKeeperProductService();
+                        planRkPdService.ServiceId = serviceId;
+                        planRkPdService.PlanRecordKeeperProductId = CurrentPlanRecordKeeperProduct.Id;
+                        planRkPdService.ServiceOffered = serviceOffered;
+                        planRkPdService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
                     }
                 }
             }
 
-            CurrentPlanRecordKeeper.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+            CurrentPlanRecordKeeperProduct.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
             this.Close();
         }
@@ -364,10 +388,10 @@ namespace VSP.Presentation.Forms
             switch (cboFeeViews.SelectedIndex)
             {
                 case 0:
-                    dataTable = PlanRecordKeeperFee.GetAssociatedActive(CurrentPlanRecordKeeper);
+                    dataTable = PlanRecordKeeperProductFee.GetAssociatedActive(CurrentPlanRecordKeeperProduct);
                     break;
                 case 1:
-                    dataTable = PlanRecordKeeperFee.GetAssociatedActive(CurrentPlanRecordKeeper);
+                    dataTable = PlanRecordKeeperProductFee.GetAssociatedActive(CurrentPlanRecordKeeperProduct);
                     break;
                 default:
                     return;
@@ -376,9 +400,9 @@ namespace VSP.Presentation.Forms
             dgvFees.DataSource = dataTable;
 
             // Display/order the columns.
-            dgvFees.Columns["PlanRecordKeeperFeeId"].Visible = false;
+            dgvFees.Columns["PlanRecordKeeperProductFeeId"].Visible = false;
             dgvFees.Columns["PlanId"].Visible = false;
-            dgvFees.Columns["RecordKeeperId"].Visible = false;
+            dgvFees.Columns["RecordKeeperProductId"].Visible = false;
             dgvFees.Columns["CreatedBy"].Visible = false;
             dgvFees.Columns["ModifiedBy"].Visible = false;
             dgvFees.Columns["StateCode"].Visible = false;
@@ -419,11 +443,11 @@ namespace VSP.Presentation.Forms
 
         private void btnNewFee_Click(object sender, EventArgs e)
         {
-            frmPlanRecordKeeperFee frmPlanRecordKeeperFee = new frmPlanRecordKeeperFee(frmMain_Parent, CurrentPlanRecordKeeper);
-            frmPlanRecordKeeperFee.FormClosed += frmPlanRecordKeeperFee_FormClosed;
+            frmPlanRecordKeeperProductFee frmPlanRecordKeeperProductFee = new frmPlanRecordKeeperProductFee(frmMain_Parent, CurrentPlanRecordKeeperProduct);
+            frmPlanRecordKeeperProductFee.FormClosed += frmPlanRecordKeeperProductFee_FormClosed;
         }
 
-        private void frmPlanRecordKeeperFee_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmPlanRecordKeeperProductFee_FormClosed(object sender, FormClosedEventArgs e)
         {
             LoadDgvFees();
         }
@@ -431,23 +455,23 @@ namespace VSP.Presentation.Forms
         private void dgvFees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = dgvFees.CurrentRow.Index;
-            Guid planRkFeeId = new Guid(dgvFees.Rows[index].Cells["PlanRecordKeeperFeeId"].Value.ToString());
-            PlanRecordKeeperFee planRkFee = new PlanRecordKeeperFee(planRkFeeId);
-            frmPlanRecordKeeperFee frmPlanRecordKeeperFee = new frmPlanRecordKeeperFee(frmMain_Parent, planRkFee);
-            frmPlanRecordKeeperFee.FormClosed += frmPlanRecordKeeperFee_FormClosed;
+            Guid planRkFeeId = new Guid(dgvFees.Rows[index].Cells["PlanRecordKeeperProductFeeId"].Value.ToString());
+            PlanRecordKeeperProductFee planRkPdFee = new PlanRecordKeeperProductFee(planRkFeeId);
+            frmPlanRecordKeeperProductFee frmPlanRecordKeeperProductFee = new frmPlanRecordKeeperProductFee(frmMain_Parent, planRkPdFee);
+            frmPlanRecordKeeperProductFee.FormClosed += frmPlanRecordKeeperProductFee_FormClosed;
         }
 
         private void btnDeleteFee_Click(object sender, EventArgs e)
         {
             int index = dgvFees.CurrentRow.Index;
-            Guid planRkFeeId = new Guid(dgvFees.Rows[index].Cells["PlanRecordKeeperFeeId"].Value.ToString());
-            PlanRecordKeeperFee planRkFee = new PlanRecordKeeperFee(planRkFeeId);
+            Guid planRkPdFeeId = new Guid(dgvFees.Rows[index].Cells["PlanRecordKeeperProductFeeId"].Value.ToString());
+            PlanRecordKeeperProductFee planRkPdFee = new PlanRecordKeeperProductFee(planRkPdFeeId);
 
-            DialogResult result = MessageBox.Show("Are you sure you wish to delete the selected plan record keeper fee?", "Attention", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete the selected plan record keeper product fee?", "Attention", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
-                planRkFee.DeleteRecordFromDatabase();
+                planRkPdFee.DeleteRecordFromDatabase();
                 LoadDgvFees();
             }
         }
@@ -495,13 +519,13 @@ namespace VSP.Presentation.Forms
             // set service offered values
             if (refresh == true)
             {
-                DataTable planRkServices = PlanRecordKeeperService.GetAssociated(CurrentPlanRecordKeeper);
+                DataTable planRkPdServices = PlanRecordKeeperProductService.GetAssociated(CurrentPlanRecordKeeperProduct);
                 int rowIndex = 0;
 
                 foreach (DataGridViewRow drServices in dgvServices.Rows)
                 {
                     Guid serviceId = new Guid(drServices.Cells["ServiceId"].Value.ToString());
-                    var ps = planRkServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
+                    var ps = planRkPdServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
                     if (ps.Any()) // rk product already has service record, so update it
                     {
                         DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)dgvServices.Rows[rowIndex].Cells["ServiceOffered"];
@@ -518,5 +542,41 @@ namespace VSP.Presentation.Forms
         {
             LoadDgvServices();
         }
-	}
+
+        private void cboRecordKeeper_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadCboProduct();
+        }
+
+        private void LoadCboProduct()
+        {
+            cboProduct.Items.Clear();
+
+            if (null != cboRecordKeeper.SelectedItem && 0 < cboRecordKeeper.SelectedIndex)
+            {
+                ListItem li = (ListItem)cboRecordKeeper.SelectedItem;
+                Guid recordKeeperId = (Guid)li.HiddenObject;
+
+                DataTable productTable = Product.GetAllWithRecordKeeper(recordKeeperId);
+
+                cboProduct.Items.Add(new ListItem("", ""));
+
+                foreach (DataRow dr in productTable.Rows)
+                {
+                    Guid productId = new Guid(dr["ProductId"].ToString());
+                    string name = dr["Name"].ToString();
+                    cboProduct.Items.Add(new ListItem(name, productId));
+                }
+
+                cboProduct.ResetText();
+                cboProduct.ForeColor = Color.Empty;
+            }
+            else
+            {
+                cboProduct.Items.Insert(0," - Select a Record Keeper to generate Product options - ");
+                cboProduct.SelectedIndex = 0;
+                cboProduct.ForeColor = Color.Gray;
+            }
+        }
+    }
 }
