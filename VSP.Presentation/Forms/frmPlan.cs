@@ -33,6 +33,7 @@ namespace VSP.Presentation.Forms
         private frmMain frmMain_Parent;
         public Plan CurrentPlan;
         public PlanDetail CurrentPlanDetail;
+        private Label CurrentTabLabel;
 
         /// <summary>
         /// 
@@ -64,8 +65,8 @@ namespace VSP.Presentation.Forms
             CurrentPlanDetail = new PlanDetail(plan.PlanId);
             txtName.Text = CurrentPlan.Name;
             txtNotes.Text = CurrentPlanDetail.Notes;
-            //txtOutstandingLoans.Text = CurrentPlanDetail.LoansOutstanding.ToString();
-            //txtSelfDirectedBrokerageAccounts.Text = CurrentPlanDetail.SelfDirectedBrokerageAccounts.ToString();
+            CurrentTabLabel = label46; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             cboRkProductViews.SelectedIndex = 0;
             cboAdvisorViews.SelectedIndex = 0;
@@ -157,61 +158,40 @@ namespace VSP.Presentation.Forms
 
         private void label46_Click(object sender, EventArgs e)
         {
-            Label label = (Label)sender;
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedIndex = 0;
-
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label.BackColor = System.Drawing.Color.Gainsboro;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.DarkGray;
+            }
         }
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.ControlText;
-            label.BackColor = System.Drawing.Color.Transparent;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
+        private void highlightSelectedTabLabel(object sender)
+        {
+            Label label = (Label)sender;
+            CurrentTabLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            CurrentTabLabel.BackColor = System.Drawing.Color.Transparent;
+            label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label.BackColor = System.Drawing.Color.Gainsboro;
+            CurrentTabLabel = label;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            /*if (String.IsNullOrWhiteSpace(txtSelfDirectedBrokerageAccounts.Text))
-            {
-                CurrentPlanDetail.SelfDirectedBrokerageAccounts = 0;
-            }
-            else
-            {
-                try
-                {
-                    CurrentPlanDetail.SelfDirectedBrokerageAccounts = int.Parse(txtSelfDirectedBrokerageAccounts.Text);
-                }
-                catch
-                {
-                    MessageBox.Show("Error: Self-directed brokerage accounts string not in integer format");
-                    return;
-                }
-            }
-
-            if (String.IsNullOrWhiteSpace(txtOutstandingLoans.Text))
-            {
-                CurrentPlanDetail.LoansOutstanding = 0;
-            }
-            else
-            {
-                try
-                {
-                    CurrentPlanDetail.LoansOutstanding = int.Parse(txtOutstandingLoans.Text);
-                }
-                catch
-                {
-                    MessageBox.Show("Error: Loans outstanding string not in integer format");
-                    return;
-                }
-            }*/
-
             CurrentPlanDetail.Notes = txtNotes.Text;
             CurrentPlanDetail.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
             this.Close();
@@ -410,31 +390,37 @@ namespace VSP.Presentation.Forms
 
         private void label2_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabRKProduct"];
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabAuditor"];
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabAdvisor"];
         }
 
         private void label20_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabInvestments"];
         }
 
         private void label21_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabIssues"];
         }
 
         private void label43_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabOther"];
         }
 
@@ -696,21 +682,25 @@ namespace VSP.Presentation.Forms
 
         private void label22_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabContributions;
         }
 
         private void label26_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabDistributions;
         }
 
         private void label27_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabActiveParticipants;
         }
 
         private void label28_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabEligibleParticipants;
         }
 
@@ -1082,7 +1072,86 @@ namespace VSP.Presentation.Forms
 
         private void btnNewOther_Click(object sender, EventArgs e)
         {
+            frmPlanOtherFee frmPlanOtherFee = new frmPlanOtherFee(frmMain_Parent, CurrentPlan);
+            frmPlanOtherFee.FormClosed += frmPlanOtherFee_FormClosed;
+        }
 
+        private void frmPlanOtherFee_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvOther();
+        }
+
+        private void btnDeleteOther_Click(object sender, EventArgs e)
+        {
+            int index = dgvOther.CurrentRow.Index;
+            Guid planAdvFeeId = new Guid(dgvOther.Rows[index].Cells["PlanOtherFeeId"].Value.ToString());
+            PlanAdvisorFee planAdvFee = new PlanAdvisorFee(planAdvFeeId);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete the selected plan other fee?", "Attention", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                planAdvFee.DeleteRecordFromDatabase();
+                LoadDgvOther();
+            }
+        }
+
+        private void LoadDgvOther()
+        {
+            DataTable dataTable = new DataTable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboOtherViews"/>.
+            switch (cboOtherViews.SelectedIndex)
+            {
+                case 0:
+                    dataTable = PlanOtherFee.GetAssociatedActive(CurrentPlan);
+                    break;
+                case 1:
+                    dataTable = PlanOtherFee.GetAssociatedActive(CurrentPlan);
+                    break;
+                default:
+                    return;
+            }
+
+            dgvOther.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvOther.Columns["PlanOtherFeeId"].Visible = false;
+            dgvOther.Columns["PlanId"].Visible = false;
+            dgvOther.Columns["CreatedBy"].Visible = false;
+            dgvOther.Columns["ModifiedBy"].Visible = false;
+            dgvOther.Columns["StateCode"].Visible = false;
+            dgvOther.Columns["Benchmark25Fee"].Visible = false;
+            dgvOther.Columns["Benchmark50Fee"].Visible = false;
+            dgvOther.Columns["Benchmark75Fee"].Visible = false;
+
+            // Display/order the columns.
+            dgvOther.Columns["Notes"].Visible = false;
+
+            dgvOther.Columns["Name"].DisplayIndex = 0;
+
+            dgvOther.Columns["Fee"].DisplayIndex = 1;
+
+            dgvOther.Columns["RevenueSharingPaid"].DisplayIndex = 2;
+            dgvOther.Columns["RevenueSharingPaid"].HeaderText = "Revenue Sharing Paid";
+
+            dgvOther.Columns["ForfeituresPaid"].DisplayIndex = 3;
+            dgvOther.Columns["ForfeituresPaid"].HeaderText = "Forfeitures Paid";
+
+            dgvOther.Columns["ParticipantsPaid"].DisplayIndex = 4;
+            dgvOther.Columns["ParticipantsPaid"].HeaderText = "Participants Paid";
+
+            dgvOther.Columns["PlanSponsorPaid"].DisplayIndex = 5;
+            dgvOther.Columns["PlanSponsorPaid"].HeaderText = "Plan Sponsor Paid";
+
+            dgvOther.Columns["AsOfDate"].DisplayIndex = 6;
+            dgvOther.Columns["ModifiedOn"].DisplayIndex = 7;
+            dgvOther.Columns["CreatedOn"].DisplayIndex = 8;
+        }
+
+        private void cboOtherViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvOther();
         }
     }
 }

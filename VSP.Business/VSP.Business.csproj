@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataIntegrationHub.Business">
+      <HintPath>\\PC03\Common Ground\IT\Libraries\DataIntegrationHub.Business.dll</HintPath>
+    </Reference>
     <Reference Include="PensionConsultants.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>\\PC03\Common Ground\IT\Libraries\PensionConsultants.Data.dll</HintPath>
@@ -54,6 +57,8 @@
     <Compile Include="Entities\Auditor.cs" />
     <Compile Include="Entities\AdvisorService.cs" />
     <Compile Include="Entities\PlanAdvisor.cs" />
+    <Compile Include="Entities\PlanOtherFee.cs" />
+    <Compile Include="Entities\PlanAuditorFee.cs" />
     <Compile Include="Entities\PlanAdvisorFee.cs" />
     <Compile Include="Entities\PlanAuditor.cs" />
     <Compile Include="Entities\PlanContribution.cs" />

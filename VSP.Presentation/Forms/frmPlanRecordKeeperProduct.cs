@@ -63,6 +63,8 @@ namespace VSP.Presentation.Forms
             CurrentPlanRecordKeeperProduct = new PlanRecordKeeperProduct();
             CurrentPlanRecordKeeperProduct.PlanId = plan.PlanId;
 
+            cboFeeViews.SelectedIndex = 0;
+
             cboPlan.Text = plan.Name + " - " + plan.Description;
 
             lblMenuFees.Visible = false;

@@ -10,9 +10,9 @@ using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class PlanAdvisorFee : DatabaseEntity
+    public class PlanAuditorFee : DatabaseEntity
     {
-        public Guid PlanAdvisorId;
+        public Guid PlanAuditorId;
         public decimal? Fee;
         public decimal? Benchmark25Fee;
         public decimal? Benchmark50Fee;
@@ -25,15 +25,15 @@ namespace VSP.Business.Entities
         public string Notes;
         public string Name;
 
-        private static string _tableName = "PlanAdvisorFee";
+        private static string _tableName = "PlanAuditorFee";
 
-        public PlanAdvisorFee()
+        public PlanAuditorFee()
             : base(_tableName)
         {
 
         }
 
-        public PlanAdvisorFee(Guid primaryKey)
+        public PlanAuditorFee(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -45,7 +45,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("PlanAdvisorId", this.PlanAdvisorId);
+            base.AddColumn("PlanAuditorId", this.PlanAuditorId);
             base.AddColumn("Fee", this.Fee);
             base.AddColumn("Benchmark25Fee", this.Benchmark25Fee);
             base.AddColumn("Benchmark50Fee", this.Benchmark50Fee);
@@ -64,7 +64,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.PlanAdvisorId = (Guid)base.GetColumn("PlanAdvisorId");
+            this.PlanAuditorId = (Guid)base.GetColumn("PlanAuditorId");
             this.Fee = (decimal?)base.GetColumn("Fee");
             this.Benchmark25Fee = (decimal?)base.GetColumn("Benchmark25Fee");
             this.Benchmark50Fee = (decimal?)base.GetColumn("Benchmark50Fee");
@@ -90,15 +90,15 @@ namespace VSP.Business.Entities
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
-        public static DataTable GetAssociatedActive(PlanAdvisor planAdvisor)
+        public static DataTable GetAssociatedActive(PlanAuditor planAuditor)
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0 AND PlanAdvisorId = \'" + planAdvisor.Id.ToString() + "\'";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0 AND PlanAuditorId = \'" + planAuditor.Id.ToString() + "\'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
-        public static DataTable GetAssociatedInactive(PlanAdvisor planAdvisor)
+        public static DataTable GetAssociatedInactive(PlanAuditor planAuditor)
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1 AND PlanAdvisorId = \'" + planAdvisor.Id.ToString() + "\'";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1 AND PlanAuditorId = \'" + planAuditor.Id.ToString() + "\'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

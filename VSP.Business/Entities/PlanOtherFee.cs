@@ -1,4 +1,5 @@
 ﻿using VSP.Business.Components;
+using DataIntegrationHub.Business.Entities;
 using PensionConsultants.Data.Utilities;
 
 using System;
@@ -10,30 +11,30 @@ using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class PlanAdvisorFee : DatabaseEntity
+    public class PlanOtherFee : DatabaseEntity
     {
-        public Guid PlanAdvisorId;
+        public Guid PlanId;
+        public string Name;
         public decimal? Fee;
-        public decimal? Benchmark25Fee;
-        public decimal? Benchmark50Fee;
-        public decimal? Benchmark75Fee;
+        //public decimal? Benchmark25Fee;
+        //public decimal? Benchmark50Fee;
+        //public decimal? Benchmark75Fee;
         public bool RevenueSharingPaid;
         public bool ForfeituresPaid;
         public bool ParticipantsPaid;
         public bool PlanSponsorPaid;
         public DateTime? AsOfDate;
         public string Notes;
-        public string Name;
 
-        private static string _tableName = "PlanAdvisorFee";
+        private static string _tableName = "PlanOtherFee";
 
-        public PlanAdvisorFee()
+        public PlanOtherFee()
             : base(_tableName)
         {
 
         }
 
-        public PlanAdvisorFee(Guid primaryKey)
+        public PlanOtherFee(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -45,18 +46,18 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("PlanAdvisorId", this.PlanAdvisorId);
+            base.AddColumn("PlanId", this.PlanId);
+            base.AddColumn("Name", this.Name);
             base.AddColumn("Fee", this.Fee);
-            base.AddColumn("Benchmark25Fee", this.Benchmark25Fee);
-            base.AddColumn("Benchmark50Fee", this.Benchmark50Fee);
-            base.AddColumn("Benchmark75Fee", this.Benchmark75Fee);
+            //base.AddColumn("Benchmark25Fee", this.Benchmark25Fee);
+            //base.AddColumn("Benchmark50Fee", this.Benchmark50Fee);
+            //base.AddColumn("Benchmark75Fee", this.Benchmark75Fee);
             base.AddColumn("RevenueSharingPaid", this.RevenueSharingPaid);
             base.AddColumn("ForfeituresPaid", this.ForfeituresPaid);
             base.AddColumn("ParticipantsPaid", this.ParticipantsPaid);
             base.AddColumn("PlanSponsorPaid", this.PlanSponsorPaid);
             base.AddColumn("AsOfDate", this.AsOfDate);
             base.AddColumn("Notes", this.Notes);
-            base.AddColumn("Name", this.Name);
         }
 
         /// <summary>
@@ -64,18 +65,18 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.PlanAdvisorId = (Guid)base.GetColumn("PlanAdvisorId");
+            this.PlanId = (Guid)base.GetColumn("PlanId");
+            this.Name = (string)base.GetColumn("Name");
             this.Fee = (decimal?)base.GetColumn("Fee");
-            this.Benchmark25Fee = (decimal?)base.GetColumn("Benchmark25Fee");
-            this.Benchmark50Fee = (decimal?)base.GetColumn("Benchmark50Fee");
-            this.Benchmark75Fee = (decimal?)base.GetColumn("Benchmark75Fee");
+            //this.Benchmark25Fee = (decimal?)base.GetColumn("Benchmark25Fee");
+            //this.Benchmark50Fee = (decimal?)base.GetColumn("Benchmark50Fee");
+            //this.Benchmark75Fee = (decimal?)base.GetColumn("Benchmark75Fee");
             this.RevenueSharingPaid = (System.Data.SqlTypes.SqlBoolean)base.GetColumn("RevenueSharingPaid") ? true : false;
             this.ForfeituresPaid = (System.Data.SqlTypes.SqlBoolean)base.GetColumn("ForfeituresPaid") ? true : false;
             this.ParticipantsPaid = (System.Data.SqlTypes.SqlBoolean)base.GetColumn("ParticipantsPaid") ? true : false;
             this.PlanSponsorPaid = (System.Data.SqlTypes.SqlBoolean)base.GetColumn("PlanSponsorPaid") ? true : false;
             this.AsOfDate = (DateTime?)base.GetColumn("AsOfDate");
             this.Notes = (string)base.GetColumn("Notes");
-            this.Name = (string)base.GetColumn("Name");
         }
 
         public static DataTable GetActive()
@@ -90,15 +91,15 @@ namespace VSP.Business.Entities
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
-        public static DataTable GetAssociatedActive(PlanAdvisor planAdvisor)
+        public static DataTable GetAssociatedActive(Plan plan)
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0 AND PlanAdvisorId = \'" + planAdvisor.Id.ToString() + "\'";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 0 AND PlanId = \'" + plan.PlanId.ToString() + "\'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
-        public static DataTable GetAssociatedInactive(PlanAdvisor planAdvisor)
+        public static DataTable GetAssociatedInactive(Plan plan)
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1 AND PlanAdvisorId = \'" + planAdvisor.Id.ToString() + "\'";
+            string sql = @"SELECT * FROM " + _tableName + " WHERE StateCode = 1 AND PlanId = \'" + plan.PlanId.ToString() + "\'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

@@ -31,7 +31,7 @@ namespace VSP.Presentation.Forms
         private HashSet<Control> controlsToMove = new HashSet<Control>();
 
         private frmMain frmMain_Parent;
-        public VSP.Business.Entities.Advisor CurrentPlanAdvisor;
+        public VSP.Business.Entities.Advisor CurrentAdvisor;
 
         /// <summary>
         /// 
@@ -39,7 +39,7 @@ namespace VSP.Presentation.Forms
         /// <param name="mf"></param>
         /// <param name="accountId"></param>
         /// <param name="Close"></param>
-        public frmAdvisor(frmMain mf, VSP.Business.Entities.Advisor planAdvisor, FormClosedEventHandler Close = null)
+        public frmAdvisor(frmMain mf, VSP.Business.Entities.Advisor advisor, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -59,11 +59,11 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
-            DataIntegrationHub.Business.Entities.PlanAdvisor dihPA = new DataIntegrationHub.Business.Entities.PlanAdvisor(planAdvisor.Id);
+            DataIntegrationHub.Business.Entities.PlanAdvisor dihPA = new DataIntegrationHub.Business.Entities.PlanAdvisor(advisor.Id);
 
-            CurrentPlanAdvisor = planAdvisor;
+            CurrentAdvisor = advisor;
             txtName.Text = dihPA.Name;
-            txtNotes.Text = CurrentPlanAdvisor.Notes;
+            txtNotes.Text = CurrentAdvisor.Notes;
 
             cboServicesView.SelectedIndex = 0;
             LoadDgvServices(true);
@@ -174,13 +174,13 @@ namespace VSP.Presentation.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CurrentPlanAdvisor.Notes = txtNotes.Text;
-            CurrentPlanAdvisor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+            CurrentAdvisor.Notes = txtNotes.Text;
+            CurrentAdvisor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
             // loop through dgvservices, and update productservice records for record keeper product
             if (dgvServices.Rows.Count > 0)
             {
-                DataTable planAdvisorServices = AdvisorService.GetAssociated(CurrentPlanAdvisor);
+                DataTable planAdvisorServices = AdvisorService.GetAssociated(CurrentAdvisor);
 
                 foreach (DataGridViewRow dr in dgvServices.Rows)
                 {
@@ -204,7 +204,7 @@ namespace VSP.Presentation.Forms
                     {
                         AdvisorService planAdvisorService = new AdvisorService();
                         planAdvisorService.ServiceId = serviceId;
-                        planAdvisorService.PlanAdvisorId = CurrentPlanAdvisor.Id;
+                        planAdvisorService.PlanAdvisorId = CurrentAdvisor.Id;
                         planAdvisorService.ServiceOffered = serviceOffered;
                         planAdvisorService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
                     }
@@ -262,7 +262,7 @@ namespace VSP.Presentation.Forms
             // set service offered values
             if (refresh == true)
             {
-                DataTable planAdvisorServices = AdvisorService.GetAssociated(CurrentPlanAdvisor);
+                DataTable planAdvisorServices = AdvisorService.GetAssociated(CurrentAdvisor);
                 int rowIndex = 0;
 
                 foreach (DataGridViewRow drServices in dgvServices.Rows)

@@ -162,7 +162,7 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.btnNewOther = new System.Windows.Forms.Button();
             this.btnDeleteOther = new System.Windows.Forms.Button();
-            this.dvgOther = new System.Windows.Forms.DataGridView();
+            this.dgvOther = new System.Windows.Forms.DataGridView();
             this.label44 = new System.Windows.Forms.Label();
             this.cboOtherViews = new System.Windows.Forms.ComboBox();
             this.panel24 = new System.Windows.Forms.Panel();
@@ -216,7 +216,7 @@
             this.panel13.SuspendLayout();
             this.tabOther.SuspendLayout();
             this.panel23.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgOther)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOther)).BeginInit();
             this.panel24.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -293,6 +293,8 @@
             this.label43.TabIndex = 1;
             this.label43.Text = "Other";
             this.label43.Click += new System.EventHandler(this.label43_Click);
+            this.label43.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
+            this.label43.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
             // 
             // label4
             // 
@@ -2177,7 +2179,7 @@
             this.panel23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel23.Controls.Add(this.btnNewOther);
             this.panel23.Controls.Add(this.btnDeleteOther);
-            this.panel23.Controls.Add(this.dvgOther);
+            this.panel23.Controls.Add(this.dgvOther);
             this.panel23.Controls.Add(this.label44);
             this.panel23.Controls.Add(this.cboOtherViews);
             this.panel23.Location = new System.Drawing.Point(6, 51);
@@ -2199,6 +2201,7 @@
             this.btnNewOther.TabIndex = 76;
             this.btnNewOther.Text = "New";
             this.btnNewOther.UseVisualStyleBackColor = false;
+            this.btnNewOther.Click += new System.EventHandler(this.btnNewOther_Click);
             // 
             // btnDeleteOther
             // 
@@ -2214,17 +2217,18 @@
             this.btnDeleteOther.TabIndex = 75;
             this.btnDeleteOther.Text = "Delete";
             this.btnDeleteOther.UseVisualStyleBackColor = false;
+            this.btnDeleteOther.Click += new System.EventHandler(this.btnDeleteOther_Click);
             // 
-            // dvgOther
+            // dgvOther
             // 
-            this.dvgOther.AllowUserToAddRows = false;
-            this.dvgOther.AllowUserToDeleteRows = false;
-            this.dvgOther.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvOther.AllowUserToAddRows = false;
+            this.dgvOther.AllowUserToDeleteRows = false;
+            this.dgvOther.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dvgOther.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dvgOther.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dvgOther.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvOther.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOther.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvOther.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle19.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle19.Font = new System.Drawing.Font("Gadugi", 8.25F);
@@ -2232,8 +2236,8 @@
             dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dvgOther.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            this.dvgOther.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvOther.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.dgvOther.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle20.Font = new System.Drawing.Font("Gadugi", 7.8F);
@@ -2241,20 +2245,20 @@
             dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dvgOther.DefaultCellStyle = dataGridViewCellStyle20;
-            this.dvgOther.EnableHeadersVisualStyles = false;
-            this.dvgOther.Location = new System.Drawing.Point(8, 34);
-            this.dvgOther.Margin = new System.Windows.Forms.Padding(2);
-            this.dvgOther.MultiSelect = false;
-            this.dvgOther.Name = "dvgOther";
-            this.dvgOther.ReadOnly = true;
-            this.dvgOther.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dvgOther.RowHeadersVisible = false;
-            this.dvgOther.RowTemplate.Height = 24;
-            this.dvgOther.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dvgOther.ShowEditingIcon = false;
-            this.dvgOther.Size = new System.Drawing.Size(944, 488);
-            this.dvgOther.TabIndex = 69;
+            this.dgvOther.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dgvOther.EnableHeadersVisualStyles = false;
+            this.dgvOther.Location = new System.Drawing.Point(8, 34);
+            this.dgvOther.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvOther.MultiSelect = false;
+            this.dgvOther.Name = "dgvOther";
+            this.dgvOther.ReadOnly = true;
+            this.dgvOther.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvOther.RowHeadersVisible = false;
+            this.dgvOther.RowTemplate.Height = 24;
+            this.dgvOther.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvOther.ShowEditingIcon = false;
+            this.dgvOther.Size = new System.Drawing.Size(944, 488);
+            this.dgvOther.TabIndex = 69;
             // 
             // label44
             // 
@@ -2281,6 +2285,7 @@
             this.cboOtherViews.Name = "cboOtherViews";
             this.cboOtherViews.Size = new System.Drawing.Size(157, 21);
             this.cboOtherViews.TabIndex = 70;
+            this.cboOtherViews.SelectedIndexChanged += new System.EventHandler(this.cboOtherViews_SelectedIndexChanged);
             // 
             // panel24
             // 
@@ -2433,7 +2438,7 @@
             this.tabOther.ResumeLayout(false);
             this.panel23.ResumeLayout(false);
             this.panel23.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgOther)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOther)).EndInit();
             this.panel24.ResumeLayout(false);
             this.panel24.PerformLayout();
             this.ResumeLayout(false);
@@ -2565,7 +2570,7 @@
         private System.Windows.Forms.TabPage tabOther;
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Button btnDeleteOther;
-        public System.Windows.Forms.DataGridView dvgOther;
+        public System.Windows.Forms.DataGridView dgvOther;
         private System.Windows.Forms.Label label44;
         public System.Windows.Forms.ComboBox cboOtherViews;
         private System.Windows.Forms.Panel panel24;
