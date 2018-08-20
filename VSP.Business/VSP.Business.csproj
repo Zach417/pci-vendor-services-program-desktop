@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Access.cs" />
+    <Compile Include="Components\ErrorHandler.cs" />
     <Compile Include="Entities\Advisor.cs" />
+    <Compile Include="Entities\ApplicationError.cs" />
     <Compile Include="Entities\DatabaseEntity.cs" />
     <Compile Include="Entities\IDatabaseEntity.cs" />
     <Compile Include="Entities\Auditor.cs" />
