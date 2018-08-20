@@ -155,8 +155,7 @@ namespace VSP.Presentation.Forms
             // Attempt to log the user in
             try
             {
-//#if DEBUG
-#if true
+#if DEBUG
                 CurrentUser = new User(Environment.UserDomainName + "\\" + "khalberg");
 #else
                 CurrentUser = new User(Environment.UserDomainName + "\\" + Environment.UserName);
