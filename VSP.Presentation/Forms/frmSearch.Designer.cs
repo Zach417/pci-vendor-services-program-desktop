@@ -45,6 +45,8 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabClientSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtAsOfDate = new System.Windows.Forms.RichTextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.txtCurrentRkNotes = new System.Windows.Forms.RichTextBox();
             this.cboPlan = new System.Windows.Forms.ComboBox();
@@ -112,8 +114,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.label27 = new System.Windows.Forms.Label();
-            this.txtAsOfDate = new System.Windows.Forms.RichTextBox();
+            this.btnFeedback = new VSP.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -159,6 +160,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnFeedback);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Location = new System.Drawing.Point(0, 667);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -368,6 +370,33 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
+            // 
+            // label27
+            // 
+            this.label27.Font = new System.Drawing.Font("Arial", 9F);
+            this.label27.Location = new System.Drawing.Point(19, 83);
+            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(113, 18);
+            this.label27.TabIndex = 77;
+            this.label27.Text = "As Of Date:";
+            // 
+            // txtAsOfDate
+            // 
+            this.txtAsOfDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAsOfDate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtAsOfDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAsOfDate.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtAsOfDate.ForeColor = System.Drawing.Color.Black;
+            this.txtAsOfDate.Location = new System.Drawing.Point(136, 82);
+            this.txtAsOfDate.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAsOfDate.Multiline = false;
+            this.txtAsOfDate.Name = "txtAsOfDate";
+            this.txtAsOfDate.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtAsOfDate.Size = new System.Drawing.Size(814, 19);
+            this.txtAsOfDate.TabIndex = 76;
+            this.txtAsOfDate.Text = "";
             // 
             // label26
             // 
@@ -1447,32 +1476,17 @@
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
             // 
-            // label27
+            // btnFeedback
             // 
-            this.label27.Font = new System.Drawing.Font("Arial", 9F);
-            this.label27.Location = new System.Drawing.Point(19, 83);
-            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(113, 18);
-            this.label27.TabIndex = 77;
-            this.label27.Text = "As Of Date:";
-            // 
-            // txtAsOfDate
-            // 
-            this.txtAsOfDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAsOfDate.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtAsOfDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAsOfDate.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtAsOfDate.ForeColor = System.Drawing.Color.Black;
-            this.txtAsOfDate.Location = new System.Drawing.Point(136, 82);
-            this.txtAsOfDate.Margin = new System.Windows.Forms.Padding(2);
-            this.txtAsOfDate.Multiline = false;
-            this.txtAsOfDate.Name = "txtAsOfDate";
-            this.txtAsOfDate.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtAsOfDate.Size = new System.Drawing.Size(814, 19);
-            this.txtAsOfDate.TabIndex = 76;
-            this.txtAsOfDate.Text = "";
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 61;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
             // 
             // frmSearch
             // 
@@ -1621,5 +1635,6 @@
         public System.Windows.Forms.RichTextBox txtCurrentRkNotes;
         private System.Windows.Forms.Label label27;
         public System.Windows.Forms.RichTextBox txtAsOfDate;
-	}
+        private VSP.Forms.FeedbackButton btnFeedback;
+    }
 }

@@ -270,5 +270,10 @@ namespace VSP.Presentation.Forms
         {
             LoadDgvPlans();
         }
-	}
+
+        private void btnFeedback_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

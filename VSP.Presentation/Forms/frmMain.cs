@@ -974,5 +974,10 @@ namespace VSP.Presentation.Forms
                 LoadDgvSearches();
             }
         }
+
+        private void btnFeedback_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

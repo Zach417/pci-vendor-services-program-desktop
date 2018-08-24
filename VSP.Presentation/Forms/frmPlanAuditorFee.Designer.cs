@@ -35,7 +35,9 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.tabClientSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.RichTextBox();
+            this.txtName = new System.Windows.Forms.RichTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dateAsOfDate = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
@@ -66,8 +68,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.RichTextBox();
+            this.btnFeedback = new VSP.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -93,6 +94,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnFeedback);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Location = new System.Drawing.Point(0, 667);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -264,6 +266,16 @@
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
             // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Arial", 9F);
+            this.label14.Location = new System.Drawing.Point(21, 39);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(113, 18);
+            this.label14.TabIndex = 62;
+            this.label14.Text = "Name of fee:";
+            // 
             // txtNotes
             // 
             this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -280,6 +292,23 @@
             this.txtNotes.Size = new System.Drawing.Size(928, 159);
             this.txtNotes.TabIndex = 78;
             this.txtNotes.Text = "";
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtName.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtName.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtName.ForeColor = System.Drawing.Color.Black;
+            this.txtName.Location = new System.Drawing.Point(153, 38);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtName.Multiline = false;
+            this.txtName.Name = "txtName";
+            this.txtName.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtName.Size = new System.Drawing.Size(799, 19);
+            this.txtName.TabIndex = 61;
+            this.txtName.Text = "";
             // 
             // label13
             // 
@@ -658,32 +687,17 @@
             this.tabControlClientDetail.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlClientDetail.TabIndex = 37;
             // 
-            // label14
+            // btnFeedback
             // 
-            this.label14.Font = new System.Drawing.Font("Arial", 9F);
-            this.label14.Location = new System.Drawing.Point(21, 39);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(113, 18);
-            this.label14.TabIndex = 62;
-            this.label14.Text = "Name of fee:";
-            // 
-            // txtName
-            // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtName.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtName.ForeColor = System.Drawing.Color.Black;
-            this.txtName.Location = new System.Drawing.Point(153, 38);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtName.Multiline = false;
-            this.txtName.Name = "txtName";
-            this.txtName.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtName.Size = new System.Drawing.Size(799, 19);
-            this.txtName.TabIndex = 61;
-            this.txtName.Text = "";
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 61;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
             // 
             // frmPlanAuditorFee
             // 
@@ -764,5 +778,6 @@
         public System.Windows.Forms.RichTextBox txtNotes;
         private System.Windows.Forms.Label label14;
         public System.Windows.Forms.RichTextBox txtName;
+        private VSP.Forms.FeedbackButton btnFeedback;
     }
 }

@@ -113,6 +113,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FeedbackButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\frmAuditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +127,12 @@
     </Compile>
     <Compile Include="Forms\frmAdvisor.Designer.cs">
       <DependentUpon>frmAdvisor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmFeedback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmFeedback.Designer.cs">
+      <DependentUpon>frmFeedback.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmPlanOtherFee.cs">
       <SubType>Form</SubType>
@@ -301,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAdvisor.resx">
       <DependentUpon>frmAdvisor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFeedback.resx">
+      <DependentUpon>frmFeedback.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPlanOtherFee.resx">
       <DependentUpon>frmPlanOtherFee.cs</DependentUpon>

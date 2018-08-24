@@ -36,6 +36,10 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtAssetsServiced = new System.Windows.Forms.RichTextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtPlansServiced = new System.Windows.Forms.RichTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtRfpEmail = new System.Windows.Forms.RichTextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -85,10 +89,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtAssetsServiced = new System.Windows.Forms.RichTextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtPlansServiced = new System.Windows.Forms.RichTextBox();
+            this.btnFeedback = new VSP.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -122,6 +123,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnFeedback);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Location = new System.Drawing.Point(0, 667);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -296,6 +298,60 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Arial", 9F);
+            this.label15.Location = new System.Drawing.Point(454, 473);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(127, 18);
+            this.label15.TabIndex = 72;
+            this.label15.Text = "Assets Serviced:";
+            // 
+            // txtAssetsServiced
+            // 
+            this.txtAssetsServiced.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAssetsServiced.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtAssetsServiced.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAssetsServiced.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtAssetsServiced.ForeColor = System.Drawing.Color.Black;
+            this.txtAssetsServiced.Location = new System.Drawing.Point(585, 472);
+            this.txtAssetsServiced.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAssetsServiced.Multiline = false;
+            this.txtAssetsServiced.Name = "txtAssetsServiced";
+            this.txtAssetsServiced.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtAssetsServiced.Size = new System.Drawing.Size(365, 19);
+            this.txtAssetsServiced.TabIndex = 71;
+            this.txtAssetsServiced.Text = "";
+            // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Arial", 9F);
+            this.label16.Location = new System.Drawing.Point(19, 473);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(113, 18);
+            this.label16.TabIndex = 70;
+            this.label16.Text = "Plans Serviced:";
+            // 
+            // txtPlansServiced
+            // 
+            this.txtPlansServiced.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPlansServiced.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtPlansServiced.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPlansServiced.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtPlansServiced.ForeColor = System.Drawing.Color.Black;
+            this.txtPlansServiced.Location = new System.Drawing.Point(136, 472);
+            this.txtPlansServiced.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPlansServiced.Multiline = false;
+            this.txtPlansServiced.Name = "txtPlansServiced";
+            this.txtPlansServiced.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtPlansServiced.Size = new System.Drawing.Size(314, 19);
+            this.txtPlansServiced.TabIndex = 69;
+            this.txtPlansServiced.Text = "";
             // 
             // label14
             // 
@@ -1018,59 +1074,17 @@
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
             // 
-            // label15
+            // btnFeedback
             // 
-            this.label15.Font = new System.Drawing.Font("Arial", 9F);
-            this.label15.Location = new System.Drawing.Point(454, 473);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(127, 18);
-            this.label15.TabIndex = 72;
-            this.label15.Text = "Assets Serviced:";
-            // 
-            // txtAssetsServiced
-            // 
-            this.txtAssetsServiced.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAssetsServiced.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtAssetsServiced.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAssetsServiced.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtAssetsServiced.ForeColor = System.Drawing.Color.Black;
-            this.txtAssetsServiced.Location = new System.Drawing.Point(585, 472);
-            this.txtAssetsServiced.Margin = new System.Windows.Forms.Padding(2);
-            this.txtAssetsServiced.Multiline = false;
-            this.txtAssetsServiced.Name = "txtAssetsServiced";
-            this.txtAssetsServiced.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtAssetsServiced.Size = new System.Drawing.Size(365, 19);
-            this.txtAssetsServiced.TabIndex = 71;
-            this.txtAssetsServiced.Text = "";
-            // 
-            // label16
-            // 
-            this.label16.Font = new System.Drawing.Font("Arial", 9F);
-            this.label16.Location = new System.Drawing.Point(19, 473);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(113, 18);
-            this.label16.TabIndex = 70;
-            this.label16.Text = "Plans Serviced:";
-            // 
-            // txtPlansServiced
-            // 
-            this.txtPlansServiced.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPlansServiced.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPlansServiced.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPlansServiced.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtPlansServiced.ForeColor = System.Drawing.Color.Black;
-            this.txtPlansServiced.Location = new System.Drawing.Point(136, 472);
-            this.txtPlansServiced.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPlansServiced.Multiline = false;
-            this.txtPlansServiced.Name = "txtPlansServiced";
-            this.txtPlansServiced.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtPlansServiced.Size = new System.Drawing.Size(314, 19);
-            this.txtPlansServiced.TabIndex = 69;
-            this.txtPlansServiced.Text = "";
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 61;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
             // 
             // frmRecordKeeper
             // 
@@ -1182,5 +1196,6 @@
         public System.Windows.Forms.RichTextBox txtAssetsServiced;
         private System.Windows.Forms.Label label16;
         public System.Windows.Forms.RichTextBox txtPlansServiced;
-	}
+        private VSP.Forms.FeedbackButton btnFeedback;
+    }
 }

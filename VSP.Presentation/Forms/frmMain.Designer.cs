@@ -134,6 +134,7 @@
             this.lblLoginStatus = new System.Windows.Forms.Label();
             this.lblFormStatus = new System.Windows.Forms.Label();
             this.pnlAppStatus = new System.Windows.Forms.Panel();
+            this.btnFeedback = new VSP.Forms.FeedbackButton();
             this.pnlMainMnu = new System.Windows.Forms.Panel();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblAdvisors = new System.Windows.Forms.Label();
@@ -1744,7 +1745,7 @@
             this.lblLoginStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblLoginStatus.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoginStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblLoginStatus.Location = new System.Drawing.Point(754, 2);
+            this.lblLoginStatus.Location = new System.Drawing.Point(633, 2);
             this.lblLoginStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLoginStatus.Name = "lblLoginStatus";
             this.lblLoginStatus.Size = new System.Drawing.Size(278, 15);
@@ -1772,6 +1773,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlAppStatus.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlAppStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlAppStatus.Controls.Add(this.btnFeedback);
             this.pnlAppStatus.Controls.Add(this.lblFormStatus);
             this.pnlAppStatus.Controls.Add(this.lblLoginStatus);
             this.pnlAppStatus.Location = new System.Drawing.Point(0, 609);
@@ -1779,6 +1781,19 @@
             this.pnlAppStatus.Name = "pnlAppStatus";
             this.pnlAppStatus.Size = new System.Drawing.Size(1036, 21);
             this.pnlAppStatus.TabIndex = 58;
+            // 
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(916, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 41;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
+            this.btnFeedback.Click += new System.EventHandler(this.btnFeedback_Click);
             // 
             // pnlMainMnu
             // 
@@ -2521,5 +2536,6 @@
         public System.Windows.Forms.DataGridView dgvSearches;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.ComboBox cboSearchViews;
-	}
+        private VSP.Forms.FeedbackButton btnFeedback;
+    }
 }

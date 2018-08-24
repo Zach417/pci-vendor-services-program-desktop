@@ -68,6 +68,7 @@
     <Compile Include="Entities\PlanParticipantsActive.cs" />
     <Compile Include="Entities\PlanParticipantsEligible.cs" />
     <Compile Include="Entities\PlanRecordKeeperProduct.cs" />
+    <Compile Include="Entities\Feedback.cs" />
     <Compile Include="Entities\SearchBid.cs" />
     <Compile Include="Entities\SearchBidQuestion.cs" />
     <Compile Include="Entities\SearchFund.cs" />

@@ -30,19 +30,20 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabClientSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtFundName = new System.Windows.Forms.RichTextBox();
+            this.txtTicker = new System.Windows.Forms.RichTextBox();
             this.lblAccountInformationHeader = new System.Windows.Forms.Label();
             this.pnlSummaryTabHeader = new System.Windows.Forms.Panel();
+            this.btnSave = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtFundName = new System.Windows.Forms.RichTextBox();
-            this.txtTicker = new System.Windows.Forms.RichTextBox();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnFeedback = new VSP.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -68,6 +69,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnFeedback);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Location = new System.Drawing.Point(0, 667);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -189,6 +191,60 @@
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
             // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Arial", 9F);
+            this.label3.Location = new System.Drawing.Point(21, 60);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 18);
+            this.label3.TabIndex = 55;
+            this.label3.Text = "Fund Name:";
+            // 
+            // label24
+            // 
+            this.label24.Font = new System.Drawing.Font("Arial", 9F);
+            this.label24.Location = new System.Drawing.Point(21, 39);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(113, 18);
+            this.label24.TabIndex = 56;
+            this.label24.Text = "Ticker:";
+            // 
+            // txtFundName
+            // 
+            this.txtFundName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFundName.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtFundName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtFundName.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtFundName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtFundName.Location = new System.Drawing.Point(138, 59);
+            this.txtFundName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFundName.Multiline = false;
+            this.txtFundName.Name = "txtFundName";
+            this.txtFundName.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtFundName.Size = new System.Drawing.Size(814, 19);
+            this.txtFundName.TabIndex = 54;
+            this.txtFundName.Text = "";
+            // 
+            // txtTicker
+            // 
+            this.txtTicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTicker.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtTicker.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTicker.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtTicker.ForeColor = System.Drawing.Color.Black;
+            this.txtTicker.Location = new System.Drawing.Point(138, 38);
+            this.txtTicker.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTicker.Multiline = false;
+            this.txtTicker.Name = "txtTicker";
+            this.txtTicker.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtTicker.Size = new System.Drawing.Size(814, 19);
+            this.txtTicker.TabIndex = 53;
+            this.txtTicker.Text = "";
+            // 
             // lblAccountInformationHeader
             // 
             this.lblAccountInformationHeader.AutoSize = true;
@@ -217,6 +273,24 @@
             this.pnlSummaryTabHeader.Size = new System.Drawing.Size(968, 49);
             this.pnlSummaryTabHeader.TabIndex = 57;
             this.pnlSummaryTabHeader.DoubleClick += new System.EventHandler(this.MaximizeForm);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSave.BackgroundImage = global::VSP.Properties.Resources.save;
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSave.Location = new System.Drawing.Point(922, 8);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(30, 30);
+            this.btnSave.TabIndex = 42;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label23
             // 
@@ -286,77 +360,17 @@
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
             // 
-            // label3
+            // btnFeedback
             // 
-            this.label3.Font = new System.Drawing.Font("Arial", 9F);
-            this.label3.Location = new System.Drawing.Point(21, 60);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 18);
-            this.label3.TabIndex = 55;
-            this.label3.Text = "Fund Name:";
-            // 
-            // label24
-            // 
-            this.label24.Font = new System.Drawing.Font("Arial", 9F);
-            this.label24.Location = new System.Drawing.Point(21, 39);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(113, 18);
-            this.label24.TabIndex = 56;
-            this.label24.Text = "Ticker:";
-            // 
-            // txtFundName
-            // 
-            this.txtFundName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFundName.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtFundName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtFundName.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtFundName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtFundName.Location = new System.Drawing.Point(138, 59);
-            this.txtFundName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtFundName.Multiline = false;
-            this.txtFundName.Name = "txtFundName";
-            this.txtFundName.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtFundName.Size = new System.Drawing.Size(814, 19);
-            this.txtFundName.TabIndex = 54;
-            this.txtFundName.Text = "";
-            // 
-            // txtTicker
-            // 
-            this.txtTicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTicker.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtTicker.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTicker.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtTicker.ForeColor = System.Drawing.Color.Black;
-            this.txtTicker.Location = new System.Drawing.Point(138, 38);
-            this.txtTicker.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTicker.Multiline = false;
-            this.txtTicker.Name = "txtTicker";
-            this.txtTicker.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtTicker.Size = new System.Drawing.Size(814, 19);
-            this.txtTicker.TabIndex = 53;
-            this.txtTicker.Text = "";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSave.BackgroundImage = global::VSP.Properties.Resources.save;
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSave.Location = new System.Drawing.Point(922, 8);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(30, 30);
-            this.btnSave.TabIndex = 42;
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 62;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
             // 
             // frmSearchFund
             // 
@@ -414,5 +428,6 @@
         public System.Windows.Forms.RichTextBox txtFundName;
         public System.Windows.Forms.RichTextBox txtTicker;
         private System.Windows.Forms.Button btnSave;
-	}
+        private VSP.Forms.FeedbackButton btnFeedback;
+    }
 }
