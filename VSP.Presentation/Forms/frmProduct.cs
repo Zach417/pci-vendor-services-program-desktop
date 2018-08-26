@@ -186,6 +186,7 @@ namespace VSP.Presentation.Forms
         {
             Label label = (Label)sender;
             tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabSummary"];
+            tabSummary.Focus();
 
         }
 
@@ -193,6 +194,7 @@ namespace VSP.Presentation.Forms
         {
             Label label = (Label)sender;
             tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabServices"];
+            dgvServices.Focus();
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)

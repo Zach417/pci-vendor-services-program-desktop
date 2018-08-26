@@ -71,7 +71,7 @@ namespace VSP.Presentation.Forms
         private Pagination paginationPlanAdvisors;
 
         /// <summary>
-        /// Represents the main form of the ISP application.
+        /// Represents the main form of the VSP application.
         /// </summary>
         public frmMain()
         {
@@ -396,26 +396,31 @@ namespace VSP.Presentation.Forms
         private void lblClients_Click(object sender, EventArgs e)
         {
             tabMain.SelectedTab = tabMain.TabPages["tabClients"];
+            dgvClients.Focus();
         }
 
         private void lblRks_Click(object sender, EventArgs e)
         {
             tabMain.SelectedTab = tabMain.TabPages["tabRks"];
+            dgvRecordKeepers.Focus();
         }
 
         private void lblAuditors_Click(object sender, EventArgs e)
         {
             tabMain.SelectedTab = tabMain.TabPages["tabAuditors"];
+            dgvAuditors.Focus();
         }
 
         private void lblAdvisors_Click(object sender, EventArgs e)
         {
             tabMain.SelectedTab = tabMain.TabPages["tabAdvisors"];
+            dgvPlanAdvisors.Focus();
         }
 
         private void lblSearch_Click(object sender, EventArgs e)
         {
             tabMain.SelectedTab = tabMain.TabPages["tabSearch"];
+            dgvSearches.Focus();
         }
 
         private void lblSettings_Click(object sender, EventArgs e)
@@ -423,6 +428,15 @@ namespace VSP.Presentation.Forms
             tabMain.SelectedTab = tabMain.TabPages["tabSettings"];
             cboUsersViews.SelectedIndex = 0;
             LoadDgvUsers();
+
+            if (tabControlSettings.SelectedIndex == 0)
+            {
+                dgvUsers.Focus();
+            }
+            else if (tabControlSettings.SelectedIndex == 1)
+            {
+                dgvServices.Focus();
+            }
         }
 
         private void label89_Click(object sender, EventArgs e)
@@ -430,6 +444,7 @@ namespace VSP.Presentation.Forms
             tabControlSettings.SelectedTab = tabControlSettings.TabPages["tabUsers"];
             cboUsersViews.SelectedIndex = 0;
             LoadDgvUsers();
+            dgvUsers.Focus();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -437,6 +452,7 @@ namespace VSP.Presentation.Forms
             tabControlSettings.SelectedTab = tabControlSettings.TabPages["tabServices"];
             cboServiceViews.SelectedIndex = 0;
             LoadDgvServices();
+            dgvServices.Focus();
         }
 
         private void button19_Click(object sender, EventArgs e)

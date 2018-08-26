@@ -106,6 +106,8 @@ namespace VSP.Presentation.Forms
             CurrentServiceIssue.RecordKeeperId = recordKeeper.Id;
             CurrentServiceIssue.AsOfDate = DateTime.Now;
 
+            txtDescription.Focus();
+
             if (CurrentServiceIssue.RecordKeeperId != null)
             {
                 cboRecordKeeper.Text = new DataIntegrationHub.Business.Entities.RecordKeeper((Guid)CurrentServiceIssue.RecordKeeperId).Name;

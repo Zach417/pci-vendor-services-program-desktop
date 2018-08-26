@@ -114,6 +114,8 @@ namespace VSP.Presentation.Forms
             txtProduct.Text = pd.Name;
             txtNotes.Text = CurrentPlanRecordKeeperProductFee.Notes;
 
+            txtNotes.Focus();
+
             if (CurrentPlanRecordKeeperProductFee.Fee != null)
             {
                 txtFee.Text = ((decimal)CurrentPlanRecordKeeperProductFee.Fee).ToString("#,##");

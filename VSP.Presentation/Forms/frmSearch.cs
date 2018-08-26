@@ -129,6 +129,8 @@ namespace VSP.Presentation.Forms
             cboServicesView.SelectedIndex = 0;
             LoadDgvServices(true);
 
+            txtCurrentRkNotes.Focus();
+
             ss.Close();
             this.Show();
 		}
@@ -222,6 +224,7 @@ namespace VSP.Presentation.Forms
         {
             Label label = (Label)sender;
             tabControlDetail.SelectedIndex = 0;
+            txtCurrentRkNotes.Focus();
 
         }
 
@@ -253,21 +256,25 @@ namespace VSP.Presentation.Forms
         private void label3_Click(object sender, EventArgs e)
         {
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabServices"];
+            dgvServices.Focus();
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabResults"];
+            dgvResults.Focus();
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabQuestions"];
+            dgvQuestions.Focus();
         }
 
         private void label6_Click(object sender, EventArgs e)
         {
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabFunds"];
+            dgvFunds.Focus();
         }
 
         private void LoadDgvServices(bool refresh = false)
@@ -513,6 +520,7 @@ namespace VSP.Presentation.Forms
             CurrentSearch.ExecuteSearch(frmMain_Parent.CurrentUser.UserId);
             LoadDgvResults();
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabResults"];
+            dgvResults.Focus();
 
             frmSplashScreen.Close();
         }
@@ -718,6 +726,7 @@ namespace VSP.Presentation.Forms
         private void label19_Click(object sender, EventArgs e)
         {
             tabControlDetail.SelectedTab = tabBids;
+            dgvBids.Focus();
         }
 
         private void LoadDgvBids()

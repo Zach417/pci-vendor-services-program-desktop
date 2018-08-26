@@ -101,6 +101,8 @@ namespace VSP.Presentation.Forms
             txtPlan.Text = plan.Name;
             txtNotes.Text = CurrentPlanOtherFee.Notes;
 
+            txtNotes.Focus();
+
             if (CurrentPlanOtherFee.Fee != null)
             {
                 txtFee.Text = ((decimal)CurrentPlanOtherFee.Fee).ToString("#,##");

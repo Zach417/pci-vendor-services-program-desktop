@@ -11,12 +11,14 @@ namespace VSP
         [STAThread]
         private static void Main(string[] args)
         {
+#if !DEBUG
+            // If debug build, do not log error and allow crash for IDE debugging
             Application.ThreadException +=
                 new ThreadExceptionEventHandler(Application_ThreadException);
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             AppDomain.CurrentDomain.UnhandledException +=
                 new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
-
+#endif
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());
@@ -63,7 +65,6 @@ namespace VSP
             MessageBox.Show("An error occurred and the application must close.\n\nThe error has been logged for review.", "Application Error",
              MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            // Terminate Program
             if (System.Windows.Forms.Application.MessageLoop)
             {
                 System.Windows.Forms.Application.Exit();

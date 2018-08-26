@@ -76,6 +76,7 @@ namespace VSP.Presentation.Forms
             txtAddressZip.Text = CurrentCustomer.Address.ZipCode;
 
             cboPlanViews.SelectedIndex = 0;
+            tabSummary.Focus();
 
             ss.Close();
             this.Show();
@@ -135,12 +136,14 @@ namespace VSP.Presentation.Forms
         {
             Label label = (Label)sender;
             tabControlDetail.SelectedIndex = 0;
+            tabSummary.Focus();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
             Label label = (Label)sender;
             tabControlDetail.SelectedIndex = 1;
+            dgvPlans.Focus();
         }
 
         private void CloseFormButton_MouseEnter(object sender, EventArgs e)

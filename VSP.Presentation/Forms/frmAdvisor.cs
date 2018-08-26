@@ -65,6 +65,8 @@ namespace VSP.Presentation.Forms
             txtName.Text = dihPA.Name;
             txtNotes.Text = CurrentAdvisor.Notes;
 
+            txtNotes.Focus();
+
             cboServicesView.SelectedIndex = 0;
             LoadDgvServices(true);
 
@@ -149,6 +151,7 @@ namespace VSP.Presentation.Forms
         {
             Label label = (Label)sender;
             tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabSummary"];
+            txtNotes.Focus();
 
         }
 
@@ -156,6 +159,7 @@ namespace VSP.Presentation.Forms
         {
             Label label = (Label)sender;
             tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabServices"];
+            dgvServices.Focus();
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)

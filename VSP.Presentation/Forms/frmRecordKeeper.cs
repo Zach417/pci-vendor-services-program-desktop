@@ -161,6 +161,7 @@ namespace VSP.Presentation.Forms
         {
             Label label = (Label)sender;
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabSummary"];
+            tabSummary.Focus();
 
         }
 
@@ -168,12 +169,14 @@ namespace VSP.Presentation.Forms
         {
             Label label = (Label)sender;
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabProducts"];
+            dgvProducts.Focus();
         }
 
         private void lblMenuIssues_Click(object sender, EventArgs e)
         {
             Label label = (Label)sender;
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabIssues"];
+            dgvIssues.Focus();
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)

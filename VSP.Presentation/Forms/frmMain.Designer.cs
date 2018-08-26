@@ -134,7 +134,6 @@
             this.lblLoginStatus = new System.Windows.Forms.Label();
             this.lblFormStatus = new System.Windows.Forms.Label();
             this.pnlAppStatus = new System.Windows.Forms.Panel();
-            this.btnFeedback = new VSP.Forms.FeedbackButton();
             this.pnlMainMnu = new System.Windows.Forms.Panel();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblAdvisors = new System.Windows.Forms.Label();
@@ -170,6 +169,7 @@
             this.btnRemoveUser = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnSaveAssetGroup = new System.Windows.Forms.Button();
+            this.btnFeedback = new VSP.Forms.FeedbackButton();
             this.tabMain.SuspendLayout();
             this.tabClients.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -1593,7 +1593,7 @@
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button19.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.button19.Location = new System.Drawing.Point(1001, 12);
+            this.button19.Location = new System.Drawing.Point(976, 12);
             this.button19.Margin = new System.Windows.Forms.Padding(0);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(20, 20);
@@ -1611,7 +1611,7 @@
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button20.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.button20.Location = new System.Drawing.Point(1026, 12);
+            this.button20.Location = new System.Drawing.Point(1001, 12);
             this.button20.Margin = new System.Windows.Forms.Padding(0);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(20, 20);
@@ -1657,7 +1657,7 @@
             this.dgvServices.RowTemplate.Height = 24;
             this.dgvServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvServices.ShowEditingIcon = false;
-            this.dgvServices.Size = new System.Drawing.Size(1036, 362);
+            this.dgvServices.Size = new System.Drawing.Size(1014, 362);
             this.dgvServices.TabIndex = 69;
             this.dgvServices.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServices_CellDoubleClick);
             // 
@@ -1781,19 +1781,6 @@
             this.pnlAppStatus.Name = "pnlAppStatus";
             this.pnlAppStatus.Size = new System.Drawing.Size(1036, 21);
             this.pnlAppStatus.TabIndex = 58;
-            // 
-            // btnFeedback
-            // 
-            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFeedback.Location = new System.Drawing.Point(916, 1);
-            this.btnFeedback.Name = "btnFeedback";
-            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
-            this.btnFeedback.TabIndex = 41;
-            this.btnFeedback.Text = "Send Feedback";
-            this.btnFeedback.UseVisualStyleBackColor = false;
-            this.btnFeedback.Click += new System.EventHandler(this.btnFeedback_Click);
             // 
             // pnlMainMnu
             // 
@@ -2318,6 +2305,19 @@
             this.btnSaveAssetGroup.TabIndex = 86;
             this.btnSaveAssetGroup.UseVisualStyleBackColor = false;
             // 
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(916, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 41;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
+            this.btnFeedback.Click += new System.EventHandler(this.btnFeedback_Click);
+            // 
             // frmMain
             // 
             this.AllowDrop = true;
@@ -2400,7 +2400,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserSecurity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).EndInit();
             this.ResumeLayout(false);
-
+            this.ActiveControl = this.dgvClients;
         }
         private System.Windows.Forms.TabPage tabAdvisors;
         private System.Windows.Forms.Label lblLoginStatus;

@@ -60,6 +60,7 @@ namespace VSP.Presentation.Forms
             txtNotes.Text = CurrentAuditor.Notes;
 
             cboIssueViews.SelectedIndex = 0;
+            txtNotes.Focus();
 
             ss.Close();
             this.Show();
@@ -142,6 +143,7 @@ namespace VSP.Presentation.Forms
         {
             Label label = (Label)sender;
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabSummary"];
+            txtNotes.Focus();
 
         }
 
@@ -149,6 +151,7 @@ namespace VSP.Presentation.Forms
         {
             Label label = (Label)sender;
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabIssues"];
+            dgvIssues.Focus();
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)

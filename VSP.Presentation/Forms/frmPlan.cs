@@ -67,6 +67,7 @@ namespace VSP.Presentation.Forms
             txtNotes.Text = CurrentPlanDetail.Notes;
             CurrentTabLabel = label46; // Summary tab label
             highlightSelectedTabLabel(CurrentTabLabel);
+            txtNotes.Focus();
 
             cboRkProductViews.SelectedIndex = 0;
             cboAdvisorViews.SelectedIndex = 0;
@@ -160,6 +161,7 @@ namespace VSP.Presentation.Forms
         {
             highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedIndex = 0;
+            txtNotes.Focus();
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)
@@ -392,36 +394,42 @@ namespace VSP.Presentation.Forms
         {
             highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabRKProduct"];
+            dgvRKProducts.Focus();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
             highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabAuditor"];
+            dgvAuditors.Focus();
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
             highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabAdvisor"];
+            dgvAdvisors.Focus();
         }
 
         private void label20_Click(object sender, EventArgs e)
         {
             highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabInvestments"];
+            dgvInvestments.Focus();
         }
 
         private void label21_Click(object sender, EventArgs e)
         {
             highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabIssues"];
+            dgvIssues.Focus();
         }
 
         private void label43_Click(object sender, EventArgs e)
         {
             highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabOther"];
+            dgvOther.Focus();
         }
 
         private void btnNewRKProduct_Click(object sender, EventArgs e)
@@ -684,24 +692,28 @@ namespace VSP.Presentation.Forms
         {
             highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabContributions;
+            dgvContributions.Focus();
         }
 
         private void label26_Click(object sender, EventArgs e)
         {
             highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabDistributions;
+            dgvDistributions.Focus();
         }
 
         private void label27_Click(object sender, EventArgs e)
         {
             highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabActiveParticipants;
+            dgvActiveParticipants.Focus();
         }
 
         private void label28_Click(object sender, EventArgs e)
         {
             highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabEligibleParticipants;
+            dgvEligibleParticipants.Focus();
         }
 
         private void LoadDgvContributions()

@@ -179,6 +179,7 @@ namespace VSP.Presentation.Forms
         {
             Label label = (Label)sender;
             tabControlClientDetail.SelectedIndex = 0;
+            tabClientSummary.Focus();
 
         }
 
@@ -199,6 +200,7 @@ namespace VSP.Presentation.Forms
         private void label3_Click(object sender, EventArgs e)
         {
             tabControlClientDetail.SelectedTab = tabQuestions;
+            dgvQuestions.Focus();
         }
 
         private void LoadDgvQuestions()

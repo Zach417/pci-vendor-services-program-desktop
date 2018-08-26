@@ -110,6 +110,8 @@ namespace VSP.Presentation.Forms
             txtNotes.Text = CurrentPlanAdvisorFee.Notes;
             txtName.Text = CurrentPlanAdvisorFee.Name;
 
+            txtNotes.Focus();
+
             if (CurrentPlanAdvisorFee.Fee != null)
             {
                 txtFee.Text = ((decimal)CurrentPlanAdvisorFee.Fee).ToString("#,##");
