@@ -113,7 +113,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\FeedbackButton.cs">
+    <Compile Include="Forms\Controls\FeedbackButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Forms\frmAuditor.cs">

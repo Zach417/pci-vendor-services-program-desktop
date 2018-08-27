@@ -56,7 +56,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.btnFeedback = new VSP.Forms.FeedbackButton();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -651,6 +651,6 @@
         private System.Windows.Forms.Button btnDeleteIssue;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.RichTextBox txtNotes;
-        private VSP.Forms.FeedbackButton btnFeedback;
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
     }
 }

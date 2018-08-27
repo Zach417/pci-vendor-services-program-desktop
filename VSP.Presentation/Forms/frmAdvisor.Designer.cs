@@ -55,7 +55,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.btnFeedback = new VSP.Forms.FeedbackButton();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -629,6 +629,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.RichTextBox txtNotes;
-        private VSP.Forms.FeedbackButton btnFeedback;
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
     }
 }

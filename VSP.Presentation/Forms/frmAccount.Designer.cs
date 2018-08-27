@@ -73,7 +73,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.btnFeedback = new VSP.Forms.FeedbackButton();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.tabControlDetail.SuspendLayout();
             this.tabSummary.SuspendLayout();
             this.pnlSummaryTabHeader.SuspendLayout();
@@ -920,6 +920,6 @@
         private System.Windows.Forms.Panel panel7;
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label label14;
-        private VSP.Forms.FeedbackButton btnFeedback;
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
     }
 }

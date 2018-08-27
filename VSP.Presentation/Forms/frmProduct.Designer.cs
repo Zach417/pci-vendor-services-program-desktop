@@ -53,7 +53,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.btnFeedback = new VSP.Forms.FeedbackButton();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -596,6 +596,6 @@
         public System.Windows.Forms.Label label10;
         public System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button1;
-        private VSP.Forms.FeedbackButton btnFeedback;
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
     }
 }

@@ -73,7 +73,7 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.btnFeedback = new VSP.Forms.FeedbackButton();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -923,6 +923,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label14;
         public System.Windows.Forms.RichTextBox txtRequiredRevenue;
-        private VSP.Forms.FeedbackButton btnFeedback;
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
     }
 }

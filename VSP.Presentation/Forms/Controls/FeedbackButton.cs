@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using VSP.Presentation.Forms;
 
-namespace VSP.Forms
+namespace VSP.Presentation.Forms
 {
     class FeedbackButton : Button
     {

@@ -55,7 +55,7 @@
             this.btnAddRole = new System.Windows.Forms.Button();
             this.btnRemoveRole = new System.Windows.Forms.Button();
             this.dgvRoles = new System.Windows.Forms.DataGridView();
-            this.btnFeedback = new VSP.Forms.FeedbackButton();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -634,6 +634,6 @@
         public System.Windows.Forms.DataGridView dgvRoles;
         private System.Windows.Forms.Label label31;
         public System.Windows.Forms.ComboBox cboRolesViews;
-        private VSP.Forms.FeedbackButton btnFeedback;
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
     }
 }

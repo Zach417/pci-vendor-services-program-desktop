@@ -169,7 +169,7 @@
             this.btnRemoveUser = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnSaveAssetGroup = new System.Windows.Forms.Button();
-            this.btnFeedback = new VSP.Forms.FeedbackButton();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.tabMain.SuspendLayout();
             this.tabClients.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -2536,6 +2536,6 @@
         public System.Windows.Forms.DataGridView dgvSearches;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.ComboBox cboSearchViews;
-        private VSP.Forms.FeedbackButton btnFeedback;
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
     }
 }
