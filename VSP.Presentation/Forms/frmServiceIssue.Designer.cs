@@ -21,6 +21,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.label25 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label46 = new System.Windows.Forms.Label();
@@ -36,10 +37,9 @@
             this.cboAuditor = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cboPlan = new System.Windows.Forms.ComboBox();
-            this.cboRecordKeeper = new System.Windows.Forms.ComboBox();
+            this.cboRecordKeeperProduct = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
             this.lblAccountInformationHeader = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,7 +51,8 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
-            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -84,6 +85,18 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(968, 21);
             this.panel4.TabIndex = 57;
+            // 
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 62;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
             // 
             // label25
             // 
@@ -216,13 +229,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.cboAuditor);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.cboPlan);
-            this.panel2.Controls.Add(this.cboRecordKeeper);
+            this.panel2.Controls.Add(this.cboRecordKeeperProduct);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.txtDescription);
             this.panel2.Controls.Add(this.lblAccountInformationHeader);
             this.panel2.Controls.Add(this.label3);
@@ -242,19 +256,19 @@
             this.cboAuditor.Items.AddRange(new object[] {
             "Active Associated Issues",
             "Inactive Associated Issues"});
-            this.cboAuditor.Location = new System.Drawing.Point(136, 126);
+            this.cboAuditor.Location = new System.Drawing.Point(172, 166);
             this.cboAuditor.Margin = new System.Windows.Forms.Padding(2);
             this.cboAuditor.Name = "cboAuditor";
-            this.cboAuditor.Size = new System.Drawing.Size(814, 21);
+            this.cboAuditor.Size = new System.Drawing.Size(778, 21);
             this.cboAuditor.TabIndex = 74;
             // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Arial", 9F);
-            this.label6.Location = new System.Drawing.Point(20, 128);
+            this.label6.Location = new System.Drawing.Point(32, 168);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 18);
+            this.label6.Size = new System.Drawing.Size(89, 18);
             this.label6.TabIndex = 73;
             this.label6.Text = "Auditor:";
             // 
@@ -266,55 +280,45 @@
             this.cboPlan.Items.AddRange(new object[] {
             "Active Associated Issues",
             "Inactive Associated Issues"});
-            this.cboPlan.Location = new System.Drawing.Point(136, 103);
+            this.cboPlan.Location = new System.Drawing.Point(172, 143);
             this.cboPlan.Margin = new System.Windows.Forms.Padding(2);
             this.cboPlan.Name = "cboPlan";
-            this.cboPlan.Size = new System.Drawing.Size(814, 21);
+            this.cboPlan.Size = new System.Drawing.Size(778, 21);
             this.cboPlan.TabIndex = 72;
             // 
-            // cboRecordKeeper
+            // cboRecordKeeperProduct
             // 
-            this.cboRecordKeeper.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboRecordKeeper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRecordKeeper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboRecordKeeper.Items.AddRange(new object[] {
+            this.cboRecordKeeperProduct.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboRecordKeeperProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRecordKeeperProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboRecordKeeperProduct.Items.AddRange(new object[] {
             "Active Associated Issues",
             "Inactive Associated Issues"});
-            this.cboRecordKeeper.Location = new System.Drawing.Point(136, 80);
-            this.cboRecordKeeper.Margin = new System.Windows.Forms.Padding(2);
-            this.cboRecordKeeper.Name = "cboRecordKeeper";
-            this.cboRecordKeeper.Size = new System.Drawing.Size(814, 21);
-            this.cboRecordKeeper.TabIndex = 71;
+            this.cboRecordKeeperProduct.Location = new System.Drawing.Point(172, 120);
+            this.cboRecordKeeperProduct.Margin = new System.Windows.Forms.Padding(2);
+            this.cboRecordKeeperProduct.Name = "cboRecordKeeperProduct";
+            this.cboRecordKeeperProduct.Size = new System.Drawing.Size(778, 21);
+            this.cboRecordKeeperProduct.TabIndex = 71;
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Arial", 9F);
-            this.label5.Location = new System.Drawing.Point(20, 82);
+            this.label5.Location = new System.Drawing.Point(32, 122);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 18);
+            this.label5.Size = new System.Drawing.Size(146, 18);
             this.label5.TabIndex = 54;
-            this.label5.Text = "Record Keeper:";
+            this.label5.Text = "Record Keeper Product:";
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Arial", 9F);
-            this.label4.Location = new System.Drawing.Point(20, 105);
+            this.label4.Location = new System.Drawing.Point(32, 145);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 18);
+            this.label4.Size = new System.Drawing.Size(89, 18);
             this.label4.TabIndex = 54;
             this.label4.Text = "Plan:";
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Arial", 9F);
-            this.label2.Location = new System.Drawing.Point(20, 150);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 18);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "Description:";
             // 
             // txtDescription
             // 
@@ -324,12 +328,12 @@
             this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDescription.Font = new System.Drawing.Font("Arial", 8F);
             this.txtDescription.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDescription.Location = new System.Drawing.Point(136, 149);
+            this.txtDescription.Location = new System.Drawing.Point(136, 213);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDescription.Multiline = false;
+            this.txtDescription.MaxLength = 4000;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtDescription.Size = new System.Drawing.Size(814, 389);
+            this.txtDescription.Size = new System.Drawing.Size(814, 325);
             this.txtDescription.TabIndex = 53;
             this.txtDescription.Text = "";
             // 
@@ -358,7 +362,7 @@
             // label24
             // 
             this.label24.Font = new System.Drawing.Font("Arial", 9F);
-            this.label24.Location = new System.Drawing.Point(19, 39);
+            this.label24.Location = new System.Drawing.Point(20, 39);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(113, 18);
@@ -476,17 +480,26 @@
             this.tabControlClientDetail.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlClientDetail.TabIndex = 37;
             // 
-            // btnFeedback
+            // label7
             // 
-            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
-            this.btnFeedback.Name = "btnFeedback";
-            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
-            this.btnFeedback.TabIndex = 62;
-            this.btnFeedback.Text = "Send Feedback";
-            this.btnFeedback.UseVisualStyleBackColor = false;
+            this.label7.Font = new System.Drawing.Font("Arial", 9F);
+            this.label7.Location = new System.Drawing.Point(20, 213);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(111, 18);
+            this.label7.TabIndex = 75;
+            this.label7.Text = "Description:";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Arial", 9F);
+            this.label2.Location = new System.Drawing.Point(20, 100);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(486, 18);
+            this.label2.TabIndex = 76;
+            this.label2.Text = "If applicable to this issue, select a Record Keeper Product, a Plan, and/or an Au" +
+    "ditor.";
             // 
             // frmServiceIssue
             // 
@@ -542,10 +555,9 @@
         public System.Windows.Forms.ComboBox cboAuditor;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.ComboBox cboPlan;
-        public System.Windows.Forms.ComboBox cboRecordKeeper;
+        public System.Windows.Forms.ComboBox cboRecordKeeperProduct;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
         public System.Windows.Forms.RichTextBox txtDescription;
         public System.Windows.Forms.Label lblAccountInformationHeader;
         private System.Windows.Forms.Label label3;
@@ -553,5 +565,7 @@
         public System.Windows.Forms.RichTextBox txtAsOfDate;
         public System.Windows.Forms.RichTextBox txtSubject;
         private VSP.Presentation.Forms.FeedbackButton btnFeedback;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -59,9 +59,11 @@ namespace VSP.Presentation.Forms
             CurrentServiceIssue.PlanId = plan.PlanId;
             CurrentServiceIssue.AsOfDate = DateTime.Now;
 
-            if (CurrentServiceIssue.RecordKeeperId != null)
+            if (CurrentServiceIssue.PlanRecordKeeperProductId != null)
             {
-                cboRecordKeeper.Text = new DataIntegrationHub.Business.Entities.RecordKeeper((Guid)CurrentServiceIssue.RecordKeeperId).Name;
+                PlanRecordKeeperProduct planRecordKeeperProduct = new PlanRecordKeeperProduct((Guid)CurrentServiceIssue.PlanRecordKeeperProductId);
+                Product product = new Product((Guid)planRecordKeeperProduct.ProductId);
+                cboRecordKeeperProduct.Text = product.Name;
             }
 
             if (CurrentServiceIssue.AuditorId != null)
@@ -80,7 +82,7 @@ namespace VSP.Presentation.Forms
             this.Show();
         }
 
-        public frmServiceIssue(frmMain mf, VSP.Business.Entities.RecordKeeper recordKeeper, FormClosedEventHandler Close = null)
+        public frmServiceIssue(frmMain mf, VSP.Business.Entities.PlanRecordKeeperProduct recordKeeperProduct, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -103,14 +105,16 @@ namespace VSP.Presentation.Forms
             PreloadCbos();
 
             CurrentServiceIssue = new ServiceIssue();
-            CurrentServiceIssue.RecordKeeperId = recordKeeper.Id;
+            CurrentServiceIssue.PlanRecordKeeperProductId = recordKeeperProduct.Id;
             CurrentServiceIssue.AsOfDate = DateTime.Now;
 
             txtDescription.Focus();
 
-            if (CurrentServiceIssue.RecordKeeperId != null)
+            if (CurrentServiceIssue.PlanRecordKeeperProductId != null)
             {
-                cboRecordKeeper.Text = new DataIntegrationHub.Business.Entities.RecordKeeper((Guid)CurrentServiceIssue.RecordKeeperId).Name;
+                PlanRecordKeeperProduct planRecordKeeperProduct = new PlanRecordKeeperProduct((Guid)CurrentServiceIssue.PlanRecordKeeperProductId);
+                Product product = new Product((Guid)planRecordKeeperProduct.ProductId);
+                cboRecordKeeperProduct.Text = product.Name;
             }
 
             if (CurrentServiceIssue.AuditorId != null)
@@ -156,9 +160,11 @@ namespace VSP.Presentation.Forms
             CurrentServiceIssue.AuditorId = auditor.Id;
             CurrentServiceIssue.AsOfDate = DateTime.Now;
 
-            if (CurrentServiceIssue.RecordKeeperId != null)
+            if (CurrentServiceIssue.PlanRecordKeeperProductId != null)
             {
-                cboRecordKeeper.Text = new DataIntegrationHub.Business.Entities.RecordKeeper((Guid)CurrentServiceIssue.RecordKeeperId).Name;
+                PlanRecordKeeperProduct planRecordKeeperProduct = new PlanRecordKeeperProduct((Guid)CurrentServiceIssue.PlanRecordKeeperProductId);
+                Product product = new Product((Guid)planRecordKeeperProduct.ProductId);
+                cboRecordKeeperProduct.Text = product.Name;
             }
 
             if (CurrentServiceIssue.AuditorId != null)
@@ -203,9 +209,11 @@ namespace VSP.Presentation.Forms
             CurrentServiceIssue = serviceIssue;
             CurrentServiceIssue.AsOfDate = DateTime.Now;
 
-            if (CurrentServiceIssue.RecordKeeperId != null)
+            if (CurrentServiceIssue.PlanRecordKeeperProductId != null)
             {
-                cboRecordKeeper.Text = new DataIntegrationHub.Business.Entities.RecordKeeper((Guid)CurrentServiceIssue.RecordKeeperId).Name;
+                PlanRecordKeeperProduct planRecordKeeperProduct = new PlanRecordKeeperProduct((Guid)CurrentServiceIssue.PlanRecordKeeperProductId);
+                Product product = new Product((Guid)planRecordKeeperProduct.ProductId);
+                cboRecordKeeperProduct.Text = product.Name;
             }
 
             if (CurrentServiceIssue.AuditorId != null)
@@ -228,19 +236,20 @@ namespace VSP.Presentation.Forms
 
         public void PreloadCbos()
         {
-            cboRecordKeeper.Items.Clear();
+            cboRecordKeeperProduct.Items.Clear();
             cboAuditor.Items.Clear();
             cboPlan.Items.Clear();
 
-            cboRecordKeeper.Items.Add(new ListItem("", ""));
+            cboRecordKeeperProduct.Items.Add(new ListItem("", ""));
             cboAuditor.Items.Add(new ListItem("", ""));
             cboPlan.Items.Add(new ListItem("", ""));
 
-            foreach (DataRow dr in DataIntegrationHub.Business.Entities.RecordKeeper.GetAll().Rows)
+            foreach (DataRow dr in PlanRecordKeeperProduct.GetAll().Rows)
             {
-                Guid recordKeeperId = new Guid(dr["RecordKeeperId"].ToString());
-                string name = dr["Name"].ToString();
-                cboRecordKeeper.Items.Add(new ListItem(name, recordKeeperId));
+                Guid planRecordKeeperProductId = new Guid(dr["PlanRecordKeeperProductId"].ToString());
+                PlanRecordKeeperProduct rkp = new PlanRecordKeeperProduct(planRecordKeeperProductId);
+                Product product = new Product(rkp.ProductId);
+                cboRecordKeeperProduct.Items.Add(new ListItem(product.Name, planRecordKeeperProductId));
             }
 
             foreach (DataRow dr in DataIntegrationHub.Business.Entities.Auditor.GetAll().Rows)
@@ -356,15 +365,15 @@ namespace VSP.Presentation.Forms
             CurrentServiceIssue.DescriptionValue = txtDescription.Text;
             CurrentServiceIssue.AsOfDate = DateTime.Parse(txtAsOfDate.Text);
 
-            if (cboRecordKeeper.SelectedIndex <= 0)
+            if (cboRecordKeeperProduct.SelectedIndex <= 0)
             {
-                CurrentServiceIssue.RecordKeeperId =  null;
+                CurrentServiceIssue.PlanRecordKeeperProductId =  null;
             }
             else
             {
-                ListItem li = (ListItem)cboRecordKeeper.SelectedItem;
-                Guid recordKeeperId = (Guid)li.HiddenObject;
-                CurrentServiceIssue.RecordKeeperId = recordKeeperId;
+                ListItem li = (ListItem)cboRecordKeeperProduct.SelectedItem;
+                Guid planRecordKeeperProductId = (Guid)li.HiddenObject;
+                CurrentServiceIssue.PlanRecordKeeperProductId = planRecordKeeperProductId;
             }
 
             if (cboAuditor.SelectedIndex <= 0)

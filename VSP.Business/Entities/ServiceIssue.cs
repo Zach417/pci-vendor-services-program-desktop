@@ -12,7 +12,7 @@ namespace VSP.Business.Entities
 {
     public class ServiceIssue : DatabaseEntity
     {
-        public Guid? RecordKeeperId;
+        public Guid? PlanRecordKeeperProductId;
         public Guid? AuditorId;
         public Guid? PlanId;
         public string SubjectValue;
@@ -39,7 +39,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("RecordKeeperId", this.RecordKeeperId);
+            base.AddColumn("PlanRecordKeeperProductId", this.PlanRecordKeeperProductId);
             base.AddColumn("AuditorId", this.AuditorId);
             base.AddColumn("PlanId", this.PlanId);
             base.AddColumn("SubjectValue", this.SubjectValue);
@@ -52,7 +52,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.RecordKeeperId = (Guid?)base.GetColumn("RecordKeeperId");
+            this.PlanRecordKeeperProductId = (Guid?)base.GetColumn("PlanRecordKeeperProductId");
             this.AuditorId = (Guid?)base.GetColumn("AuditorId");
             this.PlanId = (Guid?)base.GetColumn("PlanId");
             this.SubjectValue = (string)base.GetColumn("SubjectValue");

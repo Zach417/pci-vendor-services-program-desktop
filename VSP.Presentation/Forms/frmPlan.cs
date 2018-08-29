@@ -613,15 +613,16 @@ namespace VSP.Presentation.Forms
             }
 
             // Add plan name column and fill data
-            dataTable.Columns.Add("RecordKeeper");
+            dataTable.Columns.Add("Product");
             foreach (DataRow dr in dataTable.Rows)
             {
-                string recordKeeperIdString = dr["RecordKeeperId"].ToString();
-                if (String.IsNullOrWhiteSpace(recordKeeperIdString) == false)
+                string rkpIdString = dr["Product"].ToString();
+                if (String.IsNullOrWhiteSpace(rkpIdString) == false)
                 {
-                    Guid recordKeeperId = new Guid(recordKeeperIdString);
-                    DataIntegrationHub.Business.Entities.RecordKeeper recordKeeper = new DataIntegrationHub.Business.Entities.RecordKeeper(recordKeeperId);
-                    dr["RecordKeeper"] = recordKeeper.Name;
+                    Guid rkpId = new Guid(rkpIdString);
+                    PlanRecordKeeperProduct rkp = new PlanRecordKeeperProduct(rkpId);
+                    Product product = new Product(rkp.ProductId);
+                    dr["Product"] = product.Name;
                 }
             }
 
@@ -630,7 +631,7 @@ namespace VSP.Presentation.Forms
             // Display/order the columns.
             dgvIssues.Columns["ServiceIssueId"].Visible = false;
             dgvIssues.Columns["PlanId"].Visible = false;
-            dgvIssues.Columns["RecordKeeperId"].Visible = false;
+            dgvIssues.Columns["PlanRecordKeeperProductId"].Visible = false;
             dgvIssues.Columns["AuditorId"].Visible = false;
             dgvIssues.Columns["DescriptionValue"].Visible = false;
             dgvIssues.Columns["CreatedBy"].Visible = false;
@@ -638,7 +639,7 @@ namespace VSP.Presentation.Forms
             dgvIssues.Columns["StateCode"].Visible = false;
 
             dgvIssues.Columns["SubjectValue"].DisplayIndex = 0;
-            dgvIssues.Columns["RecordKeeper"].DisplayIndex = 1;
+            dgvIssues.Columns["Product"].DisplayIndex = 1;
             dgvIssues.Columns["AsOfDate"].DisplayIndex = 2;
             dgvIssues.Columns["ModifiedOn"].DisplayIndex = 3;
         }
@@ -1164,6 +1165,15 @@ namespace VSP.Presentation.Forms
         private void cboOtherViews_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadDgvOther();
+        }
+
+        private void dgvIssues_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvIssues.CurrentRow.Index;
+            Guid issueId = new Guid(dgvIssues.Rows[index].Cells["ServiceIssueId"].Value.ToString());
+            ServiceIssue issue = new ServiceIssue(issueId);
+            frmServiceIssue frmServiceIssue = new frmServiceIssue(frmMain_Parent, issue);
+            frmServiceIssue.FormClosed += frmServiceIssue_FormClosed;
         }
     }
 }

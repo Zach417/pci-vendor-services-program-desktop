@@ -23,12 +23,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlanRecordKeeperProduct));
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.label25 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblMenuIssues = new System.Windows.Forms.Label();
             this.lblMenuFees = new System.Windows.Forms.Label();
             this.lblMenuServices = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
@@ -73,10 +77,19 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.tabIssues = new System.Windows.Forms.TabPage();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btnNewIssue = new System.Windows.Forms.Button();
+            this.btnDeleteIssue = new System.Windows.Forms.Button();
+            this.dgvIssues = new System.Windows.Forms.DataGridView();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cboIssueViews = new System.Windows.Forms.ComboBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -92,6 +105,10 @@
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFees)).BeginInit();
             this.panel7.SuspendLayout();
+            this.tabIssues.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).BeginInit();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripSeparator3
@@ -118,6 +135,18 @@
             this.panel4.Size = new System.Drawing.Size(968, 21);
             this.panel4.TabIndex = 57;
             // 
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 61;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
+            // 
             // label25
             // 
             this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -138,6 +167,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.Silver;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.lblMenuIssues);
             this.panel3.Controls.Add(this.lblMenuFees);
             this.panel3.Controls.Add(this.lblMenuServices);
             this.panel3.Controls.Add(this.label46);
@@ -145,6 +175,20 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(968, 53);
             this.panel3.TabIndex = 58;
+            // 
+            // lblMenuIssues
+            // 
+            this.lblMenuIssues.AutoSize = true;
+            this.lblMenuIssues.BackColor = System.Drawing.Color.Transparent;
+            this.lblMenuIssues.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblMenuIssues.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMenuIssues.ForeColor = System.Drawing.Color.Black;
+            this.lblMenuIssues.Location = new System.Drawing.Point(268, 15);
+            this.lblMenuIssues.Name = "lblMenuIssues";
+            this.lblMenuIssues.Size = new System.Drawing.Size(68, 25);
+            this.lblMenuIssues.TabIndex = 81;
+            this.lblMenuIssues.Text = "Issues";
+            this.lblMenuIssues.Click += new System.EventHandler(this.lblMenuIssues_Click);
             // 
             // lblMenuFees
             // 
@@ -463,6 +507,7 @@
             this.tabControlClientDetail.Controls.Add(this.tabClientSummary);
             this.tabControlClientDetail.Controls.Add(this.tabServices);
             this.tabControlClientDetail.Controls.Add(this.tabFees);
+            this.tabControlClientDetail.Controls.Add(this.tabIssues);
             this.tabControlClientDetail.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControlClientDetail.Location = new System.Drawing.Point(-6, 0);
             this.tabControlClientDetail.Margin = new System.Windows.Forms.Padding(2);
@@ -791,6 +836,174 @@
             this.label14.TabIndex = 40;
             this.label14.Text = "Summary";
             // 
+            // tabIssues
+            // 
+            this.tabIssues.Controls.Add(this.panel8);
+            this.tabIssues.Controls.Add(this.panel9);
+            this.tabIssues.Location = new System.Drawing.Point(4, 25);
+            this.tabIssues.Name = "tabIssues";
+            this.tabIssues.Padding = new System.Windows.Forms.Padding(3);
+            this.tabIssues.Size = new System.Drawing.Size(981, 600);
+            this.tabIssues.TabIndex = 3;
+            this.tabIssues.Text = "Issues";
+            this.tabIssues.UseVisualStyleBackColor = true;
+            // 
+            // panel8
+            // 
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.btnNewIssue);
+            this.panel8.Controls.Add(this.btnDeleteIssue);
+            this.panel8.Controls.Add(this.dgvIssues);
+            this.panel8.Controls.Add(this.label11);
+            this.panel8.Controls.Add(this.cboIssueViews);
+            this.panel8.Location = new System.Drawing.Point(2, 46);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(968, 545);
+            this.panel8.TabIndex = 60;
+            // 
+            // btnNewIssue
+            // 
+            this.btnNewIssue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewIssue.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNewIssue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewIssue.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewIssue.ForeColor = System.Drawing.Color.Black;
+            this.btnNewIssue.Location = new System.Drawing.Point(790, 4);
+            this.btnNewIssue.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewIssue.Name = "btnNewIssue";
+            this.btnNewIssue.Size = new System.Drawing.Size(78, 26);
+            this.btnNewIssue.TabIndex = 72;
+            this.btnNewIssue.Text = "New";
+            this.btnNewIssue.UseVisualStyleBackColor = false;
+            this.btnNewIssue.Click += new System.EventHandler(this.btnNewIssue_Click);
+            // 
+            // btnDeleteIssue
+            // 
+            this.btnDeleteIssue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteIssue.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDeleteIssue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteIssue.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteIssue.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteIssue.Location = new System.Drawing.Point(874, 4);
+            this.btnDeleteIssue.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteIssue.Name = "btnDeleteIssue";
+            this.btnDeleteIssue.Size = new System.Drawing.Size(78, 26);
+            this.btnDeleteIssue.TabIndex = 73;
+            this.btnDeleteIssue.Text = "Delete";
+            this.btnDeleteIssue.UseVisualStyleBackColor = false;
+            this.btnDeleteIssue.Click += new System.EventHandler(this.btnDeleteIssue_Click);
+            // 
+            // dgvIssues
+            // 
+            this.dgvIssues.AllowUserToAddRows = false;
+            this.dgvIssues.AllowUserToDeleteRows = false;
+            this.dgvIssues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvIssues.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvIssues.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvIssues.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvIssues.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvIssues.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvIssues.EnableHeadersVisualStyles = false;
+            this.dgvIssues.Location = new System.Drawing.Point(8, 34);
+            this.dgvIssues.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvIssues.MultiSelect = false;
+            this.dgvIssues.Name = "dgvIssues";
+            this.dgvIssues.ReadOnly = true;
+            this.dgvIssues.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvIssues.RowHeadersVisible = false;
+            this.dgvIssues.RowTemplate.Height = 24;
+            this.dgvIssues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvIssues.ShowEditingIcon = false;
+            this.dgvIssues.Size = new System.Drawing.Size(944, 504);
+            this.dgvIssues.TabIndex = 69;
+            this.dgvIssues.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIssues_CellDoubleClick);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label11.Location = new System.Drawing.Point(5, 9);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 16);
+            this.label11.TabIndex = 71;
+            this.label11.Text = "Views";
+            // 
+            // cboIssueViews
+            // 
+            this.cboIssueViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboIssueViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboIssueViews.Items.AddRange(new object[] {
+            "Active Associated Issues",
+            "Inactive Associated Issues"});
+            this.cboIssueViews.Location = new System.Drawing.Point(50, 7);
+            this.cboIssueViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboIssueViews.Name = "cboIssueViews";
+            this.cboIssueViews.Size = new System.Drawing.Size(157, 21);
+            this.cboIssueViews.TabIndex = 70;
+            // 
+            // panel9
+            // 
+            this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel9.BackColor = System.Drawing.SystemColors.Control;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.label19);
+            this.panel9.Controls.Add(this.label20);
+            this.panel9.Font = new System.Drawing.Font("High Tower Text", 32F);
+            this.panel9.Location = new System.Drawing.Point(2, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(968, 49);
+            this.panel9.TabIndex = 59;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("High Tower Text", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(-3, 1);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(111, 44);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Issues";
+            // 
+            // label20
+            // 
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Gadugi", 20F);
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(8, 46);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(152, 38);
+            this.label20.TabIndex = 40;
+            this.label20.Text = "Summary";
+            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -817,18 +1030,6 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
-            // 
-            // btnFeedback
-            // 
-            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
-            this.btnFeedback.Name = "btnFeedback";
-            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
-            this.btnFeedback.TabIndex = 61;
-            this.btnFeedback.Text = "Send Feedback";
-            this.btnFeedback.UseVisualStyleBackColor = false;
             // 
             // frmPlanRecordKeeperProduct
             // 
@@ -870,6 +1071,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvFees)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.tabIssues.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).EndInit();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -926,5 +1133,16 @@
         private System.Windows.Forms.DateTimePicker dateRemoved;
         private System.Windows.Forms.DateTimePicker dateAdded;
         private VSP.Presentation.Forms.FeedbackButton btnFeedback;
+        private System.Windows.Forms.Label lblMenuIssues;
+        private System.Windows.Forms.TabPage tabIssues;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Button btnNewIssue;
+        private System.Windows.Forms.Button btnDeleteIssue;
+        public System.Windows.Forms.DataGridView dgvIssues;
+        private System.Windows.Forms.Label label11;
+        public System.Windows.Forms.ComboBox cboIssueViews;
+        private System.Windows.Forms.Panel panel9;
+        public System.Windows.Forms.Label label19;
+        public System.Windows.Forms.Label label20;
     }
 }

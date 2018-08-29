@@ -41,6 +41,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.label25 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label43 = new System.Windows.Forms.Label();
@@ -171,7 +172,6 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -244,6 +244,18 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(968, 21);
             this.panel4.TabIndex = 57;
+            // 
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 57;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
             // 
             // label25
             // 
@@ -2094,6 +2106,7 @@
             this.dgvIssues.ShowEditingIcon = false;
             this.dgvIssues.Size = new System.Drawing.Size(944, 488);
             this.dgvIssues.TabIndex = 69;
+            this.dgvIssues.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIssues_CellDoubleClick);
             // 
             // label17
             // 
@@ -2354,18 +2367,6 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
-            // 
-            // btnFeedback
-            // 
-            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
-            this.btnFeedback.Name = "btnFeedback";
-            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
-            this.btnFeedback.TabIndex = 57;
-            this.btnFeedback.Text = "Send Feedback";
-            this.btnFeedback.UseVisualStyleBackColor = false;
             // 
             // frmPlan
             // 

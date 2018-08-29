@@ -583,5 +583,118 @@ namespace VSP.Presentation.Forms
                 cboProduct.ForeColor = Color.Gray;
             }
         }
+
+        private void lblMenuIssues_Click(object sender, EventArgs e)
+        {
+            Label label = (Label)sender;
+            tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabIssues"];
+            dgvIssues.Focus();
+        }
+
+        private void LoadDgvIssues()
+        {
+            DataTable dataTable = new DataTable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboIssueViews"/>.
+            switch (cboIssueViews.SelectedIndex)
+            {
+                case 0:
+                    dataTable = ServiceIssue.GetActive();
+                    break;
+                case 1:
+                    dataTable = ServiceIssue.GetInactive();
+                    break;
+                default:
+                    return;
+            }
+
+            if (dataTable.Rows.Count > 0)
+            {
+                var dt = dataTable.AsEnumerable().Where(x => x.Field<Guid?>("PlanRecordKeeperProductId") == CurrentPlanRecordKeeperProduct.Id);
+                if (dt.Any())
+                {
+                    dataTable = dt.CopyToDataTable();
+                }
+                else
+                {
+                    dataTable.Rows.Clear();
+                }
+            }
+
+            // Add plan name column and fill data
+            dataTable.Columns.Add("Plan");
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                string planIdString = dr["PlanId"].ToString();
+                if (String.IsNullOrWhiteSpace(planIdString) == false)
+                {
+                    Guid planId = new Guid(planIdString);
+                    Plan plan = new Plan(planId);
+                    dr["Plan"] = plan.Name;
+                }
+            }
+
+            dgvIssues.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvIssues.Columns["ServiceIssueId"].Visible = false;
+            dgvIssues.Columns["PlanId"].Visible = false;
+            dgvIssues.Columns["RecordKeeperId"].Visible = false;
+            dgvIssues.Columns["AuditorId"].Visible = false;
+            dgvIssues.Columns["DescriptionValue"].Visible = false;
+            dgvIssues.Columns["CreatedBy"].Visible = false;
+            dgvIssues.Columns["ModifiedBy"].Visible = false;
+            dgvIssues.Columns["StateCode"].Visible = false;
+
+            dgvIssues.Columns["SubjectValue"].DisplayIndex = 0;
+            dgvIssues.Columns["Plan"].DisplayIndex = 1;
+            dgvIssues.Columns["AsOfDate"].DisplayIndex = 2;
+            dgvIssues.Columns["ModifiedOn"].DisplayIndex = 3;
+        }
+
+        private void frmServiceIssue_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvIssues();
+        }
+
+        private void btnNewIssue_Click(object sender, EventArgs e)
+        {
+            frmServiceIssue frmServiceIssue = new frmServiceIssue(frmMain_Parent, CurrentPlanRecordKeeperProduct);
+            frmServiceIssue.FormClosed += frmServiceIssue_FormClosed;
+        }
+
+        private void cboIssueViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvIssues();
+        }
+
+        private void dgvIssues_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvIssues.CurrentRow.Index;
+            Guid serviceIssueId = new Guid(dgvIssues.Rows[index].Cells["ServiceIssueId"].Value.ToString());
+            ServiceIssue serviceIssue = new ServiceIssue(serviceIssueId);
+            frmServiceIssue frmServiceIssue = new frmServiceIssue(frmMain_Parent, serviceIssue);
+            frmServiceIssue.FormClosed += frmServiceIssue_FormClosed;
+        }
+
+        private void btnDeleteIssue_Click(object sender, EventArgs e)
+        {
+            if (dgvIssues.CurrentRow == null)
+            {
+                return;
+            }
+
+            int index = dgvIssues.CurrentRow.Index;
+            Guid serviceIssueId = new Guid(dgvIssues.Rows[index].Cells[0].Value.ToString());
+            ServiceIssue serviceIssue = new ServiceIssue(serviceIssueId);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete " + serviceIssue.SubjectValue + "?", "Attention", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                serviceIssue.DeleteRecordFromDatabase();
+                LoadDgvIssues();
+            }
+        }
     }
 }

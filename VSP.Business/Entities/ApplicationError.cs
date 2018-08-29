@@ -5,7 +5,7 @@ using System.Data;
 
 namespace VSP.Business.Entities
 {
-    class ApplicationError : DatabaseEntity
+    public class ApplicationError : DatabaseEntity
     {
         public DateTime TimeStamp;
         public string Message;

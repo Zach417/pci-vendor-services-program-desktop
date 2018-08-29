@@ -128,11 +128,23 @@
     <Compile Include="Forms\frmAdvisor.Designer.cs">
       <DependentUpon>frmAdvisor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmQualityAssurancePopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmQualityAssurancePopup.Designer.cs">
+      <DependentUpon>frmQualityAssurancePopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmFeedback.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmFeedback.Designer.cs">
       <DependentUpon>frmFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmQualityAssurance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmQualityAssurance.Designer.cs">
+      <DependentUpon>frmQualityAssurance.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmPlanOtherFee.cs">
       <SubType>Form</SubType>
@@ -311,8 +323,14 @@
     <EmbeddedResource Include="Forms\frmAdvisor.resx">
       <DependentUpon>frmAdvisor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmQualityAssurancePopup.resx">
+      <DependentUpon>frmQualityAssurancePopup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmFeedback.resx">
       <DependentUpon>frmFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmQualityAssurance.resx">
+      <DependentUpon>frmQualityAssurance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPlanOtherFee.resx">
       <DependentUpon>frmPlanOtherFee.cs</DependentUpon>

@@ -74,5 +74,11 @@ namespace VSP.Business.Entities
             string sql = @"SELECT * FROM " + _tableName + " WHERE PlanId = \'" + planId.ToString() + "\'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
+
+        public static DataTable GetAll()
+        {
+            string sql = @"SELECT * FROM " + _tableName;
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
+        }
     }
 }

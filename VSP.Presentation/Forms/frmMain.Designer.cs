@@ -134,6 +134,7 @@
             this.lblLoginStatus = new System.Windows.Forms.Label();
             this.lblFormStatus = new System.Windows.Forms.Label();
             this.pnlAppStatus = new System.Windows.Forms.Panel();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.pnlMainMnu = new System.Windows.Forms.Panel();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblAdvisors = new System.Windows.Forms.Label();
@@ -169,7 +170,7 @@
             this.btnRemoveUser = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnSaveAssetGroup = new System.Windows.Forms.Button();
-            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
+            this.label27 = new System.Windows.Forms.Label();
             this.tabMain.SuspendLayout();
             this.tabClients.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -1782,12 +1783,25 @@
             this.pnlAppStatus.Size = new System.Drawing.Size(1036, 21);
             this.pnlAppStatus.TabIndex = 58;
             // 
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(916, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 41;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
+            // 
             // pnlMainMnu
             // 
             this.pnlMainMnu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMainMnu.BackColor = System.Drawing.Color.Silver;
             this.pnlMainMnu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMainMnu.Controls.Add(this.label27);
             this.pnlMainMnu.Controls.Add(this.lblSearch);
             this.pnlMainMnu.Controls.Add(this.lblAdvisors);
             this.pnlMainMnu.Controls.Add(this.lblAuditors);
@@ -2305,18 +2319,17 @@
             this.btnSaveAssetGroup.TabIndex = 86;
             this.btnSaveAssetGroup.UseVisualStyleBackColor = false;
             // 
-            // btnFeedback
+            // label27
             // 
-            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFeedback.Location = new System.Drawing.Point(916, 1);
-            this.btnFeedback.Name = "btnFeedback";
-            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
-            this.btnFeedback.TabIndex = 41;
-            this.btnFeedback.Text = "Send Feedback";
-            this.btnFeedback.UseVisualStyleBackColor = false;
-            this.btnFeedback.Click += new System.EventHandler(this.btnFeedback_Click);
+            this.label27.AutoSize = true;
+            this.label27.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label27.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(507, 15);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(42, 25);
+            this.label27.TabIndex = 2;
+            this.label27.Text = "QA";
+            this.label27.Click += new System.EventHandler(this.label27_Click);
             // 
             // frmMain
             // 
@@ -2400,7 +2413,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserSecurity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).EndInit();
             this.ResumeLayout(false);
-            this.ActiveControl = this.dgvClients;
+
         }
         private System.Windows.Forms.TabPage tabAdvisors;
         private System.Windows.Forms.Label lblLoginStatus;
@@ -2537,5 +2550,6 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.ComboBox cboSearchViews;
         private VSP.Presentation.Forms.FeedbackButton btnFeedback;
+        private System.Windows.Forms.Label label27;
     }
 }

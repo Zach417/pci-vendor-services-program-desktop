@@ -77,7 +77,6 @@ namespace VSP.Presentation.Forms
                 txtAssetsServiced.Text = ((decimal)CurrentRK.AssetsServiced).ToString();
             }
 
-            cboIssueViews.SelectedIndex = 0;
             cboProductViews.SelectedIndex = 0;
 
             ss.Close();
@@ -172,13 +171,6 @@ namespace VSP.Presentation.Forms
             dgvProducts.Focus();
         }
 
-        private void lblMenuIssues_Click(object sender, EventArgs e)
-        {
-            Label label = (Label)sender;
-            tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabIssues"];
-            dgvIssues.Focus();
-        }
-
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
@@ -246,7 +238,7 @@ namespace VSP.Presentation.Forms
             label23.Text = txtName.Text;
         }
 
-        private void LoadDgvIssues()
+        /*private void LoadDgvIssues()
         {
             DataTable dataTable = new DataTable();
 
@@ -350,14 +342,14 @@ namespace VSP.Presentation.Forms
                 serviceIssue.DeleteRecordFromDatabase();
                 LoadDgvIssues();
             }
-        }
+        }*/
 
         private void LoadDgvProducts()
         {
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboIssueViews"/>.
-            switch (cboIssueViews.SelectedIndex)
+            switch (cboProductViews.SelectedIndex)
             {
                 case 0:
                     dataTable = Product.GetActive();

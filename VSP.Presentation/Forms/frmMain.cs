@@ -364,11 +364,6 @@ namespace VSP.Presentation.Forms
             tabMain.SelectedIndex = 3;
         }
 
-        private void label29_Click(object sender, EventArgs e)
-        {
-            tabMain.SelectedIndex = 0;
-        }
-
         private void lblMinForm_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -991,9 +986,9 @@ namespace VSP.Presentation.Forms
             }
         }
 
-        private void btnFeedback_Click(object sender, EventArgs e)
+        private void label27_Click(object sender, EventArgs e)
         {
-            
+            frmQualityAssurance frmQA = new frmQualityAssurance(this);
         }
     }
 }
