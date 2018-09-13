@@ -200,7 +200,7 @@ namespace VSP.Presentation.Forms
             CurrentSearchFund.Ticker = txtTicker.Text;
             CurrentSearchFund.FundName = txtFundName.Text;
             CurrentSearchFund.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

@@ -334,7 +334,7 @@ namespace VSP.Presentation.Forms
             CurrentPlanRecordKeeperProductFee.Notes = txtNotes.Text;
 
             CurrentPlanRecordKeeperProductFee.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

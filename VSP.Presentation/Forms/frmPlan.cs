@@ -196,7 +196,7 @@ namespace VSP.Presentation.Forms
         {
             CurrentPlanDetail.Notes = txtNotes.Text;
             CurrentPlanDetail.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

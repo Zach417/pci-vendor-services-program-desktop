@@ -250,7 +250,7 @@ namespace VSP.Presentation.Forms
                 }
             }
 
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

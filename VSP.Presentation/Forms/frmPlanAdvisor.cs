@@ -307,7 +307,7 @@ namespace VSP.Presentation.Forms
 
             CurrentPlanAdvisor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
-            this.Close();
+            //this.Close();
         }
 
         private void label5_Click(object sender, EventArgs e)

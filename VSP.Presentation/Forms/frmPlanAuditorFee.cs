@@ -331,7 +331,7 @@ namespace VSP.Presentation.Forms
             CurrentPlanAuditorFee.Name = txtName.Text;
 
             CurrentPlanAuditorFee.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

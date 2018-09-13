@@ -284,7 +284,7 @@ namespace VSP.Presentation.Forms
 
             CurrentSearchBid.Notes = txtNotes.Text;
             CurrentSearchBid.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            this.Close();
+            //this.Close();
         }
 	}
 }

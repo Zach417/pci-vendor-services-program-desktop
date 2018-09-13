@@ -365,7 +365,8 @@ namespace VSP.Presentation.Forms
 
             CurrentPlanRecordKeeperProduct.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
-            this.Close();
+            // Do not close form, so users can edit, save, and continue editing
+            //this.Close();
         }
 
         private void label5_Click(object sender, EventArgs e)

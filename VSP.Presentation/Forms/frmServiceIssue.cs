@@ -400,7 +400,7 @@ namespace VSP.Presentation.Forms
 
             CurrentServiceIssue.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

@@ -202,7 +202,7 @@ namespace VSP.Presentation.Forms
             CurrentService.Category = txtCategory.Text;
             CurrentService.Type = txtType.Text;
             CurrentService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

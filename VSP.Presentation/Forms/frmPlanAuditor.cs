@@ -305,7 +305,7 @@ namespace VSP.Presentation.Forms
 
             CurrentPlanAuditor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
-            this.Close();
+            //this.Close();
         }
 
         private void label5_Click(object sender, EventArgs e)

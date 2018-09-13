@@ -172,7 +172,7 @@ namespace VSP.Presentation.Forms
         {
             CurrentAuditor.Notes = txtNotes.Text;
             CurrentAuditor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
