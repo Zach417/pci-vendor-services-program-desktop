@@ -90,6 +90,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.btnSelectAllServices = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -536,6 +537,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnSelectAllServices);
             this.panel1.Controls.Add(this.dgvServices);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.cboServicesView);
@@ -1031,6 +1033,17 @@
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
             // 
+            // btnSelectAllServices
+            // 
+            this.btnSelectAllServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectAllServices.Location = new System.Drawing.Point(763, 6);
+            this.btnSelectAllServices.Name = "btnSelectAllServices";
+            this.btnSelectAllServices.Size = new System.Drawing.Size(189, 23);
+            this.btnSelectAllServices.TabIndex = 72;
+            this.btnSelectAllServices.Text = "Select/Deselect All Services";
+            this.btnSelectAllServices.UseVisualStyleBackColor = true;
+            this.btnSelectAllServices.Click += new System.EventHandler(this.btnSelectAllServices_Click);
+            // 
             // frmPlanRecordKeeperProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1144,5 +1157,6 @@
         private System.Windows.Forms.Panel panel9;
         public System.Windows.Forms.Label label19;
         public System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnSelectAllServices;
     }
 }

@@ -1,23 +1,18 @@
 ﻿using DataIntegrationHub.Business.Entities;
-
-using VSP.Business.Entities;
-using VSP.Presentation;
-using VSP.Presentation.Utilities;
-using PensionConsultants.Data.Utilities;
-
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using VSP.Business.Entities;
+using VSP.Presentation.Utilities;
 
 namespace VSP.Presentation.Forms
 {
-	public partial class frmPlanRecordKeeperProduct : Form, IMessageFilter
+    public partial class frmPlanRecordKeeperProduct : Form, IMessageFilter
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -694,6 +689,37 @@ namespace VSP.Presentation.Forms
             {
                 serviceIssue.DeleteRecordFromDatabase();
                 LoadDgvIssues();
+            }
+        }
+
+        private void btnSelectAllServices_Click(object sender, EventArgs e)
+        {
+            bool allSelected = true;
+
+            foreach (DataGridViewRow row in dgvServices.Rows)
+            {
+                if (row.Cells["ServiceOffered"].Value.ToString() != ""
+                     && bool.Parse(row.Cells["ServiceOffered"].Value.ToString()) == false)
+                {
+                    System.Console.WriteLine("ServiceOffered Not Selected: " + row.Index);
+                    allSelected = false;
+                }
+            }
+
+            // Invert all selected for updates
+            allSelected = !allSelected;
+
+            foreach (DataGridViewRow row in dgvServices.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["ServiceOffered"];
+                if (allSelected)
+                {
+                    chk.Value = true;
+                }
+                else
+                {
+                    chk.Value = false;
+                }
             }
         }
     }
