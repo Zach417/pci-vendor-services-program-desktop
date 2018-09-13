@@ -98,9 +98,10 @@ namespace VSP.Presentation.Forms
             bool isAccessUser = LoginCurrentUser();
             if (isAccessUser == false)
             {
-                this.Enabled = false;
-                this.Hide();
-                return;
+                //this.Enabled = false;
+                //this.Hide();
+                //return;
+                Application.Exit(); // Close app to prevent use
             }
 
             SecurityComponent securityComponent = new SecurityComponent(CurrentUser);
