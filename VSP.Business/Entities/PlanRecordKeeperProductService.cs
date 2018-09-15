@@ -16,6 +16,7 @@ namespace VSP.Business.Entities
         public Guid PlanRecordKeeperProductId;
         public Guid ServiceId;
         public SqlBoolean ServiceOffered;
+        public string Notes;
 
         private static string _tableName = "PlanRecordKeeperProductService";
 
@@ -40,6 +41,7 @@ namespace VSP.Business.Entities
             base.AddColumn("PlanRecordKeeperProductId", this.PlanRecordKeeperProductId);
             base.AddColumn("ServiceId", this.ServiceId);
             base.AddColumn("ServiceOffered", this.ServiceOffered);
+            base.AddColumn("Notes", this.Notes);
             this.ServiceOffered = (SqlBoolean)base.GetColumn("ServiceOffered");
         }
 
@@ -50,6 +52,7 @@ namespace VSP.Business.Entities
         {
             this.PlanRecordKeeperProductId = (Guid)base.GetColumn("PlanRecordKeeperProductId");
             this.ServiceId = (Guid)base.GetColumn("ServiceId");
+            this.Notes = (string)base.GetColumn("Notes");
         }
 
         public static DataTable GetActive()

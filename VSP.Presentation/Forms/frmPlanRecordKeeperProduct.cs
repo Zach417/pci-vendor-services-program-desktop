@@ -344,22 +344,26 @@ namespace VSP.Presentation.Forms
                         serviceOffered = bool.Parse(dr.Cells["ServiceOffered"].Value.ToString());
                     }
 
+                    string notes = dr.Cells["Notes"].Value.ToString();
+
+
                     var ps = productServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
+
+                    PlanRecordKeeperProductService planRkPdService;
                     if (ps.Any()) // rk product already has service record, so update it
                     {
                         Guid planRkPdServiceId = new Guid(ps.CopyToDataTable().Rows[0]["PlanRecordKeeperProductServiceId"].ToString());
-                        PlanRecordKeeperProductService planRkPdService = new PlanRecordKeeperProductService(planRkPdServiceId);
-                        planRkPdService.ServiceOffered = serviceOffered;
-                        planRkPdService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+                        planRkPdService = new PlanRecordKeeperProductService(planRkPdServiceId);
                     }
                     else // rk product does not have service record, so create on
                     {
-                        PlanRecordKeeperProductService planRkPdService = new PlanRecordKeeperProductService();
+                        planRkPdService = new PlanRecordKeeperProductService();
                         planRkPdService.ServiceId = serviceId;
                         planRkPdService.PlanRecordKeeperProductId = CurrentPlanRecordKeeperProduct.Id;
-                        planRkPdService.ServiceOffered = serviceOffered;
-                        planRkPdService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
                     }
+                    planRkPdService.ServiceOffered = serviceOffered;
+                    planRkPdService.Notes = notes;
+                    planRkPdService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
                 }
             }
 
@@ -482,7 +486,7 @@ namespace VSP.Presentation.Forms
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboServicesView"/>.
-            switch (cboServicesView.SelectedIndex)
+            /*switch (cboServicesView.SelectedIndex)
             {
                 case 0:
                     dataTable = Service.GetActive();
@@ -492,11 +496,23 @@ namespace VSP.Presentation.Forms
                     break;
                 default:
                     return;
+            }*/
+            switch (cboServicesView.SelectedIndex)
+            {
+                case 0:
+                    dataTable = ProductService.GetAssociatedOfferedActive(new Product(CurrentPlanRecordKeeperProduct.ProductId));
+                    break;
+                case 1:
+                    dataTable = ProductService.GetAssociatedOfferedInactive(new Product(CurrentPlanRecordKeeperProduct.ProductId));
+                    break;
+                default:
+                    return;
             }
 
             dataTable = dataTable.AsEnumerable().Where(x => x["Type"].ToString() == "Record Keeper").CopyToDataTable();
 
-            dataTable.Columns.Add("ServiceOffered", typeof(bool));
+            //dataTable.Columns.Add("ServiceOffered", typeof(bool));
+            dataTable.Columns.Add("Notes");
 
             dgvServices.DataSource = dataTable;
 
@@ -508,6 +524,14 @@ namespace VSP.Presentation.Forms
             dgvServices.Columns["ModifiedBy"].Visible = false;
             dgvServices.Columns["ModifiedOn"].Visible = false;
             dgvServices.Columns["StateCode"].Visible = false;
+            dgvServices.Columns["ServiceId1"].Visible = false;
+            dgvServices.Columns["ProductId"].Visible = false;
+            dgvServices.Columns["ProductServiceId"].Visible = false;
+            dgvServices.Columns["CreatedBy1"].Visible = false;
+            dgvServices.Columns["CreatedOn1"].Visible = false;
+            dgvServices.Columns["ModifiedBy1"].Visible = false;
+            dgvServices.Columns["ModifiedOn1"].Visible = false;
+            dgvServices.Columns["StateCode1"].Visible = false;
 
             dgvServices.Columns["Name"].DisplayIndex = 0;
             dgvServices.Columns["Name"].ReadOnly = true;
@@ -515,26 +539,32 @@ namespace VSP.Presentation.Forms
             dgvServices.Columns["Category"].ReadOnly = true;
             dgvServices.Columns["ServiceOffered"].DisplayIndex = 2;
             dgvServices.Columns["ServiceOffered"].ReadOnly = false;
+            
+            dgvServices.Columns["Notes"].DisplayIndex = 3;
+            dgvServices.Columns["Notes"].ReadOnly = false;
 
 
             // set service offered values
             if (refresh == true)
             {
                 DataTable planRkPdServices = PlanRecordKeeperProductService.GetAssociated(CurrentPlanRecordKeeperProduct);
-                int rowIndex = 0;
 
-                foreach (DataGridViewRow drServices in dgvServices.Rows)
+                //foreach (DataGridViewRow drServices in dgvServices.Rows)
+                for (int rowIndex = 0; rowIndex < dgvServices.Rows.Count; rowIndex++)
                 {
+                    DataGridViewRow drServices = dgvServices.Rows[rowIndex];
                     Guid serviceId = new Guid(drServices.Cells["ServiceId"].Value.ToString());
                     var ps = planRkPdServices.AsEnumerable().Where(x => x.Field<Guid>("ServiceId") == serviceId);
                     if (ps.Any()) // rk product already has service record, so update it
                     {
-                        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)dgvServices.Rows[rowIndex].Cells["ServiceOffered"];
+                        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)drServices.Cells["ServiceOffered"];
                         var serviceOffered = SqlBoolean.Parse(ps.CopyToDataTable().Rows[0]["ServiceOffered"].ToString()).IsTrue;
-                        dgvServices.Rows[rowIndex].Cells["ServiceOffered"].Value = serviceOffered.ToString();
+                        drServices.Cells["ServiceOffered"].Value = serviceOffered.ToString();
+
+                        var notes = ps.CopyToDataTable().Rows[0]["Notes"].ToString();
+                        drServices.Cells["Notes"].Value = notes;
                     }
 
-                    rowIndex++;
                 }
             }
         }
