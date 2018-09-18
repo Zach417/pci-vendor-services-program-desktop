@@ -98,11 +98,7 @@ namespace VSP.Presentation.Forms
             bool isAccessUser = LoginCurrentUser();
             if (isAccessUser == false)
             {
-                // Disable all panels, except the close/minimize buttons at the top
-                pnlMainMnu.Enabled = false;
-                pnlAppStatus.Enabled = false;
-                tabMain.Enabled = false;
-                pnlMainHeader.Enabled = true;
+                Environment.Exit(1);
                 return;
             }
 
