@@ -206,6 +206,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvRkPds()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvRKProducts.CurrentCell != null)
+            {
+                currentCellRow = dgvRKProducts.CurrentCell.RowIndex;
+                currentCellCol = dgvRKProducts.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = PlanRecordKeeperProduct.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -263,6 +271,19 @@ namespace VSP.Presentation.Forms
             dgvRKProducts.Columns["Product"].DisplayIndex = 1;
             dgvRKProducts.Columns["DateAdded"].DisplayIndex = 2;
             dgvRKProducts.Columns["DateRemoved"].DisplayIndex = 3;
+
+            if (dgvRKProducts.RowCount > 0 && dgvRKProducts.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvRKProducts.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvRKProducts.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvRKProducts.CurrentCell = dgvRKProducts.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboRkViews_SelectedIndexChanged(object sender, EventArgs e)
@@ -272,6 +293,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvAuditors()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvAuditors.CurrentCell != null)
+            {
+                currentCellRow = dgvAuditors.CurrentCell.RowIndex;
+                currentCellCol = dgvAuditors.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = PlanAuditor.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -323,6 +352,19 @@ namespace VSP.Presentation.Forms
             dgvAuditors.Columns["Name"].DisplayIndex = 0;
             dgvAuditors.Columns["DateAdded"].DisplayIndex = 1;
             dgvAuditors.Columns["DateRemoved"].DisplayIndex = 2;
+
+            if (dgvAuditors.RowCount > 0 && dgvAuditors.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvAuditors.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvAuditors.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvAuditors.CurrentCell = dgvAuditors.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboAuditorViews_SelectedIndexChanged(object sender, EventArgs e)
@@ -332,6 +374,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvAdvisors()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvAdvisors.CurrentCell != null)
+            {
+                currentCellRow = dgvAdvisors.CurrentCell.RowIndex;
+                currentCellCol = dgvAdvisors.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = VSP.Business.Entities.PlanAdvisor.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -383,6 +433,19 @@ namespace VSP.Presentation.Forms
             dgvAdvisors.Columns["Name"].DisplayIndex = 0;
             dgvAdvisors.Columns["DateAdded"].DisplayIndex = 1;
             dgvAdvisors.Columns["DateRemoved"].DisplayIndex = 2;
+
+            if (dgvAdvisors.RowCount > 0 && dgvAdvisors.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvAdvisors.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvAdvisors.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvAdvisors.CurrentCell = dgvAdvisors.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboAdvisorViews_SelectedIndexChanged(object sender, EventArgs e)
@@ -527,6 +590,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvInvestments()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvInvestments.CurrentCell != null)
+            {
+                currentCellRow = dgvInvestments.CurrentCell.RowIndex;
+                currentCellCol = dgvInvestments.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboInvestmentViews"/>.
@@ -575,6 +646,19 @@ namespace VSP.Presentation.Forms
             dgvInvestments.Columns["Fund Name"].DisplayIndex = 1;
             dgvInvestments.Columns["Balance"].DisplayIndex = 2;
             dgvInvestments.Columns["BalanceAsOf"].DisplayIndex = 3;
+
+            if (dgvInvestments.RowCount > 0 && dgvInvestments.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvInvestments.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvInvestments.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvInvestments.CurrentCell = dgvInvestments.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboInvestments_SelectedIndexChanged(object sender, EventArgs e)
@@ -584,6 +668,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvIssues()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvIssues.CurrentCell != null)
+            {
+                currentCellRow = dgvIssues.CurrentCell.RowIndex;
+                currentCellCol = dgvIssues.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboIssueViews"/>.
@@ -642,6 +734,19 @@ namespace VSP.Presentation.Forms
             dgvIssues.Columns["Product"].DisplayIndex = 1;
             dgvIssues.Columns["AsOfDate"].DisplayIndex = 2;
             dgvIssues.Columns["ModifiedOn"].DisplayIndex = 3;
+
+            if (dgvIssues.RowCount > 0 && dgvIssues.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvIssues.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvIssues.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvIssues.CurrentCell = dgvIssues.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboIssueViews_SelectedIndexChanged(object sender, EventArgs e)
@@ -719,6 +824,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvContributions()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvContributions.CurrentCell != null)
+            {
+                currentCellRow = dgvContributions.CurrentCell.RowIndex;
+                currentCellCol = dgvContributions.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = VSP.Business.Entities.PlanContribution.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -757,6 +870,19 @@ namespace VSP.Presentation.Forms
             dgvContributions.Columns["AsOfDate"].DisplayIndex = 1;
             dgvContributions.Columns["ModifiedOn"].DisplayIndex = 2;
             dgvContributions.Columns["CreatedOn"].DisplayIndex = 3;
+
+            if (dgvContributions.RowCount > 0 && dgvContributions.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvContributions.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvContributions.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvContributions.CurrentCell = dgvContributions.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboContributionViews_SelectedIndexChanged(object sender, EventArgs e)
@@ -766,6 +892,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvDistributions()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvDistributions.CurrentCell != null)
+            {
+                currentCellRow = dgvDistributions.CurrentCell.RowIndex;
+                currentCellCol = dgvDistributions.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = VSP.Business.Entities.PlanDistribution.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -804,6 +938,19 @@ namespace VSP.Presentation.Forms
             dgvDistributions.Columns["AsOfDate"].DisplayIndex = 1;
             dgvDistributions.Columns["ModifiedOn"].DisplayIndex = 2;
             dgvDistributions.Columns["CreatedOn"].DisplayIndex = 3;
+
+            if (dgvDistributions.RowCount > 0 && dgvDistributions.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvDistributions.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvDistributions.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvDistributions.CurrentCell = dgvDistributions.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboDistributionViews_SelectedIndexChanged(object sender, EventArgs e)
@@ -813,6 +960,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvEligibleParticipants()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvEligibleParticipants.CurrentCell != null)
+            {
+                currentCellRow = dgvEligibleParticipants.CurrentCell.RowIndex;
+                currentCellCol = dgvEligibleParticipants.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = VSP.Business.Entities.PlanParticipantsEligible.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -851,6 +1006,19 @@ namespace VSP.Presentation.Forms
             dgvEligibleParticipants.Columns["AsOfDate"].DisplayIndex = 1;
             dgvEligibleParticipants.Columns["ModifiedOn"].DisplayIndex = 2;
             dgvEligibleParticipants.Columns["CreatedOn"].DisplayIndex = 3;
+
+            if (dgvEligibleParticipants.RowCount > 0 && dgvEligibleParticipants.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvEligibleParticipants.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvEligibleParticipants.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvEligibleParticipants.CurrentCell = dgvEligibleParticipants.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboEligibleParticipantsViews_SelectedIndexChanged(object sender, EventArgs e)
@@ -860,6 +1028,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvActiveParticipants()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvActiveParticipants.CurrentCell != null)
+            {
+                currentCellRow = dgvActiveParticipants.CurrentCell.RowIndex;
+                currentCellCol = dgvActiveParticipants.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = VSP.Business.Entities.PlanParticipantsActive.GetAssociated(CurrentPlan.PlanId);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -898,6 +1074,19 @@ namespace VSP.Presentation.Forms
             dgvActiveParticipants.Columns["AsOfDate"].DisplayIndex = 1;
             dgvActiveParticipants.Columns["ModifiedOn"].DisplayIndex = 2;
             dgvActiveParticipants.Columns["CreatedOn"].DisplayIndex = 3;
+
+            if (dgvActiveParticipants.RowCount > 0 && dgvActiveParticipants.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvActiveParticipants.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvActiveParticipants.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvActiveParticipants.CurrentCell = dgvActiveParticipants.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboActiveParticipantViews_SelectedIndexChanged(object sender, EventArgs e)
@@ -1111,6 +1300,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvOther()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvOther.CurrentCell != null)
+            {
+                currentCellRow = dgvOther.CurrentCell.RowIndex;
+                currentCellCol = dgvOther.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboOtherViews"/>.
@@ -1160,6 +1357,19 @@ namespace VSP.Presentation.Forms
             dgvOther.Columns["AsOfDate"].DisplayIndex = 6;
             dgvOther.Columns["ModifiedOn"].DisplayIndex = 7;
             dgvOther.Columns["CreatedOn"].DisplayIndex = 8;
+
+            if (dgvOther.RowCount > 0 && dgvOther.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvOther.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvOther.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvOther.CurrentCell = dgvOther.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboOtherViews_SelectedIndexChanged(object sender, EventArgs e)

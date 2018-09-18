@@ -316,6 +316,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvFees()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvFees.CurrentCell != null)
+            {
+                currentCellRow = dgvFees.CurrentCell.RowIndex;
+                currentCellCol = dgvFees.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboInvestmentViews"/>.
@@ -371,6 +379,19 @@ namespace VSP.Presentation.Forms
             dgvFees.Columns["AsOfDate"].DisplayIndex = 9;
             dgvFees.Columns["ModifiedOn"].DisplayIndex = 10;
             dgvFees.Columns["CreatedOn"].DisplayIndex = 11;
+
+            if (dgvFees.RowCount > 0 && dgvFees.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvFees.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvFees.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvFees.CurrentCell = dgvFees.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboFeeViews_SelectedIndexChanged(object sender, EventArgs e)

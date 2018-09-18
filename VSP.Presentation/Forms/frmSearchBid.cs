@@ -205,6 +205,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvQuestions()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvQuestions.CurrentCell != null)
+            {
+                currentCellRow = dgvQuestions.CurrentCell.RowIndex;
+                currentCellCol = dgvQuestions.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = SearchBidQuestion.GetAssociated(CurrentSearchBid);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -254,6 +262,19 @@ namespace VSP.Presentation.Forms
                 SearchQuestion searchQuestion = new SearchQuestion(searchQuestionId);
                 dgvQuestions.Rows[rowIndex].Cells["Question"].Value = searchQuestion.SubjectValue;
                 rowIndex++;
+            }
+
+            if (dgvQuestions.RowCount > 0 && dgvQuestions.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvQuestions.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvQuestions.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvQuestions.CurrentCell = dgvQuestions.FirstDisplayedCell;
+                }
             }
         }
 

@@ -96,8 +96,16 @@ namespace VSP.Presentation.Forms
             LoadDgvFeedback();
         }
 
-        public void LoadDgvCrashes()
+        private void LoadDgvCrashes()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvCrashes.CurrentCell != null)
+            {
+                currentCellRow = dgvCrashes.CurrentCell.RowIndex;
+                currentCellCol = dgvCrashes.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = ApplicationError.GetAll();
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -149,10 +157,31 @@ namespace VSP.Presentation.Forms
             dgvCrashes.Columns["Source"].DisplayIndex = 1;
             dgvCrashes.Columns["CreatedOn"].DisplayIndex = 2;
             dgvCrashes.Columns["State"].DisplayIndex = 3;
+
+            if (dgvCrashes.RowCount > 0 && dgvCrashes.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvCrashes.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvCrashes.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvCrashes.CurrentCell = dgvCrashes.FirstDisplayedCell;
+                }
+            }
         }
 
-        public void LoadDgvFeedback()
+        private void LoadDgvFeedback()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvFeedback.CurrentCell != null)
+            {
+                currentCellRow = dgvFeedback.CurrentCell.RowIndex;
+                currentCellCol = dgvFeedback.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = Feedback.GetAll();
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -204,6 +233,19 @@ namespace VSP.Presentation.Forms
             dgvFeedback.Columns["Severity"].DisplayIndex = 1;
             dgvFeedback.Columns["Description"].DisplayIndex = 2;
             dgvFeedback.Columns["FeedbackId"].Visible = false;
+
+            if (dgvFeedback.RowCount > 0 && dgvFeedback.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvFeedback.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvFeedback.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvFeedback.CurrentCell = dgvFeedback.FirstDisplayedCell;
+                }
+            }
         }
 
         private void CloseFormButton_MouseEnter(object sender, EventArgs e)

@@ -179,6 +179,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvRoles()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvRoles.CurrentCell != null)
+            {
+                currentCellRow = dgvRoles.CurrentCell.RowIndex;
+                currentCellCol = dgvRoles.CurrentCell.ColumnIndex;
+            }
+
             List<VSP.Business.Entities.SecurityRole> list = new List<VSP.Business.Entities.SecurityRole>();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboRolesViews"/>.
@@ -214,6 +222,19 @@ namespace VSP.Presentation.Forms
 
             dgvRoles.Columns["Name"].DisplayIndex = 0;
             dgvRoles.Columns["Description"].DisplayIndex = 1;
+
+            if (dgvRoles.RowCount > 0 && dgvRoles.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvRoles.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvRoles.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvRoles.CurrentCell = dgvRoles.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboRolesViews_SelectedIndexChanged(object sender, EventArgs e)

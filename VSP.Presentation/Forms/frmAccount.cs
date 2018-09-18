@@ -210,6 +210,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvPlans()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvPlans.CurrentCell != null)
+            {
+                currentCellRow = dgvPlans.CurrentCell.RowIndex;
+                currentCellCol = dgvPlans.CurrentCell.ColumnIndex;
+            }
+
             List<Plan> plans = Plan.Get().FindAll(x => x.CustomerId == CurrentCustomer.CustomerId);
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboPlanViews"/>.
@@ -249,6 +257,19 @@ namespace VSP.Presentation.Forms
             dgvPlans.Columns["Name"].DisplayIndex = 0;
             dgvPlans.Columns["Type"].DisplayIndex = 1;
             dgvPlans.Columns["Description"].DisplayIndex = 2;
+
+            if (dgvPlans.RowCount > 0 && dgvPlans.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvPlans.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvPlans.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvPlans.CurrentCell = dgvPlans.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboPlanViews_SelectedIndexChanged(object sender, EventArgs e)

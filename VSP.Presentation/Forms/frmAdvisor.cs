@@ -225,6 +225,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvServices(bool refresh = false)
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvServices.CurrentCell != null)
+            {
+                currentCellRow = dgvServices.CurrentCell.RowIndex;
+                currentCellCol = dgvServices.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboServicesView"/>.
@@ -282,6 +290,16 @@ namespace VSP.Presentation.Forms
 
                     rowIndex++;
                 }
+            }
+
+            DataGridViewCell selectedCell = dgvServices.Rows[currentCellRow].Cells[currentCellCol];
+            if (selectedCell != null && selectedCell.Visible)
+            {
+                dgvServices.CurrentCell = selectedCell;
+            }
+            else
+            {
+                dgvServices.CurrentCell = dgvServices.FirstDisplayedCell;
             }
         }
 

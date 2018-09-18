@@ -182,6 +182,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvIssues()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvIssues.CurrentCell != null)
+            {
+                currentCellRow = dgvIssues.CurrentCell.RowIndex;
+                currentCellCol = dgvIssues.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboIssueViews"/>.
@@ -228,7 +236,6 @@ namespace VSP.Presentation.Forms
             // Display/order the columns.
             dgvIssues.Columns["ServiceIssueId"].Visible = false;
             dgvIssues.Columns["PlanId"].Visible = false;
-            dgvIssues.Columns["RecordKeeperId"].Visible = false;
             dgvIssues.Columns["AuditorId"].Visible = false;
             dgvIssues.Columns["DescriptionValue"].Visible = false;
             dgvIssues.Columns["CreatedBy"].Visible = false;
@@ -239,6 +246,19 @@ namespace VSP.Presentation.Forms
             dgvIssues.Columns["Plan"].DisplayIndex = 1;
             dgvIssues.Columns["AsOfDate"].DisplayIndex = 2;
             dgvIssues.Columns["ModifiedOn"].DisplayIndex = 3;
+
+            if (dgvIssues.RowCount > 0 && dgvIssues.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvIssues.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvIssues.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvIssues.CurrentCell = dgvIssues.FirstDisplayedCell;
+                }
+            }
         }
 
         private void frmServiceIssue_FormClosed(object sender, FormClosedEventArgs e)
