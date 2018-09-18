@@ -98,10 +98,12 @@ namespace VSP.Presentation.Forms
             bool isAccessUser = LoginCurrentUser();
             if (isAccessUser == false)
             {
-                //this.Enabled = false;
-                //this.Hide();
-                //return;
-                Application.Exit(); // Close app to prevent use
+                // Disable all panels, except the close/minimize buttons at the top
+                pnlMainMnu.Enabled = false;
+                pnlAppStatus.Enabled = false;
+                tabMain.Enabled = false;
+                pnlMainHeader.Enabled = true;
+                return;
             }
 
             SecurityComponent securityComponent = new SecurityComponent(CurrentUser);
