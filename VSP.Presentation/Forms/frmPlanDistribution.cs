@@ -32,6 +32,7 @@ namespace VSP.Presentation.Forms
 
         private frmMain frmMain_Parent;
         public PlanDistribution CurrentPlanDistribution;
+        private Label CurrentTabLabel;
 
         /// <summary>
         /// 
@@ -63,6 +64,9 @@ namespace VSP.Presentation.Forms
             CurrentPlanDistribution.PlanId = plan.PlanId;
 
             txtPlan.Text = plan.Name;
+
+            CurrentTabLabel = label46; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -108,6 +112,9 @@ namespace VSP.Presentation.Forms
             {
                 txtAsOfDate.Text = ((DateTime)CurrentPlanDistribution.AsOfDate).ToString("MM/dd/yyyy");
             }
+
+            CurrentTabLabel = label46; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -188,6 +195,7 @@ namespace VSP.Presentation.Forms
 
         private void label46_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlClientDetail.SelectedIndex = 0;
 
@@ -196,15 +204,29 @@ namespace VSP.Presentation.Forms
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label.BackColor = System.Drawing.Color.Gainsboro;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.DarkGray;
+            }
         }
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.ControlText;
-            label.BackColor = System.Drawing.Color.Transparent;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
+        private void highlightSelectedTabLabel(object sender)
+        {
+            Label label = (Label)sender;
+            CurrentTabLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            CurrentTabLabel.BackColor = System.Drawing.Color.Transparent;
+            label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label.BackColor = System.Drawing.Color.Gainsboro;
+            CurrentTabLabel = label;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -256,7 +278,7 @@ namespace VSP.Presentation.Forms
 
         private void label4_Click(object sender, EventArgs e)
         {
-
+            highlightSelectedTabLabel(sender);
         }
 	}
 }

@@ -70,6 +70,8 @@ namespace VSP.Presentation.Forms
         private Stopwatch stopWatch = new Stopwatch();
         private Pagination paginationPlanAdvisors;
 
+        private Label CurrentTabLabel;
+
         /// <summary>
         /// Represents the main form of the VSP application.
         /// </summary>
@@ -106,12 +108,16 @@ namespace VSP.Presentation.Forms
             if (securityComponent.IsAdmin() == false)
             {
                 lblSettings.Visible = false;
+                lblQA.Visible = false;
             }
 
             HandleAppVersion();
 
             //Start app with the dashboard tab
             tabMain.SelectedIndex = 8;
+
+            CurrentTabLabel = lblClients; // Clients tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             SetDefaultComboBoxValues();
         }
@@ -252,15 +258,29 @@ namespace VSP.Presentation.Forms
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label.BackColor = System.Drawing.Color.Gainsboro;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.DarkGray;
+            }
         }
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.ControlText;
-            label.BackColor = System.Drawing.Color.Silver;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
+        private void highlightSelectedTabLabel(object sender)
+        {
+            Label label = (Label)sender;
+            CurrentTabLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            CurrentTabLabel.BackColor = System.Drawing.Color.Transparent;
+            label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label.BackColor = System.Drawing.Color.Gainsboro;
+            CurrentTabLabel = label;
         }
 
         private void ReportTypeMenuItem_MouseEnter(object sender, EventArgs e)
@@ -293,11 +313,13 @@ namespace VSP.Presentation.Forms
 
         private void lblAdvisorsClients_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabMain.SelectedIndex = 2;
         }
 
         private void label49_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabMain.SelectedIndex = 4;
         }
 
@@ -360,6 +382,7 @@ namespace VSP.Presentation.Forms
 
         private void label33_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabMain.SelectedIndex = 3;
         }
 
@@ -389,36 +412,42 @@ namespace VSP.Presentation.Forms
 
         private void lblClients_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabMain.SelectedTab = tabMain.TabPages["tabClients"];
             dgvClients.Focus();
         }
 
         private void lblRks_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabMain.SelectedTab = tabMain.TabPages["tabRks"];
             dgvRecordKeepers.Focus();
         }
 
         private void lblAuditors_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabMain.SelectedTab = tabMain.TabPages["tabAuditors"];
             dgvAuditors.Focus();
         }
 
         private void lblAdvisors_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabMain.SelectedTab = tabMain.TabPages["tabAdvisors"];
             dgvPlanAdvisors.Focus();
         }
 
         private void lblSearch_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabMain.SelectedTab = tabMain.TabPages["tabSearch"];
             dgvSearches.Focus();
         }
 
         private void lblSettings_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabMain.SelectedTab = tabMain.TabPages["tabSettings"];
             cboUsersViews.SelectedIndex = 0;
             LoadDgvUsers();
@@ -435,6 +464,7 @@ namespace VSP.Presentation.Forms
 
         private void label89_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlSettings.SelectedTab = tabControlSettings.TabPages["tabUsers"];
             cboUsersViews.SelectedIndex = 0;
             LoadDgvUsers();
@@ -443,6 +473,7 @@ namespace VSP.Presentation.Forms
 
         private void label1_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlSettings.SelectedTab = tabControlSettings.TabPages["tabServices"];
             cboServiceViews.SelectedIndex = 0;
             LoadDgvServices();
@@ -1132,7 +1163,7 @@ namespace VSP.Presentation.Forms
             }
         }
 
-        private void label27_Click(object sender, EventArgs e)
+        private void lblQA_Click(object sender, EventArgs e)
         {
             frmQualityAssurance frmQA = new frmQualityAssurance(this);
         }

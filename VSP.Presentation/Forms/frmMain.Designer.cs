@@ -136,6 +136,7 @@
             this.pnlAppStatus = new System.Windows.Forms.Panel();
             this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.pnlMainMnu = new System.Windows.Forms.Panel();
+            this.lblQA = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblAdvisors = new System.Windows.Forms.Label();
             this.lblAuditors = new System.Windows.Forms.Label();
@@ -170,7 +171,6 @@
             this.btnRemoveUser = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnSaveAssetGroup = new System.Windows.Forms.Button();
-            this.label27 = new System.Windows.Forms.Label();
             this.tabMain.SuspendLayout();
             this.tabClients.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -1801,7 +1801,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMainMnu.BackColor = System.Drawing.Color.Silver;
             this.pnlMainMnu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMainMnu.Controls.Add(this.label27);
+            this.pnlMainMnu.Controls.Add(this.lblQA);
             this.pnlMainMnu.Controls.Add(this.lblSearch);
             this.pnlMainMnu.Controls.Add(this.lblAdvisors);
             this.pnlMainMnu.Controls.Add(this.lblAuditors);
@@ -1812,6 +1812,20 @@
             this.pnlMainMnu.Name = "pnlMainMnu";
             this.pnlMainMnu.Size = new System.Drawing.Size(1036, 53);
             this.pnlMainMnu.TabIndex = 21;
+            // 
+            // lblQA
+            // 
+            this.lblQA.AutoSize = true;
+            this.lblQA.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblQA.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQA.Location = new System.Drawing.Point(507, 15);
+            this.lblQA.Name = "lblQA";
+            this.lblQA.Size = new System.Drawing.Size(42, 25);
+            this.lblQA.TabIndex = 2;
+            this.lblQA.Text = "QA";
+            this.lblQA.Click += new System.EventHandler(this.lblQA_Click);
+            this.lblQA.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
+            this.lblQA.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
             // 
             // lblSearch
             // 
@@ -2319,18 +2333,6 @@
             this.btnSaveAssetGroup.TabIndex = 86;
             this.btnSaveAssetGroup.UseVisualStyleBackColor = false;
             // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label27.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(507, 15);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(42, 25);
-            this.label27.TabIndex = 2;
-            this.label27.Text = "QA";
-            this.label27.Click += new System.EventHandler(this.label27_Click);
-            // 
             // frmMain
             // 
             this.AllowDrop = true;
@@ -2550,6 +2552,6 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.ComboBox cboSearchViews;
         private VSP.Presentation.Forms.FeedbackButton btnFeedback;
-        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label lblQA;
     }
 }
