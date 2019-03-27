@@ -32,6 +32,7 @@ namespace VSP.Presentation.Forms
 
         private frmMain frmMain_Parent;
         public PlanAuditor CurrentPlanAuditor;
+        private Label CurrentTabLabel;
 
         /// <summary>
         /// 
@@ -58,12 +59,16 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
-            PreloadCbos();
-
             CurrentPlanAuditor = new PlanAuditor();
             CurrentPlanAuditor.PlanId = plan.PlanId;
 
             cboPlan.Text = plan.Name + " - " + plan.Description;
+
+            cboFeeViews.SelectedIndex = 0;
+            PreloadCbos();
+
+            CurrentTabLabel = label46; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -95,9 +100,10 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
-            PreloadCbos();
-
             CurrentPlanAuditor = planAuditor;
+
+            cboFeeViews.SelectedIndex = 0;
+            PreloadCbos();
 
             if (CurrentPlanAuditor.PlanId != null)
             {
@@ -120,6 +126,9 @@ namespace VSP.Presentation.Forms
             {
                 txtDateRemoved.Text = ((DateTime)CurrentPlanAuditor.DateRemoved).ToString("MM/dd/yyyy");
             }
+
+            CurrentTabLabel = label46; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -221,23 +230,39 @@ namespace VSP.Presentation.Forms
 
         private void label46_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlClientDetail.SelectedIndex = 0;
+            tabClientSummary.Focus();
 
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label.BackColor = System.Drawing.Color.Gainsboro;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.DarkGray;
+            }
         }
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.ControlText;
-            label.BackColor = System.Drawing.Color.Transparent;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
+        private void highlightSelectedTabLabel(object sender)
+        {
+            Label label = (Label)sender;
+            CurrentTabLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            CurrentTabLabel.BackColor = System.Drawing.Color.Transparent;
+            label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label.BackColor = System.Drawing.Color.Gainsboro;
+            CurrentTabLabel = label;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -302,7 +327,134 @@ namespace VSP.Presentation.Forms
 
             CurrentPlanAuditor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
-            this.Close();
+            //this.Close();
         }
-	}
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            highlightSelectedTabLabel(sender);
+            tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabFees"];
+            dgvFees.Focus();
+        }
+
+        private void LoadDgvFees()
+        {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvFees.CurrentCell != null)
+            {
+                currentCellRow = dgvFees.CurrentCell.RowIndex;
+                currentCellCol = dgvFees.CurrentCell.ColumnIndex;
+            }
+
+            DataTable dataTable = new DataTable();
+
+            /// Set the datatable based on the SelectedIndex of <see cref="cboInvestmentViews"/>.
+            switch (cboFeeViews.SelectedIndex)
+            {
+                case 0:
+                    dataTable = PlanAuditorFee.GetAssociatedActive(CurrentPlanAuditor);
+                    break;
+                case 1:
+                    dataTable = PlanAuditorFee.GetAssociatedActive(CurrentPlanAuditor);
+                    break;
+                default:
+                    return;
+            }
+
+            dgvFees.DataSource = dataTable;
+
+            // Display/order the columns.
+            dgvFees.Columns["PlanAuditorFeeId"].Visible = false;
+            dgvFees.Columns["PlanAuditorId"].Visible = false;
+            dgvFees.Columns["CreatedBy"].Visible = false;
+            dgvFees.Columns["ModifiedBy"].Visible = false;
+            dgvFees.Columns["StateCode"].Visible = false;
+
+            // Display/order the columns.
+            dgvFees.Columns["Notes"].Visible = false;
+
+            dgvFees.Columns["Name"].DisplayIndex = 0;
+
+            dgvFees.Columns["Fee"].DisplayIndex = 1;
+
+            dgvFees.Columns["Benchmark25Fee"].DisplayIndex = 2;
+            dgvFees.Columns["Benchmark25Fee"].HeaderText = "25% Benchmark";
+
+            dgvFees.Columns["Benchmark50Fee"].DisplayIndex = 3;
+            dgvFees.Columns["Benchmark50Fee"].HeaderText = "50% Benchmark";
+
+            dgvFees.Columns["Benchmark75Fee"].DisplayIndex = 4;
+            dgvFees.Columns["Benchmark75Fee"].HeaderText = "75% Benchmark";
+
+            dgvFees.Columns["RevenueSharingPaid"].DisplayIndex = 5;
+            dgvFees.Columns["RevenueSharingPaid"].HeaderText = "Revenue Sharing Paid";
+
+            dgvFees.Columns["ForfeituresPaid"].DisplayIndex = 6;
+            dgvFees.Columns["ForfeituresPaid"].HeaderText = "Forfeitures Paid";
+
+            dgvFees.Columns["ParticipantsPaid"].DisplayIndex = 7;
+            dgvFees.Columns["ParticipantsPaid"].HeaderText = "Participants Paid";
+
+            dgvFees.Columns["PlanSponsorPaid"].DisplayIndex = 8;
+            dgvFees.Columns["PlanSponsorPaid"].HeaderText = "Plan Sponsor Paid";
+
+            dgvFees.Columns["AsOfDate"].DisplayIndex = 9;
+            dgvFees.Columns["ModifiedOn"].DisplayIndex = 10;
+            dgvFees.Columns["CreatedOn"].DisplayIndex = 11;
+
+            if (dgvFees.RowCount > 0 && dgvFees.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvFees.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvFees.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvFees.CurrentCell = dgvFees.FirstDisplayedCell;
+                }
+            }
+        }
+
+        private void cboFeeViews_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDgvFees();
+        }
+
+        private void btnNewFee_Click(object sender, EventArgs e)
+        {
+            frmPlanAuditorFee frmPlanAuditorFee = new frmPlanAuditorFee(frmMain_Parent, CurrentPlanAuditor);
+            frmPlanAuditorFee.FormClosed += frmPlanAuditorFee_FormClosed;
+        }
+
+        private void frmPlanAuditorFee_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDgvFees();
+        }
+
+        private void btnDeleteFee_Click(object sender, EventArgs e)
+        {
+            int index = dgvFees.CurrentRow.Index;
+            Guid planAudFeeId = new Guid(dgvFees.Rows[index].Cells["PlanAuditorFeeId"].Value.ToString());
+            PlanAuditorFee planAudFee = new PlanAuditorFee(planAudFeeId);
+
+            DialogResult result = MessageBox.Show("Are you sure you wish to delete the selected plan Auditor fee?", "Attention", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                planAudFee.DeleteRecordFromDatabase();
+                LoadDgvFees();
+            }
+        }
+
+        private void dgvFees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvFees.CurrentRow.Index;
+            Guid planAudFeeId = new Guid(dgvFees.Rows[index].Cells["PlanAuditorFeeId"].Value.ToString());
+            PlanAuditorFee planAudFee = new PlanAuditorFee(planAudFeeId);
+            frmPlanAuditorFee frmPlanAuditorFee = new frmPlanAuditorFee(frmMain_Parent, planAudFee);
+            frmPlanAuditorFee.FormClosed += frmPlanAuditorFee_FormClosed;
+        }
+    }
 }

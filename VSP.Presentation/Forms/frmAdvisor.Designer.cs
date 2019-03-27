@@ -36,7 +36,9 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.tabSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblAccountInformationHeader = new System.Windows.Forms.Label();
+            this.txtNotes = new System.Windows.Forms.RichTextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.RichTextBox();
             this.pnlSummaryTabHeader = new System.Windows.Forms.Panel();
@@ -53,6 +55,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -82,6 +85,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnFeedback);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Location = new System.Drawing.Point(0, 667);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -237,13 +241,25 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.lblAccountInformationHeader);
+            this.panel2.Controls.Add(this.txtNotes);
             this.panel2.Controls.Add(this.label24);
             this.panel2.Controls.Add(this.txtName);
             this.panel2.Location = new System.Drawing.Point(2, 46);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Arial", 9F);
+            this.label2.Location = new System.Drawing.Point(19, 62);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 18);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "Notes:";
             // 
             // lblAccountInformationHeader
             // 
@@ -256,6 +272,23 @@
             this.lblAccountInformationHeader.Size = new System.Drawing.Size(82, 19);
             this.lblAccountInformationHeader.TabIndex = 40;
             this.lblAccountInformationHeader.Text = "Summary";
+            // 
+            // txtNotes
+            // 
+            this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNotes.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtNotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNotes.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtNotes.ForeColor = System.Drawing.Color.Black;
+            this.txtNotes.Location = new System.Drawing.Point(136, 61);
+            this.txtNotes.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNotes.MaxLength = 4000;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtNotes.Size = new System.Drawing.Size(814, 200);
+            this.txtNotes.TabIndex = 55;
+            this.txtNotes.Text = "";
             // 
             // label24
             // 
@@ -512,7 +545,19 @@
             this.label12.TabIndex = 40;
             this.label12.Text = "Summary";
             // 
-            // frmPlanAdvisor
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 61;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
+            // 
+            // frmAdvisor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -526,7 +571,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(755, 595);
-            this.Name = "frmPlanAdvisor";
+            this.Name = "frmAdvisor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Advisor";
             this.panel4.ResumeLayout(false);
@@ -582,5 +627,8 @@
         public System.Windows.Forms.Label label10;
         public System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button1;
-	}
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.RichTextBox txtNotes;
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
+    }
 }

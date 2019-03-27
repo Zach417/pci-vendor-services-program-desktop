@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataIntegrationHub.Business">
+      <HintPath>\\PC03\Common Ground\IT\Libraries\DataIntegrationHub.Business.dll</HintPath>
+    </Reference>
     <Reference Include="PensionConsultants.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>\\PC03\Common Ground\IT\Libraries\PensionConsultants.Data.dll</HintPath>
@@ -48,27 +51,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Access.cs" />
+    <Compile Include="Components\ErrorHandler.cs" />
     <Compile Include="Entities\Advisor.cs" />
+    <Compile Include="Entities\ApplicationError.cs" />
     <Compile Include="Entities\DatabaseEntity.cs" />
     <Compile Include="Entities\IDatabaseEntity.cs" />
     <Compile Include="Entities\Auditor.cs" />
     <Compile Include="Entities\AdvisorService.cs" />
     <Compile Include="Entities\PlanAdvisor.cs" />
+    <Compile Include="Entities\PlanOtherFee.cs" />
+    <Compile Include="Entities\PlanAuditorFee.cs" />
     <Compile Include="Entities\PlanAdvisorFee.cs" />
     <Compile Include="Entities\PlanAuditor.cs" />
     <Compile Include="Entities\PlanContribution.cs" />
     <Compile Include="Entities\PlanDistribution.cs" />
     <Compile Include="Entities\PlanParticipantsActive.cs" />
     <Compile Include="Entities\PlanParticipantsEligible.cs" />
-    <Compile Include="Entities\PlanRecordKeeper.cs" />
+    <Compile Include="Entities\PlanRecordKeeperProduct.cs" />
+    <Compile Include="Entities\Feedback.cs" />
     <Compile Include="Entities\SearchBid.cs" />
     <Compile Include="Entities\SearchBidQuestion.cs" />
     <Compile Include="Entities\SearchFund.cs" />
     <Compile Include="Entities\SearchQuestion.cs" />
     <Compile Include="Entities\SearchRecordKeeper.cs" />
     <Compile Include="Entities\SearchService.cs" />
-    <Compile Include="Entities\PlanRecordKeeperService.cs" />
-    <Compile Include="Entities\PlanRecordKeeperFee.cs" />
+    <Compile Include="Entities\PlanRecordKeeperProductService.cs" />
+    <Compile Include="Entities\PlanRecordKeeperProductFee.cs" />
     <Compile Include="Entities\RecordKeeper.cs" />
     <Compile Include="Entities\Search.cs" />
     <Compile Include="Entities\SecurityRole.cs" />

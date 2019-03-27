@@ -12,10 +12,8 @@ namespace VSP.Business.Entities
 {
     public class Auditor : DatabaseEntity
     {
-        public string GeneralInformation;
-        public string RetirementBusiness;
-        public string Security;
-        public string ValueBalance;
+        public Guid AuditorId;
+        public string Notes;
 
         private static string _tableName = "Auditor";
 
@@ -37,10 +35,8 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("GeneralInformation", this.GeneralInformation);
-            base.AddColumn("RetirementBusiness", this.RetirementBusiness);
-            base.AddColumn("Security", this.Security);
-            base.AddColumn("ValueBalance", this.ValueBalance);
+            base.AddColumn("AuditorId", this.AuditorId);
+            base.AddColumn("Notes", this.Notes);
         }
 
         /// <summary>
@@ -48,10 +44,8 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.GeneralInformation = (string)base.GetColumn("GeneralInformation");
-            this.RetirementBusiness = (string)base.GetColumn("RetirementBusiness");
-            this.Security = (string)base.GetColumn("Security");
-            this.ValueBalance = (string)base.GetColumn("ValueBalance");
+            this.AuditorId = (Guid)base.GetColumn("AuditorId");
+            this.Notes = (string)base.GetColumn("Notes");
         }
 
         public static DataTable GetActive()

@@ -18,13 +18,14 @@
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlanAdvisor));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label25 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.label38 = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabFees = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnNewFee = new System.Windows.Forms.Button();
@@ -60,6 +60,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -89,6 +90,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnFeedback);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Location = new System.Drawing.Point(0, 667);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -122,6 +124,22 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(968, 53);
             this.panel3.TabIndex = 58;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label5.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(117, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 25);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Fees";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.label5.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
+            this.label5.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
             // 
             // label46
             // 
@@ -433,22 +451,6 @@
             this.tabControlClientDetail.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlClientDetail.TabIndex = 37;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label5.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(117, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 25);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Fees";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            this.label5.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
-            this.label5.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
-            // 
             // tabFees
             // 
             this.tabFees.Controls.Add(this.panel6);
@@ -491,6 +493,7 @@
             this.btnNewFee.TabIndex = 74;
             this.btnNewFee.Text = "New";
             this.btnNewFee.UseVisualStyleBackColor = false;
+            this.btnNewFee.Click += new System.EventHandler(this.btnNewFee_Click);
             // 
             // btnDeleteFee
             // 
@@ -506,6 +509,7 @@
             this.btnDeleteFee.TabIndex = 75;
             this.btnDeleteFee.Text = "Delete";
             this.btnDeleteFee.UseVisualStyleBackColor = false;
+            this.btnDeleteFee.Click += new System.EventHandler(this.btnDeleteFee_Click);
             // 
             // dgvFees
             // 
@@ -517,23 +521,23 @@
             this.dgvFees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFees.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvFees.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFees.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFees.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFees.EnableHeadersVisualStyles = false;
             this.dgvFees.Location = new System.Drawing.Point(8, 34);
             this.dgvFees.Margin = new System.Windows.Forms.Padding(2);
@@ -547,6 +551,7 @@
             this.dgvFees.ShowEditingIcon = false;
             this.dgvFees.Size = new System.Drawing.Size(944, 504);
             this.dgvFees.TabIndex = 69;
+            this.dgvFees.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFees_CellDoubleClick);
             // 
             // label7
             // 
@@ -613,6 +618,18 @@
             this.label14.Size = new System.Drawing.Size(152, 38);
             this.label14.TabIndex = 40;
             this.label14.Text = "Summary";
+            // 
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 61;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
             // 
             // frmPlanAdvisor
             // 
@@ -691,5 +708,6 @@
         private System.Windows.Forms.Panel panel7;
         public System.Windows.Forms.Label label8;
         public System.Windows.Forms.Label label14;
-	}
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
+    }
 }

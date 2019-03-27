@@ -32,6 +32,7 @@ namespace VSP.Presentation.Forms
 
         private frmMain frmMain_Parent;
         public Product CurrentProduct;
+        private Label CurrentTabLabel;
 
         public void frmProduct_FormLoaded()
         {
@@ -69,6 +70,9 @@ namespace VSP.Presentation.Forms
 
             lblMenuServices.Visible = false;
 
+            CurrentTabLabel = lblMenuSummary; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
+
             ss.Close();
             this.Show();
         }
@@ -104,6 +108,9 @@ namespace VSP.Presentation.Forms
 
             cboServicesView.SelectedIndex = 0;
             LoadDgvServices(true);
+
+            CurrentTabLabel = lblMenuSummary; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -184,29 +191,47 @@ namespace VSP.Presentation.Forms
 
         private void lblMenuSummary_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabSummary"];
+            tabSummary.Focus();
 
         }
 
         private void lblMenuServices_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabServices"];
+            dgvServices.Focus();
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label.BackColor = System.Drawing.Color.Gainsboro;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.DarkGray;
+            }
         }
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.ControlText;
-            label.BackColor = System.Drawing.Color.Transparent;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
+        private void highlightSelectedTabLabel(object sender)
+        {
+            Label label = (Label)sender;
+            CurrentTabLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            CurrentTabLabel.BackColor = System.Drawing.Color.Transparent;
+            label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label.BackColor = System.Drawing.Color.Gainsboro;
+            CurrentTabLabel = label;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -248,7 +273,7 @@ namespace VSP.Presentation.Forms
                 }
             }
 
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
@@ -258,6 +283,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvServices(bool refresh = false)
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvServices.CurrentCell != null)
+            {
+                currentCellRow = dgvServices.CurrentCell.RowIndex;
+                currentCellCol = dgvServices.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboServicesView"/>.
@@ -314,6 +347,19 @@ namespace VSP.Presentation.Forms
                     }
 
                     rowIndex++;
+                }
+            }
+
+            if (dgvServices.RowCount > 0 && dgvServices.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvServices.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvServices.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvServices.CurrentCell = dgvServices.FirstDisplayedCell;
                 }
             }
         }

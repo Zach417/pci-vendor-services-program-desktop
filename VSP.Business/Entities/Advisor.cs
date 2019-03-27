@@ -12,6 +12,7 @@ namespace VSP.Business.Entities
 {
     public class Advisor : DatabaseEntity
     {
+        public string Notes;
         //public string GeneralInformation;
 
         private static string _tableName = "Advisor";
@@ -34,6 +35,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
+            base.AddColumn("Notes", this.Notes);
             //base.AddColumn("GeneralInformation", this.GeneralInformation);
         }
 
@@ -42,6 +44,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
+            this.Notes = (string)base.GetColumn("Notes");
             //this.GeneralInformation = (string)base.GetColumn("GeneralInformation");
         }
 

@@ -32,6 +32,7 @@ namespace VSP.Presentation.Forms
 
         private frmMain frmMain_Parent;
         public VSP.Business.Entities.Auditor CurrentAuditor;
+        private Label CurrentTabLabel;
 
         public frmAuditor(frmMain mf, VSP.Business.Entities.Auditor auditor, FormClosedEventHandler Close = null)
         {
@@ -57,12 +58,13 @@ namespace VSP.Presentation.Forms
 
             CurrentAuditor = auditor;
             txtName.Text = dihAuditor.Name;
-            txtGeneralInformation.Text = CurrentAuditor.GeneralInformation;
-            txtRetirementBusiness.Text = CurrentAuditor.RetirementBusiness;
-            txtSecurity.Text = CurrentAuditor.Security;
-            txtValueBalance.Text = CurrentAuditor.ValueBalance;
+            txtNotes.Text = CurrentAuditor.Notes;
 
             cboIssueViews.SelectedIndex = 0;
+            txtNotes.Focus();
+
+            CurrentTabLabel = lblMenuSummary; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -143,39 +145,54 @@ namespace VSP.Presentation.Forms
 
         private void lblMenuSummary_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabSummary"];
+            txtNotes.Focus();
 
         }
 
         private void lblMenuIssues_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabIssues"];
+            dgvIssues.Focus();
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label.BackColor = System.Drawing.Color.Gainsboro;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.DarkGray;
+            }
         }
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.ControlText;
-            label.BackColor = System.Drawing.Color.Transparent;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
+        private void highlightSelectedTabLabel(object sender)
+        {
+            Label label = (Label)sender;
+            CurrentTabLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            CurrentTabLabel.BackColor = System.Drawing.Color.Transparent;
+            label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label.BackColor = System.Drawing.Color.Gainsboro;
+            CurrentTabLabel = label;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CurrentAuditor.GeneralInformation = txtGeneralInformation.Text;
-            CurrentAuditor.RetirementBusiness = txtRetirementBusiness.Text;
-            CurrentAuditor.Security = txtSecurity.Text;
-            CurrentAuditor.ValueBalance = txtValueBalance.Text;
+            CurrentAuditor.Notes = txtNotes.Text;
             CurrentAuditor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
@@ -185,6 +202,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvIssues()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvIssues.CurrentCell != null)
+            {
+                currentCellRow = dgvIssues.CurrentCell.RowIndex;
+                currentCellCol = dgvIssues.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboIssueViews"/>.
@@ -231,7 +256,6 @@ namespace VSP.Presentation.Forms
             // Display/order the columns.
             dgvIssues.Columns["ServiceIssueId"].Visible = false;
             dgvIssues.Columns["PlanId"].Visible = false;
-            dgvIssues.Columns["RecordKeeperId"].Visible = false;
             dgvIssues.Columns["AuditorId"].Visible = false;
             dgvIssues.Columns["DescriptionValue"].Visible = false;
             dgvIssues.Columns["CreatedBy"].Visible = false;
@@ -242,6 +266,19 @@ namespace VSP.Presentation.Forms
             dgvIssues.Columns["Plan"].DisplayIndex = 1;
             dgvIssues.Columns["AsOfDate"].DisplayIndex = 2;
             dgvIssues.Columns["ModifiedOn"].DisplayIndex = 3;
+
+            if (dgvIssues.RowCount > 0 && dgvIssues.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvIssues.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvIssues.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvIssues.CurrentCell = dgvIssues.FirstDisplayedCell;
+                }
+            }
         }
 
         private void frmServiceIssue_FormClosed(object sender, FormClosedEventArgs e)

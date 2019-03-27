@@ -34,6 +34,7 @@ namespace VSP.Presentation.Forms
 
         private frmMain frmMain_Parent;
         public Customer CurrentCustomer;
+        private Label CurrentTabLabel;
 
         public frmAccount(frmMain mf, Customer customer, FormClosedEventHandler Close = null)
         {
@@ -76,6 +77,10 @@ namespace VSP.Presentation.Forms
             txtAddressZip.Text = CurrentCustomer.Address.ZipCode;
 
             cboPlanViews.SelectedIndex = 0;
+            tabSummary.Focus();
+
+            CurrentTabLabel = label46; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -133,14 +138,18 @@ namespace VSP.Presentation.Forms
 
         private void label46_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlDetail.SelectedIndex = 0;
+            tabSummary.Focus();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlDetail.SelectedIndex = 1;
+            dgvPlans.Focus();
         }
 
         private void CloseFormButton_MouseEnter(object sender, EventArgs e)
@@ -189,15 +198,29 @@ namespace VSP.Presentation.Forms
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label.BackColor = System.Drawing.Color.Gainsboro;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.DarkGray;
+            }
         }
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.ControlText;
-            label.BackColor = System.Drawing.Color.Transparent;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
+        private void highlightSelectedTabLabel(object sender)
+        {
+            Label label = (Label)sender;
+            CurrentTabLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            CurrentTabLabel.BackColor = System.Drawing.Color.Transparent;
+            label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label.BackColor = System.Drawing.Color.Gainsboro;
+            CurrentTabLabel = label;
         }
 
         private void label38_Click(object sender, EventArgs e)
@@ -207,6 +230,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvPlans()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvPlans.CurrentCell != null)
+            {
+                currentCellRow = dgvPlans.CurrentCell.RowIndex;
+                currentCellCol = dgvPlans.CurrentCell.ColumnIndex;
+            }
+
             List<Plan> plans = Plan.Get().FindAll(x => x.CustomerId == CurrentCustomer.CustomerId);
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboPlanViews"/>.
@@ -246,6 +277,19 @@ namespace VSP.Presentation.Forms
             dgvPlans.Columns["Name"].DisplayIndex = 0;
             dgvPlans.Columns["Type"].DisplayIndex = 1;
             dgvPlans.Columns["Description"].DisplayIndex = 2;
+
+            if (dgvPlans.RowCount > 0 && dgvPlans.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvPlans.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvPlans.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvPlans.CurrentCell = dgvPlans.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboPlanViews_SelectedIndexChanged(object sender, EventArgs e)
@@ -255,16 +299,25 @@ namespace VSP.Presentation.Forms
 
         private void dgvPlans_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = dgvPlans.CurrentRow.Index;
-            Guid planId = new Guid(dgvPlans.Rows[index].Cells["PlanId"].Value.ToString());
-            Plan plan = new Plan(planId);
-            frmPlan frmPlan = new frmPlan(frmMain_Parent, plan);
-            frmPlan.FormClosed += frmPlan_FormClosed;
+            // Handle case of clicking header
+            if (e.RowIndex >= 0)
+            {
+                int index = dgvPlans.CurrentRow.Index;
+                Guid planId = new Guid(dgvPlans.Rows[index].Cells["PlanId"].Value.ToString());
+                Plan plan = new Plan(planId);
+                frmPlan frmPlan = new frmPlan(frmMain_Parent, plan);
+                frmPlan.FormClosed += frmPlan_FormClosed;
+            }
         }
 
         private void frmPlan_FormClosed(object sender, FormClosedEventArgs e)
         {
             LoadDgvPlans();
         }
-	}
+
+        private void btnFeedback_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

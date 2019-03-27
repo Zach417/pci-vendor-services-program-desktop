@@ -69,5 +69,36 @@ namespace VSP.Business.Entities
             string sql = @"SELECT * FROM " + _tableName + " WHERE ProductId = '" + product.Id + "'";
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
+
+        public static DataTable GetAssociatedOfferedActive(Product product)
+        {
+            string sql = @"SELECT * FROM " + _tableName +
+                " INNER JOIN " + Service._tableName + " ON ProductService.ServiceId = Service.ServiceId" +
+                " WHERE ProductId = '" + product.Id + "'" +
+                " AND ServiceOffered = 1" +
+                " AND Service.StateCode = 0" +
+                " ORDER BY Category, Name";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
+        }
+
+        public static DataTable GetAssociatedOfferedInactive(Product product)
+        {
+            string sql = @"SELECT * FROM " + _tableName +
+                " INNER JOIN " + Service._tableName + " ON ProductService.ServiceId = Service.ServiceId" +
+                " WHERE ProductId = '" + product.Id + "'" +
+                " AND ServiceOffered = 1" +
+                " AND Service.StateCode = 1" +
+                " ORDER BY Category, Name";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
+        }
+
+        public static bool IsServiceOffered(Guid productId, Guid serviceId)
+        {
+            string sql = @"SELECT * FROM " + _tableName + 
+                " WHERE ProductId = '" + productId + 
+                "' AND ServiceId = '" + serviceId +
+                "' AND ServiceOffered = 1";
+            return (Access.VspDbAccess.ExecuteSqlQuery(sql).Rows.Count == 1);
+        }
     }
 }

@@ -33,6 +33,7 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.tabClientSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cboRecordKeeper = new System.Windows.Forms.ComboBox();
             this.lblAccountInformationHeader = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -42,7 +43,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
-            this.cboRecordKeeper = new System.Windows.Forms.ComboBox();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -68,6 +69,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnFeedback);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Location = new System.Drawing.Point(0, 667);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -216,6 +218,20 @@
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
             // 
+            // cboRecordKeeper
+            // 
+            this.cboRecordKeeper.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboRecordKeeper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRecordKeeper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboRecordKeeper.Items.AddRange(new object[] {
+            "Active Associated Issues",
+            "Inactive Associated Issues"});
+            this.cboRecordKeeper.Location = new System.Drawing.Point(136, 59);
+            this.cboRecordKeeper.Margin = new System.Windows.Forms.Padding(2);
+            this.cboRecordKeeper.Name = "cboRecordKeeper";
+            this.cboRecordKeeper.Size = new System.Drawing.Size(814, 21);
+            this.cboRecordKeeper.TabIndex = 72;
+            // 
             // lblAccountInformationHeader
             // 
             this.lblAccountInformationHeader.AutoSize = true;
@@ -342,19 +358,17 @@
             this.tabControlClientDetail.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlClientDetail.TabIndex = 37;
             // 
-            // cboRecordKeeper
+            // btnFeedback
             // 
-            this.cboRecordKeeper.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cboRecordKeeper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRecordKeeper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboRecordKeeper.Items.AddRange(new object[] {
-            "Active Associated Issues",
-            "Inactive Associated Issues"});
-            this.cboRecordKeeper.Location = new System.Drawing.Point(136, 59);
-            this.cboRecordKeeper.Margin = new System.Windows.Forms.Padding(2);
-            this.cboRecordKeeper.Name = "cboRecordKeeper";
-            this.cboRecordKeeper.Size = new System.Drawing.Size(814, 21);
-            this.cboRecordKeeper.TabIndex = 72;
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 62;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
             // 
             // frmSearchRecordKeeper
             // 
@@ -412,5 +426,6 @@
         public System.Windows.Forms.TabControl tabControlClientDetail;
         private System.Windows.Forms.Button btnSave;
         public System.Windows.Forms.ComboBox cboRecordKeeper;
-	}
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
+    }
 }

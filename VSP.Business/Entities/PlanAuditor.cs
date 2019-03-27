@@ -12,6 +12,7 @@ namespace VSP.Business.Entities
 {
     public class PlanAuditor : DatabaseEntity
     {
+        public Guid PlanAuditorId;
         public Guid AuditorId;
         public Guid PlanId;
         public DateTime? DateAdded;
@@ -37,6 +38,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
+            base.AddColumn("PlanAuditorId", this.PlanAuditorId);
             base.AddColumn("AuditorId", this.AuditorId);
             base.AddColumn("PlanId", this.PlanId);
             base.AddColumn("DateAdded", this.DateAdded);
@@ -48,6 +50,7 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
+            this.PlanAuditorId = (Guid)base.GetColumn("PlanAuditorId");
             this.AuditorId = (Guid)base.GetColumn("AuditorId");
             this.PlanId = (Guid)base.GetColumn("PlanId");
             this.DateAdded = (DateTime?)base.GetColumn("DateAdded");

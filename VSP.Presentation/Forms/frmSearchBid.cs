@@ -32,6 +32,7 @@ namespace VSP.Presentation.Forms
 
         private frmMain frmMain_Parent;
         public SearchBid CurrentSearchBid;
+        private Label CurrentTabLabel;
 
         /// <summary>
         /// 
@@ -97,6 +98,9 @@ namespace VSP.Presentation.Forms
             }
 
             cboQuestionViews.SelectedIndex = 0;
+
+            CurrentTabLabel = label46; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -177,32 +181,58 @@ namespace VSP.Presentation.Forms
 
         private void label46_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlClientDetail.SelectedIndex = 0;
+            tabClientSummary.Focus();
 
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label.BackColor = System.Drawing.Color.Gainsboro;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.DarkGray;
+            }
         }
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.ControlText;
-            label.BackColor = System.Drawing.Color.Transparent;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
+        private void highlightSelectedTabLabel(object sender)
+        {
+            Label label = (Label)sender;
+            CurrentTabLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            CurrentTabLabel.BackColor = System.Drawing.Color.Transparent;
+            label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label.BackColor = System.Drawing.Color.Gainsboro;
+            CurrentTabLabel = label;
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlClientDetail.SelectedTab = tabQuestions;
+            dgvQuestions.Focus();
         }
 
         private void LoadDgvQuestions()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvQuestions.CurrentCell != null)
+            {
+                currentCellRow = dgvQuestions.CurrentCell.RowIndex;
+                currentCellCol = dgvQuestions.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = SearchBidQuestion.GetAssociated(CurrentSearchBid);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -253,6 +283,19 @@ namespace VSP.Presentation.Forms
                 dgvQuestions.Rows[rowIndex].Cells["Question"].Value = searchQuestion.SubjectValue;
                 rowIndex++;
             }
+
+            if (dgvQuestions.RowCount > 0 && dgvQuestions.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvQuestions.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvQuestions.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvQuestions.CurrentCell = dgvQuestions.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboQuestionViews_SelectedIndexChanged(object sender, EventArgs e)
@@ -282,7 +325,7 @@ namespace VSP.Presentation.Forms
 
             CurrentSearchBid.Notes = txtNotes.Text;
             CurrentSearchBid.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            this.Close();
+            //this.Close();
         }
 	}
 }

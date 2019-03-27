@@ -16,7 +16,7 @@ namespace VSP.Business.Entities
         public string Category;
         public string Type;
 
-        private static string _tableName = "Service";
+        public static string _tableName = "Service";
 
         public Service()
             : base(_tableName)

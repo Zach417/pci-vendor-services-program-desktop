@@ -6,26 +6,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
 using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class PlanRecordKeeperService : DatabaseEntity
+    public class Feedback : DatabaseEntity
     {
-        public Guid PlanRecordKeeperId;
-        public Guid ServiceId;
-        public SqlBoolean ServiceOffered;
+        public string Description;
+        public string Severity;
 
-        private static string _tableName = "PlanRecordKeeperService";
+        private static string _tableName = "Feedback";
 
-        public PlanRecordKeeperService()
+        public Feedback()
             : base(_tableName)
         {
 
         }
 
-        public PlanRecordKeeperService(Guid primaryKey)
+        public Feedback(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -37,10 +35,8 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("PlanRecordKeeperId", this.PlanRecordKeeperId);
-            base.AddColumn("ServiceId", this.ServiceId);
-            base.AddColumn("ServiceOffered", this.ServiceOffered);
-            this.ServiceOffered = (SqlBoolean)base.GetColumn("ServiceOffered");
+            base.AddColumn("Description", this.Description);
+            base.AddColumn("Severity", this.Severity);
         }
 
         /// <summary>
@@ -48,8 +44,8 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.PlanRecordKeeperId = (Guid)base.GetColumn("PlanRecordKeeperId");
-            this.ServiceId = (Guid)base.GetColumn("ServiceId");
+            this.Description = (string)base.GetColumn("Description");
+            this.Severity = (string)base.GetColumn("Severity");
         }
 
         public static DataTable GetActive()
@@ -64,9 +60,9 @@ namespace VSP.Business.Entities
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
 
-        public static DataTable GetAssociated(PlanRecordKeeper planRecordKeeper)
+        public static DataTable GetAll()
         {
-            string sql = @"SELECT * FROM " + _tableName + " WHERE PlanRecordKeeperId = '" + planRecordKeeper.Id + "'";
+            string sql = @"SELECT * FROM " + _tableName;
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

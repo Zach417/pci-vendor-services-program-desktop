@@ -32,6 +32,7 @@ namespace VSP.Presentation.Forms
 
         private frmMain frmMain_Parent;
         public Search CurrentSearch;
+        private Label CurrentTabLabel;
 
         /// <summary>
         /// 
@@ -68,7 +69,9 @@ namespace VSP.Presentation.Forms
             {
                 txtAsOfDate.Text = ((DateTime)CurrentSearch.AsOfDate).ToString("MM/dd/yyyy");
             }
-
+            
+            CurrentTabLabel = label46; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -128,6 +131,11 @@ namespace VSP.Presentation.Forms
             cboQuestionViews.SelectedIndex = 0;
             cboServicesView.SelectedIndex = 0;
             LoadDgvServices(true);
+
+            txtCurrentRkNotes.Focus();
+
+            CurrentTabLabel = label46; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -220,29 +228,45 @@ namespace VSP.Presentation.Forms
 
         private void label46_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlDetail.SelectedIndex = 0;
+            txtCurrentRkNotes.Focus();
 
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label.BackColor = System.Drawing.Color.Gainsboro;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.DarkGray;
+            }
         }
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.ControlText;
-            label.BackColor = System.Drawing.Color.Transparent;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
+        private void highlightSelectedTabLabel(object sender)
+        {
+            Label label = (Label)sender;
+            CurrentTabLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            CurrentTabLabel.BackColor = System.Drawing.Color.Transparent;
+            label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label.BackColor = System.Drawing.Color.Gainsboro;
+            CurrentTabLabel = label;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             Save();
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
@@ -252,26 +276,42 @@ namespace VSP.Presentation.Forms
 
         private void label3_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabServices"];
+            dgvServices.Focus();
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabResults"];
+            dgvResults.Focus();
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabQuestions"];
+            dgvQuestions.Focus();
         }
 
         private void label6_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabFunds"];
+            dgvFunds.Focus();
         }
 
         private void LoadDgvServices(bool refresh = false)
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvServices.CurrentCell != null)
+            {
+                currentCellRow = dgvServices.CurrentCell.RowIndex;
+                currentCellCol = dgvServices.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboServicesView"/>.
@@ -341,6 +381,19 @@ namespace VSP.Presentation.Forms
                     rowIndex++;
                 }
             }
+
+            if (dgvServices.RowCount > 0 && dgvServices.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvServices.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvServices.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvServices.CurrentCell = dgvServices.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboServicesView_SelectedIndexChanged(object sender, EventArgs e)
@@ -350,6 +403,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvResults()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvResults.CurrentCell != null)
+            {
+                currentCellRow = dgvResults.CurrentCell.RowIndex;
+                currentCellCol = dgvResults.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = SearchRecordKeeper.GetAssociated(CurrentSearch);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -403,6 +464,19 @@ namespace VSP.Presentation.Forms
                 dgvResults.Rows[rowIndex].Cells["RecordKeeper"].Value = recordKeeper.Name;
                 dgvResults.Rows[rowIndex].Cells["URL"].Value = "http://vendor.pension-consultants.com/bid/?rk=" + recordKeeper.RecordKeeperId.ToString() + "&s=" + CurrentSearch.Id.ToString();
                 rowIndex++;
+            }
+
+            if (dgvResults.RowCount > 0 && dgvResults.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvResults.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvResults.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvResults.CurrentCell = dgvResults.FirstDisplayedCell;
+                }
             }
         }
 
@@ -513,12 +587,21 @@ namespace VSP.Presentation.Forms
             CurrentSearch.ExecuteSearch(frmMain_Parent.CurrentUser.UserId);
             LoadDgvResults();
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabResults"];
+            dgvResults.Focus();
 
             frmSplashScreen.Close();
         }
 
         private void LoadDgvQuestions()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvQuestions.CurrentCell != null)
+            {
+                currentCellRow = dgvQuestions.CurrentCell.RowIndex;
+                currentCellCol = dgvQuestions.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = SearchQuestion.GetAssociated(CurrentSearch);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -557,6 +640,19 @@ namespace VSP.Presentation.Forms
 
             dgvQuestions.Columns["SubjectValue"].DisplayIndex = 0;
             dgvQuestions.Columns["AnswerValue"].DisplayIndex = 1;
+
+            if (dgvQuestions.RowCount > 0 && dgvQuestions.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvQuestions.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvQuestions.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvQuestions.CurrentCell = dgvQuestions.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboQuestionViews_SelectedIndexChanged(object sender, EventArgs e)
@@ -566,6 +662,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvFunds()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvFunds.CurrentCell != null)
+            {
+                currentCellRow = dgvFunds.CurrentCell.RowIndex;
+                currentCellCol = dgvFunds.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = SearchFund.GetAssociated(CurrentSearch);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -604,6 +708,19 @@ namespace VSP.Presentation.Forms
 
             dgvFunds.Columns["Ticker"].DisplayIndex = 0;
             dgvFunds.Columns["FundName"].DisplayIndex = 1;
+
+            if (dgvFunds.RowCount > 0 && dgvFunds.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvFunds.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvFunds.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvFunds.CurrentCell = dgvFunds.FirstDisplayedCell;
+                }
+            }
         }
 
         private void cboFundViews_SelectedIndexChanged(object sender, EventArgs e)
@@ -717,11 +834,21 @@ namespace VSP.Presentation.Forms
 
         private void label19_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             tabControlDetail.SelectedTab = tabBids;
+            dgvBids.Focus();
         }
 
         private void LoadDgvBids()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvBids.CurrentCell != null)
+            {
+                currentCellRow = dgvBids.CurrentCell.RowIndex;
+                currentCellCol = dgvBids.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = SearchBid.GetAssociated(CurrentSearch);
             var dataTableEnum = dataTable.AsEnumerable();
 
@@ -780,6 +907,19 @@ namespace VSP.Presentation.Forms
                 DataIntegrationHub.Business.Entities.RecordKeeper recordKeeper = new DataIntegrationHub.Business.Entities.RecordKeeper(recordKeeperId);
                 dgvBids.Rows[rowIndex].Cells["RecordKeeper"].Value = recordKeeper.Name;
                 rowIndex++;
+            }
+
+            if (dgvBids.RowCount > 0 && dgvBids.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvBids.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvBids.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvBids.CurrentCell = dgvBids.FirstDisplayedCell;
+                }
             }
         }
 

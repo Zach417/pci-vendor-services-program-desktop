@@ -1,32 +1,38 @@
 ﻿namespace VSP.Presentation.Forms
 {
-    partial class frmPlanRecordKeeper
-	{
-		private System.ComponentModel.IContainer components = null;
-		
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing) {
-				if (components != null) {
-					components.Dispose();
-				}
-			}
-			base.Dispose(disposing);
-		}
-		
-		private void InitializeComponent()
-		{
+    partial class frmPlanRecordKeeperProduct
+    {
+        private System.ComponentModel.IContainer components = null;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlanRecordKeeper));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlanRecordKeeperProduct));
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label25 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblMenuIssues = new System.Windows.Forms.Label();
             this.lblMenuFees = new System.Windows.Forms.Label();
             this.lblMenuServices = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
@@ -36,15 +42,17 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabClientSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dateRemoved = new System.Windows.Forms.DateTimePicker();
+            this.dateAdded = new System.Windows.Forms.DateTimePicker();
+            this.cboProduct = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.cboPlan = new System.Windows.Forms.ComboBox();
             this.cboRecordKeeper = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtDateRemoved = new System.Windows.Forms.RichTextBox();
             this.lblAccountInformationHeader = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.txtDateAdded = new System.Windows.Forms.RichTextBox();
             this.pnlSummaryTabHeader = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
@@ -52,6 +60,7 @@
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
             this.tabServices = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSelectAllServices = new System.Windows.Forms.Button();
             this.dgvServices = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.cboServicesView = new System.Windows.Forms.ComboBox();
@@ -69,9 +78,20 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.tabIssues = new System.Windows.Forms.TabPage();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btnNewIssue = new System.Windows.Forms.Button();
+            this.btnDeleteIssue = new System.Windows.Forms.Button();
+            this.dgvIssues = new System.Windows.Forms.DataGridView();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cboIssueViews = new System.Windows.Forms.ComboBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -87,6 +107,10 @@
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFees)).BeginInit();
             this.panel7.SuspendLayout();
+            this.tabIssues.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).BeginInit();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripSeparator3
@@ -105,6 +129,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnFeedback);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Location = new System.Drawing.Point(0, 667);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -132,6 +157,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.Silver;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.lblMenuIssues);
             this.panel3.Controls.Add(this.lblMenuFees);
             this.panel3.Controls.Add(this.lblMenuServices);
             this.panel3.Controls.Add(this.label46);
@@ -139,6 +165,20 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(968, 53);
             this.panel3.TabIndex = 58;
+            // 
+            // lblMenuIssues
+            // 
+            this.lblMenuIssues.AutoSize = true;
+            this.lblMenuIssues.BackColor = System.Drawing.Color.Transparent;
+            this.lblMenuIssues.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblMenuIssues.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMenuIssues.ForeColor = System.Drawing.Color.Black;
+            this.lblMenuIssues.Location = new System.Drawing.Point(268, 15);
+            this.lblMenuIssues.Name = "lblMenuIssues";
+            this.lblMenuIssues.Size = new System.Drawing.Size(68, 25);
+            this.lblMenuIssues.TabIndex = 81;
+            this.lblMenuIssues.Text = "Issues";
+            this.lblMenuIssues.Click += new System.EventHandler(this.lblMenuIssues_Click);
             // 
             // lblMenuFees
             // 
@@ -250,19 +290,62 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.dateRemoved);
+            this.panel2.Controls.Add(this.dateAdded);
+            this.panel2.Controls.Add(this.cboProduct);
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.cboPlan);
             this.panel2.Controls.Add(this.cboRecordKeeper);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.txtDateRemoved);
             this.panel2.Controls.Add(this.lblAccountInformationHeader);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label24);
-            this.panel2.Controls.Add(this.txtDateAdded);
             this.panel2.Location = new System.Drawing.Point(2, 46);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
+            // 
+            // dateRemoved
+            // 
+            this.dateRemoved.CustomFormat = "MMM dd, yyyy";
+            this.dateRemoved.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateRemoved.Location = new System.Drawing.Point(135, 122);
+            this.dateRemoved.Name = "dateRemoved";
+            this.dateRemoved.ShowCheckBox = true;
+            this.dateRemoved.Size = new System.Drawing.Size(127, 20);
+            this.dateRemoved.TabIndex = 80;
+            // 
+            // dateAdded
+            // 
+            this.dateAdded.CustomFormat = "MMM dd, yyyy";
+            this.dateAdded.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateAdded.Location = new System.Drawing.Point(135, 102);
+            this.dateAdded.Name = "dateAdded";
+            this.dateAdded.ShowCheckBox = true;
+            this.dateAdded.Size = new System.Drawing.Size(127, 20);
+            this.dateAdded.TabIndex = 79;
+            // 
+            // cboProduct
+            // 
+            this.cboProduct.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cboProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboProduct.Location = new System.Drawing.Point(136, 57);
+            this.cboProduct.Margin = new System.Windows.Forms.Padding(2);
+            this.cboProduct.Name = "cboProduct";
+            this.cboProduct.Size = new System.Drawing.Size(814, 21);
+            this.cboProduct.TabIndex = 76;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Arial", 9F);
+            this.label5.Location = new System.Drawing.Point(19, 82);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(113, 18);
+            this.label5.TabIndex = 75;
+            this.label5.Text = "Plan:";
             // 
             // cboPlan
             // 
@@ -272,7 +355,7 @@
             this.cboPlan.Items.AddRange(new object[] {
             "Active Associated Issues",
             "Inactive Associated Issues"});
-            this.cboPlan.Location = new System.Drawing.Point(136, 57);
+            this.cboPlan.Location = new System.Drawing.Point(136, 80);
             this.cboPlan.Margin = new System.Windows.Forms.Padding(2);
             this.cboPlan.Name = "cboPlan";
             this.cboPlan.Size = new System.Drawing.Size(814, 21);
@@ -291,43 +374,27 @@
             this.cboRecordKeeper.Name = "cboRecordKeeper";
             this.cboRecordKeeper.Size = new System.Drawing.Size(814, 21);
             this.cboRecordKeeper.TabIndex = 73;
+            this.cboRecordKeeper.SelectedIndexChanged += new System.EventHandler(this.cboRecordKeeper_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Arial", 9F);
-            this.label4.Location = new System.Drawing.Point(19, 58);
+            this.label4.Location = new System.Drawing.Point(19, 60);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 18);
             this.label4.TabIndex = 56;
-            this.label4.Text = "Plan:";
+            this.label4.Text = "Product:";
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Arial", 9F);
-            this.label2.Location = new System.Drawing.Point(19, 102);
+            this.label2.Location = new System.Drawing.Point(19, 125);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 18);
             this.label2.TabIndex = 54;
             this.label2.Text = "Date Removed:";
-            // 
-            // txtDateRemoved
-            // 
-            this.txtDateRemoved.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDateRemoved.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtDateRemoved.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDateRemoved.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtDateRemoved.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDateRemoved.Location = new System.Drawing.Point(136, 101);
-            this.txtDateRemoved.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDateRemoved.Multiline = false;
-            this.txtDateRemoved.Name = "txtDateRemoved";
-            this.txtDateRemoved.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtDateRemoved.Size = new System.Drawing.Size(814, 19);
-            this.txtDateRemoved.TabIndex = 53;
-            this.txtDateRemoved.Text = "";
             // 
             // lblAccountInformationHeader
             // 
@@ -344,7 +411,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Arial", 9F);
-            this.label3.Location = new System.Drawing.Point(19, 81);
+            this.label3.Location = new System.Drawing.Point(19, 104);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 18);
@@ -360,23 +427,6 @@
             this.label24.Size = new System.Drawing.Size(113, 18);
             this.label24.TabIndex = 52;
             this.label24.Text = "Record Keeper:";
-            // 
-            // txtDateAdded
-            // 
-            this.txtDateAdded.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDateAdded.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtDateAdded.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDateAdded.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtDateAdded.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDateAdded.Location = new System.Drawing.Point(136, 80);
-            this.txtDateAdded.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDateAdded.Multiline = false;
-            this.txtDateAdded.Name = "txtDateAdded";
-            this.txtDateAdded.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtDateAdded.Size = new System.Drawing.Size(814, 19);
-            this.txtDateAdded.TabIndex = 2;
-            this.txtDateAdded.Text = "";
             // 
             // pnlSummaryTabHeader
             // 
@@ -421,9 +471,9 @@
             this.label23.Location = new System.Drawing.Point(-3, 1);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(320, 44);
+            this.label23.Size = new System.Drawing.Size(448, 44);
             this.label23.TabIndex = 0;
-            this.label23.Text = "Plan Record Keeper";
+            this.label23.Text = "Plan Record Keeper Product";
             this.label23.DoubleClick += new System.EventHandler(this.MaximizeForm);
             // 
             // label56
@@ -447,6 +497,7 @@
             this.tabControlClientDetail.Controls.Add(this.tabClientSummary);
             this.tabControlClientDetail.Controls.Add(this.tabServices);
             this.tabControlClientDetail.Controls.Add(this.tabFees);
+            this.tabControlClientDetail.Controls.Add(this.tabIssues);
             this.tabControlClientDetail.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControlClientDetail.Location = new System.Drawing.Point(-6, 0);
             this.tabControlClientDetail.Margin = new System.Windows.Forms.Padding(2);
@@ -475,6 +526,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnSelectAllServices);
             this.panel1.Controls.Add(this.dgvServices);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.cboServicesView);
@@ -482,6 +534,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(968, 545);
             this.panel1.TabIndex = 66;
+            // 
+            // btnSelectAllServices
+            // 
+            this.btnSelectAllServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectAllServices.Location = new System.Drawing.Point(763, 6);
+            this.btnSelectAllServices.Name = "btnSelectAllServices";
+            this.btnSelectAllServices.Size = new System.Drawing.Size(189, 23);
+            this.btnSelectAllServices.TabIndex = 72;
+            this.btnSelectAllServices.Text = "Select/Deselect All Services";
+            this.btnSelectAllServices.UseVisualStyleBackColor = true;
+            this.btnSelectAllServices.Click += new System.EventHandler(this.btnSelectAllServices_Click);
             // 
             // dgvServices
             // 
@@ -493,23 +556,23 @@
             this.dgvServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvServices.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvServices.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvServices.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvServices.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvServices.EnableHeadersVisualStyles = false;
             this.dgvServices.Location = new System.Drawing.Point(8, 34);
             this.dgvServices.Margin = new System.Windows.Forms.Padding(2);
@@ -517,6 +580,8 @@
             this.dgvServices.Name = "dgvServices";
             this.dgvServices.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvServices.RowHeadersVisible = false;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvServices.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvServices.RowTemplate.Height = 24;
             this.dgvServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvServices.ShowEditingIcon = false;
@@ -677,23 +742,23 @@
             this.dgvFees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFees.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvFees.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvFees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFees.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFees.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvFees.EnableHeadersVisualStyles = false;
             this.dgvFees.Location = new System.Drawing.Point(8, 34);
             this.dgvFees.Margin = new System.Windows.Forms.Padding(2);
@@ -775,6 +840,174 @@
             this.label14.TabIndex = 40;
             this.label14.Text = "Summary";
             // 
+            // tabIssues
+            // 
+            this.tabIssues.Controls.Add(this.panel8);
+            this.tabIssues.Controls.Add(this.panel9);
+            this.tabIssues.Location = new System.Drawing.Point(4, 25);
+            this.tabIssues.Name = "tabIssues";
+            this.tabIssues.Padding = new System.Windows.Forms.Padding(3);
+            this.tabIssues.Size = new System.Drawing.Size(981, 600);
+            this.tabIssues.TabIndex = 3;
+            this.tabIssues.Text = "Issues";
+            this.tabIssues.UseVisualStyleBackColor = true;
+            // 
+            // panel8
+            // 
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.btnNewIssue);
+            this.panel8.Controls.Add(this.btnDeleteIssue);
+            this.panel8.Controls.Add(this.dgvIssues);
+            this.panel8.Controls.Add(this.label11);
+            this.panel8.Controls.Add(this.cboIssueViews);
+            this.panel8.Location = new System.Drawing.Point(2, 46);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(968, 545);
+            this.panel8.TabIndex = 60;
+            // 
+            // btnNewIssue
+            // 
+            this.btnNewIssue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewIssue.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNewIssue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewIssue.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewIssue.ForeColor = System.Drawing.Color.Black;
+            this.btnNewIssue.Location = new System.Drawing.Point(790, 4);
+            this.btnNewIssue.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewIssue.Name = "btnNewIssue";
+            this.btnNewIssue.Size = new System.Drawing.Size(78, 26);
+            this.btnNewIssue.TabIndex = 72;
+            this.btnNewIssue.Text = "New";
+            this.btnNewIssue.UseVisualStyleBackColor = false;
+            this.btnNewIssue.Click += new System.EventHandler(this.btnNewIssue_Click);
+            // 
+            // btnDeleteIssue
+            // 
+            this.btnDeleteIssue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteIssue.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDeleteIssue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteIssue.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteIssue.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteIssue.Location = new System.Drawing.Point(874, 4);
+            this.btnDeleteIssue.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteIssue.Name = "btnDeleteIssue";
+            this.btnDeleteIssue.Size = new System.Drawing.Size(78, 26);
+            this.btnDeleteIssue.TabIndex = 73;
+            this.btnDeleteIssue.Text = "Delete";
+            this.btnDeleteIssue.UseVisualStyleBackColor = false;
+            this.btnDeleteIssue.Click += new System.EventHandler(this.btnDeleteIssue_Click);
+            // 
+            // dgvIssues
+            // 
+            this.dgvIssues.AllowUserToAddRows = false;
+            this.dgvIssues.AllowUserToDeleteRows = false;
+            this.dgvIssues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvIssues.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvIssues.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvIssues.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Gadugi", 8.25F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvIssues.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Gadugi", 7.8F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvIssues.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvIssues.EnableHeadersVisualStyles = false;
+            this.dgvIssues.Location = new System.Drawing.Point(8, 34);
+            this.dgvIssues.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvIssues.MultiSelect = false;
+            this.dgvIssues.Name = "dgvIssues";
+            this.dgvIssues.ReadOnly = true;
+            this.dgvIssues.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvIssues.RowHeadersVisible = false;
+            this.dgvIssues.RowTemplate.Height = 24;
+            this.dgvIssues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvIssues.ShowEditingIcon = false;
+            this.dgvIssues.Size = new System.Drawing.Size(944, 504);
+            this.dgvIssues.TabIndex = 69;
+            this.dgvIssues.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIssues_CellDoubleClick);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label11.Location = new System.Drawing.Point(5, 9);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 16);
+            this.label11.TabIndex = 71;
+            this.label11.Text = "Views";
+            // 
+            // cboIssueViews
+            // 
+            this.cboIssueViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboIssueViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboIssueViews.Items.AddRange(new object[] {
+            "Active Associated Issues",
+            "Inactive Associated Issues"});
+            this.cboIssueViews.Location = new System.Drawing.Point(50, 7);
+            this.cboIssueViews.Margin = new System.Windows.Forms.Padding(2);
+            this.cboIssueViews.Name = "cboIssueViews";
+            this.cboIssueViews.Size = new System.Drawing.Size(157, 21);
+            this.cboIssueViews.TabIndex = 70;
+            // 
+            // panel9
+            // 
+            this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel9.BackColor = System.Drawing.SystemColors.Control;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.label19);
+            this.panel9.Controls.Add(this.label20);
+            this.panel9.Font = new System.Drawing.Font("High Tower Text", 32F);
+            this.panel9.Location = new System.Drawing.Point(2, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(968, 49);
+            this.panel9.TabIndex = 59;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("High Tower Text", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(-3, 1);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(111, 44);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Issues";
+            // 
+            // label20
+            // 
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Gadugi", 20F);
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(8, 46);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(152, 38);
+            this.label20.TabIndex = 40;
+            this.label20.Text = "Summary";
+            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -802,7 +1035,19 @@
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
             // 
-            // frmPlanRecordKeeper
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 61;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
+            // 
+            // frmPlanRecordKeeperProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -816,7 +1061,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(755, 595);
-            this.Name = "frmPlanRecordKeeper";
+            this.Name = "frmPlanRecordKeeperProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Record Keeper";
             this.panel4.ResumeLayout(false);
@@ -842,12 +1087,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvFees)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.tabIssues.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).EndInit();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
-		private System.Windows.Forms.ToolStripButton toolStripButton3;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-		private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.Panel panel4;
@@ -863,14 +1114,12 @@
         public System.Windows.Forms.Label lblAccountInformationHeader;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label24;
-        public System.Windows.Forms.RichTextBox txtDateAdded;
         private System.Windows.Forms.Panel pnlSummaryTabHeader;
         public System.Windows.Forms.Label label23;
         public System.Windows.Forms.Label label56;
         public System.Windows.Forms.TabControl tabControlClientDetail;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.RichTextBox txtDateRemoved;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.ComboBox cboPlan;
         public System.Windows.Forms.ComboBox cboRecordKeeper;
@@ -895,5 +1144,22 @@
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.Label label10;
         public System.Windows.Forms.Label label12;
-	}
+        public System.Windows.Forms.ComboBox cboProduct;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dateRemoved;
+        private System.Windows.Forms.DateTimePicker dateAdded;
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
+        private System.Windows.Forms.Label lblMenuIssues;
+        private System.Windows.Forms.TabPage tabIssues;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Button btnNewIssue;
+        private System.Windows.Forms.Button btnDeleteIssue;
+        public System.Windows.Forms.DataGridView dgvIssues;
+        private System.Windows.Forms.Label label11;
+        public System.Windows.Forms.ComboBox cboIssueViews;
+        private System.Windows.Forms.Panel panel9;
+        public System.Windows.Forms.Label label19;
+        public System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnSelectAllServices;
+    }
 }

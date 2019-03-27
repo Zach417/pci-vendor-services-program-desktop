@@ -32,6 +32,7 @@ namespace VSP.Presentation.Forms
 
         private frmMain frmMain_Parent;
         public VSP.Business.Entities.RecordKeeper CurrentRK;
+        private Label CurrentTabLabel;
 
         public frmRecordKeeper(frmMain mf, VSP.Business.Entities.RecordKeeper recordKeeper, FormClosedEventHandler Close = null)
         {
@@ -77,8 +78,10 @@ namespace VSP.Presentation.Forms
                 txtAssetsServiced.Text = ((decimal)CurrentRK.AssetsServiced).ToString();
             }
 
-            cboIssueViews.SelectedIndex = 0;
             cboProductViews.SelectedIndex = 0;
+
+            CurrentTabLabel = lblMenuSummary; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -159,35 +162,47 @@ namespace VSP.Presentation.Forms
 
         private void lblMenuSummary_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabSummary"];
+            tabSummary.Focus();
 
         }
 
         private void lblMenuProducts_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabProducts"];
-        }
-
-        private void lblMenuIssues_Click(object sender, EventArgs e)
-        {
-            Label label = (Label)sender;
-            tabControlDetail.SelectedTab = tabControlDetail.TabPages["tabIssues"];
+            dgvProducts.Focus();
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label.BackColor = System.Drawing.Color.Gainsboro;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.DarkGray;
+            }
         }
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.ControlText;
-            label.BackColor = System.Drawing.Color.Transparent;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
+        private void highlightSelectedTabLabel(object sender)
+        {
+            Label label = (Label)sender;
+            CurrentTabLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            CurrentTabLabel.BackColor = System.Drawing.Color.Transparent;
+            label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label.BackColor = System.Drawing.Color.Gainsboro;
+            CurrentTabLabel = label;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -235,7 +250,7 @@ namespace VSP.Presentation.Forms
             }
 
             CurrentRK.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
@@ -243,118 +258,20 @@ namespace VSP.Presentation.Forms
             label23.Text = txtName.Text;
         }
 
-        private void LoadDgvIssues()
-        {
-            DataTable dataTable = new DataTable();
-
-            /// Set the datatable based on the SelectedIndex of <see cref="cboIssueViews"/>.
-            switch (cboIssueViews.SelectedIndex)
-            {
-                case 0:
-                    dataTable = ServiceIssue.GetActive();
-                    break;
-                case 1:
-                    dataTable = ServiceIssue.GetInactive();
-                    break;
-                default:
-                    return;
-            }
-
-            if (dataTable.Rows.Count > 0)
-            {
-                var dt = dataTable.AsEnumerable().Where(x => x.Field<Guid?>("RecordKeeperId") == CurrentRK.Id);
-                if (dt.Any())
-                {
-                    dataTable = dt.CopyToDataTable();
-                }
-                else
-                {
-                    dataTable.Rows.Clear();
-                }
-            }
-
-            // Add plan name column and fill data
-            dataTable.Columns.Add("Plan");
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                string planIdString = dr["PlanId"].ToString();
-                if (String.IsNullOrWhiteSpace(planIdString) == false)
-                {
-                    Guid planId = new Guid(planIdString);
-                    Plan plan = new Plan(planId);
-                    dr["Plan"] = plan.Name;
-                }
-            }
-
-            dgvIssues.DataSource = dataTable;
-
-            // Display/order the columns.
-            dgvIssues.Columns["ServiceIssueId"].Visible = false;
-            dgvIssues.Columns["PlanId"].Visible = false;
-            dgvIssues.Columns["RecordKeeperId"].Visible = false;
-            dgvIssues.Columns["AuditorId"].Visible = false;
-            dgvIssues.Columns["DescriptionValue"].Visible = false;
-            dgvIssues.Columns["CreatedBy"].Visible = false;
-            dgvIssues.Columns["ModifiedBy"].Visible = false;
-            dgvIssues.Columns["StateCode"].Visible = false;
-
-            dgvIssues.Columns["SubjectValue"].DisplayIndex = 0;
-            dgvIssues.Columns["Plan"].DisplayIndex = 1;
-            dgvIssues.Columns["AsOfDate"].DisplayIndex = 2;
-            dgvIssues.Columns["ModifiedOn"].DisplayIndex = 3;
-        }
-
-        private void frmServiceIssue_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            LoadDgvIssues();
-        }
-
-        private void btnNewIssue_Click(object sender, EventArgs e)
-        {
-            frmServiceIssue frmServiceIssue = new frmServiceIssue(frmMain_Parent, CurrentRK);
-            frmServiceIssue.FormClosed += frmServiceIssue_FormClosed;
-        }
-
-        private void cboIssueViews_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadDgvIssues();
-        }
-
-        private void dgvIssues_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = dgvIssues.CurrentRow.Index;
-            Guid serviceIssueId = new Guid(dgvIssues.Rows[index].Cells["ServiceIssueId"].Value.ToString());
-            ServiceIssue serviceIssue = new ServiceIssue(serviceIssueId);
-            frmServiceIssue frmServiceIssue = new frmServiceIssue(frmMain_Parent, serviceIssue);
-            frmServiceIssue.FormClosed += frmServiceIssue_FormClosed;
-        }
-
-        private void btnDeleteIssue_Click(object sender, EventArgs e)
-        {
-            if (dgvIssues.CurrentRow == null)
-            {
-                return;
-            }
-
-            int index = dgvIssues.CurrentRow.Index;
-            Guid serviceIssueId = new Guid(dgvIssues.Rows[index].Cells[0].Value.ToString());
-            ServiceIssue serviceIssue = new ServiceIssue(serviceIssueId);
-
-            DialogResult result = MessageBox.Show("Are you sure you wish to delete " + serviceIssue.SubjectValue + "?", "Attention", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.Yes)
-            {
-                serviceIssue.DeleteRecordFromDatabase();
-                LoadDgvIssues();
-            }
-        }
-
         private void LoadDgvProducts()
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvProducts.CurrentCell != null)
+            {
+                currentCellRow = dgvProducts.CurrentCell.RowIndex;
+                currentCellCol = dgvProducts.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboIssueViews"/>.
-            switch (cboIssueViews.SelectedIndex)
+            switch (cboProductViews.SelectedIndex)
             {
                 case 0:
                     dataTable = Product.GetActive();
@@ -391,6 +308,19 @@ namespace VSP.Presentation.Forms
             dgvProducts.Columns["Name"].DisplayIndex = 0;
             dgvProducts.Columns["CreatedOn"].DisplayIndex = 1;
             dgvProducts.Columns["ModifiedOn"].DisplayIndex = 2;
+
+            if (dgvProducts.RowCount > 0 && dgvProducts.ColumnCount > 0)
+            {
+                DataGridViewCell selectedCell = dgvProducts.Rows[currentCellRow].Cells[currentCellCol];
+                if (selectedCell != null && selectedCell.Visible)
+                {
+                    dgvProducts.CurrentCell = selectedCell;
+                }
+                else
+                {
+                    dgvProducts.CurrentCell = dgvProducts.FirstDisplayedCell;
+                }
+            }
         }
 
         private void frmProduct_FormClosed(object sender, FormClosedEventArgs e)

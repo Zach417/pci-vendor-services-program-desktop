@@ -31,7 +31,8 @@ namespace VSP.Presentation.Forms
         private HashSet<Control> controlsToMove = new HashSet<Control>();
 
         private frmMain frmMain_Parent;
-        public VSP.Business.Entities.Advisor CurrentPlanAdvisor;
+        public VSP.Business.Entities.Advisor CurrentAdvisor;
+        private Label CurrentTabLabel;
 
         /// <summary>
         /// 
@@ -39,7 +40,7 @@ namespace VSP.Presentation.Forms
         /// <param name="mf"></param>
         /// <param name="accountId"></param>
         /// <param name="Close"></param>
-        public frmAdvisor(frmMain mf, VSP.Business.Entities.Advisor planAdvisor, FormClosedEventHandler Close = null)
+        public frmAdvisor(frmMain mf, VSP.Business.Entities.Advisor advisor, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -59,13 +60,19 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
-            DataIntegrationHub.Business.Entities.PlanAdvisor dihPA = new DataIntegrationHub.Business.Entities.PlanAdvisor(planAdvisor.Id);
+            DataIntegrationHub.Business.Entities.PlanAdvisor dihPA = new DataIntegrationHub.Business.Entities.PlanAdvisor(advisor.Id);
 
-            CurrentPlanAdvisor = planAdvisor;
+            CurrentAdvisor = advisor;
             txtName.Text = dihPA.Name;
+            txtNotes.Text = CurrentAdvisor.Notes;
+
+            txtNotes.Focus();
 
             cboServicesView.SelectedIndex = 0;
             LoadDgvServices(true);
+
+            CurrentTabLabel = lblMenuSummary; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -146,39 +153,58 @@ namespace VSP.Presentation.Forms
 
         private void lblMenuSummary_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabSummary"];
+            txtNotes.Focus();
 
         }
 
         private void lblMenuServices_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlClientDetail.SelectedTab = tabControlClientDetail.TabPages["tabServices"];
+            dgvServices.Focus();
         }
 
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label.BackColor = System.Drawing.Color.Gainsboro;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.DarkGray;
+            }
         }
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.ControlText;
-            label.BackColor = System.Drawing.Color.Transparent;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
+        private void highlightSelectedTabLabel(object sender)
+        {
+            Label label = (Label)sender;
+            CurrentTabLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            CurrentTabLabel.BackColor = System.Drawing.Color.Transparent;
+            label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label.BackColor = System.Drawing.Color.Gainsboro;
+            CurrentTabLabel = label;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CurrentPlanAdvisor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+            CurrentAdvisor.Notes = txtNotes.Text;
+            CurrentAdvisor.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
 
             // loop through dgvservices, and update productservice records for record keeper product
             if (dgvServices.Rows.Count > 0)
             {
-                DataTable planAdvisorServices = AdvisorService.GetAssociated(CurrentPlanAdvisor);
+                DataTable planAdvisorServices = AdvisorService.GetAssociated(CurrentAdvisor);
 
                 foreach (DataGridViewRow dr in dgvServices.Rows)
                 {
@@ -202,14 +228,14 @@ namespace VSP.Presentation.Forms
                     {
                         AdvisorService planAdvisorService = new AdvisorService();
                         planAdvisorService.ServiceId = serviceId;
-                        planAdvisorService.PlanAdvisorId = CurrentPlanAdvisor.Id;
+                        planAdvisorService.PlanAdvisorId = CurrentAdvisor.Id;
                         planAdvisorService.ServiceOffered = serviceOffered;
                         planAdvisorService.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
                     }
                 }
             }
 
-            this.Close();
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
@@ -219,6 +245,14 @@ namespace VSP.Presentation.Forms
 
         private void LoadDgvServices(bool refresh = false)
         {
+            int currentCellRow = 0;
+            int currentCellCol = 0;
+            if (dgvServices.CurrentCell != null)
+            {
+                currentCellRow = dgvServices.CurrentCell.RowIndex;
+                currentCellCol = dgvServices.CurrentCell.ColumnIndex;
+            }
+
             DataTable dataTable = new DataTable();
 
             /// Set the datatable based on the SelectedIndex of <see cref="cboServicesView"/>.
@@ -260,7 +294,7 @@ namespace VSP.Presentation.Forms
             // set service offered values
             if (refresh == true)
             {
-                DataTable planAdvisorServices = AdvisorService.GetAssociated(CurrentPlanAdvisor);
+                DataTable planAdvisorServices = AdvisorService.GetAssociated(CurrentAdvisor);
                 int rowIndex = 0;
 
                 foreach (DataGridViewRow drServices in dgvServices.Rows)
@@ -276,6 +310,16 @@ namespace VSP.Presentation.Forms
 
                     rowIndex++;
                 }
+            }
+
+            DataGridViewCell selectedCell = dgvServices.Rows[currentCellRow].Cells[currentCellCol];
+            if (selectedCell != null && selectedCell.Visible)
+            {
+                dgvServices.CurrentCell = selectedCell;
+            }
+            else
+            {
+                dgvServices.CurrentCell = dgvServices.FirstDisplayedCell;
             }
         }
 

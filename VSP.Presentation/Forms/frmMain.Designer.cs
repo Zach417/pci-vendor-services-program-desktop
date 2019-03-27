@@ -134,7 +134,9 @@
             this.lblLoginStatus = new System.Windows.Forms.Label();
             this.lblFormStatus = new System.Windows.Forms.Label();
             this.pnlAppStatus = new System.Windows.Forms.Panel();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.pnlMainMnu = new System.Windows.Forms.Panel();
+            this.lblQA = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblAdvisors = new System.Windows.Forms.Label();
             this.lblAuditors = new System.Windows.Forms.Label();
@@ -1592,7 +1594,7 @@
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button19.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.button19.Location = new System.Drawing.Point(1001, 12);
+            this.button19.Location = new System.Drawing.Point(976, 12);
             this.button19.Margin = new System.Windows.Forms.Padding(0);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(20, 20);
@@ -1610,7 +1612,7 @@
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button20.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.button20.Location = new System.Drawing.Point(1026, 12);
+            this.button20.Location = new System.Drawing.Point(1001, 12);
             this.button20.Margin = new System.Windows.Forms.Padding(0);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(20, 20);
@@ -1656,7 +1658,7 @@
             this.dgvServices.RowTemplate.Height = 24;
             this.dgvServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvServices.ShowEditingIcon = false;
-            this.dgvServices.Size = new System.Drawing.Size(1036, 362);
+            this.dgvServices.Size = new System.Drawing.Size(1014, 362);
             this.dgvServices.TabIndex = 69;
             this.dgvServices.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServices_CellDoubleClick);
             // 
@@ -1744,7 +1746,7 @@
             this.lblLoginStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblLoginStatus.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoginStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblLoginStatus.Location = new System.Drawing.Point(754, 2);
+            this.lblLoginStatus.Location = new System.Drawing.Point(633, 2);
             this.lblLoginStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLoginStatus.Name = "lblLoginStatus";
             this.lblLoginStatus.Size = new System.Drawing.Size(278, 15);
@@ -1772,6 +1774,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlAppStatus.BackColor = System.Drawing.Color.Gainsboro;
             this.pnlAppStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlAppStatus.Controls.Add(this.btnFeedback);
             this.pnlAppStatus.Controls.Add(this.lblFormStatus);
             this.pnlAppStatus.Controls.Add(this.lblLoginStatus);
             this.pnlAppStatus.Location = new System.Drawing.Point(0, 609);
@@ -1780,12 +1783,25 @@
             this.pnlAppStatus.Size = new System.Drawing.Size(1036, 21);
             this.pnlAppStatus.TabIndex = 58;
             // 
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(916, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 41;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
+            // 
             // pnlMainMnu
             // 
             this.pnlMainMnu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMainMnu.BackColor = System.Drawing.Color.Silver;
             this.pnlMainMnu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMainMnu.Controls.Add(this.lblQA);
             this.pnlMainMnu.Controls.Add(this.lblSearch);
             this.pnlMainMnu.Controls.Add(this.lblAdvisors);
             this.pnlMainMnu.Controls.Add(this.lblAuditors);
@@ -1796,6 +1812,20 @@
             this.pnlMainMnu.Name = "pnlMainMnu";
             this.pnlMainMnu.Size = new System.Drawing.Size(1036, 53);
             this.pnlMainMnu.TabIndex = 21;
+            // 
+            // lblQA
+            // 
+            this.lblQA.AutoSize = true;
+            this.lblQA.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblQA.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQA.Location = new System.Drawing.Point(507, 15);
+            this.lblQA.Name = "lblQA";
+            this.lblQA.Size = new System.Drawing.Size(42, 25);
+            this.lblQA.TabIndex = 2;
+            this.lblQA.Text = "QA";
+            this.lblQA.Click += new System.EventHandler(this.lblQA_Click);
+            this.lblQA.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
+            this.lblQA.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
             // 
             // lblSearch
             // 
@@ -2521,5 +2551,7 @@
         public System.Windows.Forms.DataGridView dgvSearches;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.ComboBox cboSearchViews;
-	}
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
+        private System.Windows.Forms.Label lblQA;
+    }
 }

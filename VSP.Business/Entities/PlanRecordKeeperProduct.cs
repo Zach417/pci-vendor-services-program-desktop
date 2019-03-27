@@ -10,22 +10,23 @@ using System.Linq.Expressions;
 
 namespace VSP.Business.Entities
 {
-    public class PlanRecordKeeper : DatabaseEntity
+    public class PlanRecordKeeperProduct : DatabaseEntity
     {
-        public Guid RecordKeeperId;
+        public Guid RecordKeeperProductId;
         public Guid PlanId;
+        public Guid ProductId;
         public DateTime? DateAdded;
         public DateTime? DateRemoved;
 
-        private static string _tableName = "PlanRecordKeeper";
+        private static string _tableName = "PlanRecordKeeperProduct";
 
-        public PlanRecordKeeper()
+        public PlanRecordKeeperProduct()
             : base(_tableName)
         {
 
         }
 
-        public PlanRecordKeeper(Guid primaryKey)
+        public PlanRecordKeeperProduct(Guid primaryKey)
             : base(_tableName, primaryKey)
         {
             RefreshMembers();
@@ -37,8 +38,9 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void RegisterMembers()
         {
-            base.AddColumn("RecordKeeperId", this.RecordKeeperId);
+            base.AddColumn("PlanRecordKeeperProductId", this.RecordKeeperProductId);
             base.AddColumn("PlanId", this.PlanId);
+            base.AddColumn("ProductId", this.ProductId);
             base.AddColumn("DateAdded", this.DateAdded);
             base.AddColumn("DateRemoved", this.DateRemoved);
         }
@@ -48,8 +50,9 @@ namespace VSP.Business.Entities
         /// </summary>
         protected override void SetRegisteredMembers()
         {
-            this.RecordKeeperId = (Guid)base.GetColumn("RecordKeeperId");
+            this.RecordKeeperProductId = (Guid)base.GetColumn("PlanRecordKeeperProductId");
             this.PlanId = (Guid)base.GetColumn("PlanId");
+            this.ProductId = (Guid)base.GetColumn("ProductId");
             this.DateAdded = (DateTime?)base.GetColumn("DateAdded");
             this.DateRemoved = (DateTime?)base.GetColumn("DateRemoved");
         }
@@ -69,6 +72,12 @@ namespace VSP.Business.Entities
         public static DataTable GetAssociated(Guid planId)
         {
             string sql = @"SELECT * FROM " + _tableName + " WHERE PlanId = \'" + planId.ToString() + "\'";
+            return Access.VspDbAccess.ExecuteSqlQuery(sql);
+        }
+
+        public static DataTable GetAll()
+        {
+            string sql = @"SELECT * FROM " + _tableName;
             return Access.VspDbAccess.ExecuteSqlQuery(sql);
         }
     }

@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace VSP.Presentation.Forms
 {
-	public partial class frmPlanRecordKeeperFee : Form, IMessageFilter
+    public partial class frmPlanOtherFee : Form, IMessageFilter
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -31,15 +31,16 @@ namespace VSP.Presentation.Forms
         private HashSet<Control> controlsToMove = new HashSet<Control>();
 
         private frmMain frmMain_Parent;
-        public PlanRecordKeeperFee CurrentPlanRecordKeeperFee;
+        public PlanOtherFee CurrentPlanOtherFee;
+        private Label CurrentTabLabel;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="mf"></param>
-        /// <param name="accountId"></param>
+        /// <param name="plan"></param>
         /// <param name="Close"></param>
-        public frmPlanRecordKeeperFee(frmMain mf, PlanRecordKeeper planRecordKeeper, FormClosedEventHandler Close = null)
+        public frmPlanOtherFee(frmMain mf, Plan plan, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -59,15 +60,14 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
-            Plan plan = new Plan(planRecordKeeper.PlanId);
-            DataIntegrationHub.Business.Entities.RecordKeeper rk = new DataIntegrationHub.Business.Entities.RecordKeeper(planRecordKeeper.RecordKeeperId);
-
-            CurrentPlanRecordKeeperFee = new PlanRecordKeeperFee();
-            CurrentPlanRecordKeeperFee.PlanId = plan.PlanId;
-            CurrentPlanRecordKeeperFee.RecordKeeperId = rk.RecordKeeperId;
+            CurrentPlanOtherFee = new PlanOtherFee();
+            CurrentPlanOtherFee.PlanId = plan.PlanId;
 
             txtPlan.Text = plan.Name;
-            txtRecordKeeper.Text = rk.Name;
+            txtName.Text = CurrentPlanOtherFee.Name;
+
+            CurrentTabLabel = label46; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
@@ -77,9 +77,9 @@ namespace VSP.Presentation.Forms
         /// 
         /// </summary>
         /// <param name="mf"></param>
-        /// <param name="accountId"></param>
+        /// <param name="planOtherFee"></param>
         /// <param name="Close"></param>
-        public frmPlanRecordKeeperFee(frmMain mf, PlanRecordKeeperFee planRecordKeeperFee, FormClosedEventHandler Close = null)
+        public frmPlanOtherFee(frmMain mf, PlanOtherFee planOtherFee, FormClosedEventHandler Close = null)
         {
             frmSplashScreen ss = new frmSplashScreen();
             ss.Show();
@@ -99,51 +99,56 @@ namespace VSP.Presentation.Forms
 
             FormClosed += Close;
 
-            Plan plan = new Plan(planRecordKeeperFee.PlanId);
-            DataIntegrationHub.Business.Entities.RecordKeeper rk = new DataIntegrationHub.Business.Entities.RecordKeeper(planRecordKeeperFee.RecordKeeperId);
+            Plan plan = new Plan(planOtherFee.PlanId);
 
-            CurrentPlanRecordKeeperFee = planRecordKeeperFee;
+            CurrentPlanOtherFee = planOtherFee;
             txtPlan.Text = plan.Name;
-            txtRecordKeeper.Text = rk.Name;
+            txtNotes.Text = CurrentPlanOtherFee.Notes;
 
-            if (CurrentPlanRecordKeeperFee.Fee != null)
+            txtNotes.Focus();
+
+            if (CurrentPlanOtherFee.Fee != null)
             {
-                txtFee.Text = ((decimal)CurrentPlanRecordKeeperFee.Fee).ToString("#,##");
+                txtFee.Text = ((decimal)CurrentPlanOtherFee.Fee).ToString("#,##");
             }
 
-            if (CurrentPlanRecordKeeperFee.BenchmarkFee != null)
+            // Benchmarks removed for misc fees (still in DB)
+            /*if (CurrentPlanOtherFee.Benchmark25Fee != null)
             {
-                txtBenchmarkFee.Text = ((decimal)CurrentPlanRecordKeeperFee.BenchmarkFee).ToString("#,##");
+                txtBenchmark25Fee.Text = ((decimal)CurrentPlanOtherFee.Benchmark25Fee).ToString("#,##");
             }
 
-            if (CurrentPlanRecordKeeperFee.AsOfDate != null)
+            if (CurrentPlanOtherFee.Benchmark50Fee != null)
             {
-                txtAsOfDate.Text = ((DateTime)CurrentPlanRecordKeeperFee.AsOfDate).ToString("MM/dd/yyyy");
+                txtBenchmark50Fee.Text = ((decimal)CurrentPlanOtherFee.Benchmark50Fee).ToString("#,##");
             }
 
-            if (CurrentPlanRecordKeeperFee.PaymentRevenueSharing != null)
+            if (CurrentPlanOtherFee.Benchmark75Fee != null)
             {
-                txtPaymentRevenueSharing.Text = ((decimal)CurrentPlanRecordKeeperFee.PaymentRevenueSharing).ToString("#,##");
+                txtBenchmark75Fee.Text = ((decimal)CurrentPlanOtherFee.Benchmark75Fee).ToString("#,##");
+            }*/
+
+            if (CurrentPlanOtherFee.AsOfDate != null)
+            {
+                dateAsOfDate.Value = (DateTime)CurrentPlanOtherFee.AsOfDate;
+                dateAsOfDate.Checked = true;
+            }
+            else
+            {
+                dateAsOfDate.Checked = false;
             }
 
-            if (CurrentPlanRecordKeeperFee.PaymentForfeitures != null)
-            {
-                txtPaymentForfeitures.Text = ((decimal)CurrentPlanRecordKeeperFee.PaymentForfeitures).ToString("#,##");
-            }
+            chbxRevenueSharingPaid.Checked = CurrentPlanOtherFee.RevenueSharingPaid;
+            chbxForfeituresPaid.Checked = CurrentPlanOtherFee.ForfeituresPaid;
+            chbxParticipantsPaid.Checked = CurrentPlanOtherFee.ParticipantsPaid;
+            chbxPlanSponsorPaid.Checked = CurrentPlanOtherFee.PlanSponsorPaid;
 
-            if (CurrentPlanRecordKeeperFee.PaymentParticipants != null)
-            {
-                txtPaymentParticipants.Text = ((decimal)CurrentPlanRecordKeeperFee.PaymentParticipants).ToString("#,##");
-            }
-
-            if (CurrentPlanRecordKeeperFee.PaymentPlanSponsor != null)
-            {
-                txtPaymentPlanSponsor.Text = ((decimal)CurrentPlanRecordKeeperFee.PaymentPlanSponsor).ToString("#,##");
-            }
+            CurrentTabLabel = label46; // Summary tab label
+            highlightSelectedTabLabel(CurrentTabLabel);
 
             ss.Close();
             this.Show();
-		}
+        }
 
         /// <summary>
         /// Filters out a message before it is dispatched.
@@ -220,6 +225,7 @@ namespace VSP.Presentation.Forms
 
         private void label46_Click(object sender, EventArgs e)
         {
+            highlightSelectedTabLabel(sender);
             Label label = (Label)sender;
             tabControlClientDetail.SelectedIndex = 0;
 
@@ -228,28 +234,42 @@ namespace VSP.Presentation.Forms
         private void MenuItem_MouseEnter(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label.BackColor = System.Drawing.Color.Gainsboro;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.DarkGray;
+            }
         }
 
         private void MenuItem_MouseLeave(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.ForeColor = System.Drawing.SystemColors.ControlText;
-            label.BackColor = System.Drawing.Color.Transparent;
+            if (label != CurrentTabLabel)
+            {
+                label.BackColor = System.Drawing.Color.Transparent;
+            }
+        }
+
+        private void highlightSelectedTabLabel(object sender)
+        {
+            Label label = (Label)sender;
+            CurrentTabLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            CurrentTabLabel.BackColor = System.Drawing.Color.Transparent;
+            label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label.BackColor = System.Drawing.Color.Gainsboro;
+            CurrentTabLabel = label;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(txtFee.Text))
             {
-                CurrentPlanRecordKeeperFee.Fee = null;
+                CurrentPlanOtherFee.Fee = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeperFee.Fee = Decimal.Parse(txtFee.Text);
+                    CurrentPlanOtherFee.Fee = Decimal.Parse(txtFee.Text);
                 }
                 catch
                 {
@@ -258,120 +278,84 @@ namespace VSP.Presentation.Forms
                 }
             }
 
-            if (String.IsNullOrWhiteSpace(txtBenchmarkFee.Text))
+            /*if (String.IsNullOrWhiteSpace(txtBenchmark25Fee.Text))
             {
-                CurrentPlanRecordKeeperFee.BenchmarkFee = null;
+                CurrentPlanOtherFee.Benchmark25Fee = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeperFee.BenchmarkFee = Decimal.Parse(txtBenchmarkFee.Text);
+                    CurrentPlanOtherFee.Benchmark25Fee = Decimal.Parse(txtBenchmark25Fee.Text);
                 }
                 catch
                 {
-                    MessageBox.Show("Error: Benchmark fee string not in decimal format");
+                    MessageBox.Show("Error: Benchmark 25% fee string not in decimal format");
                     return;
                 }
             }
 
-            if (String.IsNullOrWhiteSpace(txtAsOfDate.Text))
+            if (String.IsNullOrWhiteSpace(txtBenchmark50Fee.Text))
             {
-                CurrentPlanRecordKeeperFee.AsOfDate = null;
+                CurrentPlanOtherFee.Benchmark50Fee = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeperFee.AsOfDate = DateTime.Parse(txtAsOfDate.Text);
+                    CurrentPlanOtherFee.Benchmark50Fee = Decimal.Parse(txtBenchmark50Fee.Text);
                 }
                 catch
                 {
-                    MessageBox.Show("Error: As Of Date string not in date format");
+                    MessageBox.Show("Error: Benchmark 50% fee string not in decimal format");
                     return;
                 }
             }
 
-            if (String.IsNullOrWhiteSpace(txtPaymentRevenueSharing.Text))
+            if (String.IsNullOrWhiteSpace(txtBenchmark75Fee.Text))
             {
-                CurrentPlanRecordKeeperFee.PaymentRevenueSharing = null;
+                CurrentPlanOtherFee.Benchmark75Fee = null;
             }
             else
             {
                 try
                 {
-                    CurrentPlanRecordKeeperFee.PaymentRevenueSharing = Decimal.Parse(txtPaymentRevenueSharing.Text);
+                    CurrentPlanOtherFee.Benchmark75Fee = Decimal.Parse(txtBenchmark75Fee.Text);
                 }
                 catch
                 {
-                    MessageBox.Show("Error: Revenue sharing payment string not in decimal format");
+                    MessageBox.Show("Error: Benchmark 75% fee string not in decimal format");
                     return;
                 }
-            }
+            }*/
 
-            if (String.IsNullOrWhiteSpace(txtPaymentForfeitures.Text))
+            if (dateAsOfDate.Checked)
             {
-                CurrentPlanRecordKeeperFee.PaymentForfeitures = null;
+                CurrentPlanOtherFee.AsOfDate = dateAsOfDate.Value;
             }
             else
             {
-                try
-                {
-                    CurrentPlanRecordKeeperFee.PaymentForfeitures = Decimal.Parse(txtPaymentForfeitures.Text);
-                }
-                catch
-                {
-                    MessageBox.Show("Error: Forfeiture payment string not in decimal format");
-                    return;
-                }
+                CurrentPlanOtherFee.AsOfDate = null;
             }
+            CurrentPlanOtherFee.RevenueSharingPaid = chbxRevenueSharingPaid.Checked;
+            CurrentPlanOtherFee.ForfeituresPaid = chbxForfeituresPaid.Checked;
+            CurrentPlanOtherFee.ParticipantsPaid = chbxParticipantsPaid.Checked;
+            CurrentPlanOtherFee.PlanSponsorPaid = chbxPlanSponsorPaid.Checked;
+            CurrentPlanOtherFee.Notes = txtNotes.Text;
+            CurrentPlanOtherFee.Name = txtName.Text;
 
-            if (String.IsNullOrWhiteSpace(txtPaymentParticipants.Text))
-            {
-                CurrentPlanRecordKeeperFee.PaymentParticipants = null;
-            }
-            else
-            {
-                try
-                {
-                    CurrentPlanRecordKeeperFee.PaymentParticipants = Decimal.Parse(txtPaymentParticipants.Text);
-                }
-                catch
-                {
-                    MessageBox.Show("Error: Participant payment string not in decimal format");
-                    return;
-                }
-            }
-
-            if (String.IsNullOrWhiteSpace(txtPaymentPlanSponsor.Text))
-            {
-                CurrentPlanRecordKeeperFee.PaymentPlanSponsor = null;
-            }
-            else
-            {
-                try
-                {
-                    CurrentPlanRecordKeeperFee.PaymentPlanSponsor = Decimal.Parse(txtPaymentPlanSponsor.Text);
-                }
-                catch
-                {
-                    MessageBox.Show("Error: Plan Sponsor payment string not in decimal format");
-                    return;
-                }
-            }
-
-            CurrentPlanRecordKeeperFee.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
-            this.Close();
+            CurrentPlanOtherFee.SaveRecordToDatabase(frmMain_Parent.CurrentUser.UserId);
+            //this.Close();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
-            label23.Text = txtPlan.Text;
+            label23.Text = txtName.Text;
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-
+            highlightSelectedTabLabel(sender);
         }
-	}
+    }
 }

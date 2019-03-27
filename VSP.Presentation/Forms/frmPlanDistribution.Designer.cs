@@ -45,6 +45,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -70,6 +71,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnFeedback);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Location = new System.Drawing.Point(0, 667);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -392,6 +394,18 @@
             this.tabControlClientDetail.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlClientDetail.TabIndex = 37;
             // 
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 61;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
+            // 
             // frmPlanDistribution
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,5 +464,6 @@
         public System.Windows.Forms.RichTextBox txtAsOfDate;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.RichTextBox txtDistribution;
-	}
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
+    }
 }

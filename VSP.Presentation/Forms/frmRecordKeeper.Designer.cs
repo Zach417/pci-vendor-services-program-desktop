@@ -19,12 +19,11 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRecordKeeper));
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnFeedback = new VSP.Presentation.Forms.FeedbackButton();
             this.label25 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblMenuProducts = new System.Windows.Forms.Label();
@@ -36,6 +35,10 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabSummary = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtAssetsServiced = new System.Windows.Forms.RichTextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtPlansServiced = new System.Windows.Forms.RichTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtRfpEmail = new System.Windows.Forms.RichTextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -72,23 +75,9 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.tabIssues = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnNewIssue = new System.Windows.Forms.Button();
-            this.btnDeleteIssue = new System.Windows.Forms.Button();
-            this.dgvIssues = new System.Windows.Forms.DataGridView();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cboIssueViews = new System.Windows.Forms.ComboBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtAssetsServiced = new System.Windows.Forms.RichTextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtPlansServiced = new System.Windows.Forms.RichTextBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -100,10 +89,6 @@
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.panel7.SuspendLayout();
-            this.tabIssues.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).BeginInit();
-            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripSeparator3
@@ -122,12 +107,25 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnFeedback);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Location = new System.Drawing.Point(0, 667);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(968, 21);
             this.panel4.TabIndex = 57;
+            // 
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedback.Location = new System.Drawing.Point(848, 1);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(118, 18);
+            this.btnFeedback.TabIndex = 61;
+            this.btnFeedback.Text = "Send Feedback";
+            this.btnFeedback.UseVisualStyleBackColor = false;
             // 
             // label25
             // 
@@ -182,10 +180,8 @@
             this.lblMenuIssues.ForeColor = System.Drawing.Color.Black;
             this.lblMenuIssues.Location = new System.Drawing.Point(216, 15);
             this.lblMenuIssues.Name = "lblMenuIssues";
-            this.lblMenuIssues.Size = new System.Drawing.Size(68, 25);
+            this.lblMenuIssues.Size = new System.Drawing.Size(0, 25);
             this.lblMenuIssues.TabIndex = 0;
-            this.lblMenuIssues.Text = "Issues";
-            this.lblMenuIssues.Click += new System.EventHandler(this.lblMenuIssues_Click);
             this.lblMenuIssues.MouseEnter += new System.EventHandler(this.MenuItem_MouseEnter);
             this.lblMenuIssues.MouseLeave += new System.EventHandler(this.MenuItem_MouseLeave);
             // 
@@ -296,6 +292,60 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(968, 545);
             this.panel2.TabIndex = 58;
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Arial", 9F);
+            this.label15.Location = new System.Drawing.Point(454, 473);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(127, 18);
+            this.label15.TabIndex = 72;
+            this.label15.Text = "Assets Serviced:";
+            // 
+            // txtAssetsServiced
+            // 
+            this.txtAssetsServiced.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAssetsServiced.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtAssetsServiced.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAssetsServiced.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtAssetsServiced.ForeColor = System.Drawing.Color.Black;
+            this.txtAssetsServiced.Location = new System.Drawing.Point(585, 472);
+            this.txtAssetsServiced.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAssetsServiced.Multiline = false;
+            this.txtAssetsServiced.Name = "txtAssetsServiced";
+            this.txtAssetsServiced.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtAssetsServiced.Size = new System.Drawing.Size(365, 19);
+            this.txtAssetsServiced.TabIndex = 71;
+            this.txtAssetsServiced.Text = "";
+            // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Arial", 9F);
+            this.label16.Location = new System.Drawing.Point(19, 473);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(113, 18);
+            this.label16.TabIndex = 70;
+            this.label16.Text = "Plans Serviced:";
+            // 
+            // txtPlansServiced
+            // 
+            this.txtPlansServiced.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPlansServiced.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtPlansServiced.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPlansServiced.Font = new System.Drawing.Font("Arial", 8F);
+            this.txtPlansServiced.ForeColor = System.Drawing.Color.Black;
+            this.txtPlansServiced.Location = new System.Drawing.Point(136, 472);
+            this.txtPlansServiced.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPlansServiced.Multiline = false;
+            this.txtPlansServiced.Name = "txtPlansServiced";
+            this.txtPlansServiced.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.txtPlansServiced.Size = new System.Drawing.Size(314, 19);
+            this.txtPlansServiced.TabIndex = 69;
+            this.txtPlansServiced.Text = "";
             // 
             // label14
             // 
@@ -644,7 +694,6 @@
             this.tabControlDetail.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControlDetail.Controls.Add(this.tabSummary);
             this.tabControlDetail.Controls.Add(this.tabProducts);
-            this.tabControlDetail.Controls.Add(this.tabIssues);
             this.tabControlDetail.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabControlDetail.Location = new System.Drawing.Point(-6, 0);
             this.tabControlDetail.Margin = new System.Windows.Forms.Padding(2);
@@ -822,175 +871,6 @@
             this.label12.TabIndex = 40;
             this.label12.Text = "Summary";
             // 
-            // tabIssues
-            // 
-            this.tabIssues.Controls.Add(this.panel1);
-            this.tabIssues.Controls.Add(this.panel5);
-            this.tabIssues.Location = new System.Drawing.Point(4, 25);
-            this.tabIssues.Name = "tabIssues";
-            this.tabIssues.Padding = new System.Windows.Forms.Padding(3);
-            this.tabIssues.Size = new System.Drawing.Size(981, 600);
-            this.tabIssues.TabIndex = 1;
-            this.tabIssues.Text = "Issues";
-            this.tabIssues.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(218)))), ((int)(((byte)(219)))));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btnNewIssue);
-            this.panel1.Controls.Add(this.btnDeleteIssue);
-            this.panel1.Controls.Add(this.dgvIssues);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.cboIssueViews);
-            this.panel1.Location = new System.Drawing.Point(2, 46);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(968, 545);
-            this.panel1.TabIndex = 60;
-            // 
-            // btnNewIssue
-            // 
-            this.btnNewIssue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNewIssue.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNewIssue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewIssue.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewIssue.ForeColor = System.Drawing.Color.Black;
-            this.btnNewIssue.Location = new System.Drawing.Point(790, 4);
-            this.btnNewIssue.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNewIssue.Name = "btnNewIssue";
-            this.btnNewIssue.Size = new System.Drawing.Size(78, 26);
-            this.btnNewIssue.TabIndex = 72;
-            this.btnNewIssue.Text = "New";
-            this.btnNewIssue.UseVisualStyleBackColor = false;
-            this.btnNewIssue.Click += new System.EventHandler(this.btnNewIssue_Click);
-            // 
-            // btnDeleteIssue
-            // 
-            this.btnDeleteIssue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeleteIssue.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnDeleteIssue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteIssue.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteIssue.ForeColor = System.Drawing.Color.Black;
-            this.btnDeleteIssue.Location = new System.Drawing.Point(874, 4);
-            this.btnDeleteIssue.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeleteIssue.Name = "btnDeleteIssue";
-            this.btnDeleteIssue.Size = new System.Drawing.Size(78, 26);
-            this.btnDeleteIssue.TabIndex = 73;
-            this.btnDeleteIssue.Text = "Delete";
-            this.btnDeleteIssue.UseVisualStyleBackColor = false;
-            this.btnDeleteIssue.Click += new System.EventHandler(this.btnDeleteIssue_Click);
-            // 
-            // dgvIssues
-            // 
-            this.dgvIssues.AllowUserToAddRows = false;
-            this.dgvIssues.AllowUserToDeleteRows = false;
-            this.dgvIssues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvIssues.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvIssues.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvIssues.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Gadugi", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvIssues.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Gadugi", 7.8F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvIssues.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvIssues.EnableHeadersVisualStyles = false;
-            this.dgvIssues.Location = new System.Drawing.Point(8, 34);
-            this.dgvIssues.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvIssues.MultiSelect = false;
-            this.dgvIssues.Name = "dgvIssues";
-            this.dgvIssues.ReadOnly = true;
-            this.dgvIssues.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvIssues.RowHeadersVisible = false;
-            this.dgvIssues.RowTemplate.Height = 24;
-            this.dgvIssues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvIssues.ShowEditingIcon = false;
-            this.dgvIssues.Size = new System.Drawing.Size(944, 504);
-            this.dgvIssues.TabIndex = 69;
-            this.dgvIssues.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIssues_CellDoubleClick);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(5, 9);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 16);
-            this.label11.TabIndex = 71;
-            this.label11.Text = "Views";
-            // 
-            // cboIssueViews
-            // 
-            this.cboIssueViews.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboIssueViews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboIssueViews.Items.AddRange(new object[] {
-            "Active Associated Issues",
-            "Inactive Associated Issues"});
-            this.cboIssueViews.Location = new System.Drawing.Point(50, 7);
-            this.cboIssueViews.Margin = new System.Windows.Forms.Padding(2);
-            this.cboIssueViews.Name = "cboIssueViews";
-            this.cboIssueViews.Size = new System.Drawing.Size(157, 21);
-            this.cboIssueViews.TabIndex = 70;
-            this.cboIssueViews.SelectedIndexChanged += new System.EventHandler(this.cboIssueViews_SelectedIndexChanged);
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.BackColor = System.Drawing.SystemColors.Control;
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.label19);
-            this.panel5.Controls.Add(this.label20);
-            this.panel5.Font = new System.Drawing.Font("High Tower Text", 32F);
-            this.panel5.Location = new System.Drawing.Point(2, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(968, 49);
-            this.panel5.TabIndex = 59;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("High Tower Text", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(-3, 1);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(111, 44);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Issues";
-            // 
-            // label20
-            // 
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Gadugi", 20F);
-            this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(8, 46);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(152, 38);
-            this.label20.TabIndex = 40;
-            this.label20.Text = "Summary";
-            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -1017,60 +897,6 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Save and New";
-            // 
-            // label15
-            // 
-            this.label15.Font = new System.Drawing.Font("Arial", 9F);
-            this.label15.Location = new System.Drawing.Point(454, 473);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(127, 18);
-            this.label15.TabIndex = 72;
-            this.label15.Text = "Assets Serviced:";
-            // 
-            // txtAssetsServiced
-            // 
-            this.txtAssetsServiced.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAssetsServiced.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtAssetsServiced.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAssetsServiced.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtAssetsServiced.ForeColor = System.Drawing.Color.Black;
-            this.txtAssetsServiced.Location = new System.Drawing.Point(585, 472);
-            this.txtAssetsServiced.Margin = new System.Windows.Forms.Padding(2);
-            this.txtAssetsServiced.Multiline = false;
-            this.txtAssetsServiced.Name = "txtAssetsServiced";
-            this.txtAssetsServiced.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtAssetsServiced.Size = new System.Drawing.Size(365, 19);
-            this.txtAssetsServiced.TabIndex = 71;
-            this.txtAssetsServiced.Text = "";
-            // 
-            // label16
-            // 
-            this.label16.Font = new System.Drawing.Font("Arial", 9F);
-            this.label16.Location = new System.Drawing.Point(19, 473);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(113, 18);
-            this.label16.TabIndex = 70;
-            this.label16.Text = "Plans Serviced:";
-            // 
-            // txtPlansServiced
-            // 
-            this.txtPlansServiced.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPlansServiced.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPlansServiced.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPlansServiced.Font = new System.Drawing.Font("Arial", 8F);
-            this.txtPlansServiced.ForeColor = System.Drawing.Color.Black;
-            this.txtPlansServiced.Location = new System.Drawing.Point(136, 472);
-            this.txtPlansServiced.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPlansServiced.Multiline = false;
-            this.txtPlansServiced.Name = "txtPlansServiced";
-            this.txtPlansServiced.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.txtPlansServiced.Size = new System.Drawing.Size(314, 19);
-            this.txtPlansServiced.TabIndex = 69;
-            this.txtPlansServiced.Text = "";
             // 
             // frmRecordKeeper
             // 
@@ -1106,12 +932,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.tabIssues.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1153,16 +973,6 @@
         public System.Windows.Forms.RichTextBox txtCredentialsExperience;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.RichTextBox txtSecurityTechnology;
-        private System.Windows.Forms.TabPage tabIssues;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel5;
-        public System.Windows.Forms.Label label19;
-        public System.Windows.Forms.Label label20;
-        public System.Windows.Forms.DataGridView dgvIssues;
-        private System.Windows.Forms.Label label11;
-        public System.Windows.Forms.ComboBox cboIssueViews;
-        private System.Windows.Forms.Button btnNewIssue;
-        private System.Windows.Forms.Button btnDeleteIssue;
         private System.Windows.Forms.Label lblMenuProducts;
         private System.Windows.Forms.TabPage tabProducts;
         private System.Windows.Forms.Panel panel6;
@@ -1182,5 +992,6 @@
         public System.Windows.Forms.RichTextBox txtAssetsServiced;
         private System.Windows.Forms.Label label16;
         public System.Windows.Forms.RichTextBox txtPlansServiced;
-	}
+        private VSP.Presentation.Forms.FeedbackButton btnFeedback;
+    }
 }
